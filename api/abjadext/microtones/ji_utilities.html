@@ -324,7 +324,7 @@
 <dd><p>Concatenates Ratio Class Segment with iterable.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rc_segment</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSegment</span><span class="p">([</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;1/2&quot;</span><span class="p">,</span> <span class="s2">&quot;5/4&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rc_segment</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc_segment</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">fractions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">fractions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rc_segment</span>
 <span class="go">abjadext.ji_utilities.RatioClassSegment(</span>
 <span class="go">    [</span>
@@ -594,6 +594,7 @@
 <em class="property">class </em><code class="sig-prename descclassname">abjadext.microtones.ji_utilities.</code><code class="sig-name descname">RatioClassSet</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ratio_classes</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ratio Class Set.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">abjadext</span> <span class="kn">import</span> <span class="n">microtones</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">fractions</span>
 </pre></div>
 </div>
 <hr/><p class="class-header rubric">Attributes Summary</p>
@@ -645,7 +646,7 @@
 <dd><p>Concatenates Ratio Class Set with iterable.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rc_set</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSet</span><span class="p">([</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;1/2&quot;</span><span class="p">,</span> <span class="s2">&quot;5/4&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rc_set</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc_set</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">fractions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">fractions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rc_set</span>
 <span class="go">abjadext.ji_utilities.RatioClassSet(</span>
 <span class="go">    [</span>
@@ -925,7 +926,7 @@
 <dd><p>Concatenates Ratio Segment with iterable.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">r_segment</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioSegment</span><span class="p">([</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;1/2&quot;</span><span class="p">,</span> <span class="s2">&quot;5/4&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">r_segment</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r_segment</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">fractions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">fractions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r_segment</span>
 <span class="go">abjadext.ji_utilities.RatioSegment(</span>
 <span class="go">    [</span>
@@ -1258,7 +1259,7 @@
 <dd><p>Concatenates Ratio Set with iterable.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">r_set</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioSet</span><span class="p">([</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;1/2&quot;</span><span class="p">,</span> <span class="s2">&quot;5/4&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">r_set</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r_set</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">fractions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">fractions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r_set</span>
 <span class="go">abjadext.ji_utilities.RatioSet(</span>
 <span class="go">    [</span>
