@@ -1,0 +1,1554 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ji_utilities &mdash; Perllan API  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/abjad.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script defer="defer" src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/ga.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="evans" href="../../evans/index.html" />
+    <link rel="prev" title="ji" href="ji.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Perllan API
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Perllan API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">abjadext</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">microtones</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="et.html">et</a></li>
+<li class="toctree-l4"><a class="reference internal" href="et_utilities.html">et_utilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ji.html">ji</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">ji_utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../evans/index.html">evans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tsmakers/index.html">tsmakers</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Perllan API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Perllan API</a> &raquo;</li>
+        
+          <li><a href="../index.html">abjadext</a> &raquo;</li>
+        
+          <li><a href="index.html">microtones</a> &raquo;</li>
+        
+      <li>ji_utilities</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/api/abjadext/microtones/ji_utilities.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-abjadext.microtones.ji_utilities">
+<span id="ji-utilities"></span><span id="abjadext-microtones-ji-utilities"></span><h1>ji_utilities<a class="headerlink" href="#module-abjadext.microtones.ji_utilities" title="Permalink to this headline">¶</a></h1>
+<div class="svg-container docutils container">
+<div class="graphviz"><object data="../../../_images/inheritance-f4b47501b38efd012fc70e12a74e4febd4fe97a6.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">digraph InheritanceGraph {
+	graph [bgcolor=transparent,
+		color=lightsteelblue2,
+		fontname=Arial,
+		fontsize=10,
+		outputorder=edgesfirst,
+		overlap=prism,
+		penwidth=2,
+		rankdir=LR,
+		splines=spline,
+		style=&quot;dashed, rounded&quot;,
+		truecolor=true
+	];
+	node [colorscheme=pastel19,
+		fontname=Arial,
+		fontsize=10,
+		height=0,
+		penwidth=2,
+		shape=box,
+		style=&quot;filled, rounded&quot;,
+		width=0
+	];
+	edge [color=lightslategrey,
+		penwidth=1
+	];
+	subgraph &quot;cluster_abjadext.microtones.ji_utilities&quot; {
+		graph [label=&quot;abjadext.microtones.ji_utilities&quot;];
+		node [color=1];
+		&quot;abjadext.microtones.ji_utilities.RatioClassSegment&quot;		 [URL=&quot;../api/abjadext/microtones/ji_utilities.html#abjadext.microtones.ji_utilities.RatioClassSegment&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Ratio\nClass\nSegment&quot;,
+			target=_top];
+		&quot;abjadext.microtones.ji_utilities.RatioClassSet&quot;		 [URL=&quot;../api/abjadext/microtones/ji_utilities.html#abjadext.microtones.ji_utilities.RatioClassSet&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Ratio\nClass\nSet&quot;,
+			target=_top];
+		&quot;abjadext.microtones.ji_utilities.RatioSegment&quot;		 [URL=&quot;../api/abjadext/microtones/ji_utilities.html#abjadext.microtones.ji_utilities.RatioSegment&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Ratio\nSegment&quot;,
+			target=_top];
+		&quot;abjadext.microtones.ji_utilities.RatioSet&quot;		 [URL=&quot;../api/abjadext/microtones/ji_utilities.html#abjadext.microtones.ji_utilities.RatioSet&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Ratio\nSet&quot;,
+			target=_top];
+	}
+	subgraph cluster_builtins {
+		graph [label=builtins];
+		node [color=2];
+		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.7/library/functions.html#object&quot;,
+			color=2,
+			label=object,
+			target=_top];
+	}
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.ji_utilities.RatioClassSegment&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.ji_utilities.RatioClassSet&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.ji_utilities.RatioSegment&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.ji_utilities.RatioSet&quot;	 [minlen=2];
+}</p></object></div>
+</div>
+<hr/><p class="section-header rubric">Classes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSegment" title="abjadext.microtones.ji_utilities.RatioClassSegment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RatioClassSegment</span></code></a></p></td>
+<td><p>Ratio Class Segment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSet" title="abjadext.microtones.ji_utilities.RatioClassSet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RatioClassSet</span></code></a></p></td>
+<td><p>Ratio Class Set.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSegment" title="abjadext.microtones.ji_utilities.RatioSegment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RatioSegment</span></code></a></p></td>
+<td><p>Ratio Segment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSet" title="abjadext.microtones.ji_utilities.RatioSet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RatioSet</span></code></a></p></td>
+<td><p>Ratio Set.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSegment">
+<em class="property">class </em><code class="sig-prename descclassname">abjadext.microtones.ji_utilities.</code><code class="sig-name descname">RatioClassSegment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ratio_classes</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSegment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ratio Class Segment.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">abjadext</span> <span class="kn">import</span> <span class="n">microtones</span>
+</pre></div>
+</div>
+<hr/><p class="class-header rubric">Attributes Summary</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSegment.__add__" title="abjadext.microtones.ji_utilities.RatioClassSegment.__add__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__add__</span></code></a></p></td>
+<td><p>Concatenates Ratio Class Segment with iterable.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSegment.__contains__" title="abjadext.microtones.ji_utilities.RatioClassSegment.__contains__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__contains__</span></code></a></p></td>
+<td><p>Returns boolean</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSegment.__iter__" title="abjadext.microtones.ji_utilities.RatioClassSegment.__iter__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__iter__</span></code></a></p></td>
+<td><p>Iterates contents.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSegment.__len__" title="abjadext.microtones.ji_utilities.RatioClassSegment.__len__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__len__</span></code></a></p></td>
+<td><p>Gets length of contents.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSegment.__repr__" title="abjadext.microtones.ji_utilities.RatioClassSegment.__repr__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__repr__</span></code></a></p></td>
+<td><p>Gets interpreter representation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSegment.__str__" title="abjadext.microtones.ji_utilities.RatioClassSegment.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a></p></td>
+<td><p>Gets string representation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSegment.complement" title="abjadext.microtones.ji_utilities.RatioClassSegment.complement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">complement</span></code></a></p></td>
+<td><p>Gets complement in scale.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSegment.invert" title="abjadext.microtones.ji_utilities.RatioClassSegment.invert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invert</span></code></a></p></td>
+<td><p>Gets inversion.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSegment.multiply" title="abjadext.microtones.ji_utilities.RatioClassSegment.multiply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiply</span></code></a></p></td>
+<td><p>Gets multiplication.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSegment.retrograde" title="abjadext.microtones.ji_utilities.RatioClassSegment.retrograde"><code class="xref py py-obj docutils literal notranslate"><span class="pre">retrograde</span></code></a></p></td>
+<td><p>Gets retrograde.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSegment.rotate" title="abjadext.microtones.ji_utilities.RatioClassSegment.rotate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate</span></code></a></p></td>
+<td><p>Gets rotation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSegment.sorted" title="abjadext.microtones.ji_utilities.RatioClassSegment.sorted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sorted</span></code></a></p></td>
+<td><p>Gets Ratio Class Segment sorted in ascending order.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSegment.transpose" title="abjadext.microtones.ji_utilities.RatioClassSegment.transpose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transpose</span></code></a></p></td>
+<td><p>Gets transposition.</p></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSegment.__add__">
+<code class="sig-name descname">__add__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSegment.__add__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Concatenates Ratio Class Segment with iterable.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rc_segment</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSegment</span><span class="p">([</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;1/2&quot;</span><span class="p">,</span> <span class="s2">&quot;5/4&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc_segment</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc_segment</span>
+<span class="go">abjadext.ji_utilities.RatioClassSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(1, 1),</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(5, 4),</span>
+<span class="go">        Fraction(1, 1),</span>
+<span class="go">        Fraction(11, 6),</span>
+<span class="go">        Fraction(27, 16),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSegment.__contains__">
+<code class="sig-name descname">__contains__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSegment.__contains__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns boolean</p>
+<div class="docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rc_segment</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="ow">in</span> <span class="n">rc_segment</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSegment.__iter__">
+<code class="sig-name descname">__iter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSegment.__iter__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterates contents.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pc_segment</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">pc_segment</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">item</span>
+<span class="gp">... </span>
+<span class="go">Fraction(1, 1)</span>
+<span class="go">Fraction(2, 1)</span>
+<span class="go">Fraction(3, 2)</span>
+<span class="go">Fraction(3, 2)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSegment</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;31/2&quot;</span><span class="p">,</span> <span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="s2">&quot;33/4&quot;</span><span class="p">,</span> <span class="s2">&quot;36/10&quot;</span><span class="p">,</span> <span class="s2">&quot;113/10&quot;</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">... </span>
+<span class="go">31/16</span>
+<span class="go">5/4</span>
+<span class="go">33/32</span>
+<span class="go">9/5</span>
+<span class="go">113/80</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSegment.__len__">
+<code class="sig-name descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSegment.__len__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets length of contents.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSegment.__repr__">
+<em class="property">overridden </em><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSegment.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets interpreter representation.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="go">abjadext.ji_utilities.RatioClassSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(1, 1),</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSegment.__str__">
+<em class="property">overridden </em><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSegment.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets string representation.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="go">&#39;(1, 2, 3/2)&#39;</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<hr/><p class="class-header rubric">Methods</p>
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSegment.complement">
+<code class="sig-name descname">complement</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scale</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSegment.complement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets complement in scale.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pc_segment</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_scale</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pc_segment</span><span class="o">.</span><span class="n">complement</span><span class="p">(</span><span class="n">input_scale</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioClassSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(5, 4),</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        Fraction(7, 4),</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(9, 8),</span>
+<span class="go">        Fraction(5, 4),</span>
+<span class="go">        Fraction(11, 8),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSegment.invert">
+<code class="sig-name descname">invert</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">axis</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSegment.invert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets inversion.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSegment</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">invert</span><span class="p">()</span>
+<span class="go">abjadext.ji_utilities.RatioClassSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSegment</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioClassSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSegment.multiply">
+<code class="sig-name descname">multiply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSegment.multiply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets multiplication.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioClassSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSegment.retrograde">
+<code class="sig-name descname">retrograde</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSegment.retrograde" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets retrograde.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+<span class="go">abjadext.ji_utilities.RatioClassSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(1, 1),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSegment.rotate">
+<code class="sig-name descname">rotate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSegment.rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets rotation.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioClassSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        Fraction(1, 1),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSegment.sorted">
+<code class="sig-name descname">sorted</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSegment.sorted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets Ratio Class Segment sorted in ascending order.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSegment</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;1/2&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;1/5&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">sorted</span><span class="p">()</span>
+<span class="go">abjadext.ji_utilities.RatioClassSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(1, 1),</span>
+<span class="go">        Fraction(5, 4),</span>
+<span class="go">        Fraction(5, 4),</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSegment.transpose">
+<code class="sig-name descname">transpose</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSegment.transpose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets transposition.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioClassSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(7, 4),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span><span class="o">.</span><span class="n">invert</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioClassSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(5, 4),</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        Fraction(21, 16),</span>
+<span class="go">        Fraction(11, 8),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSet">
+<em class="property">class </em><code class="sig-prename descclassname">abjadext.microtones.ji_utilities.</code><code class="sig-name descname">RatioClassSet</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ratio_classes</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ratio Class Set.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">abjadext</span> <span class="kn">import</span> <span class="n">microtones</span>
+</pre></div>
+</div>
+<hr/><p class="class-header rubric">Attributes Summary</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSet.__add__" title="abjadext.microtones.ji_utilities.RatioClassSet.__add__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__add__</span></code></a></p></td>
+<td><p>Concatenates Ratio Class Set with iterable.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSet.__contains__" title="abjadext.microtones.ji_utilities.RatioClassSet.__contains__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__contains__</span></code></a></p></td>
+<td><p>Returns boolean</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSet.__iter__" title="abjadext.microtones.ji_utilities.RatioClassSet.__iter__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__iter__</span></code></a></p></td>
+<td><p>Iterates contents.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSet.__len__" title="abjadext.microtones.ji_utilities.RatioClassSet.__len__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__len__</span></code></a></p></td>
+<td><p>Gets length of contents.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSet.__repr__" title="abjadext.microtones.ji_utilities.RatioClassSet.__repr__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__repr__</span></code></a></p></td>
+<td><p>Gets interpreter representation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSet.__str__" title="abjadext.microtones.ji_utilities.RatioClassSet.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a></p></td>
+<td><p>Gets string representation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSet.complement" title="abjadext.microtones.ji_utilities.RatioClassSet.complement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">complement</span></code></a></p></td>
+<td><p>Gets complement in scale.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSet.invert" title="abjadext.microtones.ji_utilities.RatioClassSet.invert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invert</span></code></a></p></td>
+<td><p>Gets inversion.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSet.multiply" title="abjadext.microtones.ji_utilities.RatioClassSet.multiply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiply</span></code></a></p></td>
+<td><p>Gets multiplication.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSet.sorted" title="abjadext.microtones.ji_utilities.RatioClassSet.sorted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sorted</span></code></a></p></td>
+<td><p>Gets Ratio Class Set sorted in ascending order.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioClassSet.transpose" title="abjadext.microtones.ji_utilities.RatioClassSet.transpose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transpose</span></code></a></p></td>
+<td><p>Gets transposition.</p></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSet.__add__">
+<code class="sig-name descname">__add__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSet.__add__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Concatenates Ratio Class Set with iterable.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rc_set</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSet</span><span class="p">([</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;1/2&quot;</span><span class="p">,</span> <span class="s2">&quot;5/4&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc_set</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc_set</span>
+<span class="go">abjadext.ji_utilities.RatioClassSet(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(1, 1),</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(5, 4),</span>
+<span class="go">        Fraction(11, 6),</span>
+<span class="go">        Fraction(27, 16),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSet.__contains__">
+<code class="sig-name descname">__contains__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSet.__contains__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns boolean</p>
+<div class="docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rc_set</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSet</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="ow">in</span> <span class="n">rc_set</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSet.__iter__">
+<code class="sig-name descname">__iter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSet.__iter__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterates contents.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pc_set</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSet</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">pc_set</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">item</span>
+<span class="gp">... </span>
+<span class="go">Fraction(1, 1)</span>
+<span class="go">Fraction(2, 1)</span>
+<span class="go">Fraction(3, 2)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSet</span><span class="p">([</span><span class="s2">&quot;31/2&quot;</span><span class="p">,</span> <span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="s2">&quot;33/4&quot;</span><span class="p">,</span> <span class="s2">&quot;36/10&quot;</span><span class="p">,</span> <span class="s2">&quot;113/10&quot;</span><span class="p">]):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">... </span>
+<span class="go">31/16</span>
+<span class="go">5/4</span>
+<span class="go">33/32</span>
+<span class="go">9/5</span>
+<span class="go">113/80</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSet.__len__">
+<code class="sig-name descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSet.__len__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets length of contents.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSet</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSet.__repr__">
+<em class="property">overridden </em><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSet.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets interpreter representation.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSet</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="go">abjadext.ji_utilities.RatioClassSet(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(1, 1),</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSet.__str__">
+<em class="property">overridden </em><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSet.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets string representation.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSet</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="go">&#39;{1, 2, 3/2}&#39;</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<hr/><p class="class-header rubric">Methods</p>
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSet.complement">
+<code class="sig-name descname">complement</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scale</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSet.complement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets complement in scale.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rc_set</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSet</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_scale</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc_set</span><span class="o">.</span><span class="n">complement</span><span class="p">(</span><span class="n">input_scale</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioClassSet(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(5, 4),</span>
+<span class="go">        Fraction(7, 4),</span>
+<span class="go">        Fraction(9, 8),</span>
+<span class="go">        Fraction(11, 8),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSet.invert">
+<code class="sig-name descname">invert</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">axis</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSet.invert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets inversion.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSet</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">invert</span><span class="p">()</span>
+<span class="go">abjadext.ji_utilities.RatioClassSet(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSet</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioClassSet(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSet.multiply">
+<code class="sig-name descname">multiply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSet.multiply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets multiplication.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSet</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioClassSet(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSet.sorted">
+<code class="sig-name descname">sorted</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSet.sorted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets Ratio Class Set sorted in ascending order.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSet</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;1/2&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;1/5&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">sorted</span><span class="p">()</span>
+<span class="go">abjadext.ji_utilities.RatioClassSet(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(1, 1),</span>
+<span class="go">        Fraction(5, 4),</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioClassSet.transpose">
+<code class="sig-name descname">transpose</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioClassSet.transpose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets transposition.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSet</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioClassSet(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(7, 4),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSet</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span><span class="o">.</span><span class="n">invert</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioClassSet(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(5, 4),</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        Fraction(21, 16),</span>
+<span class="go">        Fraction(11, 8),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="abjadext.microtones.ji_utilities.RatioSegment">
+<em class="property">class </em><code class="sig-prename descclassname">abjadext.microtones.ji_utilities.</code><code class="sig-name descname">RatioSegment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ratios</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSegment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ratio Segment.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">abjadext</span> <span class="kn">import</span> <span class="n">microtones</span>
+</pre></div>
+</div>
+<hr/><p class="class-header rubric">Attributes Summary</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSegment.__add__" title="abjadext.microtones.ji_utilities.RatioSegment.__add__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__add__</span></code></a></p></td>
+<td><p>Concatenates Ratio Segment with iterable.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSegment.__contains__" title="abjadext.microtones.ji_utilities.RatioSegment.__contains__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__contains__</span></code></a></p></td>
+<td><p>Returns boolean</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSegment.__iter__" title="abjadext.microtones.ji_utilities.RatioSegment.__iter__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__iter__</span></code></a></p></td>
+<td><p>Iterates contents.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSegment.__len__" title="abjadext.microtones.ji_utilities.RatioSegment.__len__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__len__</span></code></a></p></td>
+<td><p>Gets length of contents.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSegment.__repr__" title="abjadext.microtones.ji_utilities.RatioSegment.__repr__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__repr__</span></code></a></p></td>
+<td><p>Gets interpreter representation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSegment.__str__" title="abjadext.microtones.ji_utilities.RatioSegment.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a></p></td>
+<td><p>Gets string representation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSegment.complement" title="abjadext.microtones.ji_utilities.RatioSegment.complement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">complement</span></code></a></p></td>
+<td><p>Gets complement in scale.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSegment.constrain_to_octave" title="abjadext.microtones.ji_utilities.RatioSegment.constrain_to_octave"><code class="xref py py-obj docutils literal notranslate"><span class="pre">constrain_to_octave</span></code></a></p></td>
+<td><p>Gets Ratio Segment constrained within an octave.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSegment.invert" title="abjadext.microtones.ji_utilities.RatioSegment.invert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invert</span></code></a></p></td>
+<td><p>Gets inversion.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSegment.multiply" title="abjadext.microtones.ji_utilities.RatioSegment.multiply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiply</span></code></a></p></td>
+<td><p>Gets multiplication.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSegment.retrograde" title="abjadext.microtones.ji_utilities.RatioSegment.retrograde"><code class="xref py py-obj docutils literal notranslate"><span class="pre">retrograde</span></code></a></p></td>
+<td><p>Gets retrograde.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSegment.rotate" title="abjadext.microtones.ji_utilities.RatioSegment.rotate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate</span></code></a></p></td>
+<td><p>Gets rotation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSegment.sorted" title="abjadext.microtones.ji_utilities.RatioSegment.sorted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sorted</span></code></a></p></td>
+<td><p>Gets Ratio Segment sorted in ascending order.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSegment.transpose" title="abjadext.microtones.ji_utilities.RatioSegment.transpose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transpose</span></code></a></p></td>
+<td><p>Gets transposition.</p></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSegment.__add__">
+<code class="sig-name descname">__add__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSegment.__add__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Concatenates Ratio Segment with iterable.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">r_segment</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioSegment</span><span class="p">([</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;1/2&quot;</span><span class="p">,</span> <span class="s2">&quot;5/4&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r_segment</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r_segment</span>
+<span class="go">abjadext.ji_utilities.RatioSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(1, 1),</span>
+<span class="go">        Fraction(1, 2),</span>
+<span class="go">        Fraction(5, 4),</span>
+<span class="go">        Fraction(1, 1),</span>
+<span class="go">        Fraction(11, 6),</span>
+<span class="go">        Fraction(27, 2),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSegment.__contains__">
+<code class="sig-name descname">__contains__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSegment.__contains__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns boolean</p>
+<div class="docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">r_segment</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="ow">in</span> <span class="n">r_segment</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSegment.__iter__">
+<code class="sig-name descname">__iter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSegment.__iter__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterates contents.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pc_segment</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">pc_segment</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">item</span>
+<span class="gp">... </span>
+<span class="go">Fraction(1, 1)</span>
+<span class="go">Fraction(2, 1)</span>
+<span class="go">Fraction(3, 1)</span>
+<span class="go">Fraction(3, 1)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioSegment</span><span class="p">([</span><span class="s2">&quot;31/2&quot;</span><span class="p">,</span> <span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="s2">&quot;33/4&quot;</span><span class="p">,</span> <span class="s2">&quot;36/10&quot;</span><span class="p">,</span> <span class="s2">&quot;113/10&quot;</span><span class="p">]):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">... </span>
+<span class="go">31/2</span>
+<span class="go">10</span>
+<span class="go">33/4</span>
+<span class="go">18/5</span>
+<span class="go">113/10</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSegment.__len__">
+<code class="sig-name descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSegment.__len__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets length of contents.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSegment.__repr__">
+<em class="property">overridden </em><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSegment.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets interpreter representation.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="go">abjadext.ji_utilities.RatioSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(1, 1),</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(3, 1),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSegment.__str__">
+<em class="property">overridden </em><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSegment.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets string representation.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="go">&#39;(1, 2, 3)&#39;</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<hr/><p class="class-header rubric">Methods</p>
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSegment.complement">
+<code class="sig-name descname">complement</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scale</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSegment.complement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets complement in scale.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pc_segment</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_scale</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pc_segment</span><span class="o">.</span><span class="n">complement</span><span class="p">(</span><span class="n">input_scale</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(4, 1),</span>
+<span class="go">        Fraction(5, 1),</span>
+<span class="go">        Fraction(6, 1),</span>
+<span class="go">        Fraction(7, 1),</span>
+<span class="go">        Fraction(8, 1),</span>
+<span class="go">        Fraction(9, 1),</span>
+<span class="go">        Fraction(10, 1),</span>
+<span class="go">        Fraction(11, 1),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSegment.constrain_to_octave">
+<code class="sig-name descname">constrain_to_octave</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSegment.constrain_to_octave" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets Ratio Segment constrained within an octave.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;1/5&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">())</span>
+<span class="go">&#39;(1, 3/2, 4/5)&#39;</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSegment.invert">
+<code class="sig-name descname">invert</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">axis</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSegment.invert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets inversion.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSegment</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">invert</span><span class="p">()</span>
+<span class="go">abjadext.ji_utilities.RatioSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(1, 2),</span>
+<span class="go">        Fraction(1, 4),</span>
+<span class="go">        Fraction(1, 3),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSegment</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        Fraction(3, 4),</span>
+<span class="go">        Fraction(1, 1),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSegment.multiply">
+<code class="sig-name descname">multiply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSegment.multiply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets multiplication.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(4, 1),</span>
+<span class="go">        Fraction(6, 1),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSegment.retrograde">
+<code class="sig-name descname">retrograde</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSegment.retrograde" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets retrograde.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+<span class="go">abjadext.ji_utilities.RatioSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(3, 1),</span>
+<span class="go">        Fraction(3, 1),</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(1, 1),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSegment.rotate">
+<code class="sig-name descname">rotate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSegment.rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets rotation.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(3, 1),</span>
+<span class="go">        Fraction(1, 1),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSegment.sorted">
+<code class="sig-name descname">sorted</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSegment.sorted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets Ratio Segment sorted in ascending order.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSegment</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;1/2&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;1/5&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">sorted</span><span class="p">()</span>
+<span class="go">abjadext.ji_utilities.RatioSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(1, 5),</span>
+<span class="go">        Fraction(1, 2),</span>
+<span class="go">        Fraction(1, 1),</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(3, 1),</span>
+<span class="go">        Fraction(5, 1),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSegment.transpose">
+<code class="sig-name descname">transpose</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSegment.transpose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets transposition.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(3, 1),</span>
+<span class="go">        Fraction(4, 1),</span>
+<span class="go">        Fraction(5, 1),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSegment</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span><span class="o">.</span><span class="n">invert</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioSegment(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(5, 1),</span>
+<span class="go">        Fraction(9, 2),</span>
+<span class="go">        Fraction(17, 4),</span>
+<span class="go">        Fraction(21, 5),</span>
+<span class="go">        Fraction(25, 6),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="abjadext.microtones.ji_utilities.RatioSet">
+<em class="property">class </em><code class="sig-prename descclassname">abjadext.microtones.ji_utilities.</code><code class="sig-name descname">RatioSet</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ratios</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ratio Set.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">abjadext</span> <span class="kn">import</span> <span class="n">microtones</span>
+</pre></div>
+</div>
+<hr/><p class="class-header rubric">Attributes Summary</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSet.__add__" title="abjadext.microtones.ji_utilities.RatioSet.__add__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__add__</span></code></a></p></td>
+<td><p>Concatenates Ratio Set with iterable.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSet.__contains__" title="abjadext.microtones.ji_utilities.RatioSet.__contains__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__contains__</span></code></a></p></td>
+<td><p>Returns boolean</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSet.__iter__" title="abjadext.microtones.ji_utilities.RatioSet.__iter__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__iter__</span></code></a></p></td>
+<td><p>Iterates contents.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSet.__len__" title="abjadext.microtones.ji_utilities.RatioSet.__len__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__len__</span></code></a></p></td>
+<td><p>Gets length of contents.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSet.__repr__" title="abjadext.microtones.ji_utilities.RatioSet.__repr__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__repr__</span></code></a></p></td>
+<td><p>Gets interpreter representation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSet.__str__" title="abjadext.microtones.ji_utilities.RatioSet.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a></p></td>
+<td><p>Gets string representation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSet.complement" title="abjadext.microtones.ji_utilities.RatioSet.complement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">complement</span></code></a></p></td>
+<td><p>Gets complement in scale.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSet.constrain_to_octave" title="abjadext.microtones.ji_utilities.RatioSet.constrain_to_octave"><code class="xref py py-obj docutils literal notranslate"><span class="pre">constrain_to_octave</span></code></a></p></td>
+<td><p>Gets Ratio Set constrained within an octave.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSet.invert" title="abjadext.microtones.ji_utilities.RatioSet.invert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invert</span></code></a></p></td>
+<td><p>Gets inversion.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSet.multiply" title="abjadext.microtones.ji_utilities.RatioSet.multiply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiply</span></code></a></p></td>
+<td><p>Gets multiplication.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSet.sorted" title="abjadext.microtones.ji_utilities.RatioSet.sorted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sorted</span></code></a></p></td>
+<td><p>Gets Ratio Class Set sorted in ascending order.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji_utilities.RatioSet.transpose" title="abjadext.microtones.ji_utilities.RatioSet.transpose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transpose</span></code></a></p></td>
+<td><p>Gets transposition.</p></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSet.__add__">
+<code class="sig-name descname">__add__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSet.__add__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Concatenates Ratio Set with iterable.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">r_set</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioSet</span><span class="p">([</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;1/2&quot;</span><span class="p">,</span> <span class="s2">&quot;5/4&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r_set</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r_set</span>
+<span class="go">abjadext.ji_utilities.RatioSet(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(1, 1),</span>
+<span class="go">        Fraction(1, 2),</span>
+<span class="go">        Fraction(5, 4),</span>
+<span class="go">        Fraction(11, 6),</span>
+<span class="go">        Fraction(27, 2),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSet.__contains__">
+<code class="sig-name descname">__contains__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSet.__contains__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns boolean</p>
+<div class="docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">r_set</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioSet</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="ow">in</span> <span class="n">r_set</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSet.__iter__">
+<code class="sig-name descname">__iter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSet.__iter__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterates contents.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pc_set</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioSet</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">pc_set</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">item</span>
+<span class="gp">... </span>
+<span class="go">Fraction(1, 1)</span>
+<span class="go">Fraction(2, 1)</span>
+<span class="go">Fraction(3, 1)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioSet</span><span class="p">([</span><span class="s2">&quot;31/2&quot;</span><span class="p">,</span> <span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="s2">&quot;33/4&quot;</span><span class="p">,</span> <span class="s2">&quot;36/10&quot;</span><span class="p">,</span> <span class="s2">&quot;113/10&quot;</span><span class="p">]):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">... </span>
+<span class="go">31/2</span>
+<span class="go">10</span>
+<span class="go">33/4</span>
+<span class="go">18/5</span>
+<span class="go">113/10</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSet.__len__">
+<code class="sig-name descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSet.__len__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets length of contents.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSet</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSet.__repr__">
+<em class="property">overridden </em><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSet.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets interpreter representation.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSet</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="go">abjadext.ji_utilities.RatioSet(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(1, 1),</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(3, 1),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSet.__str__">
+<em class="property">overridden </em><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSet.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets string representation.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSet</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="go">&#39;{1, 2, 3}&#39;</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<hr/><p class="class-header rubric">Methods</p>
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSet.complement">
+<code class="sig-name descname">complement</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scale</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSet.complement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets complement in scale.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pc_set</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioSet</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_scale</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pc_set</span><span class="o">.</span><span class="n">complement</span><span class="p">(</span><span class="n">input_scale</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioSet(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(4, 1),</span>
+<span class="go">        Fraction(5, 1),</span>
+<span class="go">        Fraction(6, 1),</span>
+<span class="go">        Fraction(7, 1),</span>
+<span class="go">        Fraction(8, 1),</span>
+<span class="go">        Fraction(9, 1),</span>
+<span class="go">        Fraction(10, 1),</span>
+<span class="go">        Fraction(11, 1),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSet.constrain_to_octave">
+<code class="sig-name descname">constrain_to_octave</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSet.constrain_to_octave" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets Ratio Set constrained within an octave.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSet</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;1/5&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">())</span>
+<span class="go">&#39;{1, 3/2, 4/5}&#39;</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSet.invert">
+<code class="sig-name descname">invert</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">axis</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSet.invert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets inversion.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSet</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">invert</span><span class="p">()</span>
+<span class="go">abjadext.ji_utilities.RatioSet(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(1, 2),</span>
+<span class="go">        Fraction(1, 4),</span>
+<span class="go">        Fraction(1, 3),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSet</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioSet(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(3, 2),</span>
+<span class="go">        Fraction(3, 4),</span>
+<span class="go">        Fraction(1, 1),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSet.multiply">
+<code class="sig-name descname">multiply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSet.multiply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets multiplication.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSet</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioSet(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(4, 1),</span>
+<span class="go">        Fraction(6, 1),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSet.sorted">
+<code class="sig-name descname">sorted</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSet.sorted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets Ratio Class Set sorted in ascending order.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSet</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">sorted</span><span class="p">()</span>
+<span class="go">abjadext.ji_utilities.RatioSet(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(2, 1),</span>
+<span class="go">        Fraction(3, 1),</span>
+<span class="go">        Fraction(5, 1),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji_utilities.RatioSet.transpose">
+<code class="sig-name descname">transpose</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji_utilities.RatioSet.transpose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets transposition.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSet</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioSet(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(3, 1),</span>
+<span class="go">        Fraction(4, 1),</span>
+<span class="go">        Fraction(5, 1),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">RatioSet</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span><span class="o">.</span><span class="n">invert</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">abjadext.ji_utilities.RatioSet(</span>
+<span class="go">    [</span>
+<span class="go">        Fraction(5, 1),</span>
+<span class="go">        Fraction(9, 2),</span>
+<span class="go">        Fraction(17, 4),</span>
+<span class="go">        Fraction(21, 5),</span>
+<span class="go">        Fraction(25, 6),</span>
+<span class="go">        ]</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../evans/index.html" class="btn btn-neutral float-right" title="evans" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ji.html" class="btn btn-neutral float-left" title="ji" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-2020, Gregory Rowland Evans
+      <span class="lastupdated">
+        Last updated on Jul 21, 2020.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

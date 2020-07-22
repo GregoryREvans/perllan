@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>microtones &mdash; Perllan API  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/abjad.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script defer="defer" src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/ga.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="et" href="et.html" />
+    <link rel="prev" title="abjadext" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Perllan API
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Perllan API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">abjadext</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">microtones</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="et.html">et</a></li>
+<li class="toctree-l4"><a class="reference internal" href="et_utilities.html">et_utilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ji.html">ji</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ji_utilities.html">ji_utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../evans/index.html">evans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tsmakers/index.html">tsmakers</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Perllan API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Perllan API</a> &raquo;</li>
+        
+          <li><a href="../index.html">abjadext</a> &raquo;</li>
+        
+      <li>microtones</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/api/abjadext/microtones/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-abjadext.microtones">
+<span id="microtones"></span><span id="abjadext-microtones"></span><h1>microtones<a class="headerlink" href="#module-abjadext.microtones" title="Permalink to this headline">¶</a></h1>
+<p>Abjad’s microtonal extension.</p>
+<div class="example docutils container">
+<p>ET module models scales of twelfth, tenth, and eighth tones.</p>
+</div>
+<div class="example docutils container">
+<p>JI module models only 23-limit ratios and requires either the ekmelos or HEJI2 font.</p>
+</div>
+<div class="example docutils container">
+<p>Both modules require the Lilypond layout block to have the setting <code class="docutils literal notranslate"><span class="pre">\accidentalStyle</span> <span class="pre">&quot;dodecaphonic&quot;</span></code>. This forces accidental symbols to always be printed before each note head, allowing the symbol to be tweaked.</p>
+</div>
+<div class="example docutils container">
+<p>The fonts can be found at <a class="reference external" href="http://www.ekmelic-music.org/en/extra/ekmelos.htm">http://www.ekmelic-music.org/en/extra/ekmelos.htm</a> and <a class="reference external" href="http://www.plainsound.org/">http://www.plainsound.org/</a> respectively and should be installed into the folders at <code class="docutils literal notranslate"><span class="pre">/LilyPond.app/Contents/Resources/share/lilypond/current/fonts</span></code> and the computer’s font database such as <cite>Font Book</cite>.</p>
+</div>
+<div class="svg-container docutils container">
+<div class="graphviz"><object data="../../../_images/inheritance-fb7320c9a47575fbc72554240ef312152398588a.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">digraph InheritanceGraph {
+	graph [bgcolor=transparent,
+		color=lightsteelblue2,
+		fontname=Arial,
+		fontsize=10,
+		outputorder=edgesfirst,
+		overlap=prism,
+		penwidth=2,
+		rankdir=LR,
+		splines=spline,
+		style=&quot;dashed, rounded&quot;,
+		truecolor=true
+	];
+	node [colorscheme=pastel19,
+		fontname=Arial,
+		fontsize=10,
+		height=0,
+		penwidth=2,
+		shape=box,
+		style=&quot;filled, rounded&quot;,
+		width=0
+	];
+	edge [color=lightslategrey,
+		penwidth=1
+	];
+	subgraph &quot;cluster_abjadext.microtones.et&quot; {
+		graph [label=&quot;abjadext.microtones.et&quot;];
+		node [color=1];
+		&quot;abjadext.microtones.et.ETBundle&quot;		 [URL=&quot;../api/abjadext/microtones/et.html#abjadext.microtones.et.ETBundle&quot;,
+			color=1,
+			label=ETBundle,
+			target=_top];
+	}
+	subgraph &quot;cluster_abjadext.microtones.et_utilities&quot; {
+		graph [label=&quot;abjadext.microtones.et_utilities&quot;];
+		node [color=2];
+		&quot;abjadext.microtones.et_utilities.PitchClassSegment&quot;		 [URL=&quot;../api/abjadext/microtones/et_utilities.html#abjadext.microtones.et_utilities.PitchClassSegment&quot;,
+			color=2,
+			label=&quot;Pitch\nClass\nSegment&quot;,
+			target=_top];
+		&quot;abjadext.microtones.et_utilities.PitchClassSet&quot;		 [URL=&quot;../api/abjadext/microtones/et_utilities.html#abjadext.microtones.et_utilities.PitchClassSet&quot;,
+			color=2,
+			label=&quot;Pitch\nClass\nSet&quot;,
+			target=_top];
+		&quot;abjadext.microtones.et_utilities.PitchSegment&quot;		 [URL=&quot;../api/abjadext/microtones/et_utilities.html#abjadext.microtones.et_utilities.PitchSegment&quot;,
+			color=2,
+			label=&quot;Pitch\nSegment&quot;,
+			target=_top];
+		&quot;abjadext.microtones.et_utilities.PitchSet&quot;		 [URL=&quot;../api/abjadext/microtones/et_utilities.html#abjadext.microtones.et_utilities.PitchSet&quot;,
+			color=2,
+			label=&quot;Pitch\nSet&quot;,
+			target=_top];
+	}
+	subgraph &quot;cluster_abjadext.microtones.ji&quot; {
+		graph [label=&quot;abjadext.microtones.ji&quot;];
+		node [color=3];
+		&quot;abjadext.microtones.ji.JIBundle&quot;		 [URL=&quot;../api/abjadext/microtones/ji.html#abjadext.microtones.ji.JIBundle&quot;,
+			color=3,
+			label=JIBundle,
+			target=_top];
+		&quot;abjadext.microtones.ji.JIVector&quot;		 [URL=&quot;../api/abjadext/microtones/ji.html#abjadext.microtones.ji.JIVector&quot;,
+			color=3,
+			label=JIVector,
+			target=_top];
+	}
+	subgraph &quot;cluster_abjadext.microtones.ji_utilities&quot; {
+		graph [label=&quot;abjadext.microtones.ji_utilities&quot;];
+		node [color=4];
+		&quot;abjadext.microtones.ji_utilities.RatioClassSegment&quot;		 [URL=&quot;../api/abjadext/microtones/ji_utilities.html#abjadext.microtones.ji_utilities.RatioClassSegment&quot;,
+			color=4,
+			label=&quot;Ratio\nClass\nSegment&quot;,
+			target=_top];
+		&quot;abjadext.microtones.ji_utilities.RatioClassSet&quot;		 [URL=&quot;../api/abjadext/microtones/ji_utilities.html#abjadext.microtones.ji_utilities.RatioClassSet&quot;,
+			color=4,
+			label=&quot;Ratio\nClass\nSet&quot;,
+			target=_top];
+		&quot;abjadext.microtones.ji_utilities.RatioSegment&quot;		 [URL=&quot;../api/abjadext/microtones/ji_utilities.html#abjadext.microtones.ji_utilities.RatioSegment&quot;,
+			color=4,
+			label=&quot;Ratio\nSegment&quot;,
+			target=_top];
+		&quot;abjadext.microtones.ji_utilities.RatioSet&quot;		 [URL=&quot;../api/abjadext/microtones/ji_utilities.html#abjadext.microtones.ji_utilities.RatioSet&quot;,
+			color=4,
+			label=&quot;Ratio\nSet&quot;,
+			target=_top];
+	}
+	subgraph cluster_builtins {
+		graph [label=builtins];
+		node [color=5];
+		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.7/library/functions.html#object&quot;,
+			color=5,
+			label=object,
+			target=_top];
+	}
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.et.ETBundle&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.et_utilities.PitchClassSegment&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.et_utilities.PitchClassSet&quot;	 [minlen=3];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.et_utilities.PitchSegment&quot;	 [minlen=4];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.et_utilities.PitchSet&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.ji.JIBundle&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.ji.JIVector&quot;	 [minlen=3];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.ji_utilities.RatioClassSegment&quot;	 [minlen=4];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.ji_utilities.RatioClassSet&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.ji_utilities.RatioSegment&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.ji_utilities.RatioSet&quot;	 [minlen=3];
+}</p></object></div>
+</div>
+<hr/><p class="section-header rubric">Subpackages</p>
+<div class="toctree-wrapper compound">
+</div>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="et.html#module-abjadext.microtones.et" title="abjadext.microtones.et"><code class="xref py py-obj docutils literal notranslate"><span class="pre">et</span></code></a></p></td>
+<td><p>Package for equal tempered microtones.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="et_utilities.html#module-abjadext.microtones.et_utilities" title="abjadext.microtones.et_utilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">et_utilities</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ji.html#module-abjadext.microtones.ji" title="abjadext.microtones.ji"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ji</span></code></a></p></td>
+<td><p>Package for Just Intonation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ji_utilities.html#module-abjadext.microtones.ji_utilities" title="abjadext.microtones.ji_utilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ji_utilities</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="et.html" class="btn btn-neutral float-right" title="et" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="abjadext" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-2020, Gregory Rowland Evans
+      <span class="lastupdated">
+        Last updated on Jul 21, 2020.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

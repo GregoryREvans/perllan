@@ -1,0 +1,422 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Cursor &mdash; Perllan API  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/abjad.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/uqbar.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script defer="defer" src="../../_static/copybutton.js"></script>
+        <script src="../../_static/ga.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="DependentTimespanMaker" href="DependentTimespanMaker.html" />
+    <link rel="prev" title="CompositeMusicSpecifier" href="CompositeMusicSpecifier.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Perllan API
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Perllan API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../abjadext/index.html">abjadext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../evans/index.html">evans</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">tsmakers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="tree.html">tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="BoundaryTimespanMaker.html">BoundaryTimespanMaker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CascadingTimespanMaker.html">CascadingTimespanMaker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CompositeMusicSpecifier.html">CompositeMusicSpecifier</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Cursor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DependentTimespanMaker.html">DependentTimespanMaker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FloodedTimespanMaker.html">FloodedTimespanMaker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="HashCachingObject.html">HashCachingObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MusicSpecifier.html">MusicSpecifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MusicSpecifierSequence.html">MusicSpecifierSequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TaleaTimespanMaker.html">TaleaTimespanMaker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TimespanMaker.html">TimespanMaker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TimespanSpecifier.html">TimespanSpecifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PerformedTimespan.html">PerformedTimespan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SilentTimespan.html">SilentTimespan</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Perllan API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Perllan API</a> &raquo;</li>
+        
+          <li><a href="index.html">tsmakers</a> &raquo;</li>
+        
+      <li>Cursor</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api/tsmakers/Cursor.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-tsmakers.Cursor">
+<span id="cursor"></span><span id="tsmakers-cursor"></span><h1>Cursor<a class="headerlink" href="#module-tsmakers.Cursor" title="Permalink to this headline">¶</a></h1>
+<div class="svg-container docutils container">
+<div class="graphviz"><object data="../../_images/inheritance-51b78b226e2fd8090aa3260aa838647ee98be40f.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">digraph InheritanceGraph {
+    graph [bgcolor=transparent,
+        color=lightsteelblue2,
+        fontname=Arial,
+        fontsize=10,
+        outputorder=edgesfirst,
+        overlap=prism,
+        penwidth=2,
+        rankdir=LR,
+        splines=spline,
+        style=&quot;dashed, rounded&quot;,
+        truecolor=true];
+    node [colorscheme=pastel19,
+        fontname=Arial,
+        fontsize=10,
+        height=0,
+        penwidth=2,
+        shape=box,
+        style=&quot;filled, rounded&quot;,
+        width=0];
+    edge [color=lightslategrey,
+        penwidth=1];
+    subgraph cluster_builtins {
+        graph [label=builtins];
+        node [color=1];
+        &quot;builtins.object&quot; [URL=&quot;https://docs.python.org/3.7/library/functions.html#object&quot;,
+            label=object,
+            target=_top];
+    }
+    subgraph cluster_tsmakers {
+        graph [label=tsmakers];
+        node [color=2];
+        &quot;tsmakers.Cursor.Cursor&quot; [URL=&quot;../api/tsmakers/Cursor.html#tsmakers.Cursor.Cursor&quot;,
+            color=black,
+            fontcolor=white,
+            label=Cursor,
+            target=_top];
+    }
+    &quot;builtins.object&quot; -&gt; &quot;tsmakers.Cursor.Cursor&quot;;
+}</p></object></div>
+</div>
+<dl class="py class">
+<dt id="tsmakers.Cursor.Cursor">
+<em class="property">class </em><code class="sig-prename descclassname">tsmakers.Cursor.</code><code class="sig-name descname">Cursor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sequence</span><span class="o">=</span><span class="default_value">1, 2, 3</span></em>, <em class="sig-param"><span class="n">index</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.Cursor.Cursor" title="Permalink to this definition">¶</a></dt>
+<dd><p>A cursor.</p>
+<div class="example docutils container">
+<div class="docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cursor</span> <span class="o">=</span> <span class="n">tsmakers</span><span class="o">.</span><span class="n">Cursor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">cursor</span><span class="p">)</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">cursor</span><span class="p">)</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">cursor</span><span class="p">)</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">cursor</span><span class="p">)</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">cursor</span><span class="p">)</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cursor</span><span class="o">.</span><span class="n">backtrack</span><span class="p">()</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cursor</span><span class="o">.</span><span class="n">backtrack</span><span class="p">()</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cursor</span><span class="o">.</span><span class="n">backtrack</span><span class="p">()</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">cursor</span><span class="p">)</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">cursor</span><span class="p">)</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="example docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">talea</span> <span class="o">=</span> <span class="n">abjadext</span><span class="o">.</span><span class="n">rmakers</span><span class="o">.</span><span class="n">Talea</span><span class="p">(</span>
+<span class="gp">... </span>   <span class="n">counts</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="gp">... </span>   <span class="n">denominator</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cursor</span> <span class="o">=</span> <span class="n">tsmakers</span><span class="o">.</span><span class="n">Cursor</span><span class="p">(</span><span class="n">talea</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">next</span><span class="p">(</span><span class="n">cursor</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">Duration(1, 8)</span>
+<span class="go">Duration(1, 16)</span>
+<span class="go">Duration(3, 16)</span>
+<span class="go">Duration(1, 8)</span>
+<span class="go">Duration(1, 4)</span>
+<span class="go">Duration(1, 16)</span>
+<span class="go">Duration(1, 16)</span>
+<span class="go">Duration(1, 8)</span>
+<span class="go">Duration(1, 16)</span>
+<span class="go">Duration(3, 16)</span>
+</pre></div>
+</div>
+</div>
+<hr/><p class="class-header rubric">Attributes Summary</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tsmakers.Cursor.Cursor.__iter__" title="tsmakers.Cursor.Cursor.__iter__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__iter__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tsmakers.Cursor.Cursor.__next__" title="tsmakers.Cursor.Cursor.__next__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__next__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tsmakers.Cursor.Cursor.backtrack" title="tsmakers.Cursor.Cursor.backtrack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">backtrack</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tsmakers.Cursor.Cursor.index" title="tsmakers.Cursor.Cursor.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tsmakers.Cursor.Cursor.next" title="tsmakers.Cursor.Cursor.next"><code class="xref py py-obj docutils literal notranslate"><span class="pre">next</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tsmakers.Cursor.Cursor.sequence" title="tsmakers.Cursor.Cursor.sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sequence</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<dl class="py method">
+<dt id="tsmakers.Cursor.Cursor.__iter__">
+<code class="sig-name descname">__iter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.Cursor.Cursor.__iter__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.Cursor.Cursor.__next__">
+<code class="sig-name descname">__next__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.Cursor.Cursor.__next__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<hr/><p class="class-header rubric">Methods</p>
+<dl class="py method">
+<dt id="tsmakers.Cursor.Cursor.backtrack">
+<code class="sig-name descname">backtrack</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.Cursor.Cursor.backtrack" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.Cursor.Cursor.next">
+<code class="sig-name descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.Cursor.Cursor.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<hr/><p class="class-header rubric">Read-only properties</p>
+<dl class="py attribute">
+<dt id="tsmakers.Cursor.Cursor.index">
+<code class="sig-name descname">index</code><a class="headerlink" href="#tsmakers.Cursor.Cursor.index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="tsmakers.Cursor.Cursor.sequence">
+<code class="sig-name descname">sequence</code><a class="headerlink" href="#tsmakers.Cursor.Cursor.sequence" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="DependentTimespanMaker.html" class="btn btn-neutral float-right" title="DependentTimespanMaker" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="CompositeMusicSpecifier.html" class="btn btn-neutral float-left" title="CompositeMusicSpecifier" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-2020, Gregory Rowland Evans
+      <span class="lastupdated">
+        Last updated on Jul 21, 2020.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

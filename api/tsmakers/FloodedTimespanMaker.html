@@ -1,0 +1,433 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FloodedTimespanMaker &mdash; Perllan API  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/abjad.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/uqbar.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script defer="defer" src="../../_static/copybutton.js"></script>
+        <script src="../../_static/ga.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="HashCachingObject" href="HashCachingObject.html" />
+    <link rel="prev" title="DependentTimespanMaker" href="DependentTimespanMaker.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Perllan API
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Perllan API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../abjadext/index.html">abjadext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../evans/index.html">evans</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">tsmakers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="tree.html">tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="BoundaryTimespanMaker.html">BoundaryTimespanMaker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CascadingTimespanMaker.html">CascadingTimespanMaker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CompositeMusicSpecifier.html">CompositeMusicSpecifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Cursor.html">Cursor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DependentTimespanMaker.html">DependentTimespanMaker</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">FloodedTimespanMaker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="HashCachingObject.html">HashCachingObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MusicSpecifier.html">MusicSpecifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MusicSpecifierSequence.html">MusicSpecifierSequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TaleaTimespanMaker.html">TaleaTimespanMaker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TimespanMaker.html">TimespanMaker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TimespanSpecifier.html">TimespanSpecifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PerformedTimespan.html">PerformedTimespan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SilentTimespan.html">SilentTimespan</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Perllan API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Perllan API</a> &raquo;</li>
+        
+          <li><a href="index.html">tsmakers</a> &raquo;</li>
+        
+      <li>FloodedTimespanMaker</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api/tsmakers/FloodedTimespanMaker.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-tsmakers.FloodedTimespanMaker">
+<span id="floodedtimespanmaker"></span><span id="tsmakers-floodedtimespanmaker"></span><h1>FloodedTimespanMaker<a class="headerlink" href="#module-tsmakers.FloodedTimespanMaker" title="Permalink to this headline">¶</a></h1>
+<div class="svg-container docutils container">
+<div class="graphviz"><object data="../../_images/inheritance-80d378d52017712ef175e1a1803fd27fc1be297a.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">digraph InheritanceGraph {
+    graph [bgcolor=transparent,
+        color=lightsteelblue2,
+        fontname=Arial,
+        fontsize=10,
+        outputorder=edgesfirst,
+        overlap=prism,
+        penwidth=2,
+        rankdir=LR,
+        splines=spline,
+        style=&quot;dashed, rounded&quot;,
+        truecolor=true];
+    node [colorscheme=pastel19,
+        fontname=Arial,
+        fontsize=10,
+        height=0,
+        penwidth=2,
+        shape=box,
+        style=&quot;filled, rounded&quot;,
+        width=0];
+    edge [color=lightslategrey,
+        penwidth=1];
+    subgraph cluster_builtins {
+        graph [label=builtins];
+        node [color=1];
+        &quot;builtins.object&quot; [URL=&quot;https://docs.python.org/3.7/library/functions.html#object&quot;,
+            label=object,
+            target=_top];
+    }
+    subgraph cluster_tsmakers {
+        graph [label=tsmakers];
+        node [color=2];
+        &quot;tsmakers.FloodedTimespanMaker.FloodedTimespanMaker&quot; [URL=&quot;../api/tsmakers/FloodedTimespanMaker.html#tsmakers.FloodedTimespanMaker.FloodedTimespanMaker&quot;,
+            color=black,
+            fontcolor=white,
+            label=&quot;Flooded\nTimespan\nMaker&quot;,
+            target=_top];
+        &quot;tsmakers.TimespanMaker.TimespanMaker&quot; [URL=&quot;../api/tsmakers/TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker&quot;,
+            label=&quot;Timespan\nMaker&quot;,
+            target=_top];
+        &quot;tsmakers.TimespanMaker.TimespanMaker&quot; -&gt; &quot;tsmakers.FloodedTimespanMaker.FloodedTimespanMaker&quot;;
+    }
+    &quot;builtins.object&quot; -&gt; &quot;tsmakers.TimespanMaker.TimespanMaker&quot;;
+}</p></object></div>
+</div>
+<dl class="py class">
+<dt id="tsmakers.FloodedTimespanMaker.FloodedTimespanMaker">
+<em class="property">class </em><code class="sig-prename descclassname">tsmakers.FloodedTimespanMaker.</code><code class="sig-name descname">FloodedTimespanMaker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">division_masks</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">padding</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">timespan_specifier</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.FloodedTimespanMaker.FloodedTimespanMaker" title="Permalink to this definition">¶</a></dt>
+<dd><p>A flooded timespan maker.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">timespan_maker</span> <span class="o">=</span> <span class="n">tsmakers</span><span class="o">.</span><span class="n">FloodedTimespanMaker</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="n">timespan_maker</span><span class="p">))</span>
+<span class="go">tsmakers.FloodedTimespanMaker()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">music_specifiers</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;Violin Voice&quot;</span><span class="p">:</span> <span class="s2">&quot;violin music&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;Cello Voice&quot;</span><span class="p">:</span> <span class="s2">&quot;cello music&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">target_timespan</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timespan_list</span> <span class="o">=</span> <span class="n">timespan_maker</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">music_specifiers</span><span class="o">=</span><span class="n">music_specifiers</span><span class="p">,</span> <span class="n">target_timespan</span><span class="o">=</span><span class="n">target_timespan</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts_list</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span>
+<span class="gp">... </span>        <span class="n">abjad</span><span class="o">.</span><span class="n">AnnotatedTimespan</span><span class="p">(</span>
+<span class="gp">... </span>            <span class="n">start_offset</span><span class="o">=</span><span class="n">_</span><span class="o">.</span><span class="n">start_offset</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="n">stop_offset</span><span class="o">=</span><span class="n">_</span><span class="o">.</span><span class="n">stop_offset</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="n">annotation</span><span class="o">=</span><span class="n">_</span><span class="o">.</span><span class="n">voice_name</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="p">)</span>
+<span class="gp">... </span>        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">timespan_list</span>
+<span class="gp">... </span>    <span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">ts_list</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;annotation&quot;</span><span class="p">,</span> <span class="n">sort_callable</span><span class="o">=</span><span class="n">evans</span><span class="o">.</span><span class="n">human_sorted_keys</span>
+<span class="gp">... </span><span class="p">)</span>  
+</pre></div>
+</div>
+<div class="uqbar-book">
+    <a href="../../_images/lilypond-231d25afc541951ab2a8dff7b89253cc8a6edcbcd40e51c6a01c358d969c8482.ly"><img src="../../_images/lilypond-231d25afc541951ab2a8dff7b89253cc8a6edcbcd40e51c6a01c358d969c8482.cropped.svg"/></a>
+</div></div>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">music_specifier</span> <span class="o">=</span> <span class="n">tsmakers</span><span class="o">.</span><span class="n">CompositeMusicSpecifier</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">primary_music_specifier</span><span class="o">=</span><span class="s2">&quot;one&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">primary_voice_name</span><span class="o">=</span><span class="s2">&quot;Viola 1 RH&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">rotation_indices</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">secondary_voice_name</span><span class="o">=</span><span class="s2">&quot;Viola 1 LH&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">secondary_music_specifier</span><span class="o">=</span><span class="n">tsmakers</span><span class="o">.</span><span class="n">MusicSpecifierSequence</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">application_rate</span><span class="o">=</span><span class="s2">&quot;phrase&quot;</span><span class="p">,</span> <span class="n">music_specifiers</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;three&quot;</span><span class="p">,</span> <span class="s2">&quot;four&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">),</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">music_specifiers</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;Viola 1 Performer Group&quot;</span><span class="p">:</span> <span class="n">music_specifier</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timespan_list</span> <span class="o">=</span> <span class="n">timespan_maker</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">music_specifiers</span><span class="o">=</span><span class="n">music_specifiers</span><span class="p">,</span> <span class="n">target_timespan</span><span class="o">=</span><span class="n">target_timespan</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts_list</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span>
+<span class="gp">... </span>        <span class="n">abjad</span><span class="o">.</span><span class="n">AnnotatedTimespan</span><span class="p">(</span>
+<span class="gp">... </span>            <span class="n">start_offset</span><span class="o">=</span><span class="n">_</span><span class="o">.</span><span class="n">start_offset</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="n">stop_offset</span><span class="o">=</span><span class="n">_</span><span class="o">.</span><span class="n">stop_offset</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="n">annotation</span><span class="o">=</span><span class="n">_</span><span class="o">.</span><span class="n">voice_name</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="p">)</span>
+<span class="gp">... </span>        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">timespan_list</span>
+<span class="gp">... </span>    <span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">ts_list</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;annotation&quot;</span><span class="p">,</span> <span class="n">sort_callable</span><span class="o">=</span><span class="n">evans</span><span class="o">.</span><span class="n">human_sorted_keys</span>
+<span class="gp">... </span><span class="p">)</span>  
+</pre></div>
+</div>
+<div class="uqbar-book">
+    <a href="../../_images/lilypond-231d25afc541951ab2a8dff7b89253cc8a6edcbcd40e51c6a01c358d969c8482.ly"><img src="../../_images/lilypond-231d25afc541951ab2a8dff7b89253cc8a6edcbcd40e51c6a01c358d969c8482.cropped.svg"/></a>
+</div></div>
+<hr/><p class="class-header rubric">Special methods</p>
+<div class="inherited docutils container">
+<dl class="py method">
+<dt id="tsmakers.FloodedTimespanMaker.FloodedTimespanMaker.__call__">
+<code class="sig-prename descclassname">(<a class="reference internal" href="TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker" title="tsmakers.TimespanMaker.TimespanMaker"><code class="descclassname docutils literal notranslate"><span class="pre">TimespanMaker</span></code></a>).</code><code class="sig-name descname">__call__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">layer</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">music_specifiers</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">rotation</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">silenced_context_names</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">target_timespan</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">timespan_list</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.FloodedTimespanMaker.FloodedTimespanMaker.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call self as a function.</p>
+</dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="py method">
+<dt id="tsmakers.FloodedTimespanMaker.FloodedTimespanMaker.__format__">
+<code class="sig-prename descclassname">(<a class="reference internal" href="TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker" title="tsmakers.TimespanMaker.TimespanMaker"><code class="descclassname docutils literal notranslate"><span class="pre">TimespanMaker</span></code></a>).</code><code class="sig-name descname">__format__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">format_specification</span><span class="o">=</span><span class="default_value">''</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.FloodedTimespanMaker.FloodedTimespanMaker.__format__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default object formatter.</p>
+</dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="py method">
+<dt id="tsmakers.FloodedTimespanMaker.FloodedTimespanMaker.__illustrate__">
+<code class="sig-prename descclassname">(<a class="reference internal" href="TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker" title="tsmakers.TimespanMaker.TimespanMaker"><code class="descclassname docutils literal notranslate"><span class="pre">TimespanMaker</span></code></a>).</code><code class="sig-name descname">__illustrate__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scale</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">target_timespan</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.FloodedTimespanMaker.FloodedTimespanMaker.__illustrate__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<hr/><p class="class-header rubric">Methods</p>
+<div class="inherited docutils container">
+<dl class="py method">
+<dt id="tsmakers.FloodedTimespanMaker.FloodedTimespanMaker.rotate">
+<code class="sig-prename descclassname">(<a class="reference internal" href="TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker" title="tsmakers.TimespanMaker.TimespanMaker"><code class="descclassname docutils literal notranslate"><span class="pre">TimespanMaker</span></code></a>).</code><code class="sig-name descname">rotate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rotation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.FloodedTimespanMaker.FloodedTimespanMaker.rotate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<hr/><p class="class-header rubric">Read-only properties</p>
+<div class="inherited docutils container">
+<dl class="py attribute">
+<dt id="tsmakers.FloodedTimespanMaker.FloodedTimespanMaker.division_masks">
+<code class="sig-prename descclassname">(<a class="reference internal" href="TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker" title="tsmakers.TimespanMaker.TimespanMaker"><code class="descclassname docutils literal notranslate"><span class="pre">TimespanMaker</span></code></a>).</code><code class="sig-name descname">division_masks</code><a class="headerlink" href="#tsmakers.FloodedTimespanMaker.FloodedTimespanMaker.division_masks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="py attribute">
+<dt id="tsmakers.FloodedTimespanMaker.FloodedTimespanMaker.is_dependent">
+<code class="sig-prename descclassname">(<a class="reference internal" href="TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker" title="tsmakers.TimespanMaker.TimespanMaker"><code class="descclassname docutils literal notranslate"><span class="pre">TimespanMaker</span></code></a>).</code><code class="sig-name descname">is_dependent</code><a class="headerlink" href="#tsmakers.FloodedTimespanMaker.FloodedTimespanMaker.is_dependent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="py attribute">
+<dt id="tsmakers.FloodedTimespanMaker.FloodedTimespanMaker.padding">
+<code class="sig-prename descclassname">(<a class="reference internal" href="TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker" title="tsmakers.TimespanMaker.TimespanMaker"><code class="descclassname docutils literal notranslate"><span class="pre">TimespanMaker</span></code></a>).</code><code class="sig-name descname">padding</code><a class="headerlink" href="#tsmakers.FloodedTimespanMaker.FloodedTimespanMaker.padding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="py attribute">
+<dt id="tsmakers.FloodedTimespanMaker.FloodedTimespanMaker.seed">
+<code class="sig-prename descclassname">(<a class="reference internal" href="TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker" title="tsmakers.TimespanMaker.TimespanMaker"><code class="descclassname docutils literal notranslate"><span class="pre">TimespanMaker</span></code></a>).</code><code class="sig-name descname">seed</code><a class="headerlink" href="#tsmakers.FloodedTimespanMaker.FloodedTimespanMaker.seed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="py attribute">
+<dt id="tsmakers.FloodedTimespanMaker.FloodedTimespanMaker.timespan_specifier">
+<code class="sig-prename descclassname">(<a class="reference internal" href="TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker" title="tsmakers.TimespanMaker.TimespanMaker"><code class="descclassname docutils literal notranslate"><span class="pre">TimespanMaker</span></code></a>).</code><code class="sig-name descname">timespan_specifier</code><a class="headerlink" href="#tsmakers.FloodedTimespanMaker.FloodedTimespanMaker.timespan_specifier" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="HashCachingObject.html" class="btn btn-neutral float-right" title="HashCachingObject" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="DependentTimespanMaker.html" class="btn btn-neutral float-left" title="DependentTimespanMaker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-2020, Gregory Rowland Evans
+      <span class="lastupdated">
+        Last updated on Jul 21, 2020.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

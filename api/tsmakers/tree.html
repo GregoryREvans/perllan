@@ -1,0 +1,574 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tree &mdash; Perllan API  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/abjad.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/uqbar.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script defer="defer" src="../../_static/copybutton.js"></script>
+        <script src="../../_static/ga.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BoundaryTimespanMaker" href="BoundaryTimespanMaker.html" />
+    <link rel="prev" title="tsmakers" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Perllan API
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Perllan API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../abjadext/index.html">abjadext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../evans/index.html">evans</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">tsmakers</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="BoundaryTimespanMaker.html">BoundaryTimespanMaker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CascadingTimespanMaker.html">CascadingTimespanMaker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CompositeMusicSpecifier.html">CompositeMusicSpecifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Cursor.html">Cursor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DependentTimespanMaker.html">DependentTimespanMaker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FloodedTimespanMaker.html">FloodedTimespanMaker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="HashCachingObject.html">HashCachingObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MusicSpecifier.html">MusicSpecifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MusicSpecifierSequence.html">MusicSpecifierSequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TaleaTimespanMaker.html">TaleaTimespanMaker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TimespanMaker.html">TimespanMaker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TimespanSpecifier.html">TimespanSpecifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PerformedTimespan.html">PerformedTimespan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SilentTimespan.html">SilentTimespan</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Perllan API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Perllan API</a> &raquo;</li>
+        
+          <li><a href="index.html">tsmakers</a> &raquo;</li>
+        
+      <li>tree</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api/tsmakers/tree.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-tsmakers.tree">
+<span id="tree"></span><span id="tsmakers-tree"></span><h1>tree<a class="headerlink" href="#module-tsmakers.tree" title="Permalink to this headline">¶</a></h1>
+<div class="svg-container docutils container">
+<div class="graphviz"><object data="../../_images/inheritance-53e230add3c013eb8764674e38a56f7c9bc61768.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">digraph InheritanceGraph {
+	graph [bgcolor=transparent,
+		color=lightsteelblue2,
+		fontname=Arial,
+		fontsize=10,
+		outputorder=edgesfirst,
+		overlap=prism,
+		penwidth=2,
+		rankdir=LR,
+		splines=spline,
+		style=&quot;dashed, rounded&quot;,
+		truecolor=true
+	];
+	node [colorscheme=pastel19,
+		fontname=Arial,
+		fontsize=10,
+		height=0,
+		penwidth=2,
+		shape=box,
+		style=&quot;filled, rounded&quot;,
+		width=0
+	];
+	edge [color=lightslategrey,
+		penwidth=1
+	];
+	subgraph cluster_builtins {
+		graph [label=builtins];
+		node [color=1];
+		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.7/library/functions.html#object&quot;,
+			color=1,
+			label=object,
+			target=_top];
+	}
+	subgraph &quot;cluster_tsmakers.tree&quot; {
+		graph [label=&quot;tsmakers.tree&quot;];
+		node [color=2];
+		&quot;tsmakers.tree.TimespanTree&quot;		 [URL=&quot;../api/tsmakers/tree.html#tsmakers.tree.TimespanTree&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Timespan\nTree&quot;,
+			target=_top];
+		&quot;tsmakers.tree.TimespanTreeNode&quot;		 [URL=&quot;../api/tsmakers/tree.html#tsmakers.tree.TimespanTreeNode&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Timespan\nTree\nNode&quot;,
+			target=_top];
+	}
+	&quot;builtins.object&quot; -&gt; &quot;tsmakers.tree.TimespanTree&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;tsmakers.tree.TimespanTreeNode&quot;	 [minlen=2];
+}</p></object></div>
+</div>
+<hr/><p class="section-header rubric">Classes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTree" title="tsmakers.tree.TimespanTree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimespanTree</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTreeNode" title="tsmakers.tree.TimespanTreeNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimespanTreeNode</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tsmakers.tree.TimespanTree">
+<em class="property">class </em><code class="sig-prename descclassname">tsmakers.tree.</code><code class="sig-name descname">TimespanTree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTree" title="Permalink to this definition">¶</a></dt>
+<dd><div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">tsmakers</span><span class="o">.</span><span class="n">TimespanTreeNode</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">insert_child</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">insert_child</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">insert_child</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">insert_child</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">insert_child</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">insert_child</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">insert_child</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">insert_child</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">children</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">insert_child</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">insert_child</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">j</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">children</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">demotree</span> <span class="o">=</span> <span class="n">tsmakers</span><span class="o">.</span><span class="n">TimespanTree</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">demotree</span><span class="o">.</span><span class="n">tspanlist</span><span class="p">())</span>  
+</pre></div>
+</div>
+<div class="uqbar-book">
+    <a href="../../_images/lilypond-5f650a64b54c08a558c0a95eedfe96ffdba6f78e6ee0b5e867aabf77996345a7.ly"><img src="../../_images/lilypond-5f650a64b54c08a558c0a95eedfe96ffdba6f78e6ee0b5e867aabf77996345a7.cropped.svg"/></a>
+</div></div>
+<hr/><p class="class-header rubric">Attributes Summary</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTree.get_level" title="tsmakers.tree.TimespanTree.get_level"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_level</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTree.get_level_order" title="tsmakers.tree.TimespanTree.get_level_order"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_level_order</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTree.get_level_order_value" title="tsmakers.tree.TimespanTree.get_level_order_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_level_order_value</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTree.get_level_value" title="tsmakers.tree.TimespanTree.get_level_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_level_value</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTree.replace_values" title="tsmakers.tree.TimespanTree.replace_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">replace_values</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTree.show" title="tsmakers.tree.TimespanTree.show"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTree.show_level" title="tsmakers.tree.TimespanTree.show_level"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_level</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTree.tspanlist" title="tsmakers.tree.TimespanTree.tspanlist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tspanlist</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTree.tspanlist_level" title="tsmakers.tree.TimespanTree.tspanlist_level"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tspanlist_level</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Methods</p>
+<dl class="py method">
+<dt id="tsmakers.tree.TimespanTree.get_level">
+<code class="sig-name descname">get_level</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTree.get_level" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.tree.TimespanTree.get_level_order">
+<code class="sig-name descname">get_level_order</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTree.get_level_order" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.tree.TimespanTree.get_level_order_value">
+<code class="sig-name descname">get_level_order_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTree.get_level_order_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.tree.TimespanTree.get_level_value">
+<code class="sig-name descname">get_level_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTree.get_level_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.tree.TimespanTree.replace_values">
+<code class="sig-name descname">replace_values</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lst</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTree.replace_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.tree.TimespanTree.show">
+<code class="sig-name descname">show</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTree.show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.tree.TimespanTree.show_level">
+<code class="sig-name descname">show_level</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTree.show_level" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.tree.TimespanTree.tspanlist">
+<code class="sig-name descname">tspanlist</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTree.tspanlist" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.tree.TimespanTree.tspanlist_level">
+<code class="sig-name descname">tspanlist_level</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTree.tspanlist_level" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tsmakers.tree.TimespanTreeNode">
+<em class="property">class </em><code class="sig-prename descclassname">tsmakers.tree.</code><code class="sig-name descname">TimespanTreeNode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">parent</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTreeNode" title="Permalink to this definition">¶</a></dt>
+<dd><hr/><p class="class-header rubric">Attributes Summary</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTreeNode.find_root" title="tsmakers.tree.TimespanTreeNode.find_root"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_root</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTreeNode.get_children" title="tsmakers.tree.TimespanTreeNode.get_children"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_children</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTreeNode.get_childrensum" title="tsmakers.tree.TimespanTreeNode.get_childrensum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_childrensum</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTreeNode.get_fract_value" title="tsmakers.tree.TimespanTreeNode.get_fract_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_fract_value</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTreeNode.get_number_of_children" title="tsmakers.tree.TimespanTreeNode.get_number_of_children"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_number_of_children</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTreeNode.get_parent" title="tsmakers.tree.TimespanTreeNode.get_parent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_parent</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTreeNode.get_real_value" title="tsmakers.tree.TimespanTreeNode.get_real_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_real_value</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTreeNode.get_timespan" title="tsmakers.tree.TimespanTreeNode.get_timespan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_timespan</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTreeNode.insert_child" title="tsmakers.tree.TimespanTreeNode.insert_child"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_child</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTreeNode.localoffset" title="tsmakers.tree.TimespanTreeNode.localoffset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">localoffset</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tsmakers.tree.TimespanTreeNode.offset" title="tsmakers.tree.TimespanTreeNode.offset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">offset</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Methods</p>
+<dl class="py method">
+<dt id="tsmakers.tree.TimespanTreeNode.find_root">
+<code class="sig-name descname">find_root</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTreeNode.find_root" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.tree.TimespanTreeNode.get_children">
+<code class="sig-name descname">get_children</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTreeNode.get_children" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.tree.TimespanTreeNode.get_childrensum">
+<code class="sig-name descname">get_childrensum</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTreeNode.get_childrensum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.tree.TimespanTreeNode.get_fract_value">
+<code class="sig-name descname">get_fract_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTreeNode.get_fract_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.tree.TimespanTreeNode.get_number_of_children">
+<code class="sig-name descname">get_number_of_children</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTreeNode.get_number_of_children" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.tree.TimespanTreeNode.get_parent">
+<code class="sig-name descname">get_parent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTreeNode.get_parent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.tree.TimespanTreeNode.get_real_value">
+<code class="sig-name descname">get_real_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTreeNode.get_real_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.tree.TimespanTreeNode.get_timespan">
+<code class="sig-name descname">get_timespan</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTreeNode.get_timespan" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.tree.TimespanTreeNode.insert_child">
+<code class="sig-name descname">insert_child</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTreeNode.insert_child" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.tree.TimespanTreeNode.localoffset">
+<code class="sig-name descname">localoffset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTreeNode.localoffset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.tree.TimespanTreeNode.offset">
+<code class="sig-name descname">offset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.TimespanTreeNode.offset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<hr/><p class="section-header rubric">Functions</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tsmakers.tree.divrewrite" title="tsmakers.tree.divrewrite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">divrewrite</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tsmakers.tree.flatten" title="tsmakers.tree.flatten"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flatten</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tsmakers.tree.levelbylevel" title="tsmakers.tree.levelbylevel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">levelbylevel</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tsmakers.tree.levelorder" title="tsmakers.tree.levelorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">levelorder</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tsmakers.tree.tally" title="tsmakers.tree.tally"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tally</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt id="tsmakers.tree.divrewrite">
+<code class="sig-prename descclassname">tsmakers.tree.</code><code class="sig-name descname">divrewrite</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tr</span></em>, <em class="sig-param"><span class="n">rulelst</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.divrewrite" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="tsmakers.tree.flatten">
+<code class="sig-prename descclassname">tsmakers.tree.</code><code class="sig-name descname">flatten</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lst</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.flatten" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="tsmakers.tree.levelbylevel">
+<code class="sig-prename descclassname">tsmakers.tree.</code><code class="sig-name descname">levelbylevel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.levelbylevel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="tsmakers.tree.levelorder">
+<code class="sig-prename descclassname">tsmakers.tree.</code><code class="sig-name descname">levelorder</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.levelorder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="tsmakers.tree.tally">
+<code class="sig-prename descclassname">tsmakers.tree.</code><code class="sig-name descname">tally</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lst</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.tree.tally" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="BoundaryTimespanMaker.html" class="btn btn-neutral float-right" title="BoundaryTimespanMaker" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="tsmakers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-2020, Gregory Rowland Evans
+      <span class="lastupdated">
+        Last updated on Jul 21, 2020.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

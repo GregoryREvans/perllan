@@ -1,0 +1,653 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ji &mdash; Perllan API  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/abjad.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/uqbar.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script defer="defer" src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/ga.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="ji_utilities" href="ji_utilities.html" />
+    <link rel="prev" title="et_utilities" href="et_utilities.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Perllan API
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Perllan API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">abjadext</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">microtones</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="et.html">et</a></li>
+<li class="toctree-l4"><a class="reference internal" href="et_utilities.html">et_utilities</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">ji</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ji_utilities.html">ji_utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../evans/index.html">evans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tsmakers/index.html">tsmakers</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Perllan API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Perllan API</a> &raquo;</li>
+        
+          <li><a href="../index.html">abjadext</a> &raquo;</li>
+        
+          <li><a href="index.html">microtones</a> &raquo;</li>
+        
+      <li>ji</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/api/abjadext/microtones/ji.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-abjadext.microtones.ji">
+<span id="ji"></span><span id="abjadext-microtones-ji"></span><h1>ji<a class="headerlink" href="#module-abjadext.microtones.ji" title="Permalink to this headline">¶</a></h1>
+<p>Package for Just Intonation.</p>
+<div class="svg-container docutils container">
+<div class="graphviz"><object data="../../../_images/inheritance-4d2f3aa1e1bdc006e51e0ad55e50d50897a669f8.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">digraph InheritanceGraph {
+	graph [bgcolor=transparent,
+		color=lightsteelblue2,
+		fontname=Arial,
+		fontsize=10,
+		outputorder=edgesfirst,
+		overlap=prism,
+		penwidth=2,
+		rankdir=LR,
+		splines=spline,
+		style=&quot;dashed, rounded&quot;,
+		truecolor=true
+	];
+	node [colorscheme=pastel19,
+		fontname=Arial,
+		fontsize=10,
+		height=0,
+		penwidth=2,
+		shape=box,
+		style=&quot;filled, rounded&quot;,
+		width=0
+	];
+	edge [color=lightslategrey,
+		penwidth=1
+	];
+	subgraph &quot;cluster_abjadext.microtones.ji&quot; {
+		graph [label=&quot;abjadext.microtones.ji&quot;];
+		node [color=1];
+		&quot;abjadext.microtones.ji.JIBundle&quot;		 [URL=&quot;../api/abjadext/microtones/ji.html#abjadext.microtones.ji.JIBundle&quot;,
+			color=black,
+			fontcolor=white,
+			label=JIBundle,
+			target=_top];
+		&quot;abjadext.microtones.ji.JIVector&quot;		 [URL=&quot;../api/abjadext/microtones/ji.html#abjadext.microtones.ji.JIVector&quot;,
+			color=black,
+			fontcolor=white,
+			label=JIVector,
+			target=_top];
+	}
+	subgraph cluster_builtins {
+		graph [label=builtins];
+		node [color=2];
+		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.7/library/functions.html#object&quot;,
+			color=2,
+			label=object,
+			target=_top];
+	}
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.ji.JIBundle&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.ji.JIVector&quot;	 [minlen=2];
+}</p></object></div>
+</div>
+<hr/><p class="section-header rubric">Classes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji.JIBundle" title="abjadext.microtones.ji.JIBundle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">JIBundle</span></code></a></p></td>
+<td><p>JI bundle.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji.JIVector" title="abjadext.microtones.ji.JIVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">JIVector</span></code></a></p></td>
+<td><p>JI vector.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="abjadext.microtones.ji.JIBundle">
+<em class="property">class </em><code class="sig-prename descclassname">abjadext.microtones.ji.</code><code class="sig-name descname">JIBundle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pitch</span><span class="o">=</span><span class="default_value">&quot;c'&quot;</span></em>, <em class="sig-param"><span class="n">vector</span><span class="o">=</span><span class="default_value">abjadext.ji.JIVector(diatonic_accidental='natural', syntonic_commas_down=0, syntonic_commas_up=0, septimal_commas_down=0, septimal_commas_up=0, undecimal_quarter_tones_down=0, undecimal_quarter_tones_up=0, tridecimal_third_tones_down=0, tridecimal_third_tones_up=0, seventeen_limit_schismas_down=0, seventeen_limit_schismas_up=0, nineteen_limit_schismas_down=0, nineteen_limit_schismas_up=0, twenty_three_limit_commas_down=0, twenty_three_limit_commas_up=0)</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji.JIBundle" title="Permalink to this definition">¶</a></dt>
+<dd><p>JI bundle.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bundle</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">JIBundle</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bundle</span><span class="o">.</span><span class="n">pitch</span>
+<span class="go">&quot;c&#39;&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bundle</span><span class="o">.</span><span class="n">vector</span>
+<span class="go">abjadext.ji.JIVector(</span>
+<span class="go">    diatonic_accidental=&#39;natural&#39;,</span>
+<span class="go">    syntonic_commas_down=0,</span>
+<span class="go">    syntonic_commas_up=0,</span>
+<span class="go">    septimal_commas_down=0,</span>
+<span class="go">    septimal_commas_up=0,</span>
+<span class="go">    undecimal_quarter_tones_down=0,</span>
+<span class="go">    undecimal_quarter_tones_up=0,</span>
+<span class="go">    tridecimal_third_tones_down=0,</span>
+<span class="go">    tridecimal_third_tones_up=0,</span>
+<span class="go">    seventeen_limit_schismas_down=0,</span>
+<span class="go">    seventeen_limit_schismas_up=0,</span>
+<span class="go">    nineteen_limit_schismas_down=0,</span>
+<span class="go">    nineteen_limit_schismas_up=0,</span>
+<span class="go">    twenty_three_limit_commas_down=0,</span>
+<span class="go">    twenty_three_limit_commas_up=0,</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+<hr/><p class="class-header rubric">Attributes Summary</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji.JIBundle.__repr__" title="abjadext.microtones.ji.JIBundle.__repr__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__repr__</span></code></a></p></td>
+<td><p>Gets interpreter representation.</p></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<dl class="py method">
+<dt id="abjadext.microtones.ji.JIBundle.__repr__">
+<em class="property">overridden </em><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji.JIBundle.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets interpreter representation.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">JIBundle</span><span class="p">()</span>
+<span class="go">abjadext.ji.JIBundle(</span>
+<span class="go">    pitch=&quot;c&#39;&quot;,</span>
+<span class="go">    vector=abjadext.ji.JIVector(        diatonic_accidental=&#39;natural&#39;,        syntonic_commas_down=0,        syntonic_commas_up=0,        septimal_commas_down=0,        septimal_commas_up=0,        undecimal_quarter_tones_down=0,        undecimal_quarter_tones_up=0,        tridecimal_third_tones_down=0,        tridecimal_third_tones_up=0,        seventeen_limit_schismas_down=0,        seventeen_limit_schismas_up=0,        nineteen_limit_schismas_down=0,        nineteen_limit_schismas_up=0,        twenty_three_limit_commas_down=0,        twenty_three_limit_commas_up=0,        ),</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="abjadext.microtones.ji.JIVector">
+<em class="property">class </em><code class="sig-prename descclassname">abjadext.microtones.ji.</code><code class="sig-name descname">JIVector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">diatonic_accidental</span><span class="o">=</span><span class="default_value">'natural'</span></em>, <em class="sig-param"><span class="n">syntonic_commas_down</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">syntonic_commas_up</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">septimal_commas_down</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">septimal_commas_up</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">undecimal_quarter_tones_down</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">undecimal_quarter_tones_up</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">tridecimal_third_tones_down</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">tridecimal_third_tones_up</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">seventeen_limit_schismas_down</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">seventeen_limit_schismas_up</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">nineteen_limit_schismas_down</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">nineteen_limit_schismas_up</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">twenty_three_limit_commas_down</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">twenty_three_limit_commas_up</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji.JIVector" title="Permalink to this definition">¶</a></dt>
+<dd><p>JI vector.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">abjadext</span> <span class="kn">import</span> <span class="n">microtones</span>
+</pre></div>
+</div>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vector</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">JIVector</span><span class="p">(</span><span class="n">syntonic_commas_down</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vector</span><span class="o">.</span><span class="n">syntonic_commas_down</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vector</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">JIVector</span><span class="p">(</span><span class="n">syntonic_commas_down</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vector</span><span class="o">.</span><span class="n">syntonic_commas_up</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+</div>
+<hr/><p class="class-header rubric">Attributes Summary</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji.JIVector.__repr__" title="abjadext.microtones.ji.JIVector.__repr__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__repr__</span></code></a></p></td>
+<td><p>Gets interpreter representation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji.JIVector.calculate_ji_markup" title="abjadext.microtones.ji.JIVector.calculate_ji_markup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_ji_markup</span></code></a></p></td>
+<td><p>Calculates JI markup.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji.JIVector.has_just_accidentals" title="abjadext.microtones.ji.JIVector.has_just_accidentals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_just_accidentals</span></code></a></p></td>
+<td><p>Is true when vector has just accidentals.</p></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<dl class="py method">
+<dt id="abjadext.microtones.ji.JIVector.__repr__">
+<em class="property">overridden </em><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji.JIVector.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets interpreter representation.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">JIVector</span><span class="p">()</span>
+<span class="go">abjadext.ji.JIVector(</span>
+<span class="go">    diatonic_accidental=&#39;natural&#39;,</span>
+<span class="go">    syntonic_commas_down=0,</span>
+<span class="go">    syntonic_commas_up=0,</span>
+<span class="go">    septimal_commas_down=0,</span>
+<span class="go">    septimal_commas_up=0,</span>
+<span class="go">    undecimal_quarter_tones_down=0,</span>
+<span class="go">    undecimal_quarter_tones_up=0,</span>
+<span class="go">    tridecimal_third_tones_down=0,</span>
+<span class="go">    tridecimal_third_tones_up=0,</span>
+<span class="go">    seventeen_limit_schismas_down=0,</span>
+<span class="go">    seventeen_limit_schismas_up=0,</span>
+<span class="go">    nineteen_limit_schismas_down=0,</span>
+<span class="go">    nineteen_limit_schismas_up=0,</span>
+<span class="go">    twenty_three_limit_commas_down=0,</span>
+<span class="go">    twenty_three_limit_commas_up=0,</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<hr/><p class="class-header rubric">Methods</p>
+<dl class="py method">
+<dt id="abjadext.microtones.ji.JIVector.calculate_ji_markup">
+<code class="sig-name descname">calculate_ji_markup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji.JIVector.calculate_ji_markup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates JI markup.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vector</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">JIVector</span><span class="p">(</span><span class="n">syntonic_commas_down</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">vector</span><span class="o">.</span><span class="n">calculate_ji_markup</span><span class="p">())</span>
+<span class="go">\natural-one-syntonic-comma-down </span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="abjadext.microtones.ji.JIVector.has_just_accidentals">
+<code class="sig-name descname">has_just_accidentals</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji.JIVector.has_just_accidentals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is true when vector has just accidentals.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vector</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">JIVector</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vector</span><span class="o">.</span><span class="n">has_just_accidentals</span><span class="p">()</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vector</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">JIVector</span><span class="p">(</span><span class="n">syntonic_commas_down</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vector</span><span class="o">.</span><span class="n">has_just_accidentals</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<hr/><p class="section-header rubric">Functions</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#abjadext.microtones.ji.make_ji_bundle" title="abjadext.microtones.ji.make_ji_bundle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_ji_bundle</span></code></a></p></td>
+<td><p>Makes JI bundle.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#abjadext.microtones.ji.tune_to_ratio" title="abjadext.microtones.ji.tune_to_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tune_to_ratio</span></code></a></p></td>
+<td><p>Transposes notehead in place and tweaks accidental stencil.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt id="abjadext.microtones.ji.make_ji_bundle">
+<code class="sig-prename descclassname">abjadext.microtones.ji.</code><code class="sig-name descname">make_ji_bundle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pitch</span></em>, <em class="sig-param"><span class="n">ratio</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji.make_ji_bundle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes JI bundle.</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bundle</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">make_ji_bundle</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">NamedPitch</span><span class="p">(</span><span class="s2">&quot;c&#39;&quot;</span><span class="p">),</span> <span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bundle</span><span class="o">.</span><span class="n">pitch</span>
+<span class="go">NamedPitch(&quot;g&#39;&quot;)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bundle</span><span class="o">.</span><span class="n">vector</span>
+<span class="go">abjadext.ji.JIVector(</span>
+<span class="go">    diatonic_accidental=&#39;natural&#39;,</span>
+<span class="go">    syntonic_commas_down=0,</span>
+<span class="go">    syntonic_commas_up=0,</span>
+<span class="go">    septimal_commas_down=0,</span>
+<span class="go">    septimal_commas_up=0,</span>
+<span class="go">    undecimal_quarter_tones_down=0,</span>
+<span class="go">    undecimal_quarter_tones_up=0,</span>
+<span class="go">    tridecimal_third_tones_down=0,</span>
+<span class="go">    tridecimal_third_tones_up=0,</span>
+<span class="go">    seventeen_limit_schismas_down=0,</span>
+<span class="go">    seventeen_limit_schismas_up=0,</span>
+<span class="go">    nineteen_limit_schismas_down=0,</span>
+<span class="go">    nineteen_limit_schismas_up=0,</span>
+<span class="go">    twenty_three_limit_commas_down=0,</span>
+<span class="go">    twenty_three_limit_commas_up=0,</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="abjadext.microtones.ji.tune_to_ratio">
+<code class="sig-prename descclassname">abjadext.microtones.ji.</code><code class="sig-name descname">tune_to_ratio</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">note_head</span></em>, <em class="sig-param"><span class="n">ratio</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">omit_just_accidental</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">tempered</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji.tune_to_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transposes notehead in place and tweaks accidental stencil.</p>
+<div class="example docutils container">
+<p>All implemented accidentals are available for both stylesheets:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">note</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;c&#39;4&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">tune_to_ratio</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">note_head</span><span class="p">,</span> <span class="s2">&quot;7/4&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">([</span><span class="n">note</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lilypond_file</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondFile</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">staff</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">includes</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;default.ily&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;/Users/evansdsg2/abjad/docs/source/_stylesheets/microtones/ekmelos-ji-accidental-markups.ily&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;&quot;dodecaphonic&quot;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lilypond_file</span><span class="o">.</span><span class="n">layout_block</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">fr</span><span class="s2">&quot;\accidentalStyle </span><span class="si">{</span><span class="n">style</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">lilypond_file</span><span class="p">)</span>  
+</pre></div>
+</div>
+<div class="uqbar-book">
+    <a href="../../../_images/lilypond-9fa122969b22a57567e1f8c5027fceb8a3c1fb2425a23b3289b848b3cc089d10.ly"><img src="../../../_images/lilypond-9fa122969b22a57567e1f8c5027fceb8a3c1fb2425a23b3289b848b3cc089d10.cropped.svg"/></a>
+</div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">note</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;c&#39;4&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">tune_to_ratio</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">note_head</span><span class="p">,</span> <span class="s2">&quot;7/4&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">([</span><span class="n">note</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lilypond_file</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondFile</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">staff</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">includes</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;default.ily&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;/Users/evansdsg2/abjad/docs/source/_stylesheets/microtones/heji2-ji-accidental-markups.ily&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;&quot;dodecaphonic&quot;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lilypond_file</span><span class="o">.</span><span class="n">layout_block</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">fr</span><span class="s2">&quot;\accidentalStyle </span><span class="si">{</span><span class="n">style</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">lilypond_file</span><span class="p">)</span>  
+</pre></div>
+</div>
+<div class="uqbar-book">
+    <a href="../../../_images/lilypond-524f4258ae6c6becf038b036e9f4bbfa7907ad3d215c14478bed4274eac7fff4.ly"><img src="../../../_images/lilypond-524f4258ae6c6becf038b036e9f4bbfa7907ad3d215c14478bed4274eac7fff4.cropped.svg"/></a>
+</div></div>
+<div class="example docutils container">
+<p>Tweaks accidentals when <code class="docutils literal notranslate"><span class="pre">omit_just_accidental=False</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">note</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;c&#39;4&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">tune_to_ratio</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">note_head</span><span class="p">,</span> <span class="s2">&quot;5/1&quot;</span><span class="p">,</span> <span class="n">omit_just_accidental</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">note</span><span class="p">)</span>  
+<span class="go">\tweak Accidental.stencil #ly:text-interface::print</span>
+<span class="go">\tweak Accidental.text \natural-one-syntonic-comma-down </span>
+<span class="go">e&#39;&#39;&#39;4</span>
+</pre></div>
+</div>
+<p>Does not tweak accidentals when <code class="docutils literal notranslate"><span class="pre">omit_just_accidental=True</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">note</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;c&#39;4&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">tune_to_ratio</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">note_head</span><span class="p">,</span> <span class="s2">&quot;5/1&quot;</span><span class="p">,</span> <span class="n">omit_just_accidental</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">note</span><span class="p">)</span>  
+<span class="go">e&#39;&#39;&#39;4</span>
+</pre></div>
+</div>
+</div>
+<div class="example docutils container">
+<p>A harmonic series with the ekmelos font.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ratios</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">/1&quot;</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">23</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">notes</span> <span class="o">=</span> <span class="p">[</span><span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;a,,,8&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">ratios</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">note</span><span class="p">,</span> <span class="n">ratio</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="n">ratios</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">microtones</span><span class="o">.</span><span class="n">tune_to_ratio</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">note_head</span><span class="p">,</span> <span class="n">ratio</span><span class="p">)</span>
+<span class="gp">... </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">Clef</span><span class="p">(</span><span class="s2">&quot;bass&quot;</span><span class="p">),</span> <span class="n">staff</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">Clef</span><span class="p">(</span><span class="s2">&quot;treble&quot;</span><span class="p">),</span> <span class="n">staff</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">TimeSignature</span><span class="p">((</span><span class="mi">24</span><span class="p">,</span> <span class="mi">32</span><span class="p">)),</span> <span class="n">staff</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lilypond_file</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondFile</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">staff</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">includes</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;default.ily&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;/Users/evansdsg2/abjad/docs/source/_stylesheets/microtones/harmonic-series-layout.ily&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;/Users/evansdsg2/abjad/docs/source/_stylesheets/microtones/ekmelos-ji-accidental-markups.ily&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;&quot;dodecaphonic&quot;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lilypond_file</span><span class="o">.</span><span class="n">layout_block</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">fr</span><span class="s2">&quot;\accidentalStyle </span><span class="si">{</span><span class="n">style</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">lilypond_file</span><span class="p">)</span>  
+</pre></div>
+</div>
+<div class="uqbar-book">
+    <a href="../../../_images/lilypond-31d2040cee77806eda42629ad1c069bdc512764ef15661d7dd067506b0e41b60.ly"><img src="../../../_images/lilypond-31d2040cee77806eda42629ad1c069bdc512764ef15661d7dd067506b0e41b60.cropped.svg"/></a>
+</div><p>A harmonic series with the HEJI2 font.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ratios</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">/1&quot;</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">23</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">notes</span> <span class="o">=</span> <span class="p">[</span><span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;a,,,8&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">ratios</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">note</span><span class="p">,</span> <span class="n">ratio</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="n">ratios</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">microtones</span><span class="o">.</span><span class="n">tune_to_ratio</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">note_head</span><span class="p">,</span> <span class="n">ratio</span><span class="p">)</span>
+<span class="gp">... </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">Clef</span><span class="p">(</span><span class="s2">&quot;bass&quot;</span><span class="p">),</span> <span class="n">staff</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">Clef</span><span class="p">(</span><span class="s2">&quot;treble&quot;</span><span class="p">),</span> <span class="n">staff</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">TimeSignature</span><span class="p">((</span><span class="mi">24</span><span class="p">,</span> <span class="mi">32</span><span class="p">)),</span> <span class="n">staff</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lilypond_file</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondFile</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">staff</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">includes</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;default.ily&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;/Users/evansdsg2/abjad/docs/source/_stylesheets/microtones/harmonic-series-layout.ily&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;/Users/evansdsg2/abjad/docs/source/_stylesheets/microtones/heji2-ji-accidental-markups.ily&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;&quot;dodecaphonic&quot;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lilypond_file</span><span class="o">.</span><span class="n">layout_block</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">fr</span><span class="s2">&quot;\accidentalStyle </span><span class="si">{</span><span class="n">style</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">lilypond_file</span><span class="p">)</span>  
+</pre></div>
+</div>
+<div class="uqbar-book">
+    <a href="../../../_images/lilypond-fd82c33d50f50d5a0b3771f7914ea41a5bc89382a6b5d81a84321ac0364bcafc.ly"><img src="../../../_images/lilypond-fd82c33d50f50d5a0b3771f7914ea41a5bc89382a6b5d81a84321ac0364bcafc.cropped.svg"/></a>
+</div></div>
+<div class="example docutils container">
+<p>Prints tempered accidentals when <code class="docutils literal notranslate"><span class="pre">tempered=True</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">note</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;c&#39;4&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">tune_to_ratio</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">note_head</span><span class="p">,</span> <span class="s2">&quot;5/1&quot;</span><span class="p">,</span> <span class="n">tempered</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">([</span><span class="n">note</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lilypond_file</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondFile</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">staff</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">includes</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;default.ily&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;/Users/evansdsg2/abjad/docs/source/_stylesheets/microtones/ekmelos-ji-accidental-markups.ily&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;&quot;dodecaphonic&quot;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lilypond_file</span><span class="o">.</span><span class="n">layout_block</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">fr</span><span class="s2">&quot;\accidentalStyle </span><span class="si">{</span><span class="n">style</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">lilypond_file</span><span class="p">)</span>  
+</pre></div>
+</div>
+<div class="uqbar-book">
+    <a href="../../../_images/lilypond-1a16c8c5f869cc6945c2f7d7da96dba1f9d776bb6eed2ab7bc951cab589d42a8.ly"><img src="../../../_images/lilypond-1a16c8c5f869cc6945c2f7d7da96dba1f9d776bb6eed2ab7bc951cab589d42a8.cropped.svg"/></a>
+</div></div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ji_utilities.html" class="btn btn-neutral float-right" title="ji_utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="et_utilities.html" class="btn btn-neutral float-left" title="et_utilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-2020, Gregory Rowland Evans
+      <span class="lastupdated">
+        Last updated on Jul 21, 2020.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
