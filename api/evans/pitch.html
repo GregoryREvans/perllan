@@ -196,19 +196,19 @@
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#evans.pitch.to_nearest_eighth_tone" title="evans.pitch.to_nearest_eighth_tone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_nearest_eighth_tone</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Rounds number to nearest eighth</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#evans.pitch.to_nearest_quarter_tone" title="evans.pitch.to_nearest_quarter_tone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_nearest_quarter_tone</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Rounds number to nearest quarter</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#evans.pitch.to_nearest_sixth_tone" title="evans.pitch.to_nearest_sixth_tone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_nearest_sixth_tone</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Rounds number to nearest sixth</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#evans.pitch.to_nearest_third_tone" title="evans.pitch.to_nearest_third_tone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_nearest_third_tone</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Rounds number to nearest third</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#evans.pitch.to_nearest_twelfth_tone" title="evans.pitch.to_nearest_twelfth_tone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_nearest_twelfth_tone</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Rounds number to nearest twelfth</p></td>
 </tr>
 </tbody>
 </table>
@@ -317,28 +317,73 @@
 
 <dl class="py function">
 <dt id="evans.pitch.to_nearest_eighth_tone">
-<code class="sig-prename descclassname">evans.pitch.</code><code class="sig-name descname">to_nearest_eighth_tone</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">number</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.pitch.to_nearest_eighth_tone" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-prename descclassname">evans.pitch.</code><code class="sig-name descname">to_nearest_eighth_tone</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">number</span></em>, <em class="sig-param"><span class="n">frac</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.pitch.to_nearest_eighth_tone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rounds number to nearest eighth</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.111</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mf">2.23</span><span class="p">,</span> <span class="mf">6.4</span><span class="p">,</span> <span class="mf">7.3</span><span class="p">,</span> <span class="mf">7.15</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="n">evans</span><span class="o">.</span><span class="n">to_nearest_eighth_tone</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">frac</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">l</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[Fraction(0, 1), Fraction(1, 1), Fraction(9, 2), Fraction(9, 4), Fraction(13, 2), Fraction(29, 4), Fraction(29, 4)]</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt id="evans.pitch.to_nearest_quarter_tone">
-<code class="sig-prename descclassname">evans.pitch.</code><code class="sig-name descname">to_nearest_quarter_tone</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">number</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.pitch.to_nearest_quarter_tone" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-prename descclassname">evans.pitch.</code><code class="sig-name descname">to_nearest_quarter_tone</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">number</span></em>, <em class="sig-param"><span class="n">frac</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.pitch.to_nearest_quarter_tone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rounds number to nearest quarter</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.111</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mf">2.23</span><span class="p">,</span> <span class="mf">6.4</span><span class="p">,</span> <span class="mf">7.3</span><span class="p">,</span> <span class="mf">7.15</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="n">evans</span><span class="o">.</span><span class="n">to_nearest_quarter_tone</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">frac</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">l</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[Fraction(0, 1), Fraction(1, 1), Fraction(9, 2), Fraction(2, 1), Fraction(13, 2), Fraction(7, 1), Fraction(7, 1)]</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt id="evans.pitch.to_nearest_sixth_tone">
 <code class="sig-prename descclassname">evans.pitch.</code><code class="sig-name descname">to_nearest_sixth_tone</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">number</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.pitch.to_nearest_sixth_tone" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Rounds number to nearest sixth</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.111</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mf">2.23</span><span class="p">,</span> <span class="mf">6.4</span><span class="p">,</span> <span class="mf">7.3</span><span class="p">,</span> <span class="mf">7.15</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="n">evans</span><span class="o">.</span><span class="n">to_nearest_sixth_tone</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">l</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[Fraction(0, 1), Fraction(1, 1), Fraction(9, 2), Fraction(7, 3), Fraction(19, 3), Fraction(22, 3), Fraction(7, 1)]</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt id="evans.pitch.to_nearest_third_tone">
 <code class="sig-prename descclassname">evans.pitch.</code><code class="sig-name descname">to_nearest_third_tone</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">number</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.pitch.to_nearest_third_tone" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Rounds number to nearest third</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.111</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mf">2.23</span><span class="p">,</span> <span class="mf">6.4</span><span class="p">,</span> <span class="mf">7.3</span><span class="p">,</span> <span class="mf">7.15</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="n">evans</span><span class="o">.</span><span class="n">to_nearest_third_tone</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">l</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[Fraction(0, 1), Fraction(1, 1), Fraction(14, 3), Fraction(2, 1), Fraction(20, 3), Fraction(22, 3), Fraction(7, 1)]</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt id="evans.pitch.to_nearest_twelfth_tone">
 <code class="sig-prename descclassname">evans.pitch.</code><code class="sig-name descname">to_nearest_twelfth_tone</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">number</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.pitch.to_nearest_twelfth_tone" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Rounds number to nearest twelfth</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.111</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mf">2.23</span><span class="p">,</span> <span class="mf">6.4</span><span class="p">,</span> <span class="mf">7.3</span><span class="p">,</span> <span class="mf">7.15</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="n">evans</span><span class="o">.</span><span class="n">to_nearest_twelfth_tone</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">l</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[Fraction(0, 1), Fraction(7, 6), Fraction(9, 2), Fraction(9, 4), Fraction(19, 3), Fraction(22, 3), Fraction(43, 6)]</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
 
 </div>
 
