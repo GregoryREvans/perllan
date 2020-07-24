@@ -42,7 +42,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="et" href="et.html" />
-    <link rel="prev" title="abjadext" href="../index.html" /> 
+    <link rel="prev" title="Core concepts" href="../../../concepts.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,22 +87,29 @@
               
             
             
-              <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Perllan API</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../index.html">abjadext</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">microtones</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="et.html">et</a></li>
-<li class="toctree-l4"><a class="reference internal" href="et_utilities.html">et_utilities</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ji.html">ji</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ji_utilities.html">ji_utilities</a></li>
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts.html">Core concepts</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">microtones</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="et.html">et</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ji.html">ji</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">utilities</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../evans/index.html">evans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tsmakers/index.html">tsmakers</a></li>
 </ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../evans/index.html">evans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../tsmakers/index.html">tsmakers</a></li>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../scores.html">Score gallery</a></li>
 </ul>
-</li>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
 </ul>
 
             
@@ -149,10 +156,6 @@
     
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../../index.html">Perllan API</a> &raquo;</li>
-        
-          <li><a href="../index.html">abjadext</a> &raquo;</li>
-        
       <li>microtones</li>
     
     
@@ -188,7 +191,7 @@
 <p>The fonts can be found at <a class="reference external" href="http://www.ekmelic-music.org/en/extra/ekmelos.htm">http://www.ekmelic-music.org/en/extra/ekmelos.htm</a> and <a class="reference external" href="http://www.plainsound.org/">http://www.plainsound.org/</a> respectively and should be installed into the folders at <code class="docutils literal notranslate"><span class="pre">/LilyPond.app/Contents/Resources/share/lilypond/current/fonts</span></code> and the computer’s font database such as <cite>Font Book</cite>.</p>
 </div>
 <div class="svg-container docutils container">
-<div class="graphviz"><object data="../../../images/inheritance-fb7320c9a47575fbc72554240ef312152398588a.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="../../../images/inheritance-7ce8144c0471b423a6f50491c74522e80d95b467.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">digraph InheritanceGraph {
 	graph [bgcolor=transparent,
 		color=lightsteelblue2,
@@ -222,77 +225,73 @@
 			label=ETBundle,
 			target=_top];
 	}
-	subgraph &quot;cluster_abjadext.microtones.et_utilities&quot; {
-		graph [label=&quot;abjadext.microtones.et_utilities&quot;];
-		node [color=2];
-		&quot;abjadext.microtones.et_utilities.PitchClassSegment&quot;		 [URL=&quot;../api/abjadext/microtones/et_utilities.html#abjadext.microtones.et_utilities.PitchClassSegment&quot;,
-			color=2,
-			label=&quot;Pitch\nClass\nSegment&quot;,
-			target=_top];
-		&quot;abjadext.microtones.et_utilities.PitchClassSet&quot;		 [URL=&quot;../api/abjadext/microtones/et_utilities.html#abjadext.microtones.et_utilities.PitchClassSet&quot;,
-			color=2,
-			label=&quot;Pitch\nClass\nSet&quot;,
-			target=_top];
-		&quot;abjadext.microtones.et_utilities.PitchSegment&quot;		 [URL=&quot;../api/abjadext/microtones/et_utilities.html#abjadext.microtones.et_utilities.PitchSegment&quot;,
-			color=2,
-			label=&quot;Pitch\nSegment&quot;,
-			target=_top];
-		&quot;abjadext.microtones.et_utilities.PitchSet&quot;		 [URL=&quot;../api/abjadext/microtones/et_utilities.html#abjadext.microtones.et_utilities.PitchSet&quot;,
-			color=2,
-			label=&quot;Pitch\nSet&quot;,
-			target=_top];
-	}
 	subgraph &quot;cluster_abjadext.microtones.ji&quot; {
 		graph [label=&quot;abjadext.microtones.ji&quot;];
-		node [color=3];
+		node [color=2];
 		&quot;abjadext.microtones.ji.JIBundle&quot;		 [URL=&quot;../api/abjadext/microtones/ji.html#abjadext.microtones.ji.JIBundle&quot;,
-			color=3,
+			color=2,
 			label=JIBundle,
 			target=_top];
 		&quot;abjadext.microtones.ji.JIVector&quot;		 [URL=&quot;../api/abjadext/microtones/ji.html#abjadext.microtones.ji.JIVector&quot;,
-			color=3,
+			color=2,
 			label=JIVector,
 			target=_top];
 	}
-	subgraph &quot;cluster_abjadext.microtones.ji_utilities&quot; {
-		graph [label=&quot;abjadext.microtones.ji_utilities&quot;];
-		node [color=4];
-		&quot;abjadext.microtones.ji_utilities.RatioClassSegment&quot;		 [URL=&quot;../api/abjadext/microtones/ji_utilities.html#abjadext.microtones.ji_utilities.RatioClassSegment&quot;,
-			color=4,
+	subgraph &quot;cluster_abjadext.microtones.utilities&quot; {
+		graph [label=&quot;abjadext.microtones.utilities&quot;];
+		node [color=3];
+		&quot;abjadext.microtones.utilities.PitchClassSegment&quot;		 [URL=&quot;../api/abjadext/microtones/utilities.html#abjadext.microtones.utilities.PitchClassSegment&quot;,
+			color=3,
+			label=&quot;Pitch\nClass\nSegment&quot;,
+			target=_top];
+		&quot;abjadext.microtones.utilities.PitchClassSet&quot;		 [URL=&quot;../api/abjadext/microtones/utilities.html#abjadext.microtones.utilities.PitchClassSet&quot;,
+			color=3,
+			label=&quot;Pitch\nClass\nSet&quot;,
+			target=_top];
+		&quot;abjadext.microtones.utilities.PitchSegment&quot;		 [URL=&quot;../api/abjadext/microtones/utilities.html#abjadext.microtones.utilities.PitchSegment&quot;,
+			color=3,
+			label=&quot;Pitch\nSegment&quot;,
+			target=_top];
+		&quot;abjadext.microtones.utilities.PitchSet&quot;		 [URL=&quot;../api/abjadext/microtones/utilities.html#abjadext.microtones.utilities.PitchSet&quot;,
+			color=3,
+			label=&quot;Pitch\nSet&quot;,
+			target=_top];
+		&quot;abjadext.microtones.utilities.RatioClassSegment&quot;		 [URL=&quot;../api/abjadext/microtones/utilities.html#abjadext.microtones.utilities.RatioClassSegment&quot;,
+			color=3,
 			label=&quot;Ratio\nClass\nSegment&quot;,
 			target=_top];
-		&quot;abjadext.microtones.ji_utilities.RatioClassSet&quot;		 [URL=&quot;../api/abjadext/microtones/ji_utilities.html#abjadext.microtones.ji_utilities.RatioClassSet&quot;,
-			color=4,
+		&quot;abjadext.microtones.utilities.RatioClassSet&quot;		 [URL=&quot;../api/abjadext/microtones/utilities.html#abjadext.microtones.utilities.RatioClassSet&quot;,
+			color=3,
 			label=&quot;Ratio\nClass\nSet&quot;,
 			target=_top];
-		&quot;abjadext.microtones.ji_utilities.RatioSegment&quot;		 [URL=&quot;../api/abjadext/microtones/ji_utilities.html#abjadext.microtones.ji_utilities.RatioSegment&quot;,
-			color=4,
+		&quot;abjadext.microtones.utilities.RatioSegment&quot;		 [URL=&quot;../api/abjadext/microtones/utilities.html#abjadext.microtones.utilities.RatioSegment&quot;,
+			color=3,
 			label=&quot;Ratio\nSegment&quot;,
 			target=_top];
-		&quot;abjadext.microtones.ji_utilities.RatioSet&quot;		 [URL=&quot;../api/abjadext/microtones/ji_utilities.html#abjadext.microtones.ji_utilities.RatioSet&quot;,
-			color=4,
+		&quot;abjadext.microtones.utilities.RatioSet&quot;		 [URL=&quot;../api/abjadext/microtones/utilities.html#abjadext.microtones.utilities.RatioSet&quot;,
+			color=3,
 			label=&quot;Ratio\nSet&quot;,
 			target=_top];
 	}
 	subgraph cluster_builtins {
 		graph [label=builtins];
-		node [color=5];
+		node [color=4];
 		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.7/library/functions.html#object&quot;,
-			color=5,
+			color=4,
 			label=object,
 			target=_top];
 	}
 	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.et.ETBundle&quot;	 [minlen=1];
-	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.et_utilities.PitchClassSegment&quot;	 [minlen=2];
-	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.et_utilities.PitchClassSet&quot;	 [minlen=3];
-	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.et_utilities.PitchSegment&quot;	 [minlen=4];
-	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.et_utilities.PitchSet&quot;	 [minlen=1];
 	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.ji.JIBundle&quot;	 [minlen=2];
 	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.ji.JIVector&quot;	 [minlen=3];
-	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.ji_utilities.RatioClassSegment&quot;	 [minlen=4];
-	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.ji_utilities.RatioClassSet&quot;	 [minlen=1];
-	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.ji_utilities.RatioSegment&quot;	 [minlen=2];
-	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.ji_utilities.RatioSet&quot;	 [minlen=3];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.utilities.PitchClassSegment&quot;	 [minlen=4];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.utilities.PitchClassSet&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.utilities.PitchSegment&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.utilities.PitchSet&quot;	 [minlen=3];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.utilities.RatioClassSegment&quot;	 [minlen=4];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.utilities.RatioClassSet&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.utilities.RatioSegment&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;abjadext.microtones.utilities.RatioSet&quot;	 [minlen=3];
 }</p></object></div>
 </div>
 <hr/><p class="section-header rubric">Subpackages</p>
@@ -307,13 +306,10 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="et.html#module-abjadext.microtones.et" title="abjadext.microtones.et"><code class="xref py py-obj docutils literal notranslate"><span class="pre">et</span></code></a></p></td>
 <td><p>Package for equal tempered microtones.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="et_utilities.html#module-abjadext.microtones.et_utilities" title="abjadext.microtones.et_utilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">et_utilities</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="ji.html#module-abjadext.microtones.ji" title="abjadext.microtones.ji"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ji</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="ji.html#module-abjadext.microtones.ji" title="abjadext.microtones.ji"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ji</span></code></a></p></td>
 <td><p>Package for Just Intonation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="ji_utilities.html#module-abjadext.microtones.ji_utilities" title="abjadext.microtones.ji_utilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ji_utilities</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="utilities.html#module-abjadext.microtones.utilities" title="abjadext.microtones.utilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">utilities</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -331,7 +327,7 @@
         <a href="et.html" class="btn btn-neutral float-right" title="et" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../index.html" class="btn btn-neutral float-left" title="abjadext" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../../../concepts.html" class="btn btn-neutral float-left" title="Core concepts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -343,7 +339,7 @@
         
         &copy; Copyright 2018-2020, Gregory Rowland Evans
       <span class="lastupdated">
-        Last updated on Jul 21, 2020.
+        Last updated on Jul 23, 2020.
       </span>
 
     </p>

@@ -41,8 +41,8 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="ji_utilities" href="ji_utilities.html" />
-    <link rel="prev" title="et_utilities" href="et_utilities.html" /> 
+    <link rel="next" title="utilities" href="utilities.html" />
+    <link rel="prev" title="et" href="et.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,22 +87,29 @@
               
             
             
-              <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Perllan API</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../index.html">abjadext</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">microtones</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="et.html">et</a></li>
-<li class="toctree-l4"><a class="reference internal" href="et_utilities.html">et_utilities</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">ji</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ji_utilities.html">ji_utilities</a></li>
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts.html">Core concepts</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">microtones</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="et.html">et</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ji</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">utilities</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../evans/index.html">evans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tsmakers/index.html">tsmakers</a></li>
 </ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../evans/index.html">evans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../tsmakers/index.html">tsmakers</a></li>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../scores.html">Score gallery</a></li>
 </ul>
-</li>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
 </ul>
 
             
@@ -148,10 +155,6 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="../../index.html">Perllan API</a> &raquo;</li>
-        
-          <li><a href="../index.html">abjadext</a> &raquo;</li>
         
           <li><a href="index.html">microtones</a> &raquo;</li>
         
@@ -247,7 +250,7 @@
 </table>
 <dl class="py class">
 <dt id="abjadext.microtones.ji.JIBundle">
-<em class="property">class </em><code class="sig-prename descclassname">abjadext.microtones.ji.</code><code class="sig-name descname">JIBundle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pitch</span><span class="o">=</span><span class="default_value">&quot;c'&quot;</span></em>, <em class="sig-param"><span class="n">vector</span><span class="o">=</span><span class="default_value">abjadext.ji.JIVector(diatonic_accidental='natural', syntonic_commas_down=0, syntonic_commas_up=0, septimal_commas_down=0, septimal_commas_up=0, undecimal_quarter_tones_down=0, undecimal_quarter_tones_up=0, tridecimal_third_tones_down=0, tridecimal_third_tones_up=0, seventeen_limit_schismas_down=0, seventeen_limit_schismas_up=0, nineteen_limit_schismas_down=0, nineteen_limit_schismas_up=0, twenty_three_limit_commas_down=0, twenty_three_limit_commas_up=0)</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji.JIBundle" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">abjadext.microtones.ji.</code><code class="sig-name descname">JIBundle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pitch</span><span class="o">=</span><span class="default_value">&quot;c'&quot;</span></em>, <em class="sig-param"><span class="n">vector</span><span class="o">=</span><span class="default_value">JIVector(diatonic_accidental='natural', syntonic_commas_down=0, syntonic_commas_up=0, septimal_commas_down=0, septimal_commas_up=0, undecimal_quarter_tones_down=0, undecimal_quarter_tones_up=0, tridecimal_third_tones_down=0, tridecimal_third_tones_up=0, seventeen_limit_schismas_down=0, seventeen_limit_schismas_up=0, nineteen_limit_schismas_down=0, nineteen_limit_schismas_up=0, twenty_three_limit_commas_down=0, twenty_three_limit_commas_up=0)</span></em><span class="sig-paren">)</span><a class="headerlink" href="#abjadext.microtones.ji.JIBundle" title="Permalink to this definition">¶</a></dt>
 <dd><p>JI bundle.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bundle</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">JIBundle</span><span class="p">()</span>
@@ -255,7 +258,7 @@
 <span class="go">&quot;c&#39;&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bundle</span><span class="o">.</span><span class="n">vector</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="n">bundle</span><span class="o">.</span><span class="n">vector</span><span class="p">))</span>
 <span class="go">abjadext.ji.JIVector(</span>
 <span class="go">    diatonic_accidental=&#39;natural&#39;,</span>
 <span class="go">    syntonic_commas_down=0,</span>
@@ -295,10 +298,7 @@
 <dd><p>Gets interpreter representation.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">JIBundle</span><span class="p">()</span>
-<span class="go">abjadext.ji.JIBundle(</span>
-<span class="go">    pitch=&quot;c&#39;&quot;,</span>
-<span class="go">    vector=abjadext.ji.JIVector(        diatonic_accidental=&#39;natural&#39;,        syntonic_commas_down=0,        syntonic_commas_up=0,        septimal_commas_down=0,        septimal_commas_up=0,        undecimal_quarter_tones_down=0,        undecimal_quarter_tones_up=0,        tridecimal_third_tones_down=0,        tridecimal_third_tones_up=0,        seventeen_limit_schismas_down=0,        seventeen_limit_schismas_up=0,        nineteen_limit_schismas_down=0,        nineteen_limit_schismas_up=0,        twenty_three_limit_commas_down=0,        twenty_three_limit_commas_up=0,        ),</span>
-<span class="go">    )</span>
+<span class="go">JIBundle(pitch=&quot;c&#39;&quot;, vector=JIVector(diatonic_accidental=&#39;natural&#39;, syntonic_commas_down=0, syntonic_commas_up=0, septimal_commas_down=0, septimal_commas_up=0, undecimal_quarter_tones_down=0, undecimal_quarter_tones_up=0, tridecimal_third_tones_down=0, tridecimal_third_tones_up=0, seventeen_limit_schismas_down=0, seventeen_limit_schismas_up=0, nineteen_limit_schismas_down=0, nineteen_limit_schismas_up=0, twenty_three_limit_commas_down=0, twenty_three_limit_commas_up=0))</span>
 </pre></div>
 </div>
 </div>
@@ -350,23 +350,7 @@
 <dd><p>Gets interpreter representation.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">JIVector</span><span class="p">()</span>
-<span class="go">abjadext.ji.JIVector(</span>
-<span class="go">    diatonic_accidental=&#39;natural&#39;,</span>
-<span class="go">    syntonic_commas_down=0,</span>
-<span class="go">    syntonic_commas_up=0,</span>
-<span class="go">    septimal_commas_down=0,</span>
-<span class="go">    septimal_commas_up=0,</span>
-<span class="go">    undecimal_quarter_tones_down=0,</span>
-<span class="go">    undecimal_quarter_tones_up=0,</span>
-<span class="go">    tridecimal_third_tones_down=0,</span>
-<span class="go">    tridecimal_third_tones_up=0,</span>
-<span class="go">    seventeen_limit_schismas_down=0,</span>
-<span class="go">    seventeen_limit_schismas_up=0,</span>
-<span class="go">    nineteen_limit_schismas_down=0,</span>
-<span class="go">    nineteen_limit_schismas_up=0,</span>
-<span class="go">    twenty_three_limit_commas_down=0,</span>
-<span class="go">    twenty_three_limit_commas_up=0,</span>
-<span class="go">    )</span>
+<span class="go">JIVector(diatonic_accidental=&#39;natural&#39;, syntonic_commas_down=0, syntonic_commas_up=0, septimal_commas_down=0, septimal_commas_up=0, undecimal_quarter_tones_down=0, undecimal_quarter_tones_up=0, tridecimal_third_tones_down=0, tridecimal_third_tones_up=0, seventeen_limit_schismas_down=0, seventeen_limit_schismas_up=0, nineteen_limit_schismas_down=0, nineteen_limit_schismas_up=0, twenty_three_limit_commas_down=0, twenty_three_limit_commas_up=0)</span>
 </pre></div>
 </div>
 </div>
@@ -379,7 +363,7 @@
 <dd><p>Calculates JI markup.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vector</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">JIVector</span><span class="p">(</span><span class="n">syntonic_commas_down</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">vector</span><span class="o">.</span><span class="n">calculate_ji_markup</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">lilypond</span><span class="p">(</span><span class="n">vector</span><span class="o">.</span><span class="n">calculate_ji_markup</span><span class="p">()))</span>
 <span class="go">\natural-one-syntonic-comma-down </span>
 </pre></div>
 </div>
@@ -431,7 +415,7 @@
 <span class="go">NamedPitch(&quot;g&#39;&quot;)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bundle</span><span class="o">.</span><span class="n">vector</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="n">bundle</span><span class="o">.</span><span class="n">vector</span><span class="p">))</span>
 <span class="go">abjadext.ji.JIVector(</span>
 <span class="go">    diatonic_accidental=&#39;natural&#39;,</span>
 <span class="go">    syntonic_commas_down=0,</span>
@@ -499,7 +483,7 @@
 <p>Tweaks accidentals when <code class="docutils literal notranslate"><span class="pre">omit_just_accidental=False</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">note</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;c&#39;4&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">tune_to_ratio</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">note_head</span><span class="p">,</span> <span class="s2">&quot;5/1&quot;</span><span class="p">,</span> <span class="n">omit_just_accidental</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">note</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">lilypond</span><span class="p">(</span><span class="n">note</span><span class="p">))</span>  
 <span class="go">\tweak Accidental.stencil #ly:text-interface::print</span>
 <span class="go">\tweak Accidental.text \natural-one-syntonic-comma-down </span>
 <span class="go">e&#39;&#39;&#39;4</span>
@@ -508,7 +492,7 @@
 <p>Does not tweak accidentals when <code class="docutils literal notranslate"><span class="pre">omit_just_accidental=True</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">note</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;c&#39;4&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">tune_to_ratio</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">note_head</span><span class="p">,</span> <span class="s2">&quot;5/1&quot;</span><span class="p">,</span> <span class="n">omit_just_accidental</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">note</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">lilypond</span><span class="p">(</span><span class="n">note</span><span class="p">))</span>  
 <span class="go">e&#39;&#39;&#39;4</span>
 </pre></div>
 </div>
@@ -599,10 +583,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ji_utilities.html" class="btn btn-neutral float-right" title="ji_utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="utilities.html" class="btn btn-neutral float-right" title="utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="et_utilities.html" class="btn btn-neutral float-left" title="et_utilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="et.html" class="btn btn-neutral float-left" title="et" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -614,7 +598,7 @@
         
         &copy; Copyright 2018-2020, Gregory Rowland Evans
       <span class="lastupdated">
-        Last updated on Jul 21, 2020.
+        Last updated on Jul 23, 2020.
       </span>
 
     </p>

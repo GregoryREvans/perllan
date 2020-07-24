@@ -87,24 +87,35 @@
               
             
             
-              <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Perllan API</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../abjadext/index.html">abjadext</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">evans</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="commands.html">commands</a></li>
-<li class="toctree-l3"><a class="reference internal" href="consort/index.html">consort</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">handlers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="metmod.html">metmod</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pitch.html">pitch</a></li>
-<li class="toctree-l3"><a class="reference internal" href="rtm.html">rtm</a></li>
-<li class="toctree-l3"><a class="reference internal" href="segmentmaker.html">segmentmaker</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sequence.html">sequence</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timespan.html">timespan</a></li>
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../concepts.html">Core concepts</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../abjadext/microtones/index.html">microtones</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">evans</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="commands.html">commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="consort/index.html">consort</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">handlers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metmod.html">metmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pitch.html">pitch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rtm.html">rtm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="segmentmaker.html">segmentmaker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sequence.html">sequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timespan.html">timespan</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../tsmakers/index.html">tsmakers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tsmakers/index.html">tsmakers</a></li>
 </ul>
-</li>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../scores.html">Score gallery</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
 </ul>
 
             
@@ -150,8 +161,6 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="../index.html">Perllan API</a> &raquo;</li>
         
           <li><a href="index.html">evans</a> &raquo;</li>
         
@@ -373,7 +382,7 @@
 </table>
 <dl class="py class">
 <dt id="evans.handlers.ArticulationHandler">
-<em class="property">class </em><code class="sig-prename descclassname">evans.handlers.</code><code class="sig-name descname">ArticulationHandler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">articulation_list</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">articulation_boolean_vector</span><span class="o">=</span><span class="default_value">[0]</span></em>, <em class="sig-param"><span class="n">vector_continuous</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">continuous</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">count</span><span class="o">=</span><span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">vector_count</span><span class="o">=</span><span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">'Articulation Handler'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.ArticulationHandler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">evans.handlers.</code><code class="sig-name descname">ArticulationHandler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">articulation_list</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">articulation_boolean_vector</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">vector_continuous</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">continuous</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">count</span><span class="o">=</span><span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">vector_count</span><span class="o">=</span><span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">'Articulation Handler'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.ArticulationHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Articulation Handler</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">(</span><span class="s2">&quot;c&#39;4 c&#39;4 c&#39;4 r4 c&#39;4 c&#39;4 c&#39;4 c&#39;4 c&#39;4&quot;</span><span class="p">)</span>
@@ -389,7 +398,7 @@
 <span class="gp">... </span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">handler</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">ArticulationHandler</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">articulation_list</span><span class="o">=</span><span class="n">art_lst</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">articulation_boolean_vector</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">articulation_boolean_vector</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
 <span class="gp">... </span>    <span class="n">vector_continuous</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">continuous</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
@@ -413,13 +422,10 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#evans.handlers.ArticulationHandler.add_articulations" title="evans.handlers.ArticulationHandler.add_articulations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_articulations</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#evans.handlers.ArticulationHandler.identifiers" title="evans.handlers.ArticulationHandler.identifiers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">identifiers</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.handlers.ArticulationHandler.name" title="evans.handlers.ArticulationHandler.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#evans.handlers.ArticulationHandler.name" title="evans.handlers.ArticulationHandler.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#evans.handlers.ArticulationHandler.state" title="evans.handlers.ArticulationHandler.state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">state</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.handlers.ArticulationHandler.state" title="evans.handlers.ArticulationHandler.state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">state</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -439,23 +445,10 @@
 </dd></dl>
 
 </div>
-<div class="inherited docutils container">
-<dl class="py method">
-<dt id="evans.handlers.ArticulationHandler.__str__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="#evans.handlers.Handler" title="evans.handlers.Handler"><code class="descclassname docutils literal notranslate"><span class="pre">Handler</span></code></a>).</code><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.ArticulationHandler.__str__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return str(self).</p>
-</dd></dl>
-
-</div>
 <hr/><p class="class-header rubric">Methods</p>
 <dl class="py method">
 <dt id="evans.handlers.ArticulationHandler.add_articulations">
 <code class="sig-name descname">add_articulations</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">selections</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.ArticulationHandler.add_articulations" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="evans.handlers.ArticulationHandler.identifiers">
-<code class="sig-name descname">identifiers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.ArticulationHandler.identifiers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -472,7 +465,7 @@
 
 <dl class="py class">
 <dt id="evans.handlers.BendHandler">
-<em class="property">class </em><code class="sig-prename descclassname">evans.handlers.</code><code class="sig-name descname">BendHandler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bend_amounts</span><span class="o">=</span><span class="default_value">[1]</span></em>, <em class="sig-param"><span class="n">bend_continuous</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">boolean_vector</span><span class="o">=</span><span class="default_value">[0]</span></em>, <em class="sig-param"><span class="n">vector_continuous</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">bend_count</span><span class="o">=</span><span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">vector_count</span><span class="o">=</span><span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">'Bend Handler'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.BendHandler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">evans.handlers.</code><code class="sig-name descname">BendHandler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bend_amounts</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">bend_continuous</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">boolean_vector</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">vector_continuous</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">bend_count</span><span class="o">=</span><span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">vector_count</span><span class="o">=</span><span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">'Bend Handler'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.BendHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bend Handler</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">(</span><span class="s2">&quot;c&#39;4 c&#39;4 c&#39;4 c&#39;4&quot;</span><span class="p">)</span>
@@ -522,14 +515,6 @@
 <dt id="evans.handlers.BendHandler.__repr__">
 <code class="sig-prename descclassname">(<a class="reference internal" href="#evans.handlers.Handler" title="evans.handlers.Handler"><code class="descclassname docutils literal notranslate"><span class="pre">Handler</span></code></a>).</code><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.BendHandler.__repr__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return repr(self).</p>
-</dd></dl>
-
-</div>
-<div class="inherited docutils container">
-<dl class="py method">
-<dt id="evans.handlers.BendHandler.__str__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="#evans.handlers.Handler" title="evans.handlers.Handler"><code class="descclassname docutils literal notranslate"><span class="pre">Handler</span></code></a>).</code><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.BendHandler.__str__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return str(self).</p>
 </dd></dl>
 
 </div>
@@ -617,14 +602,6 @@
 </dd></dl>
 
 </div>
-<div class="inherited docutils container">
-<dl class="py method">
-<dt id="evans.handlers.BisbigliandoHandler.__str__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="#evans.handlers.Handler" title="evans.handlers.Handler"><code class="descclassname docutils literal notranslate"><span class="pre">Handler</span></code></a>).</code><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.BisbigliandoHandler.__str__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return str(self).</p>
-</dd></dl>
-
-</div>
 <hr/><p class="class-header rubric">Methods</p>
 <dl class="py method">
 <dt id="evans.handlers.BisbigliandoHandler.add_spanner">
@@ -683,14 +660,6 @@
 <dt id="evans.handlers.ClefHandler.__repr__">
 <code class="sig-prename descclassname">(<a class="reference internal" href="#evans.handlers.Handler" title="evans.handlers.Handler"><code class="descclassname docutils literal notranslate"><span class="pre">Handler</span></code></a>).</code><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.ClefHandler.__repr__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return repr(self).</p>
-</dd></dl>
-
-</div>
-<div class="inherited docutils container">
-<dl class="py method">
-<dt id="evans.handlers.ClefHandler.__str__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="#evans.handlers.Handler" title="evans.handlers.Handler"><code class="descclassname docutils literal notranslate"><span class="pre">Handler</span></code></a>).</code><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.ClefHandler.__str__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return str(self).</p>
 </dd></dl>
 
 </div>
@@ -761,14 +730,6 @@
 </dd></dl>
 
 </div>
-<div class="inherited docutils container">
-<dl class="py method">
-<dt id="evans.handlers.DynamicHandler.__str__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="#evans.handlers.Handler" title="evans.handlers.Handler"><code class="descclassname docutils literal notranslate"><span class="pre">Handler</span></code></a>).</code><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.DynamicHandler.__str__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return str(self).</p>
-</dd></dl>
-
-</div>
 <hr/><p class="class-header rubric">Methods</p>
 <dl class="py method">
 <dt id="evans.handlers.DynamicHandler.name">
@@ -835,14 +796,6 @@
 <dt id="evans.handlers.GettatoHandler.__repr__">
 <code class="sig-prename descclassname">(<a class="reference internal" href="#evans.handlers.Handler" title="evans.handlers.Handler"><code class="descclassname docutils literal notranslate"><span class="pre">Handler</span></code></a>).</code><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.GettatoHandler.__repr__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return repr(self).</p>
-</dd></dl>
-
-</div>
-<div class="inherited docutils container">
-<dl class="py method">
-<dt id="evans.handlers.GettatoHandler.__str__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="#evans.handlers.Handler" title="evans.handlers.Handler"><code class="descclassname docutils literal notranslate"><span class="pre">Handler</span></code></a>).</code><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.GettatoHandler.__str__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return str(self).</p>
 </dd></dl>
 
 </div>
@@ -919,14 +872,6 @@
 </dd></dl>
 
 </div>
-<div class="inherited docutils container">
-<dl class="py method">
-<dt id="evans.handlers.GlissandoHandler.__str__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="#evans.handlers.Handler" title="evans.handlers.Handler"><code class="descclassname docutils literal notranslate"><span class="pre">Handler</span></code></a>).</code><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.GlissandoHandler.__str__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return str(self).</p>
-</dd></dl>
-
-</div>
 <hr/><p class="class-header rubric">Methods</p>
 <dl class="py method">
 <dt id="evans.handlers.GlissandoHandler.add_glissando">
@@ -998,14 +943,6 @@
 </dd></dl>
 
 </div>
-<div class="inherited docutils container">
-<dl class="py method">
-<dt id="evans.handlers.GraceHandler.__str__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="#evans.handlers.Handler" title="evans.handlers.Handler"><code class="descclassname docutils literal notranslate"><span class="pre">Handler</span></code></a>).</code><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.GraceHandler.__str__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return str(self).</p>
-</dd></dl>
-
-</div>
 <hr/><p class="class-header rubric">Methods</p>
 <dl class="py method">
 <dt id="evans.handlers.GraceHandler.name">
@@ -1033,9 +970,6 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#evans.handlers.Handler.__repr__" title="evans.handlers.Handler.__repr__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__repr__</span></code></a></p></td>
 <td><p>Return repr(self).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#evans.handlers.Handler.__str__" title="evans.handlers.Handler.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a></p></td>
-<td><p>Return str(self).</p></td>
-</tr>
 </tbody>
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
@@ -1043,12 +977,6 @@
 <dt id="evans.handlers.Handler.__repr__">
 <em class="property">overridden </em><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.Handler.__repr__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return repr(self).</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="evans.handlers.Handler.__str__">
-<em class="property">overridden </em><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.Handler.__str__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return str(self).</p>
 </dd></dl>
 
 </dd></dl>
@@ -1108,14 +1036,6 @@
 <dt id="evans.handlers.NoteheadHandler.__repr__">
 <code class="sig-prename descclassname">(<a class="reference internal" href="#evans.handlers.Handler" title="evans.handlers.Handler"><code class="descclassname docutils literal notranslate"><span class="pre">Handler</span></code></a>).</code><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.NoteheadHandler.__repr__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return repr(self).</p>
-</dd></dl>
-
-</div>
-<div class="inherited docutils container">
-<dl class="py method">
-<dt id="evans.handlers.NoteheadHandler.__str__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="#evans.handlers.Handler" title="evans.handlers.Handler"><code class="descclassname docutils literal notranslate"><span class="pre">Handler</span></code></a>).</code><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.NoteheadHandler.__str__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return str(self).</p>
 </dd></dl>
 
 </div>
@@ -1368,14 +1288,6 @@
 </dd></dl>
 
 </div>
-<div class="inherited docutils container">
-<dl class="py method">
-<dt id="evans.handlers.PitchHandler.__str__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="#evans.handlers.Handler" title="evans.handlers.Handler"><code class="descclassname docutils literal notranslate"><span class="pre">Handler</span></code></a>).</code><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.PitchHandler.__str__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return str(self).</p>
-</dd></dl>
-
-</div>
 <hr/><p class="class-header rubric">Methods</p>
 <dl class="py method">
 <dt id="evans.handlers.PitchHandler.name">
@@ -1441,14 +1353,6 @@
 </dd></dl>
 
 </div>
-<div class="inherited docutils container">
-<dl class="py method">
-<dt id="evans.handlers.RhythmHandler.__str__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="#evans.handlers.Handler" title="evans.handlers.Handler"><code class="descclassname docutils literal notranslate"><span class="pre">Handler</span></code></a>).</code><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.RhythmHandler.__str__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return str(self).</p>
-</dd></dl>
-
-</div>
 <hr/><p class="class-header rubric">Methods</p>
 <dl class="py method">
 <dt id="evans.handlers.RhythmHandler.name">
@@ -1509,14 +1413,6 @@
 <dt id="evans.handlers.SlurHandler.__repr__">
 <code class="sig-prename descclassname">(<a class="reference internal" href="#evans.handlers.Handler" title="evans.handlers.Handler"><code class="descclassname docutils literal notranslate"><span class="pre">Handler</span></code></a>).</code><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.SlurHandler.__repr__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return repr(self).</p>
-</dd></dl>
-
-</div>
-<div class="inherited docutils container">
-<dl class="py method">
-<dt id="evans.handlers.SlurHandler.__str__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="#evans.handlers.Handler" title="evans.handlers.Handler"><code class="descclassname docutils literal notranslate"><span class="pre">Handler</span></code></a>).</code><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.SlurHandler.__str__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return str(self).</p>
 </dd></dl>
 
 </div>
@@ -1601,14 +1497,6 @@
 </dd></dl>
 
 </div>
-<div class="inherited docutils container">
-<dl class="py method">
-<dt id="evans.handlers.TempoSpannerHandler.__str__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="#evans.handlers.Handler" title="evans.handlers.Handler"><code class="descclassname docutils literal notranslate"><span class="pre">Handler</span></code></a>).</code><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.TempoSpannerHandler.__str__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return str(self).</p>
-</dd></dl>
-
-</div>
 <hr/><p class="class-header rubric">Methods</p>
 <dl class="py method">
 <dt id="evans.handlers.TempoSpannerHandler.add_spanner">
@@ -1683,14 +1571,6 @@
 </dd></dl>
 
 </div>
-<div class="inherited docutils container">
-<dl class="py method">
-<dt id="evans.handlers.TextSpanHandler.__str__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="#evans.handlers.Handler" title="evans.handlers.Handler"><code class="descclassname docutils literal notranslate"><span class="pre">Handler</span></code></a>).</code><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.TextSpanHandler.__str__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return str(self).</p>
-</dd></dl>
-
-</div>
 <hr/><p class="class-header rubric">Methods</p>
 <dl class="py method">
 <dt id="evans.handlers.TextSpanHandler.name">
@@ -1751,14 +1631,6 @@
 </dd></dl>
 
 </div>
-<div class="inherited docutils container">
-<dl class="py method">
-<dt id="evans.handlers.TrillHandler.__str__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="#evans.handlers.Handler" title="evans.handlers.Handler"><code class="descclassname docutils literal notranslate"><span class="pre">Handler</span></code></a>).</code><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.handlers.TrillHandler.__str__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return str(self).</p>
-</dd></dl>
-
-</div>
 <hr/><p class="class-header rubric">Methods</p>
 <dl class="py method">
 <dt id="evans.handlers.TrillHandler.name">
@@ -1797,7 +1669,7 @@
         
         &copy; Copyright 2018-2020, Gregory Rowland Evans
       <span class="lastupdated">
-        Last updated on Jul 21, 2020.
+        Last updated on Jul 23, 2020.
       </span>
 
     </p>
