@@ -4,6 +4,14 @@
 tspan { white-space: pre; }
 ]]>
 </style>
+<defs>
+  <style type="text/css">
+      @font-face {
+        font-family: Ekmelos;
+        src: url('../static/fonts/Ekmelos.svg');
+      }
+  </style>
+</defs>
 <!-- Page: 1/1 -->
 <g color="rgb(49.8039%, 49.8039%, 49.8039%)">
 <line transform="translate(16.0600, 9.9374)" stroke-linejoin="round" stroke-linecap="round" stroke-width="0.1073" stroke="currentColor" x1="0.0537" y1="-0.0000" x2="21.9839" y2="-0.0000"/>
@@ -23,10 +31,10 @@ c71 -83 134 -244 134 -357c0 -143 -85 -255 -178 -364c21 -68 40 -137 57 -206zM462 
 c0 -43 25 -89 80 -121c5 -5 7 -11 7 -16c0 -12 -10 -23 -22 -23c-3 0 -6 1 -9 2c-81 43 -118 116 -118 186c0 89 58 175 161 198c-14 58 -29 116 -46 173c-106 -122 -212 -244 -212 -404zM406 1042c-99 -47 -162 -148 -162 -257c0 -73 20 -132 38 -191
 c79 97 144 199 144 324c0 53 -4 76 -20 124z" fill="currentColor"/>
 <path transform="translate(26.0976, 7.9374) scale(0.0040, -0.0040)" d="M215 137c57 0 111 -29 111 -92c0 -71 -54 -120 -101 -148c-35 -21 -74 -34 -114 -34c-57 0 -111 29 -111 92c0 71 54 120 101 148c35 21 74 34 114 34z" fill="currentColor"/>
-<text transform="translate(23.9534, 7.9374)" font-family="ekmelos" font-size="3.9197" text-anchor="start" fill="currentColor">
+<text transform="translate(23.9534, 7.9374)" font-family="Ekmelos" font-size="3.9197" text-anchor="start" fill="currentColor">
 <tspan></tspan>
 </text>
-<text transform="translate(24.8750, 7.9374)" font-family="ekmelos" font-size="3.9197" text-anchor="start" fill="currentColor">
+<text transform="translate(24.8750, 7.9374)" font-family="Ekmelos" font-size="3.9197" text-anchor="start" fill="currentColor">
 <tspan></tspan>
 </text>
 </svg>
