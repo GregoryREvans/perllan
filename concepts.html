@@ -183,13 +183,13 @@
 When object modelling music notation, it becomes clear that most models take the graph form of a tree.
 The <code class="docutils literal notranslate"><span class="pre">Perllan</span></code> network of <code class="docutils literal notranslate"><span class="pre">Python</span></code> packages which wrap <code class="docutils literal notranslate"><span class="pre">Abjad</span></code> represents a location and a set of tools designed for the purpose of cultivating these trees.</p>
 <p>An analysis of a score tree can help in understanding the implications of parameter parentage. Traditional Western music notation is rooted firmly in Medieval formal architectures. Pitch notation is resolutely diatonic, non-power-of-two-denominator durations can only be represented with the assistance of a prolating tuplet bracket or time signature, and duration chains of prime-number-numerator durations greater than 3 can only be notated via tie-chained notes.</p>
-<p>A parent score can hold children as staves or staff-groups, staves hold children as voices. Staff groups may hold staves as well. A staff may hold one or more voices, but a voice, while not distinctly notated with unique symbols, is always implied. A voice may hold children as tuplet-prolated containers or (explicit or implied) tie-chained duration events. Tuplet-prolated containers may also hold tie-chained events. <code class="docutils literal notranslate"><span class="pre">Abjad</span></code> refers to these tie-chained events as <cite>Logical Ties</cite>. Logical ties may hold children as single-symbol (prime-number-numerator durations less than 3) leaves. While a pitch value persists through the duration of a logical tie, the notation of pitch is represented through the positioning of the note head of a leaf and when applicable, the affixing of an accidental symbol preceding the initial leaf of a logical tie. Since the positioning of note heads is required on a leaf-by-leaf basis within a logical tie, it can be implied that within the tree-structure of a musical score, the pitch value of a given note is not at the same depth as the duration value, rather pitch is a child of duration or at least a subordinate sibling.</p>
+<p>A parent score can hold children as staves or staff-groups, staves hold children as voices. Staff groups may hold staves as well. A staff may hold one or more voices, but a voice, while not distinctly notated with unique symbols, is always implied. A voice may hold children as tuplet-prolated containers or (explicit or implied) tie-chained duration events. Tuplet-prolated containers may also hold tie-chained events. <code class="docutils literal notranslate"><span class="pre">Abjad</span></code> refers to these tie-chained events as <cite>Logical Ties</cite>. Logical ties may hold children as single-symbol (prime-number-numerator durations less than 3) leaves. While a pitch value persists through the duration of a logical tie, the notation of pitch is represented through the positioning of the note head of a leaf and when applicable, the affixing of an accidental symbol preceding the initial leaf of a logical tie. Since the positioning of note heads is required on a leaf-by-leaf basis within a logical tie, it can be implied that within the tree-structure of a musical score, the pitch value of a given note is not at the same depth as the duration value, rather pitch is a child of duration or at least a subordinate sibling. Another form of parentage increases the child-like nature of the pitch parameter. In abjad, leaves are object-modelled with an abstract base class <code class="docutils literal notranslate"><span class="pre">abjad.Leaf()</span></code> which has duration but no pitch. The classes which inherit from leaf are <code class="docutils literal notranslate"><span class="pre">abjad.Skip()</span></code>, <code class="docutils literal notranslate"><span class="pre">abjad.Rest()</span></code>, and <code class="docutils literal notranslate"><span class="pre">abjad.Note()</span></code>. <code class="docutils literal notranslate"><span class="pre">Note</span></code> is the only class which carries a pitch attribute. Since the child class has an attribute which the parent class does not have, this attribute is a child of the parent class.</p>
 <p>There are several ramifications of this structure:</p>
 <ul class="simple">
 <li><p>A voice (explicit or implied) is always present as the lowest level of context containers, even in abstract manipulations of structures like pitch and duration.</p></li>
 <li><p>Regardless of when it is conceived by the composer, the tree of a score must be populated in a top-down fashion, gradually filling each parent with its children. Therefore, logical tie and leaf values must exist before pitch values can be affixed within a score.</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">Perllan</span></code> interfaces to pitch transforms require a selection of logical ties in order to apply pitch values.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Perllan</span></code> interfaces to pitch transforms require a selection of logical ties in order to apply pitch values. Not only is this consistent with the parentage model described above, the decoupling of parameters allows for a greater number of transformational possibilities, including those which would be possible if pitch and rhythm were not decoupled.</p>
 </div>
 <div class="section" id="pitch-rounding">
 <h2>Pitch rounding.<a class="headerlink" href="#pitch-rounding" title="Permalink to this headline">¶</a></h2>
@@ -200,7 +200,7 @@ It is the composer’s responsibility to round pitch numbers before deployment.<
 </div>
 <div class="section" id="personal-libraries">
 <h2>Personal libraries.<a class="headerlink" href="#personal-libraries" title="Permalink to this headline">¶</a></h2>
-<p>Personal libraries such as <code class="docutils literal notranslate"><span class="pre">evans</span></code> can provide users with useful programming solutions.</p>
+<p>Personal libraries such as <code class="docutils literal notranslate"><span class="pre">evans</span></code> can provide users with useful programming solutions, while holding a slightly less officially published quality.</p>
 </div>
 </div>
 
@@ -227,7 +227,7 @@ It is the composer’s responsibility to round pitch numbers before deployment.<
         
         &copy; Copyright 2018-2020, Gregory Rowland Evans
       <span class="lastupdated">
-        Last updated on Jul 24, 2020.
+        Last updated on Jul 27, 2020.
       </span>
 
     </p>
