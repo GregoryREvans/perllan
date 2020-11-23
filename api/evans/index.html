@@ -186,7 +186,7 @@
 <span class="target" id="module-evans"></span><p>Evans API</p>
 <p>The personal Abjad library of Gregory Rowland Evans.</p>
 <div class="svg-container docutils container">
-<div class="graphviz"><object data="../../images/inheritance-46866cc0024a69cb48b9303eff0e3b3e56415d20.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="../../images/inheritance-e60a87f9d77c232c9f6189c9cd6ff7c067500686.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">digraph InheritanceGraph {
 	graph [bgcolor=transparent,
 		color=lightsteelblue2,
@@ -295,9 +295,17 @@
 			color=5,
 			label=&quot;Bisbigliando\nHandler&quot;,
 			target=_top];
+		&quot;evans.handlers.BowAngleHandler&quot;		 [URL=&quot;../api/evans/handlers.html#evans.handlers.BowAngleHandler&quot;,
+			color=5,
+			label=&quot;Bow\nAngle\nHandler&quot;,
+			target=_top];
 		&quot;evans.handlers.ClefHandler&quot;		 [URL=&quot;../api/evans/handlers.html#evans.handlers.ClefHandler&quot;,
 			color=5,
 			label=&quot;Clef\nHandler&quot;,
+			target=_top];
+		&quot;evans.handlers.CompositeHandler&quot;		 [URL=&quot;../api/evans/handlers.html#evans.handlers.CompositeHandler&quot;,
+			color=5,
+			label=&quot;Composite\nHandler&quot;,
 			target=_top];
 		&quot;evans.handlers.DynamicHandler&quot;		 [URL=&quot;../api/evans/handlers.html#evans.handlers.DynamicHandler&quot;,
 			color=5,
@@ -322,16 +330,28 @@
 		&quot;evans.handlers.Handler&quot; -&gt; &quot;evans.handlers.ArticulationHandler&quot;		 [minlen=1];
 		&quot;evans.handlers.Handler&quot; -&gt; &quot;evans.handlers.BendHandler&quot;		 [minlen=2];
 		&quot;evans.handlers.Handler&quot; -&gt; &quot;evans.handlers.BisbigliandoHandler&quot;		 [minlen=3];
-		&quot;evans.handlers.Handler&quot; -&gt; &quot;evans.handlers.ClefHandler&quot;		 [minlen=4];
-		&quot;evans.handlers.Handler&quot; -&gt; &quot;evans.handlers.DynamicHandler&quot;		 [minlen=1];
-		&quot;evans.handlers.Handler&quot; -&gt; &quot;evans.handlers.GettatoHandler&quot;		 [minlen=2];
-		&quot;evans.handlers.Handler&quot; -&gt; &quot;evans.handlers.GlissandoHandler&quot;		 [minlen=3];
-		&quot;evans.handlers.Handler&quot; -&gt; &quot;evans.handlers.GraceHandler&quot;		 [minlen=4];
+		&quot;evans.handlers.Handler&quot; -&gt; &quot;evans.handlers.BowAngleHandler&quot;		 [minlen=4];
+		&quot;evans.handlers.Handler&quot; -&gt; &quot;evans.handlers.ClefHandler&quot;		 [minlen=1];
+		&quot;evans.handlers.Handler&quot; -&gt; &quot;evans.handlers.CompositeHandler&quot;		 [minlen=2];
+		&quot;evans.handlers.Handler&quot; -&gt; &quot;evans.handlers.DynamicHandler&quot;		 [minlen=3];
+		&quot;evans.handlers.Handler&quot; -&gt; &quot;evans.handlers.GettatoHandler&quot;		 [minlen=4];
+		&quot;evans.handlers.Handler&quot; -&gt; &quot;evans.handlers.GlissandoHandler&quot;		 [minlen=1];
+		&quot;evans.handlers.Handler&quot; -&gt; &quot;evans.handlers.GraceHandler&quot;		 [minlen=2];
+		&quot;evans.handlers.IntermittentVoiceHandler&quot;		 [URL=&quot;../api/evans/handlers.html#evans.handlers.IntermittentVoiceHandler&quot;,
+			color=5,
+			label=&quot;Intermittent\nVoice\nHandler&quot;,
+			target=_top];
+		&quot;evans.handlers.Handler&quot; -&gt; &quot;evans.handlers.IntermittentVoiceHandler&quot;		 [minlen=3];
 		&quot;evans.handlers.NoteheadHandler&quot;		 [URL=&quot;../api/evans/handlers.html#evans.handlers.NoteheadHandler&quot;,
 			color=5,
 			label=&quot;Notehead\nHandler&quot;,
 			target=_top];
-		&quot;evans.handlers.Handler&quot; -&gt; &quot;evans.handlers.NoteheadHandler&quot;		 [minlen=1];
+		&quot;evans.handlers.Handler&quot; -&gt; &quot;evans.handlers.NoteheadHandler&quot;		 [minlen=4];
+		&quot;evans.handlers.OnBeatGraceHandler&quot;		 [URL=&quot;../api/evans/handlers.html#evans.handlers.OnBeatGraceHandler&quot;,
+			color=5,
+			label=&quot;On\nBeat\nGrace\nHandler&quot;,
+			target=_top];
+		&quot;evans.handlers.Handler&quot; -&gt; &quot;evans.handlers.OnBeatGraceHandler&quot;		 [minlen=1];
 		&quot;evans.handlers.PitchHandler&quot;		 [URL=&quot;../api/evans/handlers.html#evans.handlers.PitchHandler&quot;,
 			color=5,
 			label=&quot;Pitch\nHandler&quot;,
@@ -369,6 +389,10 @@
 		&quot;evans.rtm.RTMMaker&quot;		 [URL=&quot;../api/evans/rtm.html#evans.rtm.RTMMaker&quot;,
 			color=6,
 			label=RTMMaker,
+			target=_top];
+		&quot;evans.rtm.RhythmTreeQuantizer&quot;		 [URL=&quot;../api/evans/rtm.html#evans.rtm.RhythmTreeQuantizer&quot;,
+			color=6,
+			label=&quot;Rhythm\nTree\nQuantizer&quot;,
 			target=_top];
 	}
 	subgraph &quot;cluster_evans.segmentmaker&quot; {
@@ -419,12 +443,13 @@
 	&quot;builtins.object&quot; -&gt; &quot;evans.consort.AbjadObject.AbjadObject&quot;;
 	&quot;builtins.object&quot; -&gt; &quot;evans.handlers.Handler&quot;;
 	&quot;builtins.object&quot; -&gt; &quot;evans.rtm.RTMMaker&quot;	 [minlen=1];
-	&quot;builtins.object&quot; -&gt; &quot;evans.segmentmaker.NoteheadBracketMaker&quot;	 [minlen=2];
-	&quot;builtins.object&quot; -&gt; &quot;evans.segmentmaker.SegmentMaker&quot;	 [minlen=3];
-	&quot;builtins.object&quot; -&gt; &quot;evans.sequence.CyclicList&quot;	 [minlen=4];
-	&quot;builtins.object&quot; -&gt; &quot;evans.sequence.MarkovChain&quot;	 [minlen=1];
-	&quot;builtins.object&quot; -&gt; &quot;evans.timespan.TimespanMaker&quot;	 [minlen=2];
-	&quot;builtins.object&quot; -&gt; &quot;evans.timespan.TimespanSpecifier&quot;	 [minlen=3];
+	&quot;builtins.object&quot; -&gt; &quot;evans.rtm.RhythmTreeQuantizer&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;evans.segmentmaker.NoteheadBracketMaker&quot;	 [minlen=3];
+	&quot;builtins.object&quot; -&gt; &quot;evans.segmentmaker.SegmentMaker&quot;	 [minlen=4];
+	&quot;builtins.object&quot; -&gt; &quot;evans.sequence.CyclicList&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;evans.sequence.MarkovChain&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;evans.timespan.TimespanMaker&quot;	 [minlen=3];
+	&quot;builtins.object&quot; -&gt; &quot;evans.timespan.TimespanSpecifier&quot;	 [minlen=4];
 }</p></object></div>
 </div>
 <hr/><p class="section-header rubric">Subpackages</p>
@@ -490,7 +515,7 @@
         
         &copy; Copyright 2018-2020, Gregory Rowland Evans
       <span class="lastupdated">
-        Last updated on Jul 27, 2020.
+        Last updated on Nov 23, 2020.
       </span>
 
     </p>

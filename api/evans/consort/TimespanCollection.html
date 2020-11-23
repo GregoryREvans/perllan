@@ -539,7 +539,11 @@ Returns string.</p>
 <dd><p>Delete material that intersects <cite>timespan</cite>:</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">timespan_collection</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">TimespanCollection</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="p">[</span><span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">),]</span>
+<span class="gp">... </span>    <span class="p">[</span>
+<span class="gp">... </span>        <span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">]</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timespan</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">timespan_collection</span> <span class="o">-</span> <span class="n">timespan</span>
@@ -740,7 +744,12 @@ Returns string.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">timespan_collection</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">TimespanCollection</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timespan_collection</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">timespan_collection</span><span class="o">.</span><span class="n">insert</span><span class="p">((</span><span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">),))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timespan_collection</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">(</span>
+<span class="gp">... </span>        <span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">timespan_collection</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">x</span>
 <span class="gp">... </span>
@@ -922,7 +931,7 @@ Returns string.</p>
         
         &copy; Copyright 2018-2020, Gregory Rowland Evans
       <span class="lastupdated">
-        Last updated on Jul 27, 2020.
+        Last updated on Nov 23, 2020.
       </span>
 
     </p>

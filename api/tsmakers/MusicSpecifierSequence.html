@@ -239,7 +239,9 @@
 <em class="property">class </em><code class="sig-prename descclassname">tsmakers.MusicSpecifierSequence.</code><code class="sig-name descname">MusicSpecifierSequence</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">application_rate</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">music_specifiers</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.MusicSpecifierSequence.MusicSpecifierSequence" title="Permalink to this definition">¶</a></dt>
 <dd><p>A music specifier sequence.</p>
 <div class="example docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sequence_a</span> <span class="o">=</span> <span class="n">tsmakers</span><span class="o">.</span><span class="n">MusicSpecifierSequence</span><span class="p">(</span><span class="n">music_specifiers</span><span class="o">=</span><span class="s2">&quot;music&quot;</span><span class="p">,)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sequence_a</span> <span class="o">=</span> <span class="n">tsmakers</span><span class="o">.</span><span class="n">MusicSpecifierSequence</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">music_specifiers</span><span class="o">=</span><span class="s2">&quot;music&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="n">sequence_a</span><span class="p">))</span>
 <span class="go">tsmakers.MusicSpecifierSequence(</span>
 <span class="go">    music_specifiers=(&#39;music&#39;,),</span>
@@ -249,7 +251,8 @@
 </div>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sequence_b</span> <span class="o">=</span> <span class="n">tsmakers</span><span class="o">.</span><span class="n">MusicSpecifierSequence</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">application_rate</span><span class="o">=</span><span class="s2">&quot;phrase&quot;</span><span class="p">,</span> <span class="n">music_specifiers</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;three&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">application_rate</span><span class="o">=</span><span class="s2">&quot;phrase&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">music_specifiers</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;three&quot;</span><span class="p">],</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="n">sequence_b</span><span class="p">))</span>
 <span class="go">tsmakers.MusicSpecifierSequence(</span>
@@ -274,6 +277,12 @@
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#tsmakers.MusicSpecifierSequence.MusicSpecifierSequence.__len__" title="tsmakers.MusicSpecifierSequence.MusicSpecifierSequence.__len__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__len__</span></code></a></p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tsmakers.MusicSpecifierSequence.MusicSpecifierSequence.__repr__" title="tsmakers.MusicSpecifierSequence.MusicSpecifierSequence.__repr__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__repr__</span></code></a></p></td>
+<td><p>Return repr(self).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tsmakers.MusicSpecifierSequence.MusicSpecifierSequence.__str__" title="tsmakers.MusicSpecifierSequence.MusicSpecifierSequence.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a></p></td>
+<td><p>Return str(self).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#tsmakers.MusicSpecifierSequence.MusicSpecifierSequence.application_rate" title="tsmakers.MusicSpecifierSequence.MusicSpecifierSequence.application_rate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">application_rate</span></code></a></p></td>
 <td><p></p></td>
@@ -302,6 +311,18 @@
 <dt id="tsmakers.MusicSpecifierSequence.MusicSpecifierSequence.__len__">
 <code class="sig-name descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.MusicSpecifierSequence.MusicSpecifierSequence.__len__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.MusicSpecifierSequence.MusicSpecifierSequence.__repr__">
+<em class="property">overridden </em><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.MusicSpecifierSequence.MusicSpecifierSequence.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return repr(self).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tsmakers.MusicSpecifierSequence.MusicSpecifierSequence.__str__">
+<em class="property">overridden </em><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.MusicSpecifierSequence.MusicSpecifierSequence.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
 
 <hr/><p class="class-header rubric">Methods</p>
 <dl class="py method">
@@ -347,7 +368,7 @@
         
         &copy; Copyright 2018-2020, Gregory Rowland Evans
       <span class="lastupdated">
-        Last updated on Jul 27, 2020.
+        Last updated on Nov 23, 2020.
       </span>
 
     </p>

@@ -198,13 +198,16 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#evans.metmod.calculate_metric_modulation" title="evans.metmod.calculate_metric_modulation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_metric_modulation</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#evans.metmod.compare_speed" title="evans.metmod.compare_speed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_speed</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.metmod.calculate_tempo_modulated_duration" title="evans.metmod.calculate_tempo_modulated_duration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_tempo_modulated_duration</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#evans.metmod.metric_modulation" title="evans.metmod.metric_modulation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metric_modulation</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.metmod.compare_speed" title="evans.metmod.compare_speed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_speed</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.metmod.metric_modulation" title="evans.metmod.metric_modulation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metric_modulation</span></code></a></p></td>
 <td><p>Makes metric modulation markup.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#evans.metmod.mixed_number" title="evans.metmod.mixed_number"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mixed_number</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.metmod.mixed_number" title="evans.metmod.mixed_number"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mixed_number</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -213,6 +216,31 @@
 <dt id="evans.metmod.calculate_metric_modulation">
 <code class="sig-prename descclassname">evans.metmod.</code><code class="sig-name descname">calculate_metric_modulation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">l_tempo</span><span class="o">=</span><span class="default_value">60</span></em>, <em class="sig-param"><span class="n">l_note</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">r_note</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.metmod.calculate_metric_modulation" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py function">
+<dt id="evans.metmod.calculate_tempo_modulated_duration">
+<code class="sig-prename descclassname">evans.metmod.</code><code class="sig-name descname">calculate_tempo_modulated_duration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">original_tempo</span><span class="o">=</span><span class="default_value">1, 4, 60</span></em>, <em class="sig-param"><span class="n">new_tempo</span><span class="o">=</span><span class="default_value">1, 4, 120</span></em>, <em class="sig-param"><span class="n">duration</span><span class="o">=</span><span class="default_value">Duration(1, 1)</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.metmod.calculate_tempo_modulated_duration" title="Permalink to this definition">¶</a></dt>
+<dd><div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">evans</span><span class="o">.</span><span class="n">calculate_tempo_modulated_duration</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">original_tempo</span><span class="o">=</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="mi">60</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">new_tempo</span><span class="o">=</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="mi">120</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">duration</span><span class="o">=</span><span class="n">abjad</span><span class="o">.</span><span class="n">Duration</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">Duration(2, 1)</span>
+</pre></div>
+</div>
+</div>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">evans</span><span class="o">.</span><span class="n">calculate_tempo_modulated_duration</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">original_tempo</span><span class="o">=</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="mi">72</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">new_tempo</span><span class="o">=</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="mi">83</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">duration</span><span class="o">=</span><span class="n">abjad</span><span class="o">.</span><span class="n">Duration</span><span class="p">((</span><span class="mi">23</span><span class="p">,</span> <span class="mi">8</span><span class="p">)),</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">Duration(1909, 576)</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt id="evans.metmod.compare_speed">
@@ -240,7 +268,7 @@
 </pre></div>
 </div>
 <div class="uqbar-book">
-    <a href="../../images/lilypond-e1ce3634699f1af399ca9fc7fa503592bc204a2e4fb9bc91467e03d9d6768239.ly"><img src="../../images/lilypond-e1ce3634699f1af399ca9fc7fa503592bc204a2e4fb9bc91467e03d9d6768239.cropped.png"/></a>
+    <a href="../../images/lilypond-e1ce3634699f1af399ca9fc7fa503592bc204a2e4fb9bc91467e03d9d6768239.ly"><img src="../../images/lilypond-e1ce3634699f1af399ca9fc7fa503592bc204a2e4fb9bc91467e03d9d6768239.cropped.svg"/></a>
 </div></div>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">metric_modulation</span><span class="p">(</span>
@@ -259,7 +287,7 @@
 </pre></div>
 </div>
 <div class="uqbar-book">
-    <a href="../../images/lilypond-44547102258ee3cdc4ba4c682916b958556ffc5b860a91841d0e4f705c9392a0.ly"><img src="../../images/lilypond-44547102258ee3cdc4ba4c682916b958556ffc5b860a91841d0e4f705c9392a0.cropped.png"/></a>
+    <a href="../../images/lilypond-44547102258ee3cdc4ba4c682916b958556ffc5b860a91841d0e4f705c9392a0.ly"><img src="../../images/lilypond-44547102258ee3cdc4ba4c682916b958556ffc5b860a91841d0e4f705c9392a0.cropped.svg"/></a>
 </div></div>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">metric_modulation</span><span class="p">(</span>
@@ -280,7 +308,7 @@
 </pre></div>
 </div>
 <div class="uqbar-book">
-    <a href="../../images/lilypond-d0042cb1fad1a8b232c1646046b94349dcc2995b6138d11d9eab171f5c3d09e3.ly"><img src="../../images/lilypond-d0042cb1fad1a8b232c1646046b94349dcc2995b6138d11d9eab171f5c3d09e3.cropped.png"/></a>
+    <a href="../../images/lilypond-d0042cb1fad1a8b232c1646046b94349dcc2995b6138d11d9eab171f5c3d09e3.ly"><img src="../../images/lilypond-d0042cb1fad1a8b232c1646046b94349dcc2995b6138d11d9eab171f5c3d09e3.cropped.svg"/></a>
 </div></div>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">metric_modulation</span><span class="p">(</span>
@@ -299,7 +327,7 @@
 </pre></div>
 </div>
 <div class="uqbar-book">
-    <a href="../../images/lilypond-9bd60659767276d9a49e00ea7edfda75b8562c5497ff4da90b4f56dc6ed41ca5.ly"><img src="../../images/lilypond-9bd60659767276d9a49e00ea7edfda75b8562c5497ff4da90b4f56dc6ed41ca5.cropped.png"/></a>
+    <a href="../../images/lilypond-9bd60659767276d9a49e00ea7edfda75b8562c5497ff4da90b4f56dc6ed41ca5.ly"><img src="../../images/lilypond-9bd60659767276d9a49e00ea7edfda75b8562c5497ff4da90b4f56dc6ed41ca5.cropped.svg"/></a>
 </div></div>
 </dd></dl>
 
@@ -333,7 +361,7 @@
         
         &copy; Copyright 2018-2020, Gregory Rowland Evans
       <span class="lastupdated">
-        Last updated on Jul 27, 2020.
+        Last updated on Nov 23, 2020.
       </span>
 
     </p>

@@ -244,7 +244,10 @@
 <dd><p>A talea timespan maker.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">timespan_maker</span> <span class="o">=</span> <span class="n">tsmakers</span><span class="o">.</span><span class="n">TaleaTimespanMaker</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">initial_silence_talea</span><span class="o">=</span><span class="n">rmakers</span><span class="o">.</span><span class="n">Talea</span><span class="p">(</span><span class="n">counts</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">denominator</span><span class="o">=</span><span class="mi">16</span><span class="p">,)</span>
+<span class="gp">... </span>    <span class="n">initial_silence_talea</span><span class="o">=</span><span class="n">rmakers</span><span class="o">.</span><span class="n">Talea</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">counts</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">denominator</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">)</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="n">timespan_maker</span><span class="p">))</span>
 <span class="go">tsmakers.TaleaTimespanMaker(</span>
@@ -272,11 +275,17 @@
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">collections</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">music_specifiers</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="p">[(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),]</span>
+<span class="gp">... </span>    <span class="p">[</span>
+<span class="gp">... </span>        <span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">]</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">target_timespan</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timespan_list</span> <span class="o">=</span> <span class="n">timespan_maker</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">music_specifiers</span><span class="o">=</span><span class="n">music_specifiers</span><span class="p">,</span> <span class="n">target_timespan</span><span class="o">=</span><span class="n">target_timespan</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">music_specifiers</span><span class="o">=</span><span class="n">music_specifiers</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">target_timespan</span><span class="o">=</span><span class="n">target_timespan</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ts_list</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="p">[</span>
@@ -291,39 +300,16 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">ts_list</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;annotation&quot;</span><span class="p">)</span>  
 </pre></div>
 </div>
-<div class="uqbar-book">
-    <a href="../../images/lilypond-538cc308b0b0f034deae86c99566d831a902c0869f7f684f361f89589f1d0f53.ly"><img src="../../images/lilypond-538cc308b0b0f034deae86c99566d831a902c0869f7f684f361f89589f1d0f53.cropped.png"/></a>
-</div></div>
-<div class="example docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">timespan_maker</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">timespan_maker</span><span class="p">,</span> <span class="n">initial_silence_talea</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">synchronize_step</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">timespan_list</span> <span class="o">=</span> <span class="n">timespan_maker</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">music_specifiers</span><span class="o">=</span><span class="n">music_specifiers</span><span class="p">,</span> <span class="n">target_timespan</span><span class="o">=</span><span class="n">target_timespan</span><span class="p">,</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ts_list</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="p">[</span>
-<span class="gp">... </span>        <span class="n">abjad</span><span class="o">.</span><span class="n">AnnotatedTimespan</span><span class="p">(</span>
-<span class="gp">... </span>            <span class="n">start_offset</span><span class="o">=</span><span class="n">_</span><span class="o">.</span><span class="n">start_offset</span><span class="p">,</span>
-<span class="gp">... </span>            <span class="n">stop_offset</span><span class="o">=</span><span class="n">_</span><span class="o">.</span><span class="n">stop_offset</span><span class="p">,</span>
-<span class="gp">... </span>            <span class="n">annotation</span><span class="o">=</span><span class="n">_</span><span class="o">.</span><span class="n">voice_name</span><span class="p">,</span>
-<span class="gp">... </span>        <span class="p">)</span>
-<span class="gp">... </span>        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">timespan_list</span>
-<span class="gp">... </span>    <span class="p">]</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">ts_list</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;annotation&quot;</span><span class="p">)</span>  
-</pre></div>
 </div>
-<div class="uqbar-book">
-    <a href="../../images/lilypond-884dbfd6e746787abaa29b23de738a375b48ad776baee6af18144978c4c9e7dc.ly"><img src="../../images/lilypond-884dbfd6e746787abaa29b23de738a375b48ad776baee6af18144978c4c9e7dc.cropped.png"/></a>
-</div></div>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">timespan_maker</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">timespan_maker</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">initial_silence_talea</span><span class="o">=</span><span class="n">rmakers</span><span class="o">.</span><span class="n">Talea</span><span class="p">(</span><span class="n">counts</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">denominator</span><span class="o">=</span><span class="mi">16</span><span class="p">,),</span>
+<span class="gp">... </span>    <span class="n">initial_silence_talea</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">synchronize_step</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timespan_list</span> <span class="o">=</span> <span class="n">timespan_maker</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">music_specifiers</span><span class="o">=</span><span class="n">music_specifiers</span><span class="p">,</span> <span class="n">target_timespan</span><span class="o">=</span><span class="n">target_timespan</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">music_specifiers</span><span class="o">=</span><span class="n">music_specifiers</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">target_timespan</span><span class="o">=</span><span class="n">target_timespan</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ts_list</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="p">[</span>
@@ -338,9 +324,33 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">ts_list</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;annotation&quot;</span><span class="p">)</span>  
 </pre></div>
 </div>
-<div class="uqbar-book">
-    <a href="../../images/lilypond-e18a96ae1fb8759f7d95240b00b2418cd046d8b09ce92bb6694f3279888b1b4c.ly"><img src="../../images/lilypond-e18a96ae1fb8759f7d95240b00b2418cd046d8b09ce92bb6694f3279888b1b4c.cropped.png"/></a>
-</div></div>
+</div>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">timespan_maker</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">timespan_maker</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">initial_silence_talea</span><span class="o">=</span><span class="n">rmakers</span><span class="o">.</span><span class="n">Talea</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">counts</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">denominator</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">),</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timespan_list</span> <span class="o">=</span> <span class="n">timespan_maker</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">music_specifiers</span><span class="o">=</span><span class="n">music_specifiers</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">target_timespan</span><span class="o">=</span><span class="n">target_timespan</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts_list</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span>
+<span class="gp">... </span>        <span class="n">abjad</span><span class="o">.</span><span class="n">AnnotatedTimespan</span><span class="p">(</span>
+<span class="gp">... </span>            <span class="n">start_offset</span><span class="o">=</span><span class="n">_</span><span class="o">.</span><span class="n">start_offset</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="n">stop_offset</span><span class="o">=</span><span class="n">_</span><span class="o">.</span><span class="n">stop_offset</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="n">annotation</span><span class="o">=</span><span class="n">_</span><span class="o">.</span><span class="n">voice_name</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="p">)</span>
+<span class="gp">... </span>        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">timespan_list</span>
+<span class="gp">... </span>    <span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">ts_list</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;annotation&quot;</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">music_specifiers</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="p">[(</span><span class="sa">f</span><span class="s2">&quot;Voice </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
@@ -360,7 +370,9 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t_list</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">span</span> <span class="ow">in</span> <span class="n">temp_list</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">new_span</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">AnnotatedTimespan</span><span class="p">(</span>
-<span class="gp">... </span>        <span class="n">span</span><span class="o">.</span><span class="n">start_offset</span><span class="p">,</span> <span class="n">span</span><span class="o">.</span><span class="n">stop_offset</span><span class="p">,</span> <span class="n">annotation</span><span class="o">=</span><span class="n">span</span><span class="o">.</span><span class="n">voice_name</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="n">span</span><span class="o">.</span><span class="n">start_offset</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="n">span</span><span class="o">.</span><span class="n">stop_offset</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="n">annotation</span><span class="o">=</span><span class="n">span</span><span class="o">.</span><span class="n">voice_name</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="p">)</span>
 <span class="gp">... </span>    <span class="n">t_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_span</span><span class="p">)</span>
 <span class="gp">... </span>
@@ -375,9 +387,7 @@
 <span class="gp">... </span><span class="p">)</span>  
 </pre></div>
 </div>
-<div class="uqbar-book">
-    <a href="../../images/lilypond-612787ab0334f0e3f9f0d1459244936255b9fcd3af6826c453850c076f3bdcc7.ly"><img src="../../images/lilypond-612787ab0334f0e3f9f0d1459244936255b9fcd3af6826c453850c076f3bdcc7.cropped.png"/></a>
-</div></div>
+</div>
 <hr/><p class="class-header rubric">Attributes Summary</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -439,6 +449,22 @@
 <dt id="tsmakers.TaleaTimespanMaker.TaleaTimespanMaker.__illustrate__">
 <code class="sig-prename descclassname">(<a class="reference internal" href="TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker" title="tsmakers.TimespanMaker.TimespanMaker"><code class="descclassname docutils literal notranslate"><span class="pre">TimespanMaker</span></code></a>).</code><code class="sig-name descname">__illustrate__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scale</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">target_timespan</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.TaleaTimespanMaker.TaleaTimespanMaker.__illustrate__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="py method">
+<dt id="tsmakers.TaleaTimespanMaker.TaleaTimespanMaker.__repr__">
+<code class="sig-prename descclassname">(<a class="reference internal" href="TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker" title="tsmakers.TimespanMaker.TimespanMaker"><code class="descclassname docutils literal notranslate"><span class="pre">TimespanMaker</span></code></a>).</code><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.TaleaTimespanMaker.TaleaTimespanMaker.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return repr(self).</p>
+</dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="py method">
+<dt id="tsmakers.TaleaTimespanMaker.TaleaTimespanMaker.__str__">
+<code class="sig-prename descclassname">(<a class="reference internal" href="TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker" title="tsmakers.TimespanMaker.TimespanMaker"><code class="descclassname docutils literal notranslate"><span class="pre">TimespanMaker</span></code></a>).</code><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.TaleaTimespanMaker.TaleaTimespanMaker.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
 
 </div>
 <hr/><p class="class-header rubric">Methods</p>
@@ -562,7 +588,7 @@
         
         &copy; Copyright 2018-2020, Gregory Rowland Evans
       <span class="lastupdated">
-        Last updated on Jul 27, 2020.
+        Last updated on Nov 23, 2020.
       </span>
 
     </p>

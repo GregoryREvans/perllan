@@ -244,8 +244,14 @@
 <dd><p>A boundary timespan-maker.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">timespan_maker</span> <span class="o">=</span> <span class="n">tsmakers</span><span class="o">.</span><span class="n">BoundaryTimespanMaker</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">start_talea</span><span class="o">=</span><span class="n">rmakers</span><span class="o">.</span><span class="n">Talea</span><span class="p">(</span><span class="n">counts</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">denominator</span><span class="o">=</span><span class="mi">2</span><span class="p">,),</span>
-<span class="gp">... </span>    <span class="n">stop_talea</span><span class="o">=</span><span class="n">rmakers</span><span class="o">.</span><span class="n">Talea</span><span class="p">(</span><span class="n">counts</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">denominator</span><span class="o">=</span><span class="mi">4</span><span class="p">,),</span>
+<span class="gp">... </span>    <span class="n">start_talea</span><span class="o">=</span><span class="n">rmakers</span><span class="o">.</span><span class="n">Talea</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">counts</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="n">denominator</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">),</span>
+<span class="gp">... </span>    <span class="n">stop_talea</span><span class="o">=</span><span class="n">rmakers</span><span class="o">.</span><span class="n">Talea</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">counts</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="n">denominator</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">),</span>
 <span class="gp">... </span>    <span class="n">voice_names</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="n">timespan_maker</span><span class="p">))</span>
@@ -269,13 +275,19 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">timespan_list</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="p">[</span>
 <span class="gp">... </span>        <span class="n">tsmakers</span><span class="o">.</span><span class="n">PerformedTimespan</span><span class="p">(</span>
-<span class="gp">... </span>            <span class="n">start_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop_offset</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">voice_name</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="n">start_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="n">stop_offset</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="n">voice_name</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">,</span>
 <span class="gp">... </span>        <span class="p">),</span>
 <span class="gp">... </span>        <span class="n">tsmakers</span><span class="o">.</span><span class="n">PerformedTimespan</span><span class="p">(</span>
-<span class="gp">... </span>            <span class="n">start_offset</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">stop_offset</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">voice_name</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="n">start_offset</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+<span class="gp">... </span>            <span class="n">stop_offset</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+<span class="gp">... </span>            <span class="n">voice_name</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span>
 <span class="gp">... </span>        <span class="p">),</span>
 <span class="gp">... </span>        <span class="n">tsmakers</span><span class="o">.</span><span class="n">PerformedTimespan</span><span class="p">(</span>
-<span class="gp">... </span>            <span class="n">start_offset</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stop_offset</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">voice_name</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="n">start_offset</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="n">stop_offset</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="n">voice_name</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span>
 <span class="gp">... </span>        <span class="p">),</span>
 <span class="gp">... </span>    <span class="p">]</span>
 <span class="gp">... </span><span class="p">)</span>
@@ -299,9 +311,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">ts_list</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;annotation&quot;</span><span class="p">)</span>  
 </pre></div>
 </div>
-<div class="uqbar-book">
-    <a href="../../images/lilypond-be6001bb6ce6697ecd4abd6e95e0787df4a2740e1daaacc13cf9d93fffd4e450.ly"><img src="../../images/lilypond-be6001bb6ce6697ecd4abd6e95e0787df4a2740e1daaacc13cf9d93fffd4e450.cropped.png"/></a>
-</div></div>
+</div>
 <hr/><p class="class-header rubric">Attributes Summary</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -357,6 +367,22 @@
 <dt id="tsmakers.BoundaryTimespanMaker.BoundaryTimespanMaker.__illustrate__">
 <code class="sig-prename descclassname">(<a class="reference internal" href="TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker" title="tsmakers.TimespanMaker.TimespanMaker"><code class="descclassname docutils literal notranslate"><span class="pre">TimespanMaker</span></code></a>).</code><code class="sig-name descname">__illustrate__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scale</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">target_timespan</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.BoundaryTimespanMaker.BoundaryTimespanMaker.__illustrate__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="py method">
+<dt id="tsmakers.BoundaryTimespanMaker.BoundaryTimespanMaker.__repr__">
+<code class="sig-prename descclassname">(<a class="reference internal" href="TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker" title="tsmakers.TimespanMaker.TimespanMaker"><code class="descclassname docutils literal notranslate"><span class="pre">TimespanMaker</span></code></a>).</code><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.BoundaryTimespanMaker.BoundaryTimespanMaker.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return repr(self).</p>
+</dd></dl>
+
+</div>
+<div class="inherited docutils container">
+<dl class="py method">
+<dt id="tsmakers.BoundaryTimespanMaker.BoundaryTimespanMaker.__str__">
+<code class="sig-prename descclassname">(<a class="reference internal" href="TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker" title="tsmakers.TimespanMaker.TimespanMaker"><code class="descclassname docutils literal notranslate"><span class="pre">TimespanMaker</span></code></a>).</code><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsmakers.BoundaryTimespanMaker.BoundaryTimespanMaker.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
 
 </div>
 <hr/><p class="class-header rubric">Methods</p>
@@ -470,7 +496,7 @@
         
         &copy; Copyright 2018-2020, Gregory Rowland Evans
       <span class="lastupdated">
-        Last updated on Jul 27, 2020.
+        Last updated on Nov 23, 2020.
       </span>
 
     </p>
