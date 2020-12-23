@@ -41,7 +41,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="timespan" href="timespan.html" />
+    <link rel="next" title="spanners" href="spanners.html" />
     <link rel="prev" title="segmentmaker" href="segmentmaker.html" /> 
 </head>
 
@@ -104,6 +104,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rtm.html">rtm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="segmentmaker.html">segmentmaker</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">sequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spanners.html">spanners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="timespan.html">timespan</a></li>
 </ul>
 </li>
@@ -428,34 +429,40 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#evans.sequence.add_sequences" title="evans.sequence.add_sequences"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_sequences</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#evans.sequence.cyc" title="evans.sequence.cyc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cyc</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.sequence.chen" title="evans.sequence.chen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chen</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#evans.sequence.derive_added_sequences" title="evans.sequence.derive_added_sequences"><code class="xref py py-obj docutils literal notranslate"><span class="pre">derive_added_sequences</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.sequence.cyc" title="evans.sequence.cyc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cyc</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#evans.sequence.derive_multiplied_sequences" title="evans.sequence.derive_multiplied_sequences"><code class="xref py py-obj docutils literal notranslate"><span class="pre">derive_multiplied_sequences</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.sequence.derive_added_sequences" title="evans.sequence.derive_added_sequences"><code class="xref py py-obj docutils literal notranslate"><span class="pre">derive_added_sequences</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#evans.sequence.e_bonacci_cycle" title="evans.sequence.e_bonacci_cycle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e_bonacci_cycle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.sequence.derive_multiplied_sequences" title="evans.sequence.derive_multiplied_sequences"><code class="xref py py-obj docutils literal notranslate"><span class="pre">derive_multiplied_sequences</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#evans.sequence.e_dovan_cycle" title="evans.sequence.e_dovan_cycle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e_dovan_cycle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.sequence.e_bonacci_cycle" title="evans.sequence.e_bonacci_cycle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e_bonacci_cycle</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#evans.sequence.feigenbaum_bifurcations" title="evans.sequence.feigenbaum_bifurcations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">feigenbaum_bifurcations</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.sequence.e_dovan_cycle" title="evans.sequence.e_dovan_cycle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">e_dovan_cycle</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#evans.sequence.flatten" title="evans.sequence.flatten"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flatten</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.sequence.feigenbaum_bifurcations" title="evans.sequence.feigenbaum_bifurcations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">feigenbaum_bifurcations</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#evans.sequence.grouper" title="evans.sequence.grouper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grouper</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.sequence.flatten" title="evans.sequence.flatten"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flatten</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#evans.sequence.guerrero_morales" title="evans.sequence.guerrero_morales"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guerrero_morales</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.sequence.grouper" title="evans.sequence.grouper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grouper</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#evans.sequence.harmonic_series" title="evans.sequence.harmonic_series"><code class="xref py py-obj docutils literal notranslate"><span class="pre">harmonic_series</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.sequence.guerrero_morales" title="evans.sequence.guerrero_morales"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guerrero_morales</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.sequence.harmonic_series" title="evans.sequence.harmonic_series"><code class="xref py py-obj docutils literal notranslate"><span class="pre">harmonic_series</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.sequence.henon" title="evans.sequence.henon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">henon</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#evans.sequence.hexagonal_sequence" title="evans.sequence.hexagonal_sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hexagonal_sequence</span></code></a></p></td>
@@ -464,7 +471,19 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#evans.sequence.josephus" title="evans.sequence.josephus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">josephus</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#evans.sequence.lindenmayer" title="evans.sequence.lindenmayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lindenmayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.sequence.julia_set" title="evans.sequence.julia_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">julia_set</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.sequence.lindenmayer" title="evans.sequence.lindenmayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lindenmayer</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.sequence.lorenz" title="evans.sequence.lorenz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lorenz</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.sequence.lu_chen" title="evans.sequence.lu_chen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lu_chen</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.sequence.mandelbrot_set" title="evans.sequence.mandelbrot_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mandelbrot_set</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#evans.sequence.mirror" title="evans.sequence.mirror"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mirror</span></code></a></p></td>
@@ -530,10 +549,13 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#evans.sequence.reproportion_scale" title="evans.sequence.reproportion_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reproportion_scale</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#evans.sequence.rotate" title="evans.sequence.rotate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.sequence.roessler" title="evans.sequence.roessler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">roessler</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#evans.sequence.warp" title="evans.sequence.warp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">warp</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.sequence.rotate" title="evans.sequence.rotate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.sequence.warp" title="evans.sequence.warp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">warp</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -554,6 +576,25 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq_2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">evans</span><span class="o">.</span><span class="n">add_sequences</span><span class="p">(</span><span class="n">seq_1</span><span class="p">,</span> <span class="n">seq_2</span><span class="p">)</span>
 <span class="go">[5, 7, 9, 11, 9]</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="evans.sequence.chen">
+<code class="sig-prename descclassname">evans.sequence.</code><code class="sig-name descname">chen</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em>, <em class="sig-param"><span class="n">c</span></em>, <em class="sig-param"><span class="n">first_state</span></em>, <em class="sig-param"><span class="n">time_values</span></em>, <em class="sig-param"><span class="n">iters</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.sequence.chen" title="Permalink to this definition">¶</a></dt>
+<dd><div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">chen</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">a</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">c</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">first_state</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.6</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">time_values</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">40.0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">iters</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="go">[[-0.1, 0.12465461315287765, 0.34050473218831634, 0.5770360314308272, 0.8626644815821614, 1.228312639285715, 1.7104499742301047, 2.3534686146396937, 3.210342581973768, 4.338499963066017], [0.5, 0.6622702530766478, 0.8942439508177749, 1.2176463222616842, 1.66295375321105, 2.2713555330407695, 3.0965468523002206, 4.204669803361282, 5.6680291136883945, 7.542293510840843], [-0.6, -0.5821525955103403, -0.5631370288024949, -0.5417183868578875, -0.5155298081524363, -0.48013350192305393, -0.4273027100127936, -0.34198524404844655, -0.19722719758314597, 0.05337630134609778]]</span>
 </pre></div>
 </div>
 </div>
@@ -811,6 +852,23 @@
 </dd></dl>
 
 <dl class="py function">
+<dt id="evans.sequence.henon">
+<code class="sig-prename descclassname">evans.sequence.</code><code class="sig-name descname">henon</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">first_state</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em>, <em class="sig-param"><span class="n">iters</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.sequence.henon" title="Permalink to this definition">¶</a></dt>
+<dd><div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">henon</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">first_state</span><span class="o">=</span><span class="p">[(</span><span class="o">-</span><span class="mf">0.75</span><span class="p">),</span> <span class="mf">0.32</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">a</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">b</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">iters</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+<span class="go">([-0.75, Decimal(&#39;0.6450000000000000316413562021&#39;), Decimal(&#39;0.2757699999999999778210746366&#39;), Decimal(&#39;1.102241088520000020387803903&#39;), Decimal(&#39;-0.375191500666105380643309098&#39;), Decimal(&#39;1.161749931949499014986033708&#39;), Decimal(&#39;-0.7321529354614302607193373836&#39;), Decimal(&#39;0.7052674744991025979072557961&#39;), Decimal(&#39;0.1834714666579601521199694779&#39;), Decimal(&#39;1.171186107456583192487843126&#39;), Decimal(&#39;-0.590970837961775774691947209&#39;)], [0.32, Decimal(&#39;-0.2249999999999999916733273153&#39;), Decimal(&#39;0.1935000000000000023314683518&#39;), Decimal(&#39;0.08273099999999999028466035597&#39;), Decimal(&#39;0.3306723265559999938790068193&#39;), Decimal(&#39;-0.1125574501998316100275303026&#39;), Decimal(&#39;0.3485249795848496915977948793&#39;), Decimal(&#39;-0.2196458806384290700872707501&#39;), Decimal(&#39;0.2115802423497307715421348517&#39;), Decimal(&#39;0.05504143999738804359904837692&#39;), Decimal(&#39;0.3513558322369749447435751116&#39;)])</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt id="evans.sequence.hexagonal_sequence">
 <code class="sig-prename descclassname">evans.sequence.</code><code class="sig-name descname">hexagonal_sequence</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_list</span><span class="o">=</span><span class="default_value">[1]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.sequence.hexagonal_sequence" title="Permalink to this definition">¶</a></dt>
 <dd><div class="example docutils container">
@@ -852,6 +910,22 @@
 </dd></dl>
 
 <dl class="py function">
+<dt id="evans.sequence.julia_set">
+<code class="sig-prename descclassname">evans.sequence.</code><code class="sig-name descname">julia_set</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">c</span></em>, <em class="sig-param"><span class="n">z0</span></em>, <em class="sig-param"><span class="n">max_iter</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.sequence.julia_set" title="Permalink to this definition">¶</a></dt>
+<dd><div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">julia_set</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">c</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">z0</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">max_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">1.7209086512090908</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt id="evans.sequence.lindenmayer">
 <code class="sig-prename descclassname">evans.sequence.</code><code class="sig-name descname">lindenmayer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seed</span></em>, <em class="sig-param"><span class="n">rules</span></em>, <em class="sig-param"><span class="n">iters</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.sequence.lindenmayer" title="Permalink to this definition">¶</a></dt>
 <dd><div class="example docutils container">
@@ -859,6 +933,76 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lind_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">_</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">evans</span><span class="o">.</span><span class="n">lindenmayer</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="s2">&quot;AB&quot;</span><span class="p">,</span> <span class="n">rules</span><span class="o">=</span><span class="n">rule_dict</span><span class="p">,</span> <span class="n">iters</span><span class="o">=</span><span class="mi">2</span><span class="p">)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">lind_list</span><span class="p">)</span>
 <span class="go">[&#39;A&#39;, &#39;B&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;A&#39;, &#39;C&#39;]</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="evans.sequence.lorenz">
+<code class="sig-prename descclassname">evans.sequence.</code><code class="sig-name descname">lorenz</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rho</span></em>, <em class="sig-param"><span class="n">sigma</span></em>, <em class="sig-param"><span class="n">beta</span></em>, <em class="sig-param"><span class="n">first_state</span></em>, <em class="sig-param"><span class="n">time_values</span></em>, <em class="sig-param"><span class="n">iters</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.sequence.lorenz" title="Permalink to this definition">¶</a></dt>
+<dd><div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">lorenz</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">rho</span><span class="o">=</span><span class="mf">28.0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">sigma</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">beta</span><span class="o">=</span><span class="p">(</span><span class="mf">8.0</span> <span class="o">/</span> <span class="mf">3.0</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">first_state</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">time_values</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">40.0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">iters</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="go">[[1.0, 1.0125657408032651, 1.0488214579592021, 1.107206299034454, 1.1868654842333801, 1.2875548011090359, 1.4095688012763303, 1.5536887870511105, 1.721145788631946, 1.9135963877769706], [1.0, 1.2599200056984277, 1.5240008388892068, 1.798314577764884, 2.0885455352781572, 2.400160398825767, 2.738552104480127, 3.109160997057688, 3.51757713188136, 3.969623487737072], [1.0, 0.9848910446848755, 0.973114341630953, 0.9651591023109144, 0.9617373815250438, 0.9638062240116604, 0.9726082787069016, 0.9897311952182216, 1.0171865646618774, 1.057511871629279]]</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="evans.sequence.lu_chen">
+<code class="sig-prename descclassname">evans.sequence.</code><code class="sig-name descname">lu_chen</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em>, <em class="sig-param"><span class="n">c</span></em>, <em class="sig-param"><span class="n">u</span></em>, <em class="sig-param"><span class="n">first_state</span></em>, <em class="sig-param"><span class="n">time_values</span></em>, <em class="sig-param"><span class="n">iters</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.sequence.lu_chen" title="Permalink to this definition">¶</a></dt>
+<dd><div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">lu_chen</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">a</span><span class="o">=</span><span class="mi">36</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">c</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">u</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">15.15</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">first_state</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.6</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">time_values</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">40.0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">iters</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="go">[[0.1, 0.14507340240351432, 0.14323815901530343, 0.10128972203257065, 0.02212510661501916, -0.09446533541055804, -0.25134777506809247, -0.4538520580544356, -0.7097811725420128, -1.0295889433224696], [0.3, 0.20092880055892573, 0.08027594159872467, -0.06748948170440211, -0.2490165225972874, -0.4723839158805826, -0.7474651998093496, -1.0863625805752994, -1.503923707544488, -2.0183521101080717], [-0.6, -0.5819559886254813, -0.5645492876975078, -0.547848676066436, -0.5317444633853425, -0.5158905397379729, -0.4995950638053594, -0.48163813037580305, -0.4599814138948388, -0.43131546553144084]]</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="evans.sequence.mandelbrot_set">
+<code class="sig-prename descclassname">evans.sequence.</code><code class="sig-name descname">mandelbrot_set</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xmin</span></em>, <em class="sig-param"><span class="n">xmax</span></em>, <em class="sig-param"><span class="n">ymin</span></em>, <em class="sig-param"><span class="n">ymax</span></em>, <em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">height</span></em>, <em class="sig-param"><span class="n">maxiter</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.sequence.mandelbrot_set" title="Permalink to this definition">¶</a></dt>
+<dd><div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">mandelbrot_set</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">xmin</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">xmax</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">ymin</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">ymax</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">width</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">maxiter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">(array([ 7.        ,  7.33333333,  7.66666667,  8.        ,  8.33333333,</span>
+<span class="go">        8.66666667,  9.        ,  9.33333333,  9.66666667, 10.        ]), array([ 7.        ,  7.33333333,  7.66666667,  8.        ,  8.33333333,</span>
+<span class="go">        8.66666667,  9.        ,  9.33333333,  9.66666667, 10.        ]), array([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],</span>
+<span class="go">       [0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],</span>
+<span class="go">       [0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],</span>
+<span class="go">       [0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],</span>
+<span class="go">       [0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],</span>
+<span class="go">       [0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],</span>
+<span class="go">       [0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],</span>
+<span class="go">       [0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],</span>
+<span class="go">       [0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],</span>
+<span class="go">       [0., 0., 0., 0., 0., 0., 0., 0., 0., 0.]]))</span>
 </pre></div>
 </div>
 </div>
@@ -1171,6 +1315,29 @@
 </dd></dl>
 
 <dl class="py function">
+<dt id="evans.sequence.roessler">
+<code class="sig-prename descclassname">evans.sequence.</code><code class="sig-name descname">roessler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em>, <em class="sig-param"><span class="n">c</span></em>, <em class="sig-param"><span class="n">t_ini</span></em>, <em class="sig-param"><span class="n">t_fin</span></em>, <em class="sig-param"><span class="n">h</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.sequence.roessler" title="Permalink to this definition">¶</a></dt>
+<dd><div class="example docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">roessler</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">a</span><span class="o">=</span><span class="mf">0.13</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">b</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">c</span><span class="o">=</span><span class="mf">6.5</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">t_ini</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">t_fin</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)),</span>
+<span class="gp">... </span>    <span class="n">h</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<span class="go">(array([ 0.00000000e+00,  0.00000000e+00, -2.00007553e-09, ...,</span>
+<span class="go">    1.86024565e-03,  1.86567571e-03,  1.87110585e-03]), array([ 0.        ,  0.        ,  0.        , ..., -0.08504001,</span>
+<span class="go">   -0.08504093, -0.08504185]), array([0.00000000e+00, 2.00003777e-05, 3.99877548e-05, ...,</span>
+<span class="go">   3.07404473e-02, 3.07404717e-02, 3.07404962e-02]))</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt id="evans.sequence.rotate">
 <code class="sig-prename descclassname">evans.sequence.</code><code class="sig-name descname">rotate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lst</span></em>, <em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.sequence.rotate" title="Permalink to this definition">¶</a></dt>
 <dd><div class="example docutils container">
@@ -1208,7 +1375,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="timespan.html" class="btn btn-neutral float-right" title="timespan" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="spanners.html" class="btn btn-neutral float-right" title="spanners" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="segmentmaker.html" class="btn btn-neutral float-left" title="segmentmaker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -1223,7 +1390,7 @@
         
         &copy; Copyright 2018-2020, Gregory Rowland Evans
       <span class="lastupdated">
-        Last updated on Nov 23, 2020.
+        Last updated on Dec 23, 2020.
       </span>
 
     </p>

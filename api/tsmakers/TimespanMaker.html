@@ -192,7 +192,7 @@
   <div class="section" id="module-tsmakers.TimespanMaker">
 <span id="timespanmaker"></span><span id="tsmakers-timespanmaker"></span><h1>TimespanMaker<a class="headerlink" href="#module-tsmakers.TimespanMaker" title="Permalink to this headline">¶</a></h1>
 <div class="svg-container docutils container">
-<div class="graphviz"><object data="../../images/inheritance-8f82b1c59b7ea4416330161b53df37c2e4a5b77e.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="../../images/inheritance-a15aca90779aa97d3b4ca0e5822fc27ba4e8e4a3.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">digraph InheritanceGraph {
 	graph [bgcolor=transparent,
 		color=lightsteelblue2,
@@ -218,14 +218,6 @@
 	edge [color=lightslategrey,
 		penwidth=1
 	];
-	subgraph cluster_builtins {
-		graph [label=builtins];
-		node [color=1];
-		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.7/library/functions.html#object&quot;,
-			color=1,
-			label=object,
-			target=_top];
-	}
 	subgraph cluster_tsmakers {
 		graph [label=tsmakers];
 		node [color=2];
@@ -259,6 +251,14 @@
 		&quot;tsmakers.TimespanMaker.TimespanMaker&quot; -&gt; &quot;tsmakers.DependentTimespanMaker.DependentTimespanMaker&quot;		 [minlen=1];
 		&quot;tsmakers.TimespanMaker.TimespanMaker&quot; -&gt; &quot;tsmakers.FloodedTimespanMaker.FloodedTimespanMaker&quot;		 [minlen=2];
 		&quot;tsmakers.TimespanMaker.TimespanMaker&quot; -&gt; &quot;tsmakers.TaleaTimespanMaker.TaleaTimespanMaker&quot;		 [minlen=1];
+	}
+	subgraph cluster_builtins {
+		graph [label=builtins];
+		node [color=1];
+		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.7/library/functions.html#object&quot;,
+			color=1,
+			label=object,
+			target=_top];
 	}
 	&quot;builtins.object&quot; -&gt; &quot;tsmakers.TimespanMaker.TimespanMaker&quot;	 [minlen=1];
 }</p></object></div>
@@ -398,7 +398,7 @@
         
         &copy; Copyright 2018-2020, Gregory Rowland Evans
       <span class="lastupdated">
-        Last updated on Nov 23, 2020.
+        Last updated on Dec 15, 2020.
       </span>
 
     </p>

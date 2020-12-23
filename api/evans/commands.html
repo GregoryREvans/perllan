@@ -104,6 +104,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rtm.html">rtm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="segmentmaker.html">segmentmaker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sequence.html">sequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spanners.html">spanners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="timespan.html">timespan</a></li>
 </ul>
 </li>
@@ -265,7 +266,7 @@
 </table>
 <dl class="py class">
 <dt id="evans.commands.Command">
-<em class="property">class </em><code class="sig-prename descclassname">evans.commands.</code><code class="sig-name descname">Command</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">callable</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">command</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">contents</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">indicator</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">selector</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">voice_name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.commands.Command" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">evans.commands.</code><code class="sig-name descname">Command</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">callable</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">command</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">contents</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">indicator</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">selector</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">voice_name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">source_voice_name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">target_voice_name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.commands.Command" title="Permalink to this definition">¶</a></dt>
 <dd><hr/><p class="class-header rubric">Attributes Summary</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -402,7 +403,10 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#evans.commands.detach" title="evans.commands.detach"><code class="xref py py-obj docutils literal notranslate"><span class="pre">detach</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#evans.commands.replace" title="evans.commands.replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">replace</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.commands.duplicate" title="evans.commands.duplicate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">duplicate</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.commands.replace" title="evans.commands.replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">replace</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -420,6 +424,11 @@
 <dl class="py function">
 <dt id="evans.commands.detach">
 <code class="sig-prename descclassname">evans.commands.</code><code class="sig-name descname">detach</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">voice_name</span></em>, <em class="sig-param"><span class="n">indicator</span></em>, <em class="sig-param"><span class="n">selector</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.commands.detach" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="evans.commands.duplicate">
+<code class="sig-prename descclassname">evans.commands.</code><code class="sig-name descname">duplicate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source_voice_name</span></em>, <em class="sig-param"><span class="n">target_voice_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.commands.duplicate" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
@@ -452,7 +461,7 @@
         
         &copy; Copyright 2018-2020, Gregory Rowland Evans
       <span class="lastupdated">
-        Last updated on Nov 23, 2020.
+        Last updated on Dec 15, 2020.
       </span>
 
     </p>

@@ -1,0 +1,415 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>spanners &mdash; Perllan API  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/abjad.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/uqbar.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script src="../../static/language_data.js"></script>
+        <script defer="defer" src="../../static/copybutton.js"></script>
+        <script src="../../static/ga.js"></script>
+    
+    <script type="text/javascript" src="../../static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="timespan" href="timespan.html" />
+    <link rel="prev" title="sequence" href="sequence.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Perllan API
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../concepts.html">Core concepts</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../abjadext/microtones/index.html">microtones</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">evans</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="commands.html">commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="consort/index.html">consort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handlers.html">handlers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metmod.html">metmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pitch.html">pitch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rtm.html">rtm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="segmentmaker.html">segmentmaker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sequence.html">sequence</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">spanners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timespan.html">timespan</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tsmakers/index.html">tsmakers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../scores.html">Score gallery</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Perllan API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">evans</a> &raquo;</li>
+        
+      <li>spanners</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../sources/api/evans/spanners.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-evans.spanners">
+<span id="spanners"></span><span id="evans-spanners"></span><h1>spanners<a class="headerlink" href="#module-evans.spanners" title="Permalink to this headline">¶</a></h1>
+<div class="svg-container docutils container">
+<div class="graphviz"><object data="../../images/inheritance-0d7a5b514331bc1c5a0112fe6451eeca646cd4d5.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">digraph InheritanceGraph {
+    graph [bgcolor=transparent,
+        color=lightsteelblue2,
+        fontname=Arial,
+        fontsize=10,
+        outputorder=edgesfirst,
+        overlap=prism,
+        penwidth=2,
+        rankdir=LR,
+        splines=spline,
+        style=&quot;dashed, rounded&quot;,
+        truecolor=true];
+    node [colorscheme=pastel19,
+        fontname=Arial,
+        fontsize=10,
+        height=0,
+        penwidth=2,
+        shape=box,
+        style=&quot;filled, rounded&quot;,
+        width=0];
+    edge [color=lightslategrey,
+        penwidth=1];
+    subgraph cluster_builtins {
+        graph [label=builtins];
+        node [color=1];
+        &quot;builtins.object&quot; [URL=&quot;https://docs.python.org/3.7/library/functions.html#object&quot;,
+            label=object,
+            target=_top];
+    }
+    subgraph &quot;cluster_evans.spanners&quot; {
+        graph [label=&quot;evans.spanners&quot;];
+        node [color=2];
+        &quot;evans.spanners.BowAnglePoint&quot; [URL=&quot;../api/evans/spanners.html#evans.spanners.BowAnglePoint&quot;,
+            color=black,
+            fontcolor=white,
+            label=&quot;Bow\nAngle\nPoint&quot;,
+            target=_top];
+    }
+    &quot;builtins.object&quot; -&gt; &quot;evans.spanners.BowAnglePoint&quot;;
+}</p></object></div>
+</div>
+<hr/><p class="section-header rubric">Classes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.spanners.BowAnglePoint" title="evans.spanners.BowAnglePoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BowAnglePoint</span></code></a></p></td>
+<td><p>Bow Angle Point</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="evans.spanners.BowAnglePoint">
+<em class="property">class </em><code class="sig-prename descclassname">evans.spanners.</code><code class="sig-name descname">BowAnglePoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">degrees</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.spanners.BowAnglePoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bow Angle Point</p>
+<hr/><p class="class-header rubric">Attributes Summary</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.spanners.BowAnglePoint.__ge__" title="evans.spanners.BowAnglePoint.__ge__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code></a></p></td>
+<td><p>Return a &gt;= b.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.spanners.BowAnglePoint.__gt__" title="evans.spanners.BowAnglePoint.__gt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code></a></p></td>
+<td><p>Return a &gt; b.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.spanners.BowAnglePoint.__le__" title="evans.spanners.BowAnglePoint.__le__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code></a></p></td>
+<td><p>Return a &lt;= b.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.spanners.BowAnglePoint.__lt__" title="evans.spanners.BowAnglePoint.__lt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code></a></p></td>
+<td><p>Return self&lt;value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.spanners.BowAnglePoint.__repr__" title="evans.spanners.BowAnglePoint.__repr__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__repr__</span></code></a></p></td>
+<td><p>Return repr(self).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.spanners.BowAnglePoint.__str__" title="evans.spanners.BowAnglePoint.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a></p></td>
+<td><p>Return str(self).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.spanners.BowAnglePoint.degrees" title="evans.spanners.BowAnglePoint.degrees"><code class="xref py py-obj docutils literal notranslate"><span class="pre">degrees</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.spanners.BowAnglePoint.markup" title="evans.spanners.BowAnglePoint.markup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">markup</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<dl class="py method">
+<dt id="evans.spanners.BowAnglePoint.__ge__">
+<em class="property">overridden </em><code class="sig-name descname">__ge__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em>, <em class="sig-param"><span class="n">NotImplemented</span><span class="o">=</span><span class="default_value">NotImplemented</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.spanners.BowAnglePoint.__ge__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a &gt;= b.  Computed by &#64;total_ordering from (not a &lt; b).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="evans.spanners.BowAnglePoint.__gt__">
+<em class="property">overridden </em><code class="sig-name descname">__gt__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em>, <em class="sig-param"><span class="n">NotImplemented</span><span class="o">=</span><span class="default_value">NotImplemented</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.spanners.BowAnglePoint.__gt__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a &gt; b.  Computed by &#64;total_ordering from (not a &lt; b) and (a != b).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="evans.spanners.BowAnglePoint.__le__">
+<em class="property">overridden </em><code class="sig-name descname">__le__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em>, <em class="sig-param"><span class="n">NotImplemented</span><span class="o">=</span><span class="default_value">NotImplemented</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.spanners.BowAnglePoint.__le__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a &lt;= b.  Computed by &#64;total_ordering from (a &lt; b) or (a == b).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="evans.spanners.BowAnglePoint.__lt__">
+<em class="property">overridden </em><code class="sig-name descname">__lt__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.spanners.BowAnglePoint.__lt__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return self&lt;value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.7/library/functions.html#bool" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="evans.spanners.BowAnglePoint.__repr__">
+<em class="property">overridden </em><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.spanners.BowAnglePoint.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return repr(self).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="evans.spanners.BowAnglePoint.__str__">
+<em class="property">overridden </em><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.spanners.BowAnglePoint.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
+<hr/><p class="class-header rubric">Read-only properties</p>
+<dl class="py attribute">
+<dt id="evans.spanners.BowAnglePoint.degrees">
+<code class="sig-name descname">degrees</code><a class="headerlink" href="#evans.spanners.BowAnglePoint.degrees" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="evans.spanners.BowAnglePoint.markup">
+<code class="sig-name descname">markup</code><a class="headerlink" href="#evans.spanners.BowAnglePoint.markup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<hr/><p class="section-header rubric">Functions</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.spanners.bow_angle_spanner" title="evans.spanners.bow_angle_spanner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bow_angle_spanner</span></code></a></p></td>
+<td><p>bow angle spanner</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt id="evans.spanners.bow_angle_spanner">
+<code class="sig-prename descclassname">evans.spanners.</code><code class="sig-name descname">bow_angle_spanner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">omit_bow_changes</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">tag</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.spanners.bow_angle_spanner" title="Permalink to this definition">¶</a></dt>
+<dd><p>bow angle spanner</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="timespan.html" class="btn btn-neutral float-right" title="timespan" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sequence.html" class="btn btn-neutral float-left" title="sequence" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-2020, Gregory Rowland Evans
+      <span class="lastupdated">
+        Last updated on Dec 15, 2020.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

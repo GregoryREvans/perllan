@@ -104,6 +104,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rtm.html">rtm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="segmentmaker.html">segmentmaker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sequence.html">sequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spanners.html">spanners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="timespan.html">timespan</a></li>
 </ul>
 </li>
@@ -186,7 +187,7 @@
 <span class="target" id="module-evans"></span><p>Evans API</p>
 <p>The personal Abjad library of Gregory Rowland Evans.</p>
 <div class="svg-container docutils container">
-<div class="graphviz"><object data="../../images/inheritance-e60a87f9d77c232c9f6189c9cd6ff7c067500686.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="../../images/inheritance-80c5f26f47b64343fa5f4fbb62b38298d952cede.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">digraph InheritanceGraph {
 	graph [bgcolor=transparent,
 		color=lightsteelblue2,
@@ -419,19 +420,27 @@
 			label=&quot;Markov\nChain&quot;,
 			target=_top];
 	}
+	subgraph &quot;cluster_evans.spanners&quot; {
+		graph [label=&quot;evans.spanners&quot;];
+		node [color=9];
+		&quot;evans.spanners.BowAnglePoint&quot;		 [URL=&quot;../api/evans/spanners.html#evans.spanners.BowAnglePoint&quot;,
+			color=9,
+			label=&quot;Bow\nAngle\nPoint&quot;,
+			target=_top];
+	}
 	subgraph &quot;cluster_evans.timespan&quot; {
 		graph [label=&quot;evans.timespan&quot;];
-		node [color=9];
+		node [color=1];
 		&quot;evans.timespan.SilentTimespan&quot;		 [URL=&quot;../api/evans/timespan.html#evans.timespan.SilentTimespan&quot;,
-			color=9,
+			color=1,
 			label=&quot;Silent\nTimespan&quot;,
 			target=_top];
 		&quot;evans.timespan.TimespanMaker&quot;		 [URL=&quot;../api/evans/timespan.html#evans.timespan.TimespanMaker&quot;,
-			color=9,
+			color=1,
 			label=&quot;Timespan\nMaker&quot;,
 			target=_top];
 		&quot;evans.timespan.TimespanSpecifier&quot;		 [URL=&quot;../api/evans/timespan.html#evans.timespan.TimespanSpecifier&quot;,
-			color=9,
+			color=1,
 			label=&quot;Timespan\nSpecifier&quot;,
 			target=_top];
 	}
@@ -448,8 +457,9 @@
 	&quot;builtins.object&quot; -&gt; &quot;evans.segmentmaker.SegmentMaker&quot;	 [minlen=4];
 	&quot;builtins.object&quot; -&gt; &quot;evans.sequence.CyclicList&quot;	 [minlen=1];
 	&quot;builtins.object&quot; -&gt; &quot;evans.sequence.MarkovChain&quot;	 [minlen=2];
-	&quot;builtins.object&quot; -&gt; &quot;evans.timespan.TimespanMaker&quot;	 [minlen=3];
-	&quot;builtins.object&quot; -&gt; &quot;evans.timespan.TimespanSpecifier&quot;	 [minlen=4];
+	&quot;builtins.object&quot; -&gt; &quot;evans.spanners.BowAnglePoint&quot;	 [minlen=3];
+	&quot;builtins.object&quot; -&gt; &quot;evans.timespan.TimespanMaker&quot;	 [minlen=4];
+	&quot;builtins.object&quot; -&gt; &quot;evans.timespan.TimespanSpecifier&quot;	 [minlen=1];
 }</p></object></div>
 </div>
 <hr/><p class="section-header rubric">Subpackages</p>
@@ -485,7 +495,10 @@
 <tr class="row-even"><td><p><a class="reference internal" href="sequence.html#module-evans.sequence" title="evans.sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sequence</span></code></a></p></td>
 <td><p>Sequence classes and functions.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="timespan.html#module-evans.timespan" title="evans.timespan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timespan</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="spanners.html#module-evans.spanners" title="evans.spanners"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spanners</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timespan.html#module-evans.timespan" title="evans.timespan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timespan</span></code></a></p></td>
 <td><p>Timespan classes and functions.</p></td>
 </tr>
 </tbody>
@@ -515,7 +528,7 @@
         
         &copy; Copyright 2018-2020, Gregory Rowland Evans
       <span class="lastupdated">
-        Last updated on Nov 23, 2020.
+        Last updated on Dec 23, 2020.
       </span>
 
     </p>
