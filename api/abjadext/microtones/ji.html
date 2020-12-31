@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ji &mdash; Perllan API  documentation</title>
+  <title>ji &mdash; Perllan API 0.3 documentation</title>
   
 
   
@@ -455,9 +455,13 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">note</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;c&#39;4&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">tune_to_ratio</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">note_head</span><span class="p">,</span> <span class="s2">&quot;7/4&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">([</span><span class="n">note</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">score</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Score</span><span class="p">([</span><span class="n">staff</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moment</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">SchemeMoment</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">setting</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">proportional_notation_duration</span> <span class="o">=</span> <span class="n">moment</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lilypond_file</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondFile</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">staff</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">score</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">includes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;default.ily&quot;</span><span class="p">,</span> <span class="s2">&quot;ekmelos-ji-accidental-markups.ily&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">global_staff_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;&quot;dodecaphonic&quot;&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lilypond_file</span><span class="o">.</span><span class="n">layout_block</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">fr</span><span class="s2">&quot;\accidentalStyle </span><span class="si">{</span><span class="n">style</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -465,13 +469,17 @@
 </pre></div>
 </div>
 <div class="uqbar-book">
-    <a href="../../../images/lilypond-ff61fa5877a54c44a98c9364eff4d1b8eb2038970a5ad6ed951f7b5cf5469ef9.ly"><img src="../../../images/lilypond-ff61fa5877a54c44a98c9364eff4d1b8eb2038970a5ad6ed951f7b5cf5469ef9.cropped.svg"/></a>
+    <a href="../../../images/lilypond-66dfe48236d78a34a256753d8eec9933afe932f7c240fee6f91763640829d25d.ly"><img src="../../../images/lilypond-66dfe48236d78a34a256753d8eec9933afe932f7c240fee6f91763640829d25d.cropped.png"/></a>
 </div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">note</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;c&#39;4&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">tune_to_ratio</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">note_head</span><span class="p">,</span> <span class="s2">&quot;7/4&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">([</span><span class="n">note</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">score</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Score</span><span class="p">([</span><span class="n">staff</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moment</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">SchemeMoment</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">setting</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">proportional_notation_duration</span> <span class="o">=</span> <span class="n">moment</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lilypond_file</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondFile</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">staff</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">score</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">includes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;default.ily&quot;</span><span class="p">,</span> <span class="s2">&quot;heji2-ji-accidental-markups.ily&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">global_staff_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;&quot;dodecaphonic&quot;&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lilypond_file</span><span class="o">.</span><span class="n">layout_block</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">fr</span><span class="s2">&quot;\accidentalStyle </span><span class="si">{</span><span class="n">style</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -479,7 +487,7 @@
 </pre></div>
 </div>
 <div class="uqbar-book">
-    <a href="../../../images/lilypond-1f966e81cfb6deca8297165acb6fd97faaac541902a120384714c6cc32812dcd.ly"><img src="../../../images/lilypond-1f966e81cfb6deca8297165acb6fd97faaac541902a120384714c6cc32812dcd.cropped.svg"/></a>
+    <a href="../../../images/lilypond-d785369efa8b6cebd9e3d5fce45181afa4fcc47d3cdab099018ccaf631532cfb.ly"><img src="../../../images/lilypond-d785369efa8b6cebd9e3d5fce45181afa4fcc47d3cdab099018ccaf631532cfb.cropped.png"/></a>
 </div></div>
 <div class="example docutils container">
 <p>Tweaks accidentals when <code class="docutils literal notranslate"><span class="pre">omit_just_accidental=False</span></code>:</p>
@@ -510,14 +518,17 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">Clef</span><span class="p">(</span><span class="s2">&quot;bass&quot;</span><span class="p">),</span> <span class="n">staff</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">Clef</span><span class="p">(</span><span class="s2">&quot;treble&quot;</span><span class="p">),</span> <span class="n">staff</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">TimeSignature</span><span class="p">((</span><span class="mi">24</span><span class="p">,</span> <span class="mi">32</span><span class="p">)),</span> <span class="n">staff</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">score</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Score</span><span class="p">([</span><span class="n">staff</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moment</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">SchemeMoment</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">setting</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">proportional_notation_duration</span> <span class="o">=</span> <span class="n">moment</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lilypond_file</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondFile</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">staff</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">score</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">includes</span><span class="o">=</span><span class="p">[</span>
 <span class="gp">... </span>        <span class="s2">&quot;default.ily&quot;</span><span class="p">,</span>
 <span class="gp">... </span>        <span class="s2">&quot;harmonic-series-layout.ily&quot;</span><span class="p">,</span>
 <span class="gp">... </span>        <span class="s2">&quot;ekmelos-ji-accidental-markups.ily&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="n">global_staff_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;&quot;dodecaphonic&quot;&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lilypond_file</span><span class="o">.</span><span class="n">layout_block</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">fr</span><span class="s2">&quot;\accidentalStyle </span><span class="si">{</span><span class="n">style</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -525,7 +536,7 @@
 </pre></div>
 </div>
 <div class="uqbar-book">
-    <a href="../../../images/lilypond-2653604f4c37d64595916f84a51536a4f5429908384826ec634613d2cc0139c3.ly"><img src="../../../images/lilypond-2653604f4c37d64595916f84a51536a4f5429908384826ec634613d2cc0139c3.cropped.svg"/></a>
+    <a href="../../../images/lilypond-d662dfb48001e8348f965fc696d2ff4dd745954e5017f82b1d73fd2190888eaa.ly"><img src="../../../images/lilypond-d662dfb48001e8348f965fc696d2ff4dd745954e5017f82b1d73fd2190888eaa.cropped.png"/></a>
 </div><p>A harmonic series with the HEJI2 font.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ratios</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">/1&quot;</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">23</span><span class="p">)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">notes</span> <span class="o">=</span> <span class="p">[</span><span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;a,,,8&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">ratios</span><span class="p">]</span>
@@ -537,13 +548,17 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">Clef</span><span class="p">(</span><span class="s2">&quot;bass&quot;</span><span class="p">),</span> <span class="n">staff</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">Clef</span><span class="p">(</span><span class="s2">&quot;treble&quot;</span><span class="p">),</span> <span class="n">staff</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">TimeSignature</span><span class="p">((</span><span class="mi">24</span><span class="p">,</span> <span class="mi">32</span><span class="p">)),</span> <span class="n">staff</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">score</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Score</span><span class="p">([</span><span class="n">staff</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moment</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">SchemeMoment</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">setting</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">proportional_notation_duration</span> <span class="o">=</span> <span class="n">moment</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lilypond_file</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondFile</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">staff</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">score</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">includes</span><span class="o">=</span><span class="p">[</span>
 <span class="gp">... </span>        <span class="s2">&quot;default.ily&quot;</span><span class="p">,</span>
 <span class="gp">... </span>        <span class="s2">&quot;harmonic-series-layout.ily&quot;</span><span class="p">,</span>
 <span class="gp">... </span>        <span class="s2">&quot;heji2-ji-accidental-markups.ily&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="n">global_staff_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;&quot;dodecaphonic&quot;&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lilypond_file</span><span class="o">.</span><span class="n">layout_block</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">fr</span><span class="s2">&quot;\accidentalStyle </span><span class="si">{</span><span class="n">style</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -551,16 +566,20 @@
 </pre></div>
 </div>
 <div class="uqbar-book">
-    <a href="../../../images/lilypond-d8dce81c828198dc4a0c4642032879ba0741192452ecc21732633c15db582a1c.ly"><img src="../../../images/lilypond-d8dce81c828198dc4a0c4642032879ba0741192452ecc21732633c15db582a1c.cropped.svg"/></a>
+    <a href="../../../images/lilypond-14cc2ac4e34b2b2488f7aea44cd33c7fd3f7e6fbbad8154ba36d6f3a4034569c.ly"><img src="../../../images/lilypond-14cc2ac4e34b2b2488f7aea44cd33c7fd3f7e6fbbad8154ba36d6f3a4034569c.cropped.png"/></a>
 </div></div>
 <div class="example docutils container">
 <p>Prints tempered accidentals when <code class="docutils literal notranslate"><span class="pre">tempered=True</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">note</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;c&#39;4&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">tune_to_ratio</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">note_head</span><span class="p">,</span> <span class="s2">&quot;5/1&quot;</span><span class="p">,</span> <span class="n">tempered</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">([</span><span class="n">note</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">score</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Score</span><span class="p">([</span><span class="n">staff</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moment</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">SchemeMoment</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">setting</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">proportional_notation_duration</span> <span class="o">=</span> <span class="n">moment</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lilypond_file</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondFile</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">staff</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">score</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">includes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;default.ily&quot;</span><span class="p">,</span> <span class="s2">&quot;ekmelos-ji-accidental-markups.ily&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">global_staff_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;&quot;dodecaphonic&quot;&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lilypond_file</span><span class="o">.</span><span class="n">layout_block</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">fr</span><span class="s2">&quot;\accidentalStyle </span><span class="si">{</span><span class="n">style</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -568,7 +587,7 @@
 </pre></div>
 </div>
 <div class="uqbar-book">
-    <a href="../../../images/lilypond-3d87ad444e85fb658153730ba9d2750f7f6dbede89c1bf6e81c5b331dba2c445.ly"><img src="../../../images/lilypond-3d87ad444e85fb658153730ba9d2750f7f6dbede89c1bf6e81c5b331dba2c445.cropped.svg"/></a>
+    <a href="../../../images/lilypond-a3c0a33baab07faa7650747ec2e58ebe7fa6ff7049a0100914d65c7e4cfea3e8.ly"><img src="../../../images/lilypond-a3c0a33baab07faa7650747ec2e58ebe7fa6ff7049a0100914d65c7e4cfea3e8.cropped.png"/></a>
 </div></div>
 </dd></dl>
 
@@ -597,7 +616,7 @@
         
         &copy; Copyright 2018-2020, Gregory Rowland Evans
       <span class="lastupdated">
-        Last updated on Nov 23, 2020.
+        Last updated on Dec 31, 2020.
       </span>
 
     </p>
