@@ -228,8 +228,47 @@ sequence
    .. autosummary::
       :nosignatures:
 
+      add_sequences
+      chen
+      derive_added_sequences
+      derive_multiplied_sequences
+      e_bonacci_cycle
+      e_dovan_cycle
+      feigenbaum_bifurcations
+      grouper
+      guerrero_morales
+      henon
+      hexagonal_sequence
+      josephus
+      lindenmayer
+      lorenz
+      lu_chen
+      mandelbrot_set
+      map_dict
+      map_indices
+      mirror
+      mod
+      multiply
+      multiply_all
+      multiply_sequences
+      n_bonacci_cycle
+      normalize_to_indices
+      normalize_to_sum
+      orbits
+      permutations
+      pitch_warp
+      prime_sequence
+      prism_sequence
+      random_walk
+      recaman_sequence
+      reciprocals
+      reproportion_by_base
+      roessler
+      rotate
       stack_intervals
       stack_pitches
+      transpose
+      warp
 
    .. raw:: html
 
@@ -289,6 +328,8 @@ sequence
 
       .. automethod:: Sequence.accumulate
 
+   .. automethod:: Sequence.add_sequences
+
    .. container:: inherited
 
       .. automethod:: Sequence.boustrophedon
@@ -300,6 +341,10 @@ sequence
    .. container:: inherited
 
       .. automethod:: Sequence.degree_of_rotational_symmetry
+
+   .. automethod:: Sequence.derive_added_sequences
+
+   .. automethod:: Sequence.derive_multiplied_sequences
 
    .. container:: inherited
 
@@ -321,9 +366,15 @@ sequence
 
       .. automethod:: Sequence.group_by_sign
 
+   .. automethod:: Sequence.grouper
+
+   .. automethod:: Sequence.guerrero_morales
+
    .. container:: inherited
 
       .. automethod:: Sequence.helianthate
+
+   .. automethod:: Sequence.hexagonal_sequence
 
    .. container:: inherited
 
@@ -349,9 +400,29 @@ sequence
 
       .. automethod:: Sequence.join
 
+   .. automethod:: Sequence.josephus
+
    .. container:: inherited
 
       .. automethod:: Sequence.map
+
+   .. automethod:: Sequence.map_dict
+
+   .. automethod:: Sequence.map_indices
+
+   .. automethod:: Sequence.mirror
+
+   .. automethod:: Sequence.mod
+
+   .. automethod:: Sequence.multiply
+
+   .. automethod:: Sequence.multiply_all
+
+   .. automethod:: Sequence.multiply_sequences
+
+   .. automethod:: Sequence.normalize_to_indices
+
+   .. automethod:: Sequence.normalize_to_sum
 
    .. container:: inherited
 
@@ -381,17 +452,29 @@ sequence
 
       .. automethod:: Sequence.period_of_rotation
 
+   .. automethod:: Sequence.permutations
+
    .. container:: inherited
 
       .. automethod:: Sequence.permute
+
+   .. automethod:: Sequence.pitch_warp
+
+   .. automethod:: Sequence.prism_sequence
 
    .. container:: inherited
 
       .. automethod:: Sequence.quarters
 
+   .. automethod:: Sequence.random_walk
+
    .. container:: inherited
 
       .. automethod:: Sequence.ratios
+
+   .. automethod:: Sequence.recaman_sequence
+
+   .. automethod:: Sequence.reciprocals
 
    .. container:: inherited
 
@@ -425,6 +508,8 @@ sequence
 
       .. automethod:: Sequence.replace_at
 
+   .. automethod:: Sequence.reproportion_by_base
+
    .. container:: inherited
 
       .. automethod:: Sequence.retain
@@ -441,9 +526,7 @@ sequence
 
       .. automethod:: Sequence.reverse
 
-   .. container:: inherited
-
-      .. automethod:: Sequence.rotate
+   .. automethod:: Sequence.rotate
 
    .. container:: inherited
 
@@ -469,9 +552,13 @@ sequence
 
       .. automethod:: Sequence.sum_by_sign
 
+   .. automethod:: Sequence.transpose
+
    .. container:: inherited
 
       .. automethod:: Sequence.truncate
+
+   .. automethod:: Sequence.warp
 
    .. container:: inherited
 
@@ -484,6 +571,39 @@ sequence
    .. container:: inherited
 
       .. automethod:: Sequence.zip
+
+   .. raw:: html
+
+      <hr/>
+
+   .. rubric:: Class & static methods
+      :class: class-header
+
+   .. automethod:: Sequence.chen
+
+   .. automethod:: Sequence.e_bonacci_cycle
+
+   .. automethod:: Sequence.e_dovan_cycle
+
+   .. automethod:: Sequence.feigenbaum_bifurcations
+
+   .. automethod:: Sequence.henon
+
+   .. automethod:: Sequence.lindenmayer
+
+   .. automethod:: Sequence.lorenz
+
+   .. automethod:: Sequence.lu_chen
+
+   .. automethod:: Sequence.mandelbrot_set
+
+   .. automethod:: Sequence.n_bonacci_cycle
+
+   .. automethod:: Sequence.orbits
+
+   .. automethod:: Sequence.prime_sequence
+
+   .. automethod:: Sequence.roessler
 
    .. raw:: html
 
@@ -506,135 +626,12 @@ sequence
 .. autosummary::
    :nosignatures:
 
-   ~add_sequences
-   ~chen
    ~cyc
-   ~derive_added_sequences
-   ~derive_multiplied_sequences
-   ~e_bonacci_cycle
-   ~e_dovan_cycle
-   ~feigenbaum_bifurcations
    ~flatten
-   ~grouper
-   ~guerrero_morales
-   ~harmonic_series
-   ~henon
-   ~hexagonal_sequence
-   ~josephus
    ~julia_set
-   ~lindenmayer
-   ~lorenz
-   ~lu_chen
-   ~mandelbrot_set
-   ~mirror
-   ~mod
-   ~multiple_sequence
-   ~multiply_all
-   ~multiply_sequences
-   ~n_bonacci_cycle
-   ~normalize_sum
-   ~normalize_to_indices
-   ~orbits
-   ~perm
-   ~pitch_warp
-   ~prime_sequence
-   ~prism_sequence
-   ~random_walk
-   ~recaman_sequence
-   ~reciprocal
-   ~reduce_mod
-   ~reproportion_chord
-   ~reproportion_chromatic_decimals
-   ~reproportion_harmonics
-   ~reproportion_scale
-   ~roessler
-   ~rotate
-   ~warp
-
-.. autofunction:: add_sequences
-
-.. autofunction:: chen
 
 .. autofunction:: cyc
 
-.. autofunction:: derive_added_sequences
-
-.. autofunction:: derive_multiplied_sequences
-
-.. autofunction:: e_bonacci_cycle
-
-.. autofunction:: e_dovan_cycle
-
-.. autofunction:: feigenbaum_bifurcations
-
 .. autofunction:: flatten
 
-.. autofunction:: grouper
-
-.. autofunction:: guerrero_morales
-
-.. autofunction:: harmonic_series
-
-.. autofunction:: henon
-
-.. autofunction:: hexagonal_sequence
-
-.. autofunction:: josephus
-
 .. autofunction:: julia_set
-
-.. autofunction:: lindenmayer
-
-.. autofunction:: lorenz
-
-.. autofunction:: lu_chen
-
-.. autofunction:: mandelbrot_set
-
-.. autofunction:: mirror
-
-.. autofunction:: mod
-
-.. autofunction:: multiple_sequence
-
-.. autofunction:: multiply_all
-
-.. autofunction:: multiply_sequences
-
-.. autofunction:: n_bonacci_cycle
-
-.. autofunction:: normalize_sum
-
-.. autofunction:: normalize_to_indices
-
-.. autofunction:: orbits
-
-.. autofunction:: perm
-
-.. autofunction:: pitch_warp
-
-.. autofunction:: prime_sequence
-
-.. autofunction:: prism_sequence
-
-.. autofunction:: random_walk
-
-.. autofunction:: recaman_sequence
-
-.. autofunction:: reciprocal
-
-.. autofunction:: reduce_mod
-
-.. autofunction:: reproportion_chord
-
-.. autofunction:: reproportion_chromatic_decimals
-
-.. autofunction:: reproportion_harmonics
-
-.. autofunction:: reproportion_scale
-
-.. autofunction:: roessler
-
-.. autofunction:: rotate
-
-.. autofunction:: warp

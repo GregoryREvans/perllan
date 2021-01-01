@@ -8,15 +8,15 @@
  viewBox="0.00 0.00 181.26 102.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 98)">
 <title>InheritanceGraph</title>
-<g id="clust1" class="cluster">
-<title>cluster_builtins</title>
-<path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M20,-19C20,-19 54.6846,-19 54.6846,-19 60.6846,-19 66.6846,-25 66.6846,-31 66.6846,-31 66.6846,-62 66.6846,-62 66.6846,-68 60.6846,-74 54.6846,-74 54.6846,-74 20,-74 20,-74 14,-74 8,-68 8,-62 8,-62 8,-31 8,-31 8,-25 14,-19 20,-19"/>
-<text text-anchor="middle" x="37.3423" y="-62" font-family="Arial" font-size="10.00" fill="#000000">builtins</text>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_evans.spanners</title>
 <path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M98.6846,-8C98.6846,-8 161.2607,-8 161.2607,-8 167.2607,-8 173.2607,-14 173.2607,-20 173.2607,-20 173.2607,-74 173.2607,-74 173.2607,-80 167.2607,-86 161.2607,-86 161.2607,-86 98.6846,-86 98.6846,-86 92.6846,-86 86.6846,-80 86.6846,-74 86.6846,-74 86.6846,-20 86.6846,-20 86.6846,-14 92.6846,-8 98.6846,-8"/>
 <text text-anchor="middle" x="129.9727" y="-74" font-family="Arial" font-size="10.00" fill="#000000">evans.spanners</text>
+</g>
+<g id="clust1" class="cluster">
+<title>cluster_builtins</title>
+<path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M20,-19C20,-19 54.6846,-19 54.6846,-19 60.6846,-19 66.6846,-25 66.6846,-31 66.6846,-31 66.6846,-62 66.6846,-62 66.6846,-68 60.6846,-74 54.6846,-74 54.6846,-74 20,-74 20,-74 14,-74 8,-68 8,-62 8,-62 8,-31 8,-31 8,-25 14,-19 20,-19"/>
+<text text-anchor="middle" x="37.3423" y="-62" font-family="Arial" font-size="10.00" fill="#000000">builtins</text>
 </g>
 <!-- builtins.object&#45;&gt;evans.spanners.BowAnglePoint -->
 <g id="edge1" class="edge">
