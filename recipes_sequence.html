@@ -1,0 +1,459 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sequence Recipes &mdash; Perllan API 0.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="static/abjad.css" type="text/css" />
+  <link rel="stylesheet" href="static/uqbar.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="static/notes.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+        <script src="static/jquery.js"></script>
+        <script src="static/underscore.js"></script>
+        <script src="static/doctools.js"></script>
+        <script src="static/language_data.js"></script>
+        <script defer="defer" src="static/copybutton.js"></script>
+        <script src="static/ga.js"></script>
+    
+    <script type="text/javascript" src="static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Glossary" href="glossary.html" />
+    <link rel="prev" title="Pitch Recipes" href="recipes_pitch.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #556B2F" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Perllan API
+          
+
+          
+            
+            <img src="static/perllan-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">Core concepts</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/abjadext/microtones/index.html">microtones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/evans/index.html">evans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/tsmakers/index.html">tsmakers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="scores.html">Score gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recipes_pitch.html">Pitch Recipes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sequence Recipes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#first-example">First Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#second-example">Second Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#third-example">Third Example</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Perllan API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Sequence Recipes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="sources/recipes_sequence.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sequence-recipes">
+<h1>Sequence Recipes<a class="headerlink" href="#sequence-recipes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="first-example">
+<h2>First Example<a class="headerlink" href="#first-example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">abjad</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">evans</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">abjadext</span> <span class="kn">import</span> <span class="n">microtones</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ratio</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">Ratio</span><span class="p">(</span><span class="s2">&quot;13:11:10:9:5&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ratio</span>
+<span class="go">Ratio((13, 11, 10, 9, 5))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ratios</span> <span class="o">=</span> <span class="n">ratio</span><span class="o">.</span><span class="n">extract_sub_ratios</span><span class="p">(</span><span class="n">as_fractions</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ratios</span>
+<span class="go">Sequence([Fraction(1, 1), Fraction(9, 5), Fraction(2, 1), Fraction(11, 5), Fraction(13, 5)])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">combination_multiples</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">Sequence</span><span class="p">(</span><span class="n">ratios</span><span class="p">)</span><span class="o">.</span><span class="n">combination_multiplication</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ratios</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">RatioClassSet</span><span class="p">(</span><span class="n">combination_multiples</span><span class="p">)</span><span class="o">.</span><span class="n">sorted</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ratios</span>
+<span class="go">RatioClassSet([Fraction(1, 1), Fraction(11, 10), Fraction(117, 100), Fraction(13, 10), Fraction(143, 100), Fraction(9, 5), Fraction(99, 50)])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ratios</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">Sequence</span><span class="p">(</span><span class="n">ratios</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">final_seq</span> <span class="o">=</span> <span class="n">ratios</span><span class="o">.</span><span class="n">random_walk</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">step_list</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">final_seq</span>
+<span class="go">Sequence([Fraction(1, 1), Fraction(99, 50), Fraction(1, 1), Fraction(117, 100), Fraction(11, 10), Fraction(1, 1), Fraction(9, 5), Fraction(99, 50), Fraction(1, 1), Fraction(9, 5), Fraction(143, 100), Fraction(9, 5), Fraction(13, 10), Fraction(143, 100), Fraction(13, 10), Fraction(11, 10), Fraction(117, 100), Fraction(11, 10), Fraction(13, 10), Fraction(143, 100), Fraction(13, 10), Fraction(11, 10), Fraction(117, 100), Fraction(13, 10), Fraction(11, 10), Fraction(1, 1)])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">handler</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">PitchHandler</span><span class="p">(</span><span class="n">final_seq</span><span class="p">,</span> <span class="n">as_ratios</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">forget</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">([</span><span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;a4&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">final_seq</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">handler</span><span class="p">(</span><span class="n">staff</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">score</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Score</span><span class="p">([</span><span class="n">staff</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">BarLine</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">Beam</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">Flag</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">Rest</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">SpacingSpanner</span><span class="o">.</span><span class="n">strict_note_spacing</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">SpanBar</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">Stem</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">TimeSignature</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">setting</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">proportional_notation_duration</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">SchemeMoment</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondFile</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="n">score</span><span class="p">,</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Block</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;paper&quot;</span><span class="p">),</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Block</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;layout&quot;</span><span class="p">)],</span>
+<span class="gp">... </span>    <span class="n">includes</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;abjad.ily&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;ekmelos-ji-accidental-markups.ily&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="n">global_staff_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file</span><span class="o">.</span><span class="n">paper_block</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;indent = 0&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file</span><span class="o">.</span><span class="n">layout_block</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\accidentalStyle &quot;dodecaphonic&quot;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="second-example">
+<h2>Second Example<a class="headerlink" href="#second-example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">abjad</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">evans</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">abjadext</span> <span class="kn">import</span> <span class="n">microtones</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="n">microtones</span><span class="o">.</span><span class="n">PitchClassSet</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inverted_source</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">invert</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inverted_source</span>
+<span class="go">PitchClassSet([Fraction(6, 1), Fraction(5, 1), Fraction(4, 1), Fraction(2, 1), Fraction(11, 1), Fraction(10, 1)])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">derived_sequence</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">Sequence</span><span class="p">(</span><span class="n">source</span><span class="p">)</span><span class="o">.</span><span class="n">derive_added_sequences</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">inverted_source</span><span class="p">,</span> <span class="n">flat</span><span class="o">=</span><span class="kc">True</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">derived_sequence</span>
+<span class="go">Sequence([Fraction(6, 1), Fraction(7, 1), Fraction(8, 1), Fraction(10, 1), Fraction(13, 1), Fraction(14, 1), Fraction(5, 1), Fraction(6, 1), Fraction(7, 1), Fraction(9, 1), Fraction(12, 1), Fraction(13, 1), Fraction(4, 1), Fraction(5, 1), Fraction(6, 1), Fraction(8, 1), Fraction(11, 1), Fraction(12, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1)])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">jos</span> <span class="o">=</span> <span class="n">derived_sequence</span><span class="o">.</span><span class="n">josephus</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jos</span>
+<span class="go">Sequence([[Fraction(6, 1), Fraction(7, 1), Fraction(8, 1), Fraction(10, 1), Fraction(13, 1), Fraction(14, 1), Fraction(5, 1), Fraction(6, 1), Fraction(7, 1), Fraction(9, 1), Fraction(12, 1), Fraction(13, 1), Fraction(4, 1), Fraction(5, 1), Fraction(6, 1), Fraction(8, 1), Fraction(11, 1), Fraction(12, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1)], [Fraction(6, 1), Fraction(8, 1), Fraction(10, 1), Fraction(13, 1), Fraction(14, 1), Fraction(5, 1), Fraction(6, 1), Fraction(7, 1), Fraction(9, 1), Fraction(12, 1), Fraction(13, 1), Fraction(4, 1), Fraction(5, 1), Fraction(6, 1), Fraction(8, 1), Fraction(11, 1), Fraction(12, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1)], [Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(14, 1), Fraction(5, 1), Fraction(6, 1), Fraction(7, 1), Fraction(9, 1), Fraction(12, 1), Fraction(13, 1), Fraction(4, 1), Fraction(5, 1), Fraction(6, 1), Fraction(8, 1), Fraction(11, 1), Fraction(12, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1)], [Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(6, 1), Fraction(7, 1), Fraction(9, 1), Fraction(12, 1), Fraction(13, 1), Fraction(4, 1), Fraction(5, 1), Fraction(6, 1), Fraction(8, 1), Fraction(11, 1), Fraction(12, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1)], [Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(9, 1), Fraction(12, 1), Fraction(13, 1), Fraction(4, 1), Fraction(5, 1), Fraction(6, 1), Fraction(8, 1), Fraction(11, 1), Fraction(12, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1)], [Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(13, 1), Fraction(4, 1), Fraction(5, 1), Fraction(6, 1), Fraction(8, 1), Fraction(11, 1), Fraction(12, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1)], [Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(5, 1), Fraction(6, 1), Fraction(8, 1), Fraction(11, 1), Fraction(12, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1)], [Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(8, 1), Fraction(11, 1), Fraction(12, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1)], [Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(12, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1)], [Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1)], [Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1)], [Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1)], [Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1)], [Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1)], [Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1)], [Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1)], [Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(10, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1)], [Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(10, 1), Fraction(12, 1), Fraction(17, 1), Fraction(18, 1)], [Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(10, 1), Fraction(12, 1), Fraction(17, 1)], [Fraction(6, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(10, 1), Fraction(12, 1), Fraction(17, 1)], [Fraction(6, 1), Fraction(13, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(10, 1), Fraction(12, 1), Fraction(17, 1)], [Fraction(6, 1), Fraction(13, 1), Fraction(7, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(10, 1), Fraction(12, 1), Fraction(17, 1)], [Fraction(6, 1), Fraction(13, 1), Fraction(7, 1), Fraction(4, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(10, 1), Fraction(12, 1), Fraction(17, 1)], [Fraction(6, 1), Fraction(13, 1), Fraction(7, 1), Fraction(4, 1), Fraction(11, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(10, 1), Fraction(12, 1), Fraction(17, 1)], [Fraction(6, 1), Fraction(13, 1), Fraction(7, 1), Fraction(4, 1), Fraction(11, 1), Fraction(4, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(10, 1), Fraction(12, 1), Fraction(17, 1)], [Fraction(6, 1), Fraction(13, 1), Fraction(7, 1), Fraction(4, 1), Fraction(11, 1), Fraction(4, 1), Fraction(11, 1), Fraction(18, 1), Fraction(10, 1), Fraction(12, 1), Fraction(17, 1)], [Fraction(6, 1), Fraction(13, 1), Fraction(7, 1), Fraction(4, 1), Fraction(11, 1), Fraction(4, 1), Fraction(11, 1), Fraction(18, 1), Fraction(12, 1), Fraction(17, 1)], [Fraction(6, 1), Fraction(13, 1), Fraction(7, 1), Fraction(4, 1), Fraction(11, 1), Fraction(4, 1), Fraction(11, 1), Fraction(18, 1), Fraction(12, 1)], [Fraction(6, 1), Fraction(7, 1), Fraction(4, 1), Fraction(11, 1), Fraction(4, 1), Fraction(11, 1), Fraction(18, 1), Fraction(12, 1)], [Fraction(6, 1), Fraction(7, 1), Fraction(11, 1), Fraction(4, 1), Fraction(11, 1), Fraction(18, 1), Fraction(12, 1)], [Fraction(6, 1), Fraction(7, 1), Fraction(11, 1), Fraction(11, 1), Fraction(18, 1), Fraction(12, 1)], [Fraction(6, 1), Fraction(7, 1), Fraction(11, 1), Fraction(11, 1), Fraction(12, 1)], [Fraction(7, 1), Fraction(11, 1), Fraction(11, 1), Fraction(12, 1)], [Fraction(7, 1), Fraction(11, 1), Fraction(12, 1)], [Fraction(7, 1), Fraction(11, 1)], [Fraction(7, 1)]])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">jos</span> <span class="o">=</span> <span class="n">jos</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jos</span>
+<span class="go">Sequence([Fraction(6, 1), Fraction(7, 1), Fraction(8, 1), Fraction(10, 1), Fraction(13, 1), Fraction(14, 1), Fraction(5, 1), Fraction(6, 1), Fraction(7, 1), Fraction(9, 1), Fraction(12, 1), Fraction(13, 1), Fraction(4, 1), Fraction(5, 1), Fraction(6, 1), Fraction(8, 1), Fraction(11, 1), Fraction(12, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1), Fraction(6, 1), Fraction(8, 1), Fraction(10, 1), Fraction(13, 1), Fraction(14, 1), Fraction(5, 1), Fraction(6, 1), Fraction(7, 1), Fraction(9, 1), Fraction(12, 1), Fraction(13, 1), Fraction(4, 1), Fraction(5, 1), Fraction(6, 1), Fraction(8, 1), Fraction(11, 1), Fraction(12, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1), Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(14, 1), Fraction(5, 1), Fraction(6, 1), Fraction(7, 1), Fraction(9, 1), Fraction(12, 1), Fraction(13, 1), Fraction(4, 1), Fraction(5, 1), Fraction(6, 1), Fraction(8, 1), Fraction(11, 1), Fraction(12, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1), Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(6, 1), Fraction(7, 1), Fraction(9, 1), Fraction(12, 1), Fraction(13, 1), Fraction(4, 1), Fraction(5, 1), Fraction(6, 1), Fraction(8, 1), Fraction(11, 1), Fraction(12, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1), Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(9, 1), Fraction(12, 1), Fraction(13, 1), Fraction(4, 1), Fraction(5, 1), Fraction(6, 1), Fraction(8, 1), Fraction(11, 1), Fraction(12, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1), Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(13, 1), Fraction(4, 1), Fraction(5, 1), Fraction(6, 1), Fraction(8, 1), Fraction(11, 1), Fraction(12, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1), Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(5, 1), Fraction(6, 1), Fraction(8, 1), Fraction(11, 1), Fraction(12, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1), Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(8, 1), Fraction(11, 1), Fraction(12, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1), Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(12, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1), Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1), Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1), Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1), Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(12, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1), Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(15, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1), Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(19, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1), Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(10, 1), Fraction(11, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1), Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(10, 1), Fraction(12, 1), Fraction(14, 1), Fraction(17, 1), Fraction(18, 1), Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(10, 1), Fraction(12, 1), Fraction(17, 1), Fraction(18, 1), Fraction(6, 1), Fraction(8, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(10, 1), Fraction(12, 1), Fraction(17, 1), Fraction(6, 1), Fraction(13, 1), Fraction(5, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(10, 1), Fraction(12, 1), Fraction(17, 1), Fraction(6, 1), Fraction(13, 1), Fraction(7, 1), Fraction(12, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(10, 1), Fraction(12, 1), Fraction(17, 1), Fraction(6, 1), Fraction(13, 1), Fraction(7, 1), Fraction(4, 1), Fraction(6, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(10, 1), Fraction(12, 1), Fraction(17, 1), Fraction(6, 1), Fraction(13, 1), Fraction(7, 1), Fraction(4, 1), Fraction(11, 1), Fraction(2, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(10, 1), Fraction(12, 1), Fraction(17, 1), Fraction(6, 1), Fraction(13, 1), Fraction(7, 1), Fraction(4, 1), Fraction(11, 1), Fraction(4, 1), Fraction(9, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(10, 1), Fraction(12, 1), Fraction(17, 1), Fraction(6, 1), Fraction(13, 1), Fraction(7, 1), Fraction(4, 1), Fraction(11, 1), Fraction(4, 1), Fraction(11, 1), Fraction(13, 1), Fraction(18, 1), Fraction(10, 1), Fraction(12, 1), Fraction(17, 1), Fraction(6, 1), Fraction(13, 1), Fraction(7, 1), Fraction(4, 1), Fraction(11, 1), Fraction(4, 1), Fraction(11, 1), Fraction(18, 1), Fraction(10, 1), Fraction(12, 1), Fraction(17, 1), Fraction(6, 1), Fraction(13, 1), Fraction(7, 1), Fraction(4, 1), Fraction(11, 1), Fraction(4, 1), Fraction(11, 1), Fraction(18, 1), Fraction(12, 1), Fraction(17, 1), Fraction(6, 1), Fraction(13, 1), Fraction(7, 1), Fraction(4, 1), Fraction(11, 1), Fraction(4, 1), Fraction(11, 1), Fraction(18, 1), Fraction(12, 1), Fraction(6, 1), Fraction(7, 1), Fraction(4, 1), Fraction(11, 1), Fraction(4, 1), Fraction(11, 1), Fraction(18, 1), Fraction(12, 1), Fraction(6, 1), Fraction(7, 1), Fraction(11, 1), Fraction(4, 1), Fraction(11, 1), Fraction(18, 1), Fraction(12, 1), Fraction(6, 1), Fraction(7, 1), Fraction(11, 1), Fraction(11, 1), Fraction(18, 1), Fraction(12, 1), Fraction(6, 1), Fraction(7, 1), Fraction(11, 1), Fraction(11, 1), Fraction(12, 1), Fraction(7, 1), Fraction(11, 1), Fraction(11, 1), Fraction(12, 1), Fraction(7, 1), Fraction(11, 1), Fraction(12, 1), Fraction(7, 1), Fraction(11, 1), Fraction(7, 1)])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lorenz</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">Sequence</span><span class="o">.</span><span class="n">lorenz</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">rho</span><span class="o">=</span><span class="mf">28.0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">sigma</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">beta</span><span class="o">=</span><span class="p">(</span><span class="mf">8.0</span> <span class="o">/</span> <span class="mf">3.0</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">first_state</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">time_values</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">40.0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">iters</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lorenz</span>
+<span class="go">Sequence([1.0, 1.0125657408032651, 1.0488214579592021, 1.107206299034454, 1.1868654842333801, 1.2875548011090359, 1.4095688012763303, 1.5536887870511105, 1.721145788631946, 1.9135963877769706, 1.0, 1.2599200056984277, 1.5240008388892068, 1.798314577764884, 2.0885455352781572, 2.400160398825767, 2.738552104480127, 3.109160997057688, 3.51757713188136, 3.969623487737072, 1.0, 0.9848910446848755, 0.973114341630953, 0.9651591023109144, 0.9617373815250438, 0.9638062240116604, 0.9726082787069016, 0.9897311952182216, 1.0171865646618774, 1.057511871629279])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lorenz</span> <span class="o">=</span> <span class="n">lorenz</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lorenz</span> <span class="o">=</span> <span class="n">lorenz</span><span class="o">.</span><span class="n">normalize_to_indices</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lorenz</span>
+<span class="go">Sequence([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">jos</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">map</span> <span class="o">=</span> <span class="n">lorenz</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">seq_len</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">map</span>
+<span class="go">Sequence([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">final_seq</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">Sequence</span><span class="p">(</span><span class="n">jos</span><span class="p">)</span><span class="o">.</span><span class="n">map_indices</span><span class="p">(</span><span class="nb">map</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">final_seq</span>
+<span class="go">Sequence([Fraction(7, 1), Fraction(7, 1), Fraction(7, 1), Fraction(7, 1), Fraction(7, 1), Fraction(7, 1), Fraction(7, 1), Fraction(7, 1), Fraction(7, 1), Fraction(7, 1), Fraction(7, 1), Fraction(7, 1), Fraction(7, 1), Fraction(7, 1), Fraction(8, 1), Fraction(8, 1), Fraction(8, 1), Fraction(10, 1), Fraction(10, 1), Fraction(13, 1), Fraction(7, 1), Fraction(7, 1), Fraction(7, 1), Fraction(7, 1), Fraction(7, 1), Fraction(7, 1), Fraction(7, 1), Fraction(7, 1), Fraction(7, 1), Fraction(7, 1)])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">handler</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">PitchHandler</span><span class="p">(</span><span class="n">final_seq</span><span class="p">,</span> <span class="n">forget</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">([</span><span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">final_seq</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">handler</span><span class="p">(</span><span class="n">staff</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">score</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Score</span><span class="p">([</span><span class="n">staff</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">BarLine</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">Beam</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">Flag</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">Rest</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">SpacingSpanner</span><span class="o">.</span><span class="n">strict_note_spacing</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">SpanBar</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">Stem</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">TimeSignature</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">setting</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">proportional_notation_duration</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">SchemeMoment</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondFile</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="n">score</span><span class="p">,</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Block</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;paper&quot;</span><span class="p">),</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Block</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;layout&quot;</span><span class="p">)],</span>
+<span class="gp">... </span>    <span class="n">includes</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;abjad.ily&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;ekmelos-ji-accidental-markups.ily&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="n">global_staff_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file</span><span class="o">.</span><span class="n">paper_block</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;indent = 0&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file</span><span class="o">.</span><span class="n">layout_block</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\accidentalStyle &quot;dodecaphonic&quot;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="third-example">
+<h2>Third Example<a class="headerlink" href="#third-example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rule_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="s2">&quot;AB&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="s2">&quot;BC&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="s2">&quot;BDC&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">:</span> <span class="s2">&quot;EF&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">:</span> <span class="s2">&quot;FB&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lind_list</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">Sequence</span><span class="o">.</span><span class="n">lindenmayer</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="s2">&quot;AB&quot;</span><span class="p">,</span> <span class="n">rules</span><span class="o">=</span><span class="n">rule_dict</span><span class="p">,</span> <span class="n">iters</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lind_list</span>
+<span class="go">Sequence([&#39;A&#39;, &#39;B&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;F&#39;, &#39;B&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;F&#39;, &#39;B&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;F&#39;, &#39;B&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;F&#39;, &#39;B&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;F&#39;, &#39;B&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;F&#39;, &#39;B&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;F&#39;, &#39;B&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;F&#39;, &#39;B&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;F&#39;, &#39;B&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;F&#39;, &#39;B&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;F&#39;, &#39;B&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;F&#39;, &#39;B&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;F&#39;, &#39;B&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;F&#39;, &#39;B&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;A&#39;, &#39;B&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;, &#39;F&#39;, &#39;B&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;B&#39;, &#39;D&#39;, &#39;C&#39;])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mapping_dict</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;D&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;E&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;F&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">map</span> <span class="o">=</span> <span class="n">lind_list</span><span class="o">.</span><span class="n">map_dict</span><span class="p">(</span><span class="n">mapping_dict</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">map</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">Sequence</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span><span class="o">.</span><span class="n">map_indices</span><span class="p">(</span><span class="nb">map</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">map</span>
+<span class="go">Sequence([0, 1, 1, 2, 1, 2, 1, 4, 2, 1, 2, 1, 4, 2, 1, 2, 7, 8, 1, 4, 2, 1, 2, 1, 4, 2, 1, 2, 7, 8, 1, 4, 2, 1, 2, 1, 4, 2, 8, 1, 0, 1, 2, 7, 8, 1, 4, 2, 1, 2, 1, 4, 2, 1, 2, 7, 8, 1, 4, 2, 1, 2, 1, 4, 2, 8, 1, 0, 1, 2, 7, 8, 1, 4, 2, 1, 2, 1, 4, 2, 1, 2, 7, 8, 1, 4, 2, 0, 1, 2, 0, 1, 1, 2, 1, 4, 2, 8, 1, 0, 1, 2, 7, 8, 1, 4, 2, 1, 2, 1, 4, 2, 1, 2, 7, 8, 1, 4, 2, 1, 2, 1, 4, 2, 8, 1, 0, 1, 2, 7, 8, 1, 4, 2, 1, 2, 1, 4, 2, 1, 2, 7, 8, 1, 4, 2, 0, 1, 2, 0, 1, 1, 2, 1, 4, 2, 8, 1, 0, 1, 2, 7, 8, 1, 4, 2, 1, 2, 1, 4, 2, 1, 2, 7, 8, 1, 4, 2, 1, 2, 1, 4, 2, 8, 1, 0, 1, 2, 7, 8, 1, 4, 2, 0, 1, 1, 2, 1, 4, 2, 0, 1, 1, 2, 1, 2, 1, 4, 2, 1, 2, 7, 8, 1, 4, 2, 0, 1, 2, 0, 1, 1, 2, 1, 4, 2, 8, 1, 0, 1, 2, 7, 8, 1, 4, 2, 1, 2, 1, 4, 2, 1, 2, 7, 8, 1, 4, 2, 1, 2, 1, 4, 2, 8, 1, 0, 1, 2, 7, 8, 1, 4, 2, 1, 2, 1, 4, 2, 1, 2, 7, 8, 1, 4, 2, 0, 1, 2, 0, 1, 1, 2, 1, 4, 2, 8, 1, 0, 1, 2, 7, 8, 1, 4, 2, 1, 2, 1, 4, 2, 1, 2, 7, 8, 1, 4, 2, 1, 2, 1, 4, 2, 8, 1, 0, 1, 2, 7, 8, 1, 4, 2, 0, 1, 1, 2, 1, 4, 2, 0, 1, 1, 2, 1, 2, 1, 4, 2, 1, 2, 7, 8, 1, 4, 2, 0, 1, 2, 0, 1, 1, 2, 1, 4, 2, 8, 1, 0, 1, 2, 7, 8, 1, 4, 2, 1, 2, 1, 4, 2, 1, 2, 7, 8, 1, 4, 2, 1, 2, 1, 4, 2, 8, 1, 0, 1, 2, 7, 8, 1, 4, 2, 1, 2, 1, 4, 2, 1, 2, 7, 8, 1, 4, 2, 0, 1, 2, 0, 1, 1, 2, 1, 4, 2, 8, 1, 0, 1, 2, 7, 8, 1, 4, 2, 0, 1, 1, 2, 1, 2, 1, 4, 2, 1, 2, 7, 8, 1, 4, 2, 0, 1, 1, 2, 1, 2, 1, 4, 2, 1, 2, 1, 4, 2, 1, 2, 7, 8, 1, 4, 2, 1, 2, 1, 4, 2, 8, 1, 0, 1, 2, 7, 8, 1, 4, 2, 0, 1, 1, 2, 1, 4, 2, 0, 1, 1, 2, 1, 2, 1, 4, 2, 1, 2, 7, 8, 1, 4, 2, 0, 1, 2, 0, 1, 1, 2, 1, 4, 2, 8, 1, 0, 1, 2, 7, 8, 1, 4, 2])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">handler</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">PitchHandler</span><span class="p">(</span><span class="nb">map</span><span class="p">,</span> <span class="n">forget</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">([</span><span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">map</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">handler</span><span class="p">(</span><span class="n">staff</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">score</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Score</span><span class="p">([</span><span class="n">staff</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">BarLine</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">Beam</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">Flag</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">Rest</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">SpacingSpanner</span><span class="o">.</span><span class="n">strict_note_spacing</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">SpanBar</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">Stem</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">override</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">TimeSignature</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">setting</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">proportional_notation_duration</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">SchemeMoment</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondFile</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="n">score</span><span class="p">,</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Block</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;paper&quot;</span><span class="p">),</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Block</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;layout&quot;</span><span class="p">)],</span>
+<span class="gp">... </span>    <span class="n">includes</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;abjad.ily&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;ekmelos-ji-accidental-markups.ily&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="n">global_staff_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file</span><span class="o">.</span><span class="n">paper_block</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;indent = 0&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file</span><span class="o">.</span><span class="n">layout_block</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\accidentalStyle &quot;dodecaphonic&quot;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="glossary.html" class="btn btn-neutral float-right" title="Glossary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="recipes_pitch.html" class="btn btn-neutral float-left" title="Pitch Recipes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-2020, Gregory Rowland Evans
+      <span class="lastupdated">
+        Last updated on Jan 18, 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

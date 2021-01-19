@@ -122,7 +122,8 @@
 <p class="caption"><span class="caption-text">Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../scores.html">Score gallery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../recipes.html">Pitch Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recipes_pitch.html">Pitch Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recipes_sequence.html">Sequence Recipes</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Reference</span></p>
 <ul>
@@ -197,46 +198,62 @@
   <div class="section" id="module-evans.spanners">
 <span id="spanners"></span><span id="evans-spanners"></span><h1>spanners<a class="headerlink" href="#module-evans.spanners" title="Permalink to this headline">¶</a></h1>
 <div class="svg-container docutils container">
-<div class="graphviz"><object data="../../images/inheritance-0d7a5b514331bc1c5a0112fe6451eeca646cd4d5.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="../../images/inheritance-272372661751d19c60b0ae4958095e56635cb3e4.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">digraph InheritanceGraph {
-    graph [bgcolor=transparent,
-        color=lightsteelblue2,
-        fontname=Arial,
-        fontsize=10,
-        outputorder=edgesfirst,
-        overlap=prism,
-        penwidth=2,
-        rankdir=LR,
-        splines=spline,
-        style=&quot;dashed, rounded&quot;,
-        truecolor=true];
-    node [colorscheme=pastel19,
-        fontname=Arial,
-        fontsize=10,
-        height=0,
-        penwidth=2,
-        shape=box,
-        style=&quot;filled, rounded&quot;,
-        width=0];
-    edge [color=lightslategrey,
-        penwidth=1];
-    subgraph cluster_builtins {
-        graph [label=builtins];
-        node [color=1];
-        &quot;builtins.object&quot; [URL=&quot;https://docs.python.org/3.7/library/functions.html#object&quot;,
-            label=object,
-            target=_top];
-    }
-    subgraph &quot;cluster_evans.spanners&quot; {
-        graph [label=&quot;evans.spanners&quot;];
-        node [color=2];
-        &quot;evans.spanners.BowAnglePoint&quot; [URL=&quot;../api/evans/spanners.html#evans.spanners.BowAnglePoint&quot;,
-            color=black,
-            fontcolor=white,
-            label=&quot;Bow\nAngle\nPoint&quot;,
-            target=_top];
-    }
-    &quot;builtins.object&quot; -&gt; &quot;evans.spanners.BowAnglePoint&quot;;
+	graph [bgcolor=transparent,
+		color=lightsteelblue2,
+		fontname=Arial,
+		fontsize=10,
+		outputorder=edgesfirst,
+		overlap=prism,
+		penwidth=2,
+		rankdir=LR,
+		splines=spline,
+		style=&quot;dashed, rounded&quot;,
+		truecolor=true
+	];
+	node [colorscheme=pastel19,
+		fontname=Arial,
+		fontsize=10,
+		height=0,
+		penwidth=2,
+		shape=box,
+		style=&quot;filled, rounded&quot;,
+		width=0
+	];
+	edge [color=lightslategrey,
+		penwidth=1
+	];
+	subgraph cluster_builtins {
+		graph [label=builtins];
+		node [color=1];
+		&quot;builtins.object&quot;		 [URL=&quot;https://docs.python.org/3.7/library/functions.html#object&quot;,
+			color=1,
+			label=object,
+			target=_top];
+	}
+	subgraph &quot;cluster_evans.spanners&quot; {
+		graph [label=&quot;evans.spanners&quot;];
+		node [color=2];
+		&quot;evans.spanners.BowAnglePoint&quot;		 [URL=&quot;../api/evans/spanners.html#evans.spanners.BowAnglePoint&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Bow\nAngle\nPoint&quot;,
+			target=_top];
+		&quot;evans.spanners.Damping&quot;		 [URL=&quot;../api/evans/spanners.html#evans.spanners.Damping&quot;,
+			color=black,
+			fontcolor=white,
+			label=Damping,
+			target=_top];
+		&quot;evans.spanners.DampingComponent&quot;		 [URL=&quot;../api/evans/spanners.html#evans.spanners.DampingComponent&quot;,
+			color=black,
+			fontcolor=white,
+			label=&quot;Damping\nComponent&quot;,
+			target=_top];
+	}
+	&quot;builtins.object&quot; -&gt; &quot;evans.spanners.BowAnglePoint&quot;	 [minlen=1];
+	&quot;builtins.object&quot; -&gt; &quot;evans.spanners.Damping&quot;	 [minlen=2];
+	&quot;builtins.object&quot; -&gt; &quot;evans.spanners.DampingComponent&quot;	 [minlen=1];
 }</p></object></div>
 </div>
 <hr/><p class="section-header rubric">Classes</p>
@@ -249,12 +266,25 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#evans.spanners.BowAnglePoint" title="evans.spanners.BowAnglePoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BowAnglePoint</span></code></a></p></td>
 <td><p>Bow Angle Point</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.spanners.Damping" title="evans.spanners.Damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Damping</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.spanners.DampingComponent" title="evans.spanners.DampingComponent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DampingComponent</span></code></a></p></td>
+<td><p>Damping Component</p></td>
+</tr>
 </tbody>
 </table>
 <dl class="py class">
 <dt id="evans.spanners.BowAnglePoint">
 <em class="property">class </em><code class="sig-prename descclassname">evans.spanners.</code><code class="sig-name descname">BowAnglePoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">degrees</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.spanners.BowAnglePoint" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bow Angle Point</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">point</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">BowAnglePoint</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">point</span>
+<span class="go">BowAnglePoint(degrees=NonreducedFraction(90, 90))</span>
+</pre></div>
+</div>
+</div>
 <hr/><p class="class-header rubric">Attributes Summary</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -343,6 +373,133 @@
 
 </dd></dl>
 
+<dl class="py class">
+<dt id="evans.spanners.Damping">
+<em class="property">class </em><code class="sig-prename descclassname">evans.spanners.</code><code class="sig-name descname">Damping</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">contents</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">direction</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.spanners.Damping" title="Permalink to this definition">¶</a></dt>
+<dd><div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">damp</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">Damping</span><span class="p">(</span><span class="s2">&quot;(o)xx.(**).(***)(oooo).&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">damp</span><span class="o">.</span><span class="n">markup</span><span class="p">())</span>  
+</pre></div>
+</div>
+</div>
+<hr/><p class="class-header rubric">Attributes Summary</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.spanners.Damping.__repr__" title="evans.spanners.Damping.__repr__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__repr__</span></code></a></p></td>
+<td><p>Return repr(self).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.spanners.Damping.__str__" title="evans.spanners.Damping.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a></p></td>
+<td><p>Return str(self).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.spanners.Damping.markup" title="evans.spanners.Damping.markup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">markup</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<dl class="py method">
+<dt id="evans.spanners.Damping.__repr__">
+<em class="property">overridden </em><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.spanners.Damping.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return repr(self).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="evans.spanners.Damping.__str__">
+<em class="property">overridden </em><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.spanners.Damping.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
+<hr/><p class="class-header rubric">Methods</p>
+<dl class="py method">
+<dt id="evans.spanners.Damping.markup">
+<code class="sig-name descname">markup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.spanners.Damping.markup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="evans.spanners.DampingComponent">
+<em class="property">class </em><code class="sig-prename descclassname">evans.spanners.</code><code class="sig-name descname">DampingComponent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">contents</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">direction</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.spanners.DampingComponent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Damping Component</p>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">component</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">DampingComponent</span><span class="p">(</span><span class="s2">&quot;(oo)&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">component</span><span class="o">.</span><span class="n">markup</span><span class="p">())</span>  
+</pre></div>
+</div>
+</div>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">component</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">DampingComponent</span><span class="p">(</span><span class="s2">&quot;(****)&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">component</span><span class="o">.</span><span class="n">markup</span><span class="p">())</span>  
+</pre></div>
+</div>
+</div>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">component</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">DampingComponent</span><span class="p">(</span><span class="s2">&quot;(.xo)&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">component</span><span class="o">.</span><span class="n">markup</span><span class="p">())</span>  
+</pre></div>
+</div>
+</div>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">component</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">DampingComponent</span><span class="p">(</span><span class="s2">&quot;(o)&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">component</span><span class="o">.</span><span class="n">markup</span><span class="p">())</span>  
+</pre></div>
+</div>
+</div>
+<div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">component</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">DampingComponent</span><span class="p">(</span><span class="s2">&quot;x.&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">component</span><span class="o">.</span><span class="n">markup</span><span class="p">())</span>  
+</pre></div>
+</div>
+</div>
+<hr/><p class="class-header rubric">Attributes Summary</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.spanners.DampingComponent.__repr__" title="evans.spanners.DampingComponent.__repr__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__repr__</span></code></a></p></td>
+<td><p>Return repr(self).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#evans.spanners.DampingComponent.__str__" title="evans.spanners.DampingComponent.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a></p></td>
+<td><p>Return str(self).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">char_to_note_head</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">length_to_paren_scale</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#evans.spanners.DampingComponent.markup" title="evans.spanners.DampingComponent.markup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">markup</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="class-header rubric">Special methods</p>
+<dl class="py method">
+<dt id="evans.spanners.DampingComponent.__repr__">
+<em class="property">overridden </em><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.spanners.DampingComponent.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return repr(self).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="evans.spanners.DampingComponent.__str__">
+<em class="property">overridden </em><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.spanners.DampingComponent.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
+<hr/><p class="class-header rubric">Methods</p>
+<dl class="py method">
+<dt id="evans.spanners.DampingComponent.markup">
+<code class="sig-name descname">markup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.spanners.DampingComponent.markup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <hr/><p class="section-header rubric">Functions</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -351,14 +508,28 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#evans.spanners.bow_angle_spanner" title="evans.spanners.bow_angle_spanner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bow_angle_spanner</span></code></a></p></td>
-<td><p>bow angle spanner</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py function">
 <dt id="evans.spanners.bow_angle_spanner">
 <code class="sig-prename descclassname">evans.spanners.</code><code class="sig-name descname">bow_angle_spanner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">omit_bow_changes</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">tag</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.spanners.bow_angle_spanner" title="Permalink to this definition">¶</a></dt>
-<dd><p>bow angle spanner</p>
+<dd><div class="example docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">point_1</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">BowAnglePoint</span><span class="p">(</span><span class="o">-</span><span class="mi">45</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tech_1</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">BowMotionTechnique</span><span class="p">(</span><span class="s2">&quot;ordinario&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">point_2</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">BowAnglePoint</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tech_2</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">BowMotionTechnique</span><span class="p">(</span><span class="s2">&quot;ordinario&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">(</span><span class="s2">&quot;c&#39;2 c&#39;2&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">point_1</span><span class="p">,</span> <span class="n">staff</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">tech_1</span><span class="p">,</span> <span class="n">staff</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">point_2</span><span class="p">,</span> <span class="n">staff</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">tech_2</span><span class="p">,</span> <span class="n">staff</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">evans</span><span class="o">.</span><span class="n">bow_angle_spanner</span><span class="p">(</span><span class="n">staff</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">staff</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
 </dd></dl>
 
 </div>
@@ -386,7 +557,7 @@
         
         &copy; Copyright 2018-2020, Gregory Rowland Evans
       <span class="lastupdated">
-        Last updated on Jan 01, 2021.
+        Last updated on Jan 18, 2021.
       </span>
 
     </p>
@@ -418,18 +589,6 @@
 
   
   
-    
-    <!-- Theme Analytics -->
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-59435436-1', 'auto');
-    ga('send', 'pageview');
-    </script>
-
     
    
 

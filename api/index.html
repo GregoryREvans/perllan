@@ -108,7 +108,8 @@
 <p class="caption"><span class="caption-text">Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../scores.html">Score gallery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../recipes.html">Pitch Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes_pitch.html">Pitch Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes_sequence.html">Sequence Recipes</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Reference</span></p>
 <ul>
@@ -482,6 +483,18 @@
 </table>
 <hr/><p class="section-header rubric"><a class="reference internal" href="evans/pitch.html#evans-pitch"><span class="std std-ref">evans.pitch</span></a></p>
 <p>Pitch functions.</p>
+<hr/><p class="subsection-header rubric">Classes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="evans/pitch.html#evans.pitch.JIPitch" title="evans.pitch.JIPitch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">JIPitch</span></code></a></p></td>
+<td><p>Just Intonation Pitch</p></td>
+</tr>
+</tbody>
+</table>
 <hr/><p class="subsection-header rubric">Functions</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -489,16 +502,10 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="evans/pitch.html#evans.pitch.combination_multiples" title="evans.pitch.combination_multiples"><code class="xref py py-obj docutils literal notranslate"><span class="pre">combination_multiples</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="evans/pitch.html#evans.pitch.combination_tones" title="evans.pitch.combination_tones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">combination_tones</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="evans/pitch.html#evans.pitch.combination_tones" title="evans.pitch.combination_tones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">combination_tones</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="evans/pitch.html#evans.pitch.herz_combination_tone_ratios" title="evans.pitch.herz_combination_tone_ratios"><code class="xref py py-obj docutils literal notranslate"><span class="pre">herz_combination_tone_ratios</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="evans/pitch.html#evans.pitch.relative_ratios" title="evans.pitch.relative_ratios"><code class="xref py py-obj docutils literal notranslate"><span class="pre">relative_ratios</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="evans/pitch.html#evans.pitch.herz_combination_tone_ratios" title="evans.pitch.herz_combination_tone_ratios"><code class="xref py py-obj docutils literal notranslate"><span class="pre">herz_combination_tone_ratios</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="evans/pitch.html#evans.pitch.return_cent_markup" title="evans.pitch.return_cent_markup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">return_cent_markup</span></code></a></p></td>
@@ -526,7 +533,7 @@
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="evans/pitch.html#evans.pitch.tune_to_ratio" title="evans.pitch.tune_to_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tune_to_ratio</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Tunes pitch to ratio.</p></td>
 </tr>
 </tbody>
 </table>
@@ -539,10 +546,7 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="evans/rtm.html#evans.rtm.RTMMaker" title="evans.rtm.RTMMaker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RTMMaker</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="evans/rtm.html#evans.rtm.RhythmTreeQuantizer" title="evans.rtm.RhythmTreeQuantizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RhythmTreeQuantizer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="evans/rtm.html#evans.rtm.RhythmTreeQuantizer" title="evans.rtm.RhythmTreeQuantizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RhythmTreeQuantizer</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -554,16 +558,31 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="evans/rtm.html#evans.rtm.funnel_inner_tree_to_x" title="evans.rtm.funnel_inner_tree_to_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">funnel_inner_tree_to_x</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="evans/rtm.html#evans.rtm.flatten_tree_level" title="evans.rtm.flatten_tree_level"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flatten_tree_level</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="evans/rtm.html#evans.rtm.funnel_tree_to_x" title="evans.rtm.funnel_tree_to_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">funnel_tree_to_x</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="evans/rtm.html#evans.rtm.funnel_inner_tree_to_x" title="evans.rtm.funnel_inner_tree_to_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">funnel_inner_tree_to_x</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="evans/rtm.html#evans.rtm.nested_list_to_rtm" title="evans.rtm.nested_list_to_rtm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nested_list_to_rtm</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="evans/rtm.html#evans.rtm.funnel_tree_to_x" title="evans.rtm.funnel_tree_to_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">funnel_tree_to_x</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="evans/rtm.html#evans.rtm.rotate_tree" title="evans.rtm.rotate_tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate_tree</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="evans/rtm.html#evans.rtm.nested_list_to_rtm" title="evans.rtm.nested_list_to_rtm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nested_list_to_rtm</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="evans/rtm.html#evans.rtm.rotate_tree" title="evans.rtm.rotate_tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate_tree</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<hr/><p class="subsection-header rubric">Rhythm-makers</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="evans/rtm.html#evans.rtm.RTMMaker" title="evans.rtm.RTMMaker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RTMMaker</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -612,15 +631,35 @@
 <tr class="row-even"><td><p><a class="reference internal" href="evans/sequence.html#evans.sequence.MarkovChain" title="evans.sequence.MarkovChain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MarkovChain</span></code></a></p></td>
 <td><p>Markov Chain</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="evans/sequence.html#evans.sequence.PitchClassSegment" title="evans.sequence.PitchClassSegment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PitchClassSegment</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="evans/sequence.html#evans.sequence.PitchClassSet" title="evans.sequence.PitchClassSet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PitchClassSet</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="evans/sequence.html#evans.sequence.PitchSegment" title="evans.sequence.PitchSegment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PitchSegment</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="evans/sequence.html#evans.sequence.PitchSet" title="evans.sequence.PitchSet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PitchSet</span></code></a></p></td>
+<td><p></p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="evans/sequence.html#evans.sequence.Ratio" title="evans.sequence.Ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Ratio</span></code></a></p></td>
 <td><p></p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="evans/sequence.html#evans.sequence.RatioClassSegment" title="evans.sequence.RatioClassSegment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RatioClassSegment</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="evans/sequence.html#evans.sequence.RatioClassSet" title="evans.sequence.RatioClassSet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RatioClassSet</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="evans/sequence.html#evans.sequence.RatioSegment" title="evans.sequence.RatioSegment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RatioSegment</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="evans/sequence.html#evans.sequence.RatioSet" title="evans.sequence.RatioSet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RatioSet</span></code></a></p></td>
+<td><p></p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="evans/sequence.html#evans.sequence.Sequence" title="evans.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sequence</span></code></a></p></td>
-<td><p><div class="admonition-todo admonition" id="id1">
-<p class="admonition-title">Todo</p>
-<p>add pitch and ratio operations from abjadext.microtones?</p>
-</div>
-</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -653,6 +692,12 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="evans/spanners.html#evans.spanners.BowAnglePoint" title="evans.spanners.BowAnglePoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BowAnglePoint</span></code></a></p></td>
 <td><p>Bow Angle Point</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="evans/spanners.html#evans.spanners.Damping" title="evans.spanners.Damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Damping</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="evans/spanners.html#evans.spanners.DampingComponent" title="evans.spanners.DampingComponent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DampingComponent</span></code></a></p></td>
+<td><p>Damping Component</p></td>
+</tr>
 </tbody>
 </table>
 <hr/><p class="subsection-header rubric">Functions</p>
@@ -663,7 +708,7 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="evans/spanners.html#evans.spanners.bow_angle_spanner" title="evans.spanners.bow_angle_spanner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bow_angle_spanner</span></code></a></p></td>
-<td><p>bow angle spanner</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -856,7 +901,7 @@
         
         &copy; Copyright 2018-2020, Gregory Rowland Evans
       <span class="lastupdated">
-        Last updated on Jan 01, 2021.
+        Last updated on Jan 18, 2021.
       </span>
 
     </p>
@@ -888,18 +933,6 @@
 
   
   
-    
-    <!-- Theme Analytics -->
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-59435436-1', 'auto');
-    ga('send', 'pageview');
-    </script>
-
     
    
 

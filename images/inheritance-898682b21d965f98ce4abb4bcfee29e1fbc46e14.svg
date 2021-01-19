@@ -8,15 +8,15 @@
  viewBox="0.00 0.00 371.52 281.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 277)">
 <title>InheritanceGraph</title>
-<g id="clust2" class="cluster">
-<title>cluster_evans.consort</title>
-<path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M98.6846,-8C98.6846,-8 343.5215,-8 343.5215,-8 349.5215,-8 355.5215,-14 355.5215,-20 355.5215,-20 355.5215,-253 355.5215,-253 355.5215,-259 349.5215,-265 343.5215,-265 343.5215,-265 98.6846,-265 98.6846,-265 92.6846,-265 86.6846,-259 86.6846,-253 86.6846,-253 86.6846,-20 86.6846,-20 86.6846,-14 92.6846,-8 98.6846,-8"/>
-<text text-anchor="middle" x="221.103" y="-253" font-family="Arial" font-size="10.00" fill="#000000">evans.consort</text>
-</g>
 <g id="clust1" class="cluster">
 <title>cluster_builtins</title>
 <path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M20,-119C20,-119 54.6846,-119 54.6846,-119 60.6846,-119 66.6846,-125 66.6846,-131 66.6846,-131 66.6846,-162 66.6846,-162 66.6846,-168 60.6846,-174 54.6846,-174 54.6846,-174 20,-174 20,-174 14,-174 8,-168 8,-162 8,-162 8,-131 8,-131 8,-125 14,-119 20,-119"/>
 <text text-anchor="middle" x="37.3423" y="-162" font-family="Arial" font-size="10.00" fill="#000000">builtins</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_evans.consort</title>
+<path fill="transparent" stroke="#bcd2ee" stroke-width="2" stroke-dasharray="5,2" d="M98.6846,-8C98.6846,-8 343.5215,-8 343.5215,-8 349.5215,-8 355.5215,-14 355.5215,-20 355.5215,-20 355.5215,-253 355.5215,-253 355.5215,-259 349.5215,-265 343.5215,-265 343.5215,-265 98.6846,-265 98.6846,-265 92.6846,-265 86.6846,-259 86.6846,-253 86.6846,-253 86.6846,-20 86.6846,-20 86.6846,-14 92.6846,-8 98.6846,-8"/>
+<text text-anchor="middle" x="221.103" y="-253" font-family="Arial" font-size="10.00" fill="#000000">evans.consort</text>
 </g>
 <!-- builtins.object&#45;&gt;evans.consort.AbjadObject.AbjadObject -->
 <g id="edge7" class="edge">
