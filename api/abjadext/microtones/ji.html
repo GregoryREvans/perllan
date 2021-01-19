@@ -479,7 +479,9 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">lilypond_file</span><span class="p">)</span>  
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">note</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;c&#39;4&quot;</span><span class="p">)</span>
+<div class="uqbar-book">
+    <a href="../../../images/lilypond-66dfe48236d78a34a256753d8eec9933afe932f7c240fee6f91763640829d25d.ly"><img src="../../../images/lilypond-66dfe48236d78a34a256753d8eec9933afe932f7c240fee6f91763640829d25d.cropped.png"/></a>
+</div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">note</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;c&#39;4&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">microtones</span><span class="o">.</span><span class="n">tune_to_ratio</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">note_head</span><span class="p">,</span> <span class="s2">&quot;7/4&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">([</span><span class="n">note</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">score</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Score</span><span class="p">([</span><span class="n">staff</span><span class="p">])</span>
@@ -495,7 +497,9 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">lilypond_file</span><span class="p">)</span>  
 </pre></div>
 </div>
-</div>
+<div class="uqbar-book">
+    <a href="../../../images/lilypond-d785369efa8b6cebd9e3d5fce45181afa4fcc47d3cdab099018ccaf631532cfb.ly"><img src="../../../images/lilypond-d785369efa8b6cebd9e3d5fce45181afa4fcc47d3cdab099018ccaf631532cfb.cropped.png"/></a>
+</div></div>
 <div class="example docutils container">
 <p>Tweaks accidentals when <code class="docutils literal notranslate"><span class="pre">omit_just_accidental=False</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">note</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;c&#39;4&quot;</span><span class="p">)</span>
@@ -542,7 +546,9 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">lilypond_file</span><span class="p">)</span>  
 </pre></div>
 </div>
-<p>A harmonic series with the HEJI2 font.</p>
+<div class="uqbar-book">
+    <a href="../../../images/lilypond-d662dfb48001e8348f965fc696d2ff4dd745954e5017f82b1d73fd2190888eaa.ly"><img src="../../../images/lilypond-d662dfb48001e8348f965fc696d2ff4dd745954e5017f82b1d73fd2190888eaa.cropped.png"/></a>
+</div><p>A harmonic series with the HEJI2 font.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ratios</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">/1&quot;</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">23</span><span class="p">)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">notes</span> <span class="o">=</span> <span class="p">[</span><span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;a,,,8&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">ratios</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">note</span><span class="p">,</span> <span class="n">ratio</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="n">ratios</span><span class="p">):</span>
@@ -570,7 +576,9 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">lilypond_file</span><span class="p">)</span>  
 </pre></div>
 </div>
-</div>
+<div class="uqbar-book">
+    <a href="../../../images/lilypond-14cc2ac4e34b2b2488f7aea44cd33c7fd3f7e6fbbad8154ba36d6f3a4034569c.ly"><img src="../../../images/lilypond-14cc2ac4e34b2b2488f7aea44cd33c7fd3f7e6fbbad8154ba36d6f3a4034569c.cropped.png"/></a>
+</div></div>
 <div class="example docutils container">
 <p>Prints tempered accidentals when <code class="docutils literal notranslate"><span class="pre">tempered=True</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">note</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;c&#39;4&quot;</span><span class="p">)</span>
@@ -589,7 +597,9 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">lilypond_file</span><span class="p">)</span>  
 </pre></div>
 </div>
-</div>
+<div class="uqbar-book">
+    <a href="../../../images/lilypond-a3c0a33baab07faa7650747ec2e58ebe7fa6ff7049a0100914d65c7e4cfea3e8.ly"><img src="../../../images/lilypond-a3c0a33baab07faa7650747ec2e58ebe7fa6ff7049a0100914d65c7e4cfea3e8.cropped.png"/></a>
+</div></div>
 </dd></dl>
 
 </div>
