@@ -1,0 +1,1041 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>evans.timespan &mdash; Perllan API 0.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/abjad.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/uqbar.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../static/notes.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script defer="defer" src="../../static/copybutton.js"></script>
+        <script src="../../static/ga.js"></script>
+    
+    <script type="text/javascript" src="../../static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #556B2F" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Perllan API
+          
+
+          
+            
+            <img src="../../static/perllan-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../concepts.html">Core concepts</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/abjadext/microtones/index.html">microtones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/evans/index.html">evans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/tsmakers/index.html">tsmakers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../scores.html">Score gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recipes_pitch.html">Pitch Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recipes_sequence.html">Sequence Recipes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Perllan API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>evans.timespan</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for evans.timespan</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Timespan classes and functions.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">import</span> <span class="nn">abjad</span>
+<span class="kn">from</span> <span class="nn">abjadext</span> <span class="kn">import</span> <span class="n">rmakers</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">handlers</span>
+<span class="kn">from</span> <span class="nn">.commands</span> <span class="kn">import</span> <span class="n">RhythmCommand</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~&quot;</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+
+<span class="n">abjad_stylesheet</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s2">&quot;abjad/docs/source/_stylesheets/abjad.ily&quot;</span><span class="p">)</span>
+
+<span class="n">dir_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">rhythm_stylesheet</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_path</span><span class="p">,</span> <span class="s2">&quot;_rhythm_sketch_stylesheet.ily&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="SilentTimespan"><a class="viewcode-back" href="../../api/evans/timespan.html#evans.timespan.SilentTimespan">[docs]</a><span class="k">class</span> <span class="nc">SilentTimespan</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Silent Timespan</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; span = evans.SilentTimespan(0, 1)</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(span) # doctest: +SKIP</span>
+
+<span class="sd">        .. docs::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(abjad.storage(span))</span>
+<span class="sd">            evans.SilentTimespan(</span>
+<span class="sd">                abjad.Offset((0, 1)),</span>
+<span class="sd">                abjad.Offset((1, 1))</span>
+<span class="sd">                )</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_offset</span><span class="p">,</span> <span class="n">stop_offset</span><span class="p">,</span> <span class="n">annotation</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_offset</span><span class="p">,</span> <span class="n">stop_offset</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">annotation</span> <span class="o">=</span> <span class="n">annotation</span>
+
+<div class="viewcode-block" id="SilentTimespan.__str__"><a class="viewcode-back" href="../../api/evans/timespan.html#evans.timespan.SilentTimespan.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SilentTimespan.__repr__"><a class="viewcode-back" href="../../api/evans/timespan.html#evans.timespan.SilentTimespan.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_as_postscript</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">postscript_x_offset</span><span class="p">,</span> <span class="n">postscript_y_offset</span><span class="p">,</span> <span class="n">postscript_scale</span>
+    <span class="p">):</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_start_offset</span><span class="p">)</span> <span class="o">*</span> <span class="n">postscript_scale</span>
+        <span class="n">start</span> <span class="o">-=</span> <span class="n">postscript_x_offset</span>
+        <span class="n">stop</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_stop_offset</span><span class="p">)</span> <span class="o">*</span> <span class="n">postscript_scale</span>
+        <span class="n">stop</span> <span class="o">-=</span> <span class="n">postscript_x_offset</span>
+        <span class="n">ps</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Postscript</span><span class="p">()</span>
+        <span class="n">ps</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">setdash</span><span class="p">([</span><span class="mf">0.5</span><span class="p">])</span>
+        <span class="n">ps</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">moveto</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">postscript_y_offset</span><span class="p">)</span>
+        <span class="n">ps</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">lineto</span><span class="p">(</span><span class="n">stop</span><span class="p">,</span> <span class="n">postscript_y_offset</span><span class="p">)</span>
+        <span class="n">ps</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">stroke</span><span class="p">()</span>
+        <span class="n">ps</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">moveto</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">postscript_y_offset</span> <span class="o">+</span> <span class="mf">0.75</span><span class="p">)</span>
+        <span class="n">ps</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">lineto</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">postscript_y_offset</span> <span class="o">-</span> <span class="mf">0.75</span><span class="p">)</span>
+        <span class="n">ps</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">setdash</span><span class="p">()</span>
+        <span class="n">ps</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">stroke</span><span class="p">()</span>
+        <span class="n">ps</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">moveto</span><span class="p">(</span><span class="n">stop</span><span class="p">,</span> <span class="n">postscript_y_offset</span> <span class="o">+</span> <span class="mf">0.75</span><span class="p">)</span>
+        <span class="n">ps</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">lineto</span><span class="p">(</span><span class="n">stop</span><span class="p">,</span> <span class="n">postscript_y_offset</span> <span class="o">-</span> <span class="mf">0.75</span><span class="p">)</span>
+        <span class="n">ps</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">stroke</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">ps</span></div>
+
+
+<div class="viewcode-block" id="TimespanMaker"><a class="viewcode-back" href="../../api/evans/timespan.html#evans.timespan.TimespanMaker">[docs]</a><span class="k">class</span> <span class="nc">TimespanMaker</span><span class="p">:</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; timespan_maker = evans.TimespanMaker(</span>
+<span class="sd">        ...     denominator=8,</span>
+<span class="sd">        ...     total_duration=abjad.Duration(15, 2),</span>
+<span class="sd">        ... )</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; counts = [3, 5, -3, 4, 7, -1]</span>
+<span class="sd">        &gt;&gt;&gt; timespan_list = timespan_maker(counts, max_duration=6, voice_name=&quot;A&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(timespan_list, scale=0.5) # doctest: +SKIP</span>
+
+<span class="sd">        .. docs::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(abjad.storage(timespan_list))</span>
+<span class="sd">            abjad.TimespanList(</span>
+<span class="sd">                [</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((0, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((3, 8)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((3, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((1, 1)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((11, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((15, 8)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((15, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((21, 8)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((23, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((13, 4)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((13, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((31, 8)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((17, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((19, 4)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((19, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((11, 2)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((23, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((49, 8)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((49, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((27, 4)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    ]</span>
+<span class="sd">                )</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; timespan_maker = evans.TimespanMaker(</span>
+<span class="sd">        ...     denominator=8,</span>
+<span class="sd">        ...     total_duration=abjad.Duration(15, 2),</span>
+<span class="sd">        ... )</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; counts = [3, 1, -2, 2, 3, -1, 2, -2]</span>
+<span class="sd">        &gt;&gt;&gt; timespan_list_1 = timespan_maker(counts, max_duration=6, voice_name=&quot;A&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; timespan_list_2 = timespan_maker(</span>
+<span class="sd">        ...     counts,</span>
+<span class="sd">        ...     max_duration=6,</span>
+<span class="sd">        ...     voice_name=&quot;B&quot;,</span>
+<span class="sd">        ...     rotation=2,</span>
+<span class="sd">        ...     translation=1</span>
+<span class="sd">        ... )</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; timespan_list_3 = timespan_maker(</span>
+<span class="sd">        ...     counts,</span>
+<span class="sd">        ...     max_duration=6,</span>
+<span class="sd">        ...     voice_name=&quot;C&quot;,</span>
+<span class="sd">        ...     rotation=5,</span>
+<span class="sd">        ...     translation=3</span>
+<span class="sd">        ... )</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; timespan_list_4 = timespan_maker(</span>
+<span class="sd">        ...     counts,</span>
+<span class="sd">        ...     max_duration=6,</span>
+<span class="sd">        ...     voice_name=&quot;D&quot;,</span>
+<span class="sd">        ...     rotation=3,</span>
+<span class="sd">        ...     translation=2</span>
+<span class="sd">        ... )</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; timespanlist = abjad.TimespanList()</span>
+<span class="sd">        &gt;&gt;&gt; for span in timespan_list_1:</span>
+<span class="sd">        ...     timespanlist.append(span)</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; for span in timespan_list_2:</span>
+<span class="sd">        ...     timespanlist.append(span)</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; for span in timespan_list_3:</span>
+<span class="sd">        ...     timespanlist.append(span)</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; for span in timespan_list_4:</span>
+<span class="sd">        ...     timespanlist.append(span)</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(timespanlist, scale=0.5, key=&quot;annotation&quot;) # doctest: +SKIP</span>
+
+<span class="sd">        .. docs::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(abjad.storage(timespanlist))</span>
+<span class="sd">            abjad.TimespanList(</span>
+<span class="sd">                [</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((0, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((3, 8)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((3, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((1, 2)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((3, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((1, 1)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((1, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((11, 8)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((3, 2)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((7, 4)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((2, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((19, 8)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((19, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((5, 2)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((11, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((3, 1)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((3, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((27, 8)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((7, 2)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((15, 4)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((4, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((35, 8)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((35, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((9, 2)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((19, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((5, 1)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((5, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((43, 8)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((11, 2)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((23, 4)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((6, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((51, 8)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((51, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((13, 2)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((27, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((7, 1)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((7, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((59, 8)),</span>
+<span class="sd">                        annotation=&#39;A&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((3, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((5, 8)),</span>
+<span class="sd">                        annotation=&#39;B&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((5, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((1, 1)),</span>
+<span class="sd">                        annotation=&#39;B&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((9, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((11, 8)),</span>
+<span class="sd">                        annotation=&#39;B&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((13, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((2, 1)),</span>
+<span class="sd">                        annotation=&#39;B&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((2, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((17, 8)),</span>
+<span class="sd">                        annotation=&#39;B&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((19, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((21, 8)),</span>
+<span class="sd">                        annotation=&#39;B&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((21, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((3, 1)),</span>
+<span class="sd">                        annotation=&#39;B&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((25, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((27, 8)),</span>
+<span class="sd">                        annotation=&#39;B&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((29, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((4, 1)),</span>
+<span class="sd">                        annotation=&#39;B&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((4, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((33, 8)),</span>
+<span class="sd">                        annotation=&#39;B&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((35, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((37, 8)),</span>
+<span class="sd">                        annotation=&#39;B&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((37, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((5, 1)),</span>
+<span class="sd">                        annotation=&#39;B&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((41, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((43, 8)),</span>
+<span class="sd">                        annotation=&#39;B&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((45, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((6, 1)),</span>
+<span class="sd">                        annotation=&#39;B&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((6, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((49, 8)),</span>
+<span class="sd">                        annotation=&#39;B&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((51, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((53, 8)),</span>
+<span class="sd">                        annotation=&#39;B&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((53, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((7, 1)),</span>
+<span class="sd">                        annotation=&#39;B&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((57, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((59, 8)),</span>
+<span class="sd">                        annotation=&#39;B&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((1, 2)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((3, 4)),</span>
+<span class="sd">                        annotation=&#39;C&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((1, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((11, 8)),</span>
+<span class="sd">                        annotation=&#39;C&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((11, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((3, 2)),</span>
+<span class="sd">                        annotation=&#39;C&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((7, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((2, 1)),</span>
+<span class="sd">                        annotation=&#39;C&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((2, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((19, 8)),</span>
+<span class="sd">                        annotation=&#39;C&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((5, 2)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((11, 4)),</span>
+<span class="sd">                        annotation=&#39;C&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((3, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((27, 8)),</span>
+<span class="sd">                        annotation=&#39;C&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((27, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((7, 2)),</span>
+<span class="sd">                        annotation=&#39;C&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((15, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((4, 1)),</span>
+<span class="sd">                        annotation=&#39;C&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((4, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((35, 8)),</span>
+<span class="sd">                        annotation=&#39;C&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((9, 2)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((19, 4)),</span>
+<span class="sd">                        annotation=&#39;C&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((5, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((43, 8)),</span>
+<span class="sd">                        annotation=&#39;C&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((43, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((11, 2)),</span>
+<span class="sd">                        annotation=&#39;C&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((23, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((6, 1)),</span>
+<span class="sd">                        annotation=&#39;C&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((6, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((51, 8)),</span>
+<span class="sd">                        annotation=&#39;C&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((13, 2)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((27, 4)),</span>
+<span class="sd">                        annotation=&#39;C&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((7, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((59, 8)),</span>
+<span class="sd">                        annotation=&#39;C&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((59, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((15, 2)),</span>
+<span class="sd">                        annotation=&#39;C&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((1, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((1, 2)),</span>
+<span class="sd">                        annotation=&#39;D&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((1, 2)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((7, 8)),</span>
+<span class="sd">                        annotation=&#39;D&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((1, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((5, 4)),</span>
+<span class="sd">                        annotation=&#39;D&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((3, 2)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((15, 8)),</span>
+<span class="sd">                        annotation=&#39;D&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((15, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((2, 1)),</span>
+<span class="sd">                        annotation=&#39;D&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((9, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((5, 2)),</span>
+<span class="sd">                        annotation=&#39;D&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((5, 2)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((23, 8)),</span>
+<span class="sd">                        annotation=&#39;D&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((3, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((13, 4)),</span>
+<span class="sd">                        annotation=&#39;D&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((7, 2)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((31, 8)),</span>
+<span class="sd">                        annotation=&#39;D&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((31, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((4, 1)),</span>
+<span class="sd">                        annotation=&#39;D&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((17, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((9, 2)),</span>
+<span class="sd">                        annotation=&#39;D&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((9, 2)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((39, 8)),</span>
+<span class="sd">                        annotation=&#39;D&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((5, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((21, 4)),</span>
+<span class="sd">                        annotation=&#39;D&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((11, 2)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((47, 8)),</span>
+<span class="sd">                        annotation=&#39;D&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((47, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((6, 1)),</span>
+<span class="sd">                        annotation=&#39;D&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((25, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((13, 2)),</span>
+<span class="sd">                        annotation=&#39;D&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((13, 2)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((55, 8)),</span>
+<span class="sd">                        annotation=&#39;D&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.AnnotatedTimespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((7, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((29, 4)),</span>
+<span class="sd">                        annotation=&#39;D&#39;,</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    ]</span>
+<span class="sd">                )</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;_denominator&quot;</span><span class="p">,</span> <span class="s2">&quot;_total_duration&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">denominator</span><span class="p">,</span> <span class="n">total_duration</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_denominator</span> <span class="o">=</span> <span class="n">denominator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_total_duration</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="n">total_duration</span><span class="p">)</span>
+
+<div class="viewcode-block" id="TimespanMaker.__str__"><a class="viewcode-back" href="../../api/evans/timespan.html#evans.timespan.TimespanMaker.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TimespanMaker.__repr__"><a class="viewcode-back" href="../../api/evans/timespan.html#evans.timespan.TimespanMaker.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TimespanMaker.__call__"><a class="viewcode-back" href="../../api/evans/timespan.html#evans.timespan.TimespanMaker.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">counts</span><span class="p">,</span> <span class="n">max_duration</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">translation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">voice_name</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="n">rotation</span><span class="p">:</span>
+            <span class="n">counts</span> <span class="o">=</span> <span class="n">counts</span><span class="p">[</span><span class="n">rotation</span><span class="p">:]</span> <span class="o">+</span> <span class="n">counts</span><span class="p">[:</span><span class="n">rotation</span><span class="p">]</span>
+        <span class="n">counts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ready_counts</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">translation</span><span class="p">)</span>
+        <span class="n">denominator</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">denominator</span>
+        <span class="n">increment_total</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">+</span> <span class="n">translation</span>
+        <span class="n">timespan_list</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">([])</span>
+        <span class="k">for</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">counts</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">increment_total</span> <span class="o">+=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+                <span class="k">continue</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">increment_total</span>
+            <span class="n">stop</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">count</span>
+            <span class="k">if</span> <span class="n">max_duration</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">stop</span> <span class="o">=</span> <span class="p">(</span><span class="n">max_duration</span> <span class="o">+</span> <span class="n">start</span><span class="p">)</span> <span class="k">if</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="n">max_duration</span> <span class="k">else</span> <span class="n">stop</span>
+            <span class="n">timespan_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">abjad</span><span class="o">.</span><span class="n">AnnotatedTimespan</span><span class="p">(</span>
+                    <span class="n">start_offset</span><span class="o">=</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">denominator</span><span class="p">),</span>
+                    <span class="n">stop_offset</span><span class="o">=</span><span class="p">(</span><span class="n">stop</span><span class="p">,</span> <span class="n">denominator</span><span class="p">),</span>
+                    <span class="n">annotation</span><span class="o">=</span><span class="n">voice_name</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">increment_total</span> <span class="o">+=</span> <span class="n">count</span>
+        <span class="k">return</span> <span class="n">timespan_list</span></div>
+
+    <span class="k">def</span> <span class="nf">_ready_counts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">counts</span><span class="p">,</span> <span class="n">translation</span><span class="p">):</span>
+        <span class="n">total_duration</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_duration</span>
+        <span class="n">normalized_duration</span> <span class="o">=</span> <span class="n">total_duration</span><span class="o">.</span><span class="n">with_denominator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">denominator</span><span class="p">)</span>
+        <span class="n">total_numerator</span> <span class="o">=</span> <span class="n">normalized_duration</span><span class="o">.</span><span class="n">numerator</span> <span class="o">-</span> <span class="n">translation</span>
+        <span class="n">counts</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">CyclicTuple</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+        <span class="n">repeated_counts</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">increment</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">previous_sum</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">previous_sum</span> <span class="o">&lt;</span> <span class="n">total_numerator</span><span class="p">:</span>
+            <span class="n">new_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">repeated_counts</span><span class="p">)</span>
+            <span class="n">count</span> <span class="o">=</span> <span class="n">counts</span><span class="p">[</span><span class="n">increment</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">new_sum</span> <span class="o">+</span> <span class="n">count</span> <span class="o">&lt;=</span> <span class="n">total_numerator</span><span class="p">:</span>
+                <span class="n">repeated_counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+                <span class="n">increment</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">continue</span>
+            <span class="k">break</span>
+        <span class="k">return</span> <span class="n">repeated_counts</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">denominator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_denominator</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">total_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_total_duration</span></div>
+
+
+<div class="viewcode-block" id="TimespanSpecifier"><a class="viewcode-back" href="../../api/evans/timespan.html#evans.timespan.TimespanSpecifier">[docs]</a><span class="k">class</span> <span class="nc">TimespanSpecifier</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">voice_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voice_name</span> <span class="o">=</span> <span class="n">voice_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">handler</span> <span class="o">=</span> <span class="n">handler</span>
+
+<div class="viewcode-block" id="TimespanSpecifier.__str__"><a class="viewcode-back" href="../../api/evans/timespan.html#evans.timespan.TimespanSpecifier.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TimespanSpecifier.__repr__"><a class="viewcode-back" href="../../api/evans/timespan.html#evans.timespan.TimespanSpecifier.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="make_split_list"><a class="viewcode-back" href="../../api/evans/timespan.html#evans.timespan.make_split_list">[docs]</a><span class="k">def</span> <span class="nf">make_split_list</span><span class="p">(</span><span class="n">timespan_list</span><span class="p">,</span> <span class="n">offsets</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">timespan</span>
+            <span class="k">for</span> <span class="n">timespanlist</span> <span class="ow">in</span> <span class="n">timespan_list</span><span class="o">.</span><span class="n">split_at_offsets</span><span class="p">(</span><span class="n">offsets</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">timespan</span> <span class="ow">in</span> <span class="n">timespanlist</span>
+        <span class="p">]</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="collect_offsets"><a class="viewcode-back" href="../../api/evans/timespan.html#evans.timespan.collect_offsets">[docs]</a><span class="k">def</span> <span class="nf">collect_offsets</span><span class="p">(</span><span class="n">timespan_list</span><span class="p">):</span>
+    <span class="n">offsets</span> <span class="o">=</span> <span class="p">[</span><span class="n">timespan</span><span class="o">.</span><span class="n">start_offset</span> <span class="k">for</span> <span class="n">timespan</span> <span class="ow">in</span> <span class="n">timespan_list</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">stop_offset</span> <span class="ow">in</span> <span class="p">[</span><span class="n">timespan</span><span class="o">.</span><span class="n">stop_offset</span> <span class="k">for</span> <span class="n">timespan</span> <span class="ow">in</span> <span class="n">timespan_list</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">stop_offset</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">offsets</span><span class="p">:</span>
+            <span class="n">offsets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stop_offset</span><span class="p">)</span>
+    <span class="n">offsets</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">offsets</span></div>
+
+
+<div class="viewcode-block" id="make_showable_list"><a class="viewcode-back" href="../../api/evans/timespan.html#evans.timespan.make_showable_list">[docs]</a><span class="k">def</span> <span class="nf">make_showable_list</span><span class="p">(</span><span class="n">timespan_lists</span><span class="p">):</span>
+    <span class="n">master_list</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">([])</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">timespan_list</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">timespan_lists</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">timespan</span> <span class="ow">in</span> <span class="n">timespan_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">timespan</span><span class="p">,</span> <span class="n">SilentTimespan</span><span class="p">):</span>
+                <span class="n">new_span</span> <span class="o">=</span> <span class="n">SilentTimespan</span><span class="p">(</span>
+                    <span class="n">start_offset</span><span class="o">=</span><span class="n">timespan</span><span class="o">.</span><span class="n">start_offset</span><span class="p">,</span>
+                    <span class="n">stop_offset</span><span class="o">=</span><span class="n">timespan</span><span class="o">.</span><span class="n">stop_offset</span><span class="p">,</span>
+                    <span class="n">annotation</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">new_span</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">AnnotatedTimespan</span><span class="p">(</span>
+                    <span class="n">start_offset</span><span class="o">=</span><span class="n">timespan</span><span class="o">.</span><span class="n">start_offset</span><span class="p">,</span>
+                    <span class="n">stop_offset</span><span class="o">=</span><span class="n">timespan</span><span class="o">.</span><span class="n">stop_offset</span><span class="p">,</span>
+                    <span class="n">annotation</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+                <span class="p">)</span>
+            <span class="n">master_list</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">new_span</span><span class="p">])</span>
+    <span class="n">master_list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">master_list</span></div>
+
+
+<div class="viewcode-block" id="add_silent_timespans"><a class="viewcode-back" href="../../api/evans/timespan.html#evans.timespan.add_silent_timespans">[docs]</a><span class="k">def</span> <span class="nf">add_silent_timespans</span><span class="p">(</span><span class="n">timespan_list</span><span class="p">,</span> <span class="n">specifier</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">silent_timespans</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="p">(</span>
+                <span class="n">start_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop_offset</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">stop_offset</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">timespan_list</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">timespan</span> <span class="ow">in</span> <span class="n">timespan_list</span><span class="p">:</span>
+        <span class="n">silent_timespans</span> <span class="o">-=</span> <span class="n">timespan</span>
+    <span class="k">for</span> <span class="n">silent_timespan</span> <span class="ow">in</span> <span class="n">silent_timespans</span><span class="p">:</span>
+        <span class="n">timespan_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">SilentTimespan</span><span class="p">(</span>
+                    <span class="n">start_offset</span><span class="o">=</span><span class="n">silent_timespan</span><span class="o">.</span><span class="n">start_offset</span><span class="p">,</span>
+                    <span class="n">stop_offset</span><span class="o">=</span><span class="n">silent_timespan</span><span class="o">.</span><span class="n">stop_offset</span><span class="p">,</span>
+                    <span class="n">annotation</span><span class="o">=</span><span class="n">specifier</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">timespan_list</span></div>
+
+
+<div class="viewcode-block" id="add_silences_to_timespan_lists"><a class="viewcode-back" href="../../api/evans/timespan.html#evans.timespan.add_silences_to_timespan_lists">[docs]</a><span class="k">def</span> <span class="nf">add_silences_to_timespan_lists</span><span class="p">(</span><span class="n">timespan_lists</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">timespan_list</span> <span class="ow">in</span> <span class="n">timespan_lists</span><span class="p">:</span>
+        <span class="n">timespan_list</span> <span class="o">=</span> <span class="n">add_silent_timespans</span><span class="p">(</span><span class="n">timespan_list</span><span class="p">)</span>
+        <span class="n">timespan_list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="add_silences_to_timespan_dict"><a class="viewcode-back" href="../../api/evans/timespan.html#evans.timespan.add_silences_to_timespan_dict">[docs]</a><span class="k">def</span> <span class="nf">add_silences_to_timespan_dict</span><span class="p">(</span><span class="n">timespan_dict</span><span class="p">,</span> <span class="n">specifier</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">max_stop_offset</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">stop_offset</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">timespan_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">timespan_list</span> <span class="ow">in</span> <span class="n">timespan_dict</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="n">silences</span> <span class="o">=</span> <span class="n">SilentTimespan</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_stop_offset</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">timespan</span> <span class="ow">in</span> <span class="n">timespan_list</span><span class="p">:</span>
+            <span class="n">silences</span> <span class="o">-=</span> <span class="n">timespan</span>
+        <span class="k">for</span> <span class="n">silence</span> <span class="ow">in</span> <span class="n">silences</span><span class="p">:</span>
+            <span class="n">silence</span><span class="o">.</span><span class="n">annotation</span> <span class="o">=</span> <span class="n">specifier</span>
+            <span class="n">timespan_list</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">silence</span><span class="p">])</span>
+        <span class="n">timespan_list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="talea_timespans"><a class="viewcode-back" href="../../api/evans/timespan.html#evans.timespan.talea_timespans">[docs]</a><span class="k">def</span> <span class="nf">talea_timespans</span><span class="p">(</span><span class="n">talea</span><span class="p">,</span> <span class="n">advancement</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">talea</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">talea</span><span class="p">)</span>
+    <span class="n">talea</span> <span class="o">=</span> <span class="n">talea</span><span class="o">.</span><span class="n">advance</span><span class="p">(</span><span class="n">advancement</span><span class="p">)</span>
+    <span class="n">timespans</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">([])</span>
+    <span class="n">total_duration</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">duration</span> <span class="ow">in</span> <span class="n">talea</span><span class="p">:</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">total_duration</span>
+        <span class="n">stop</span> <span class="o">=</span> <span class="n">total_duration</span> <span class="o">+</span> <span class="nb">abs</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">duration</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">timespan</span> <span class="o">=</span> <span class="n">SilentTimespan</span><span class="p">(</span>
+                <span class="n">start_offset</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">stop_offset</span><span class="o">=</span><span class="n">stop</span><span class="p">,</span> <span class="n">annotation</span><span class="o">=</span><span class="kc">None</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">timespan</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">AnnotatedTimespan</span><span class="p">(</span>
+                <span class="n">start_offset</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">stop_offset</span><span class="o">=</span><span class="n">stop</span><span class="p">,</span> <span class="n">annotation</span><span class="o">=</span><span class="kc">None</span>
+            <span class="p">)</span>
+        <span class="n">timespans</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">timespan</span><span class="p">)</span>
+        <span class="n">total_duration</span> <span class="o">+=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">timespans</span></div>
+
+
+<div class="viewcode-block" id="to_digit"><a class="viewcode-back" href="../../api/evans/timespan.html#evans.timespan.to_digit">[docs]</a><span class="k">def</span> <span class="nf">to_digit</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; evans.to_digit(&quot;2&quot;)</span>
+<span class="sd">        2</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="k">if</span> <span class="n">string</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="k">else</span> <span class="n">string</span></div>
+
+
+<div class="viewcode-block" id="sorted_keys"><a class="viewcode-back" href="../../api/evans/timespan.html#evans.timespan.sorted_keys">[docs]</a><span class="k">def</span> <span class="nf">sorted_keys</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; evans.sorted_keys(&quot;Voice 1&quot;)</span>
+<span class="sd">        [&#39;Voice &#39;, 1, &#39;&#39;]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">to_digit</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d+)&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)]</span></div>
+
+
+<div class="viewcode-block" id="human_sorted_keys"><a class="viewcode-back" href="../../api/evans/timespan.html#evans.timespan.human_sorted_keys">[docs]</a><span class="k">def</span> <span class="nf">human_sorted_keys</span><span class="p">(</span><span class="n">pair</span><span class="p">):</span>
+    <span class="n">key</span><span class="p">,</span> <span class="n">timespan</span> <span class="o">=</span> <span class="n">pair</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">to_digit</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+    <span class="n">hashable_key</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">hashable_key</span></div>
+
+
+<div class="viewcode-block" id="intercalate_silences"><a class="viewcode-back" href="../../api/evans/timespan.html#evans.timespan.intercalate_silences">[docs]</a><span class="k">def</span> <span class="nf">intercalate_silences</span><span class="p">(</span><span class="n">rhythm_command_list</span><span class="p">,</span> <span class="n">voice_names</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">global_timespan</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="p">(</span>
+        <span class="n">start_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">stop_offset</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">timespan</span><span class="o">.</span><span class="n">stop_offset</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">rhythm_command_list</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">silence_maker</span> <span class="o">=</span> <span class="n">handlers</span><span class="o">.</span><span class="n">RhythmHandler</span><span class="p">(</span>
+        <span class="n">rmakers</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span>
+            <span class="n">rmakers</span><span class="o">.</span><span class="n">NoteRhythmMaker</span><span class="p">(),</span>
+            <span class="n">rmakers</span><span class="o">.</span><span class="n">force_rest</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">select</span><span class="p">()</span><span class="o">.</span><span class="n">leaves</span><span class="p">(</span><span class="n">pitched</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span>
+        <span class="p">),</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;silence_maker&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">voice_names</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">voice_names</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">voice_name</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">rhythm_command_list</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">voice_name</span> <span class="ow">in</span> <span class="n">voice_names</span><span class="p">:</span>
+        <span class="n">timespan_list</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">_</span><span class="o">.</span><span class="n">timespan</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">rhythm_command_list</span> <span class="k">if</span> <span class="n">_</span><span class="o">.</span><span class="n">voice_name</span> <span class="o">==</span> <span class="n">voice_name</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">silences</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">([</span><span class="n">global_timespan</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">timespan</span> <span class="ow">in</span> <span class="n">timespan_list</span><span class="p">:</span>
+            <span class="n">silences</span> <span class="o">-=</span> <span class="n">timespan</span>
+        <span class="k">for</span> <span class="n">timespan</span> <span class="ow">in</span> <span class="n">silences</span><span class="p">:</span>
+            <span class="n">new_command</span> <span class="o">=</span> <span class="n">RhythmCommand</span><span class="p">(</span>
+                <span class="n">voice_name</span><span class="p">,</span>
+                <span class="n">timespan</span><span class="p">,</span>
+                <span class="n">silence_maker</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">rhythm_command_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_command</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-2021, Gregory Rowland Evans
+      <span class="lastupdated">
+        Last updated on Jun 03, 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

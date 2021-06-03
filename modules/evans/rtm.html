@@ -1,0 +1,944 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>evans.rtm &mdash; Perllan API 0.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/abjad.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/uqbar.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../static/notes.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script defer="defer" src="../../static/copybutton.js"></script>
+        <script src="../../static/ga.js"></script>
+    
+    <script type="text/javascript" src="../../static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #556B2F" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Perllan API
+          
+
+          
+            
+            <img src="../../static/perllan-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../concepts.html">Core concepts</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/abjadext/microtones/index.html">microtones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/evans/index.html">evans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/tsmakers/index.html">tsmakers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../scores.html">Score gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recipes_pitch.html">Pitch Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recipes_sequence.html">Sequence Recipes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Perllan API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>evans.rtm</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for evans.rtm</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Rhythm tree functions.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">abjad</span>
+<span class="kn">from</span> <span class="nn">abjadext</span> <span class="kn">import</span> <span class="n">rmakers</span>
+
+<span class="kn">from</span> <span class="nn">.sequence</span> <span class="kn">import</span> <span class="n">Sequence</span>
+
+
+<div class="viewcode-block" id="flatten_tree_level"><a class="viewcode-back" href="../../api/evans/rtm.html#evans.rtm.flatten_tree_level">[docs]</a><span class="k">def</span> <span class="nf">flatten_tree_level</span><span class="p">(</span><span class="n">rtm</span><span class="p">,</span> <span class="n">recurse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    .. container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; string = &quot;(1 (1 (1 ((2 (1 1 1)) 2 2 1))))&quot;</span>
+<span class="sd">        &gt;&gt;&gt; rhythm_tree_container_ = evans.flatten_tree_level(</span>
+<span class="sd">        ...     string,</span>
+<span class="sd">        ...     recurse=False,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; strings = [string, rhythm_tree_container_]</span>
+<span class="sd">        &gt;&gt;&gt; durations = [abjad.Duration(1, 1), abjad.Duration(1, 1)]</span>
+<span class="sd">        &gt;&gt;&gt; h = evans.RhythmHandler(evans.RTMMaker(strings), forget=False)</span>
+<span class="sd">        &gt;&gt;&gt; selections = h(durations)</span>
+<span class="sd">        &gt;&gt;&gt; staff = abjad.Staff()</span>
+<span class="sd">        &gt;&gt;&gt; staff.extend(selections)</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(staff) # doctest: +SKIP</span>
+
+<span class="sd">        .. docs::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(abjad.lilypond(staff))</span>
+<span class="sd">            \new Staff</span>
+<span class="sd">            {</span>
+<span class="sd">                c&#39;2</span>
+<span class="sd">                \times 4/7 {</span>
+<span class="sd">                    \times 2/3 {</span>
+<span class="sd">                        c&#39;8</span>
+<span class="sd">                        c&#39;8</span>
+<span class="sd">                        c&#39;8</span>
+<span class="sd">                    }</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                }</span>
+<span class="sd">                c&#39;8</span>
+<span class="sd">                \times 2/3 {</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                }</span>
+<span class="sd">                c&#39;4</span>
+<span class="sd">                c&#39;4</span>
+<span class="sd">                c&#39;8</span>
+<span class="sd">            }</span>
+
+<span class="sd">    .. container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; string = &quot;(1 (1 (1 ((2 (1 1 1)) 2 2 1))))&quot;</span>
+<span class="sd">        &gt;&gt;&gt; rhythm_tree_container_ = evans.flatten_tree_level(</span>
+<span class="sd">        ...     string,</span>
+<span class="sd">        ...     recurse=True,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; strings = [string, rhythm_tree_container_]</span>
+<span class="sd">        &gt;&gt;&gt; durations = [abjad.Duration(1, 1), abjad.Duration(1, 1)]</span>
+<span class="sd">        &gt;&gt;&gt; h = evans.RhythmHandler(evans.RTMMaker(strings), forget=False)</span>
+<span class="sd">        &gt;&gt;&gt; selections = h(durations)</span>
+<span class="sd">        &gt;&gt;&gt; staff = abjad.Staff()</span>
+<span class="sd">        &gt;&gt;&gt; staff.extend(selections)</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(staff) # doctest: +SKIP</span>
+
+<span class="sd">        .. docs::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(abjad.lilypond(staff))</span>
+<span class="sd">            \new Staff</span>
+<span class="sd">            {</span>
+<span class="sd">                c&#39;2</span>
+<span class="sd">                \times 4/7 {</span>
+<span class="sd">                    \times 2/3 {</span>
+<span class="sd">                        c&#39;8</span>
+<span class="sd">                        c&#39;8</span>
+<span class="sd">                        c&#39;8</span>
+<span class="sd">                    }</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                }</span>
+<span class="sd">                \times 8/9 {</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                }</span>
+<span class="sd">            }</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">rhythmtrees</span><span class="o">.</span><span class="n">RhythmTreeParser</span><span class="p">()</span>
+    <span class="n">rhythm_tree_list</span> <span class="o">=</span> <span class="n">parser</span><span class="p">(</span><span class="n">rtm</span><span class="p">)</span>
+    <span class="n">rhythm_tree</span> <span class="o">=</span> <span class="n">rhythm_tree_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">rhythm_tree</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">abjad</span><span class="o">.</span><span class="n">rhythmtrees</span><span class="o">.</span><span class="n">RhythmTreeContainer</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">recurse</span><span class="p">:</span>
+                <span class="n">temp</span> <span class="o">=</span> <span class="n">flatten_tree_level</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">rtm_format</span><span class="p">)</span>
+                <span class="n">temp_tree_list</span> <span class="o">=</span> <span class="n">parser</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+                <span class="n">temp_tree</span> <span class="o">=</span> <span class="n">temp_tree_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">temp_tree</span><span class="p">:</span>
+                    <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">item_</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+                    <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item_</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">rhythmtrees</span><span class="o">.</span><span class="n">RhythmTreeContainer</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span><span class="o">.</span><span class="n">rtm_format</span></div>
+
+
+<div class="viewcode-block" id="nested_list_to_rtm"><a class="viewcode-back" href="../../api/evans/rtm.html#evans.rtm.nested_list_to_rtm">[docs]</a><span class="k">def</span> <span class="nf">nested_list_to_rtm</span><span class="p">(</span><span class="n">nested_list</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; nested_list = [1, [1, 1, [1, [1, 1]], 1]]</span>
+<span class="sd">        &gt;&gt;&gt; rtm_string = evans.nested_list_to_rtm(nested_list)</span>
+<span class="sd">        &gt;&gt;&gt; print(rtm_string)</span>
+<span class="sd">        (1 (1 1 (1 (1 1)) 1))</span>
+
+<span class="sd">        &gt;&gt;&gt; rtm_list = [rtm_string]</span>
+<span class="sd">        &gt;&gt;&gt; maker = evans.RTMMaker(rtm=rtm_list)</span>
+<span class="sd">        &gt;&gt;&gt; divisions = [abjad.Duration(1, 1)]</span>
+<span class="sd">        &gt;&gt;&gt; selections = maker(divisions)</span>
+<span class="sd">        &gt;&gt;&gt; staff = abjad.Staff()</span>
+<span class="sd">        &gt;&gt;&gt; staff.extend(selections)</span>
+<span class="sd">        &gt;&gt;&gt; score = abjad.Score([staff])</span>
+<span class="sd">        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;</span>
+<span class="sd">        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment</span>
+<span class="sd">        &gt;&gt;&gt; file = abjad.LilyPondFile(</span>
+<span class="sd">        ...     items=[score],</span>
+<span class="sd">        ...     includes=[&quot;abjad.ily&quot;],</span>
+<span class="sd">        ...     global_staff_size=16,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP</span>
+
+<span class="sd">        .. docs::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(abjad.lilypond(staff))</span>
+<span class="sd">            \new Staff</span>
+<span class="sd">            {</span>
+<span class="sd">                c&#39;4</span>
+<span class="sd">                c&#39;4</span>
+<span class="sd">                c&#39;8</span>
+<span class="sd">                c&#39;8</span>
+<span class="sd">                c&#39;4</span>
+<span class="sd">            }</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">out_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">nested_list</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="s2">&quot;[&quot;</span><span class="p">:</span>
+            <span class="n">out_string</span> <span class="o">+=</span> <span class="s2">&quot;(&quot;</span>
+        <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="s2">&quot;]&quot;</span><span class="p">:</span>
+            <span class="n">out_string</span> <span class="o">+=</span> <span class="s2">&quot;)&quot;</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="o">.</span><span class="n">isdigit</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+            <span class="n">out_string</span> <span class="o">+=</span> <span class="n">item</span>
+        <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span><span class="p">:</span>
+            <span class="n">out_string</span> <span class="o">+=</span> <span class="n">item</span>
+        <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="s2">&quot; &quot;</span><span class="p">:</span>
+            <span class="n">out_string</span> <span class="o">+=</span> <span class="n">item</span>
+    <span class="k">return</span> <span class="n">out_string</span></div>
+
+
+<div class="viewcode-block" id="rotate_tree"><a class="viewcode-back" href="../../api/evans/rtm.html#evans.rtm.rotate_tree">[docs]</a><span class="k">def</span> <span class="nf">rotate_tree</span><span class="p">(</span><span class="n">rtm_string</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; rtm = &quot;(1 (2 (1 (1 2)) 1))&quot;</span>
+<span class="sd">        &gt;&gt;&gt; for x in range(6):</span>
+<span class="sd">        ...     new_rtm = evans.rotate_tree(rtm, x)</span>
+<span class="sd">        ...     print(new_rtm)</span>
+<span class="sd">        ...</span>
+<span class="sd">        (1 (2 (1 (1 2)) 1))</span>
+<span class="sd">        (1 (1 (1 (2 1)) 2))</span>
+<span class="sd">        (1 (1 (2 (1 2)) 1))</span>
+<span class="sd">        (1 (2 (1 (2 1)) 1))</span>
+<span class="sd">        (1 (1 (2 (1 1)) 2))</span>
+<span class="sd">        (1 (2 (1 (1 2)) 1))</span>
+
+<span class="sd">        &gt;&gt;&gt; rtm_list = [evans.rotate_tree(rtm, x) for x in range(6)]</span>
+<span class="sd">        &gt;&gt;&gt; maker = evans.RTMMaker(rtm=rtm_list)</span>
+<span class="sd">        &gt;&gt;&gt; divisions = [abjad.Duration(1, 1) for _ in rtm_list]</span>
+<span class="sd">        &gt;&gt;&gt; selections = maker(divisions)</span>
+<span class="sd">        &gt;&gt;&gt; staff = abjad.Staff()</span>
+<span class="sd">        &gt;&gt;&gt; staff.extend(selections)</span>
+<span class="sd">        &gt;&gt;&gt; score = abjad.Score([staff])</span>
+<span class="sd">        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;</span>
+<span class="sd">        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment</span>
+<span class="sd">        &gt;&gt;&gt; file = abjad.LilyPondFile(</span>
+<span class="sd">        ...     items=[score],</span>
+<span class="sd">        ...     includes=[&quot;abjad.ily&quot;],</span>
+<span class="sd">        ...     global_staff_size=16,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP</span>
+
+<span class="sd">        .. docs::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(abjad.lilypond(staff))</span>
+<span class="sd">            \new Staff</span>
+<span class="sd">            {</span>
+<span class="sd">                c&#39;2</span>
+<span class="sd">                \times 2/3 {</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                }</span>
+<span class="sd">                c&#39;4</span>
+<span class="sd">                c&#39;4</span>
+<span class="sd">                \times 2/3 {</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                }</span>
+<span class="sd">                c&#39;2</span>
+<span class="sd">                c&#39;4</span>
+<span class="sd">                \times 2/3 {</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                    c&#39;2</span>
+<span class="sd">                }</span>
+<span class="sd">                c&#39;4</span>
+<span class="sd">                c&#39;2</span>
+<span class="sd">                \times 2/3 {</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                }</span>
+<span class="sd">                c&#39;4</span>
+<span class="sd">                \times 4/5 {</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                    c&#39;2</span>
+<span class="sd">                }</span>
+<span class="sd">                c&#39;2</span>
+<span class="sd">                \times 2/3 {</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                }</span>
+<span class="sd">                c&#39;4</span>
+<span class="sd">            }</span>
+
+<span class="sd">    &gt;&gt;&gt; divisions = [</span>
+<span class="sd">    ...     abjad.Duration(1, 2),</span>
+<span class="sd">    ...     abjad.Duration(1, 4),</span>
+<span class="sd">    ...     abjad.Duration(1, 4),</span>
+<span class="sd">    ...     abjad.Duration(1, 1),</span>
+<span class="sd">    ...     abjad.Duration(1, 4),</span>
+<span class="sd">    ...     abjad.Duration(3, 4),</span>
+<span class="sd">    ...     abjad.Duration(2, 1),</span>
+<span class="sd">    ...     abjad.Duration(5, 8),</span>
+<span class="sd">    ...     abjad.Duration(3, 8),</span>
+<span class="sd">    ... ]</span>
+<span class="sd">    &gt;&gt;&gt; selections = maker(divisions)</span>
+<span class="sd">    &gt;&gt;&gt; staff = abjad.Staff()</span>
+<span class="sd">    &gt;&gt;&gt; staff.extend(selections)</span>
+<span class="sd">    &gt;&gt;&gt; score = abjad.Score([staff])</span>
+<span class="sd">    &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;</span>
+<span class="sd">    &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment</span>
+<span class="sd">    &gt;&gt;&gt; file = abjad.LilyPondFile(</span>
+<span class="sd">    ...     items=[score],</span>
+<span class="sd">    ...     includes=[&quot;abjad.ily&quot;],</span>
+<span class="sd">    ...     global_staff_size=16,</span>
+<span class="sd">    ... )</span>
+<span class="sd">    ...</span>
+<span class="sd">    &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP</span>
+
+<span class="sd">    .. docs::</span>
+
+<span class="sd">        &gt;&gt;&gt; print(abjad.lilypond(staff))</span>
+<span class="sd">        \new Staff</span>
+<span class="sd">        {</span>
+<span class="sd">            c&#39;4</span>
+<span class="sd">            \times 2/3 {</span>
+<span class="sd">                c&#39;16</span>
+<span class="sd">                c&#39;8</span>
+<span class="sd">            }</span>
+<span class="sd">            c&#39;8</span>
+<span class="sd">            c&#39;16</span>
+<span class="sd">            \times 2/3 {</span>
+<span class="sd">                c&#39;16</span>
+<span class="sd">                c&#39;32</span>
+<span class="sd">            }</span>
+<span class="sd">            c&#39;8</span>
+<span class="sd">            c&#39;16</span>
+<span class="sd">            \times 2/3 {</span>
+<span class="sd">                c&#39;16</span>
+<span class="sd">                c&#39;8</span>
+<span class="sd">            }</span>
+<span class="sd">            c&#39;16</span>
+<span class="sd">            c&#39;2</span>
+<span class="sd">            \times 2/3 {</span>
+<span class="sd">                c&#39;4</span>
+<span class="sd">                c&#39;8</span>
+<span class="sd">            }</span>
+<span class="sd">            c&#39;4</span>
+<span class="sd">            \times 4/5 {</span>
+<span class="sd">                c&#39;16</span>
+<span class="sd">                c&#39;16</span>
+<span class="sd">                c&#39;16</span>
+<span class="sd">                c&#39;8</span>
+<span class="sd">            }</span>
+<span class="sd">            \tweak text #tuplet-number::calc-fraction-text</span>
+<span class="sd">            \times 3/4 {</span>
+<span class="sd">                c&#39;2</span>
+<span class="sd">                \times 2/3 {</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                }</span>
+<span class="sd">                c&#39;4</span>
+<span class="sd">            }</span>
+<span class="sd">            c&#39;1</span>
+<span class="sd">            \times 2/3 {</span>
+<span class="sd">                c&#39;4</span>
+<span class="sd">                c&#39;2</span>
+<span class="sd">            }</span>
+<span class="sd">            c&#39;2</span>
+<span class="sd">            \tweak text #tuplet-number::calc-fraction-text</span>
+<span class="sd">            \times 5/8 {</span>
+<span class="sd">                c&#39;4</span>
+<span class="sd">                \times 2/3 {</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                }</span>
+<span class="sd">                c&#39;2</span>
+<span class="sd">            }</span>
+<span class="sd">            \tweak text #tuplet-number::calc-fraction-text</span>
+<span class="sd">            \times 3/4 {</span>
+<span class="sd">                c&#39;8</span>
+<span class="sd">                \times 2/3 {</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                }</span>
+<span class="sd">                c&#39;8</span>
+<span class="sd">            }</span>
+<span class="sd">        }</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">opening</span> <span class="o">=</span> <span class="n">rtm_string</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">middle</span> <span class="o">=</span> <span class="n">rtm_string</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">closing</span> <span class="o">=</span> <span class="n">rtm_string</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">digits</span> <span class="o">=</span> <span class="p">[</span><span class="n">_</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">middle</span> <span class="k">if</span> <span class="nb">str</span><span class="o">.</span><span class="n">isdigit</span><span class="p">(</span><span class="n">_</span><span class="p">)]</span>
+    <span class="n">digits</span> <span class="o">=</span> <span class="p">(</span><span class="n">_</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">digits</span><span class="p">[</span><span class="n">n</span><span class="p">:]</span> <span class="o">+</span> <span class="n">digits</span><span class="p">[:</span><span class="n">n</span><span class="p">])</span>
+    <span class="n">new_middle</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">middle</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="o">.</span><span class="n">isdigit</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+            <span class="n">new_middle</span> <span class="o">+=</span> <span class="nb">next</span><span class="p">(</span><span class="n">digits</span><span class="p">)</span>
+            <span class="k">continue</span>
+        <span class="n">new_middle</span> <span class="o">+=</span> <span class="n">item</span>
+    <span class="k">return</span> <span class="n">opening</span> <span class="o">+</span> <span class="n">new_middle</span> <span class="o">+</span> <span class="n">closing</span></div>
+
+
+<div class="viewcode-block" id="funnel_tree_to_x"><a class="viewcode-back" href="../../api/evans/rtm.html#evans.rtm.funnel_tree_to_x">[docs]</a><span class="k">def</span> <span class="nf">funnel_tree_to_x</span><span class="p">(</span><span class="n">rtm</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">list_out</span> <span class="o">=</span> <span class="p">[</span><span class="n">rtm</span><span class="p">]</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">rtm</span>
+    <span class="n">digits</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">out</span> <span class="k">if</span> <span class="n">_</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()]</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">(</span><span class="n">digits</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="nb">max</span><span class="p">(</span><span class="n">digits</span><span class="p">))):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">digit</span> <span class="o">==</span> <span class="n">x</span> <span class="k">for</span> <span class="n">digit</span> <span class="ow">in</span> <span class="n">digits</span><span class="p">):</span>
+                <span class="n">new_out</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">out</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">_</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+                        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="o">==</span> <span class="n">x</span><span class="p">:</span>
+                            <span class="n">new_out</span> <span class="o">=</span> <span class="n">new_out</span> <span class="o">+</span> <span class="n">_</span>
+                        <span class="k">elif</span> <span class="nb">int</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">:</span>
+                            <span class="n">new_out</span> <span class="o">=</span> <span class="n">new_out</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">new_out</span> <span class="o">=</span> <span class="n">new_out</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">new_out</span> <span class="o">=</span> <span class="n">new_out</span> <span class="o">+</span> <span class="n">_</span>
+                    <span class="n">out</span> <span class="o">=</span> <span class="n">new_out</span>
+                <span class="n">digits</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">out</span> <span class="k">if</span> <span class="n">_</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()]</span>
+                <span class="n">list_out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">digits</span><span class="p">))):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">digit</span> <span class="o">==</span> <span class="n">x</span> <span class="k">for</span> <span class="n">digit</span> <span class="ow">in</span> <span class="n">digits</span><span class="p">):</span>
+                <span class="n">new_out</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">out</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">_</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+                        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="o">==</span> <span class="n">x</span><span class="p">:</span>
+                            <span class="n">new_out</span> <span class="o">=</span> <span class="n">new_out</span> <span class="o">+</span> <span class="n">_</span>
+                        <span class="k">elif</span> <span class="nb">int</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">:</span>
+                            <span class="n">new_out</span> <span class="o">=</span> <span class="n">new_out</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">new_out</span> <span class="o">=</span> <span class="n">new_out</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">new_out</span> <span class="o">=</span> <span class="n">new_out</span> <span class="o">+</span> <span class="n">_</span>
+                    <span class="n">out</span> <span class="o">=</span> <span class="n">new_out</span>
+                <span class="n">digits</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">out</span> <span class="k">if</span> <span class="n">_</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()]</span>
+                <span class="n">list_out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">list_out</span></div>
+
+
+<div class="viewcode-block" id="funnel_inner_tree_to_x"><a class="viewcode-back" href="../../api/evans/rtm.html#evans.rtm.funnel_inner_tree_to_x">[docs]</a><span class="k">def</span> <span class="nf">funnel_inner_tree_to_x</span><span class="p">(</span><span class="n">rtm_string</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; rtm = &#39;(1 (3 (2 (1 2 1 1)) 3))&#39;</span>
+<span class="sd">        &gt;&gt;&gt; for x in evans.funnel_inner_tree_to_x(rtm_string=rtm, x=5):</span>
+<span class="sd">        ...     print(x)</span>
+<span class="sd">        ...</span>
+<span class="sd">        (1 (3 (2 (1 2 1 1)) 3))</span>
+<span class="sd">        (1 (4 (3 (2 3 2 2)) 4))</span>
+<span class="sd">        (1 (5 (4 (3 4 3 3)) 5))</span>
+<span class="sd">        (1 (5 (5 (4 5 4 4)) 5))</span>
+<span class="sd">        (1 (5 (5 (5 5 5 5)) 5))</span>
+
+<span class="sd">        &gt;&gt;&gt; rtm_list = evans.funnel_inner_tree_to_x(rtm_string=rtm, x=5)</span>
+<span class="sd">        &gt;&gt;&gt; maker = evans.RTMMaker(rtm=rtm_list)</span>
+<span class="sd">        &gt;&gt;&gt; divisions = [abjad.Duration(1, 1) for _ in rtm_list]</span>
+<span class="sd">        &gt;&gt;&gt; selections = maker(divisions)</span>
+<span class="sd">        &gt;&gt;&gt; staff = abjad.Staff()</span>
+<span class="sd">        &gt;&gt;&gt; staff.extend(selections)</span>
+<span class="sd">        &gt;&gt;&gt; score = abjad.Score([staff])</span>
+<span class="sd">        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;</span>
+<span class="sd">        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment</span>
+<span class="sd">        &gt;&gt;&gt; file = abjad.LilyPondFile(</span>
+<span class="sd">        ...     items=[score],</span>
+<span class="sd">        ...     includes=[&quot;abjad.ily&quot;],</span>
+<span class="sd">        ...     global_staff_size=16,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP</span>
+
+<span class="sd">        ..  docs::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(abjad.lilypond(staff))</span>
+<span class="sd">            \new Staff</span>
+<span class="sd">            {</span>
+<span class="sd">                c&#39;4.</span>
+<span class="sd">                \times 4/5 {</span>
+<span class="sd">                    c&#39;16</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    c&#39;16</span>
+<span class="sd">                    c&#39;16</span>
+<span class="sd">                }</span>
+<span class="sd">                c&#39;4.</span>
+<span class="sd">                \times 8/11 {</span>
+<span class="sd">                    c&#39;2</span>
+<span class="sd">                    \times 2/3 {</span>
+<span class="sd">                        c&#39;8</span>
+<span class="sd">                        c&#39;8.</span>
+<span class="sd">                        c&#39;8</span>
+<span class="sd">                        c&#39;8</span>
+<span class="sd">                    }</span>
+<span class="sd">                    c&#39;2</span>
+<span class="sd">                }</span>
+<span class="sd">                \times 4/7 {</span>
+<span class="sd">                    c&#39;2</span>
+<span class="sd">                    ~</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    \times 8/13 {</span>
+<span class="sd">                        c&#39;8.</span>
+<span class="sd">                        c&#39;4</span>
+<span class="sd">                        c&#39;8.</span>
+<span class="sd">                        c&#39;8.</span>
+<span class="sd">                    }</span>
+<span class="sd">                    c&#39;2</span>
+<span class="sd">                    ~</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                }</span>
+<span class="sd">                \times 8/15 {</span>
+<span class="sd">                    c&#39;2</span>
+<span class="sd">                    ~</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    \tweak text #tuplet-number::calc-fraction-text</span>
+<span class="sd">                    \times 10/17 {</span>
+<span class="sd">                        c&#39;4</span>
+<span class="sd">                        c&#39;4</span>
+<span class="sd">                        ~</span>
+<span class="sd">                        c&#39;16</span>
+<span class="sd">                        c&#39;4</span>
+<span class="sd">                        c&#39;4</span>
+<span class="sd">                    }</span>
+<span class="sd">                    c&#39;2</span>
+<span class="sd">                    ~</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                }</span>
+<span class="sd">                \times 8/15 {</span>
+<span class="sd">                    c&#39;2</span>
+<span class="sd">                    ~</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    ~</span>
+<span class="sd">                    c&#39;32</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    ~</span>
+<span class="sd">                    c&#39;32</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    ~</span>
+<span class="sd">                    c&#39;32</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    ~</span>
+<span class="sd">                    c&#39;32</span>
+<span class="sd">                    c&#39;2</span>
+<span class="sd">                    ~</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                }</span>
+<span class="sd">            }</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">            &gt;&gt;&gt; rtm_list = evans.funnel_inner_tree_to_x(rtm_string=&quot;(1 ((4 (1 1 (2 (3 1)))) 1))&quot;, x=1)</span>
+<span class="sd">            &gt;&gt;&gt; maker = evans.RTMMaker(rtm=rtm_list)</span>
+<span class="sd">            &gt;&gt;&gt; divisions = [abjad.Duration(1, 1) for _ in rtm_list]</span>
+<span class="sd">            &gt;&gt;&gt; selections = maker(divisions)</span>
+<span class="sd">            &gt;&gt;&gt; staff = abjad.Staff()</span>
+<span class="sd">            &gt;&gt;&gt; staff.extend(selections)</span>
+<span class="sd">            &gt;&gt;&gt; score = abjad.Score([staff])</span>
+<span class="sd">            &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;</span>
+<span class="sd">            &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment</span>
+<span class="sd">            &gt;&gt;&gt; file = abjad.LilyPondFile(</span>
+<span class="sd">            ...     items=[score],</span>
+<span class="sd">            ...     includes=[&quot;abjad.ily&quot;],</span>
+<span class="sd">            ...     global_staff_size=16,</span>
+<span class="sd">            ... )</span>
+<span class="sd">            ...</span>
+<span class="sd">            &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP</span>
+
+<span class="sd">            ..  docs::</span>
+
+<span class="sd">                &gt;&gt;&gt; print(abjad.lilypond(staff))</span>
+<span class="sd">                \new Staff</span>
+<span class="sd">                {</span>
+<span class="sd">                    \times 4/5 {</span>
+<span class="sd">                        c&#39;4</span>
+<span class="sd">                        c&#39;4</span>
+<span class="sd">                        c&#39;4.</span>
+<span class="sd">                        c&#39;8</span>
+<span class="sd">                        c&#39;4</span>
+<span class="sd">                    }</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                    \times 2/3 {</span>
+<span class="sd">                        c&#39;4</span>
+<span class="sd">                        c&#39;8</span>
+<span class="sd">                    }</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                    \times 2/3 {</span>
+<span class="sd">                        \times 2/3 {</span>
+<span class="sd">                            c&#39;2</span>
+<span class="sd">                            c&#39;2</span>
+<span class="sd">                            c&#39;4</span>
+<span class="sd">                            c&#39;4</span>
+<span class="sd">                        }</span>
+<span class="sd">                        c&#39;2</span>
+<span class="sd">                    }</span>
+<span class="sd">                    \times 2/3 {</span>
+<span class="sd">                        c&#39;4</span>
+<span class="sd">                        c&#39;4</span>
+<span class="sd">                        c&#39;8</span>
+<span class="sd">                        c&#39;8</span>
+<span class="sd">                    }</span>
+<span class="sd">                    c&#39;2</span>
+<span class="sd">                }</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">opening</span> <span class="o">=</span> <span class="n">rtm_string</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">middle</span> <span class="o">=</span> <span class="n">rtm_string</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">closing</span> <span class="o">=</span> <span class="n">rtm_string</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">funnel_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">funnel_tree_to_x</span><span class="p">(</span><span class="n">rtm</span><span class="o">=</span><span class="n">middle</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">funnel_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">opening</span> <span class="o">+</span> <span class="n">_</span> <span class="o">+</span> <span class="n">closing</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">funnel_list</span></div>
+
+
+<div class="viewcode-block" id="RTMMaker"><a class="viewcode-back" href="../../api/evans/rtm.html#evans.rtm.RTMMaker">[docs]</a><span class="k">class</span> <span class="nc">RTMMaker</span><span class="p">(</span><span class="n">rmakers</span><span class="o">.</span><span class="n">RhythmMaker</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    .. container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; rtm = [&#39;(1 (1 1))&#39;, &#39;(1 (1 1 1))&#39;, &#39;(1 (1 1 1 1))&#39;]</span>
+<span class="sd">        &gt;&gt;&gt; maker = evans.RTMMaker(rtm=rtm)</span>
+<span class="sd">        &gt;&gt;&gt; divisions = [abjad.Duration(1, 1), abjad.Duration(1, 1), abjad.Duration(1, 1)]</span>
+<span class="sd">        &gt;&gt;&gt; selections = maker(divisions)</span>
+<span class="sd">        &gt;&gt;&gt; staff = abjad.Staff()</span>
+<span class="sd">        &gt;&gt;&gt; staff.extend(selections)</span>
+<span class="sd">        &gt;&gt;&gt; score = abjad.Score([staff])</span>
+<span class="sd">        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;</span>
+<span class="sd">        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment</span>
+<span class="sd">        &gt;&gt;&gt; file = abjad.LilyPondFile(</span>
+<span class="sd">        ...     items=[score],</span>
+<span class="sd">        ...     includes=[&quot;abjad.ily&quot;],</span>
+<span class="sd">        ...     global_staff_size=16,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP</span>
+
+<span class="sd">        .. docs::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(abjad.lilypond(staff))</span>
+<span class="sd">            \new Staff</span>
+<span class="sd">            {</span>
+<span class="sd">                c&#39;2</span>
+<span class="sd">                c&#39;2</span>
+<span class="sd">                \times 2/3 {</span>
+<span class="sd">                    c&#39;2</span>
+<span class="sd">                    c&#39;2</span>
+<span class="sd">                    c&#39;2</span>
+<span class="sd">                }</span>
+<span class="sd">                c&#39;4</span>
+<span class="sd">                c&#39;4</span>
+<span class="sd">                c&#39;4</span>
+<span class="sd">                c&#39;4</span>
+<span class="sd">            }</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rtm</span><span class="p">,</span> <span class="n">tie_across_divisions</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtm</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">CyclicTuple</span><span class="p">(</span><span class="n">rtm</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tie_across_divisions</span> <span class="o">=</span> <span class="n">tie_across_divisions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<div class="viewcode-block" id="RTMMaker.__str__"><a class="viewcode-back" href="../../api/evans/rtm.html#evans.rtm.RTMMaker.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RTMMaker.__repr__"><a class="viewcode-back" href="../../api/evans/rtm.html#evans.rtm.RTMMaker.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RTMMaker.__call__"><a class="viewcode-back" href="../../api/evans/rtm.html#evans.rtm.RTMMaker.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">divisions</span><span class="p">,</span> <span class="n">previous_state</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">starting_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">previous_state</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">starting_index</span> <span class="o">=</span> <span class="n">previous_state</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="n">selections</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rtm_maker</span><span class="p">(</span><span class="n">divisions</span><span class="p">,</span> <span class="n">starting_index</span><span class="o">=</span><span class="n">starting_index</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">previous_state</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">selections</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">%=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rtm</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">selections</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_rhythm_cell</span><span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">rtm</span><span class="p">):</span>
+        <span class="n">rtm_parser</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">rhythmtrees</span><span class="o">.</span><span class="n">RhythmTreeParser</span><span class="p">()</span>
+        <span class="n">selection</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">rtm_parser</span><span class="p">(</span><span class="n">rtm</span><span class="p">)[</span><span class="mi">0</span><span class="p">](</span><span class="n">duration</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">selection</span>
+
+    <span class="k">def</span> <span class="nf">_rtm_maker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">divisions</span><span class="p">,</span> <span class="n">starting_index</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="n">rtm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtm</span><span class="p">[</span><span class="n">starting_index</span> <span class="p">:</span> <span class="n">starting_index</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">divisions</span><span class="p">)]</span>
+
+        <span class="n">selections</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">rtm_string</span><span class="p">,</span> <span class="n">division</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">rtm</span><span class="p">,</span> <span class="n">divisions</span><span class="p">):</span>
+            <span class="n">selection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rhythm_cell</span><span class="p">(</span><span class="n">division</span><span class="p">,</span> <span class="n">rtm_string</span><span class="p">)</span>
+            <span class="n">selections</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">selection</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">selection_</span> <span class="ow">in</span> <span class="n">selections</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tie_across_divisions</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">last_leaf</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">selection_</span><span class="p">)</span><span class="o">.</span><span class="n">leaves</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">abjad</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">Tie</span><span class="p">(),</span> <span class="n">last_leaf</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">selections</span></div>
+
+
+<div class="viewcode-block" id="RhythmTreeQuantizer"><a class="viewcode-back" href="../../api/evans/rtm.html#evans.rtm.RhythmTreeQuantizer">[docs]</a><span class="k">class</span> <span class="nc">RhythmTreeQuantizer</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<div class="viewcode-block" id="RhythmTreeQuantizer.__call__"><a class="viewcode-back" href="../../api/evans/rtm.html#evans.rtm.RhythmTreeQuantizer.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="n">parsed_string</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_tree</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_quantize_rhythm_tree</span><span class="p">(</span><span class="n">parsed_string</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">parsed_string</span><span class="o">.</span><span class="n">rtm_format</span></div>
+
+    <span class="k">def</span> <span class="nf">_operation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">):</span>
+        <span class="n">numerators</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+            <span class="n">numerators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">preprolated_duration</span><span class="o">.</span><span class="n">numerator</span><span class="p">)</span>
+        <span class="n">numerators_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">numerators</span><span class="p">)</span>
+        <span class="k">if</span> <span class="mi">4</span> <span class="o">&lt;</span> <span class="n">numerators_sum</span><span class="p">:</span>
+            <span class="n">normalized</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="n">numerators</span><span class="p">)</span><span class="o">.</span><span class="n">normalize_to_sum</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+            <span class="n">new_numerators</span> <span class="o">=</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">normalized</span> <span class="k">if</span> <span class="nb">round</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">numerator</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">new_numerators</span><span class="p">,</span> <span class="n">nodes</span><span class="p">):</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">preprolated_duration</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="n">numerator</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_parse_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">rhythmtrees</span><span class="o">.</span><span class="n">RhythmTreeParser</span><span class="p">()</span>
+        <span class="n">rhythm_tree_list</span> <span class="o">=</span> <span class="n">parser</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+        <span class="n">rhythm_tree_container</span> <span class="o">=</span> <span class="n">rhythm_tree_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">rhythm_tree_container</span>
+
+    <span class="k">def</span> <span class="nf">_recursive_operation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layers</span><span class="p">):</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_recursive_operation</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">temp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_operation</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_return_layers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parsed_tree</span><span class="p">):</span>
+        <span class="n">layers</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">parsed_tree</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">abjad</span><span class="o">.</span><span class="n">rhythmtrees</span><span class="o">.</span><span class="n">RhythmTreeContainer</span><span class="p">):</span>
+                <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+                <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_return_layers</span><span class="p">(</span><span class="n">node</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">layers</span>
+
+    <span class="k">def</span> <span class="nf">_quantize_rhythm_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rtm_container</span><span class="p">):</span>
+        <span class="n">layers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_return_layers</span><span class="p">(</span><span class="n">rtm_container</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_recursive_operation</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-2021, Gregory Rowland Evans
+      <span class="lastupdated">
+        Last updated on Jun 03, 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

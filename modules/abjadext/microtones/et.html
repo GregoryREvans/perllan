@@ -1,0 +1,673 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>abjadext.microtones.et &mdash; Perllan API 0.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/abjad.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/uqbar.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../static/notes.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../static/documentation_options.js"></script>
+        <script src="../../../static/jquery.js"></script>
+        <script src="../../../static/underscore.js"></script>
+        <script src="../../../static/doctools.js"></script>
+        <script defer="defer" src="../../../static/copybutton.js"></script>
+        <script src="../../../static/ga.js"></script>
+    
+    <script type="text/javascript" src="../../../static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #556B2F" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Perllan API
+          
+
+          
+            
+            <img src="../../../static/perllan-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts.html">Core concepts</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/abjadext/microtones/index.html">microtones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/evans/index.html">evans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/tsmakers/index.html">tsmakers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../scores.html">Score gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../recipes_pitch.html">Pitch Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../recipes_sequence.html">Sequence Recipes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Perllan API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>abjadext.microtones.et</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for abjadext.microtones.et</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Package for equal tempered microtones.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="kn">import</span> <span class="nn">abjad</span>
+<span class="kn">import</span> <span class="nn">quicktions</span>
+
+
+<div class="viewcode-block" id="ETBundle"><a class="viewcode-back" href="../../../api/abjadext/microtones/et.html#abjadext.microtones.et.ETBundle">[docs]</a><span class="k">class</span> <span class="nc">ETBundle</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ET bundle.</span>
+
+<span class="sd">    &gt;&gt;&gt; from abjadext import microtones</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pitch</span><span class="o">=</span><span class="s2">&quot;c&#39;&quot;</span><span class="p">,</span> <span class="n">accidental_string</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span> <span class="o">=</span> <span class="n">pitch</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accidental_string</span> <span class="o">=</span> <span class="n">accidental_string</span>
+
+<div class="viewcode-block" id="ETBundle.__repr__"><a class="viewcode-back" href="../../../api/abjadext/microtones/et.html#abjadext.microtones.et.ETBundle.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets interpreter representation.</span>
+
+<span class="sd">        ..  container:: example</span>
+
+<span class="sd">            &gt;&gt;&gt; microtones.ETBundle()</span>
+<span class="sd">            ETBundle(pitch=&quot;c&#39;&quot;)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">StorageFormatManager</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_repr_format</span><span class="p">()</span></div></div>
+
+
+<span class="n">_accidental_to_value</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;double sharp&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;three-quarters sharp&quot;</span><span class="p">:</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="s2">&quot;sharp&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;quarter sharp&quot;</span><span class="p">:</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="s2">&quot;natural&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;quarter flat&quot;</span><span class="p">:</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="s2">&quot;flat&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;three-quarters flat&quot;</span><span class="p">:</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="s2">&quot;double flat&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">_value_to_accidental</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;2&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\double-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;11/6&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\eleven-twelfths-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;7/4&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\seven-eighths-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;5/3&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\five-sixths-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;8/5&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\four-fifths-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;3/2&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\three-quarters-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;7/5&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\seven-tenths-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;4/3&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\two-thirds-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;5/4&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\five-eighths-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;6/5&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\three-fifths-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;7/6&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\seven-twelfths-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;1&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\abjad-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;5/6&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\five-twelfths-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;4/5&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\two-fifths-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;3/4&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\three-eighths-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2/3&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\one-third-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;3/5&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\three-tenths-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;1/2&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\one-quarter-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2/5&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\one-fifth-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;1/3&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\one-sixth-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;1/4&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\one-eighth-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;1/5&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\one-tenth-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;1/6&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\one-twelfth-sharp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;0&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\abjad-natural&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-1/6&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\one-twelfth-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-1/5&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\one-tenth-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-1/4&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\one-eighth-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-1/3&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\one-sixth-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-2/5&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\one-fifth-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-1/2&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\one-quarter-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-3/5&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\three-tenths-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-2/3&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\one-third-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-3/4&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\three-eighths-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-4/5&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\two-fifths-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-5/6&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\five-twelfths-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-1&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\abjad-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-7/6&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\seven-twelfths-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-6/5&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\three-fifths-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-5/4&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\five-eighths-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-4/3&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\two-thirds-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-7/5&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\seven-tenths-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-3/2&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\three-quarters-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-8/5&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\four-fifths-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-5/3&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\five-sixths-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-7/4&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\seven-eighths-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-11/6&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\eleven-twelfths-flat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;-2&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\double-flat&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">_reversed_value_to_accidental</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sa">r</span><span class="s2">&quot;\double-sharp-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;2/1&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\eleven-twelfths-sharp-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;11/6&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\seven-eighths-sharp-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;7/4&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\five-sixths-sharp-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;5/3&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\four-fifths-sharp-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;8/5&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\three-quarters-sharp-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;3/2&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\two-thirds-sharp-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;4/3&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\five-eighths-sharp-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;5/4&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\three-fifths-sharp-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;6/5&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\seven-twelfths-sharp-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;7/6&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\abjad-sharp-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;1/1&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\five-twelfths-sharp-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;5/6&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\two-fifths-sharp-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;4/5&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\three-eighths-sharp-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;3/4&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\one-third-sharp-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;2/3&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\one-quarter-sharp-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;1/2&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\one-fifth-sharp-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;2/5&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\one-sixth-sharp-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;1/3&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\one-eighth-sharp-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;1/4&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\one-twelfth-sharp-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;1/6&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\abjad-natural-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\one-twelfth-flat-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;-1/6&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\one-eighth-flat-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;-1/4&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\one-sixth-flat-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;-1/3&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\one-fifth-flat-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;-2/5&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\one-quarter-flat-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;-1/2&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\one-third-flat-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;-2/3&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\three-eighths-flat-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;-3/4&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\two-fifths-flat-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;-4/5&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\five-twelfths-flat-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;-5/6&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\abjad-flat-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;-1/1&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\seven-twelfths-flat-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;-7/6&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\three-fifths-flat-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;-6/5&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\five-eighths-flat-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;-5/4&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\two-thirds-flat-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;-4/3&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\three-quarters-flat-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;-3/2&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\four-fifths-flat-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;-8/5&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\five-sixths-flat-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;-5/3&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\seven-eighths-flat-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;-7/4&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\eleven-twelfths-flat-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;-11/6&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;\double-flat-markup&quot;</span><span class="p">:</span> <span class="s2">&quot;-2/1&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="get_accidental_value"><a class="viewcode-back" href="../../../api/abjadext/microtones/et.html#abjadext.microtones.et.get_accidental_value">[docs]</a><span class="k">def</span> <span class="nf">get_accidental_value</span><span class="p">(</span><span class="n">pitch</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gets accidental value.</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; pitch = abjad.NamedPitch(&quot;cs&#39;&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; microtones.get_accidental_value(pitch)</span>
+<span class="sd">        1</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">accidental</span> <span class="o">=</span> <span class="n">pitch</span><span class="o">.</span><span class="n">accidental</span><span class="o">.</span><span class="n">name</span>
+    <span class="n">accidental_value</span> <span class="o">=</span> <span class="n">_accidental_to_value</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">accidental</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">accidental_value</span></div>
+
+
+<div class="viewcode-block" id="get_value_sum"><a class="viewcode-back" href="../../../api/abjadext/microtones/et.html#abjadext.microtones.et.get_value_sum">[docs]</a><span class="k">def</span> <span class="nf">get_value_sum</span><span class="p">(</span><span class="n">pitch</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gets value sum.</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; pitch = abjad.NamedPitch(&quot;cs&#39;&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; microtones.get_value_sum(pitch, &quot;3/4&quot;)</span>
+<span class="sd">        Fraction(7, 4)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">get_accidental_value</span><span class="p">(</span><span class="n">pitch</span><span class="p">)</span> <span class="o">+</span> <span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="get_alteration"><a class="viewcode-back" href="../../../api/abjadext/microtones/et.html#abjadext.microtones.et.get_alteration">[docs]</a><span class="k">def</span> <span class="nf">get_alteration</span><span class="p">(</span><span class="n">pitch</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">spell</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gets alteration.</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; pitch = abjad.NumberedPitch(0)</span>
+<span class="sd">        &gt;&gt;&gt; bundle = microtones.get_alteration(pitch, &quot;2/1&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; bundle.pitch</span>
+<span class="sd">        NumberedPitch(2)</span>
+
+<span class="sd">        &gt;&gt;&gt; bundle.accidental_string</span>
+<span class="sd">        &#39;\\abjad-natural-markup&#39;</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; pitch = abjad.NumberedPitch(0)</span>
+<span class="sd">        &gt;&gt;&gt; bundle = microtones.get_alteration(pitch, &quot;1/1&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; bundle.pitch</span>
+<span class="sd">        NumberedPitch(1)</span>
+
+<span class="sd">        &gt;&gt;&gt; bundle.accidental_string</span>
+<span class="sd">        &#39;\\abjad-sharp-markup&#39;</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; pitch = abjad.NumberedPitch(0)</span>
+<span class="sd">        &gt;&gt;&gt; bundle = microtones.get_alteration(pitch, &quot;1/1&quot;, &quot;flat&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; bundle.pitch</span>
+<span class="sd">        NamedPitch(&quot;df&#39;&quot;)</span>
+
+<span class="sd">        &gt;&gt;&gt; bundle.accidental_string</span>
+<span class="sd">        &#39;\\abjad-flat-markup&#39;</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; pitch = abjad.NumberedPitch(0)</span>
+<span class="sd">        &gt;&gt;&gt; bundle = microtones.get_alteration(pitch, &quot;3/2&quot;, &quot;sharp&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; bundle.pitch</span>
+<span class="sd">        NumberedPitch(1)</span>
+
+<span class="sd">        &gt;&gt;&gt; bundle.accidental_string</span>
+<span class="sd">        &#39;\\three-quarters-sharp-markup&#39;</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; pitch = abjad.NumberedPitch(0)</span>
+<span class="sd">        &gt;&gt;&gt; bundle = microtones.get_alteration(pitch, &quot;11/6&quot;, &quot;sharp&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; bundle.pitch</span>
+<span class="sd">        NumberedPitch(1)</span>
+
+<span class="sd">        &gt;&gt;&gt; bundle.accidental_string</span>
+<span class="sd">        &#39;\\eleven-twelfths-sharp-markup&#39;</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">semitones</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">modf</span><span class="p">(</span><span class="n">value</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">remainder</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">value</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">modf</span><span class="p">(</span><span class="n">value</span><span class="p">)[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">if</span> <span class="n">semitones</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">pitch</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">NumberedInterval</span><span class="p">(</span><span class="n">semitones</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">pitch</span><span class="p">)</span>
+    <span class="n">transposed_accidental_value</span> <span class="o">=</span> <span class="n">get_value_sum</span><span class="p">(</span><span class="n">pitch</span><span class="p">,</span> <span class="n">remainder</span><span class="p">)</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">transposed_accidental_value</span><span class="p">)</span>
+    <span class="n">new_accidental</span> <span class="o">=</span> <span class="n">_value_to_accidental</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;-markup&quot;</span>
+    <span class="k">if</span> <span class="n">spell</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">spell</span> <span class="o">==</span> <span class="s2">&quot;sharp&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">_reversed_value_to_accidental</span><span class="p">[</span><span class="n">new_accidental</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># make sharp</span>
+                <span class="n">temp_note</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">NamedPitch</span><span class="p">(</span><span class="n">pitch</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+                <span class="n">abjad</span><span class="o">.</span><span class="n">iterpitches</span><span class="o">.</span><span class="n">respell_with_sharps</span><span class="p">([</span><span class="n">temp_note</span><span class="p">])</span>
+                <span class="n">pitch</span> <span class="o">=</span> <span class="n">temp_note</span><span class="o">.</span><span class="n">written_pitch</span>
+                <span class="n">transposed_accidental_value</span> <span class="o">=</span> <span class="n">get_value_sum</span><span class="p">(</span><span class="n">pitch</span><span class="p">,</span> <span class="n">remainder</span><span class="p">)</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">transposed_accidental_value</span><span class="p">)</span>
+                <span class="n">new_accidental</span> <span class="o">=</span> <span class="n">_value_to_accidental</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;-markup&quot;</span>
+        <span class="k">if</span> <span class="n">spell</span> <span class="o">==</span> <span class="s2">&quot;flat&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">_reversed_value_to_accidental</span><span class="p">[</span><span class="n">new_accidental</span><span class="p">]):</span>
+                <span class="c1"># make flat</span>
+                <span class="n">temp_note</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">NamedPitch</span><span class="p">(</span><span class="n">pitch</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+                <span class="n">abjad</span><span class="o">.</span><span class="n">iterpitches</span><span class="o">.</span><span class="n">respell_with_flats</span><span class="p">([</span><span class="n">temp_note</span><span class="p">])</span>
+                <span class="n">pitch</span> <span class="o">=</span> <span class="n">temp_note</span><span class="o">.</span><span class="n">written_pitch</span>
+                <span class="n">transposed_accidental_value</span> <span class="o">=</span> <span class="n">get_value_sum</span><span class="p">(</span><span class="n">pitch</span><span class="p">,</span> <span class="n">remainder</span><span class="p">)</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">transposed_accidental_value</span><span class="p">)</span>
+                <span class="n">new_accidental</span> <span class="o">=</span> <span class="n">_value_to_accidental</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;-markup&quot;</span>
+    <span class="k">return</span> <span class="n">ETBundle</span><span class="p">(</span><span class="n">pitch</span><span class="p">,</span> <span class="n">new_accidental</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="apply_alteration"><a class="viewcode-back" href="../../../api/abjadext/microtones/et.html#abjadext.microtones.et.apply_alteration">[docs]</a><span class="k">def</span> <span class="nf">apply_alteration</span><span class="p">(</span><span class="n">note_head</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">spell</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Applies alteration.</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        Eighth tone accidentals:</span>
+
+<span class="sd">        &gt;&gt;&gt; from quicktions import Fraction</span>
+<span class="sd">        &gt;&gt;&gt; steps = [0, &quot;1/8&quot;, &quot;2/8&quot;, &quot;3/8&quot;, &quot;4/8&quot;, &quot;5/8&quot;, &quot;6/8&quot;, &quot;7/8&quot;, 1]</span>
+<span class="sd">        &gt;&gt;&gt; steps = [Fraction(step) * 2 for step in steps]</span>
+<span class="sd">        &gt;&gt;&gt; reverse_steps = [0 - step for step in steps]</span>
+<span class="sd">        &gt;&gt;&gt; reverse_steps.reverse()</span>
+<span class="sd">        &gt;&gt;&gt; total_steps = []</span>
+<span class="sd">        &gt;&gt;&gt; total_steps.extend(reverse_steps)</span>
+<span class="sd">        &gt;&gt;&gt; total_steps.extend(steps)</span>
+<span class="sd">        &gt;&gt;&gt; final_steps = sorted(list(set(total_steps)))</span>
+<span class="sd">        &gt;&gt;&gt; notes = [abjad.Note(&quot;c&#39;4&quot;) for step in final_steps]</span>
+<span class="sd">        &gt;&gt;&gt; for note, step in zip(notes, final_steps):</span>
+<span class="sd">        ...     microtones.apply_alteration(note.note_head, step)</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; staff = abjad.Staff(notes)</span>
+<span class="sd">        &gt;&gt;&gt; score = abjad.Score([staff])</span>
+<span class="sd">        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;</span>
+<span class="sd">        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment</span>
+<span class="sd">        &gt;&gt;&gt; lilypond_file = abjad.LilyPondFile(</span>
+<span class="sd">        ...     items=[score, abjad.Block(name=&quot;layout&quot;)],</span>
+<span class="sd">        ...     includes=[</span>
+<span class="sd">        ...         &quot;default.ily&quot;,</span>
+<span class="sd">        ...         &quot;abjad.ily&quot;,</span>
+<span class="sd">        ...         &quot;all-edo-markups-example.ily&quot;,</span>
+<span class="sd">        ...     ],</span>
+<span class="sd">        ...     global_staff_size=16,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; style = &#39;&quot;dodecaphonic&quot;&#39;</span>
+<span class="sd">        &gt;&gt;&gt; lilypond_file.layout_block.items.append(fr&quot;\accidentalStyle {style}&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(lilypond_file) # doctest: +SKIP</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        Tenth tone accidentals:</span>
+
+<span class="sd">        &gt;&gt;&gt; from quicktions import Fraction</span>
+<span class="sd">        &gt;&gt;&gt; steps = [0, &quot;1/10&quot;, &quot;2/10&quot;, &quot;3/10&quot;, &quot;4/10&quot;, &quot;5/10&quot;, &quot;6/10&quot;, &quot;7/10&quot;, &quot;8/10&quot;, &quot;9/10&quot;, 1]</span>
+<span class="sd">        &gt;&gt;&gt; steps = [Fraction(step) * 2 for step in steps]</span>
+<span class="sd">        &gt;&gt;&gt; reverse_steps = [0 - step for step in steps]</span>
+<span class="sd">        &gt;&gt;&gt; reverse_steps.reverse()</span>
+<span class="sd">        &gt;&gt;&gt; total_steps = []</span>
+<span class="sd">        &gt;&gt;&gt; total_steps.extend(reverse_steps)</span>
+<span class="sd">        &gt;&gt;&gt; total_steps.extend(steps)</span>
+<span class="sd">        &gt;&gt;&gt; final_steps = sorted(list(set(total_steps)))</span>
+<span class="sd">        &gt;&gt;&gt; notes = [abjad.Note(&quot;c&#39;4&quot;) for step in final_steps]</span>
+<span class="sd">        &gt;&gt;&gt; for note, step in zip(notes, final_steps):</span>
+<span class="sd">        ...     microtones.apply_alteration(note.note_head, step)</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; staff = abjad.Staff(notes)</span>
+<span class="sd">        &gt;&gt;&gt; score = abjad.Score([staff])</span>
+<span class="sd">        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;</span>
+<span class="sd">        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment</span>
+<span class="sd">        &gt;&gt;&gt; lilypond_file = abjad.LilyPondFile(</span>
+<span class="sd">        ...     items=[score, abjad.Block(name=&quot;layout&quot;)],</span>
+<span class="sd">        ...     includes=[</span>
+<span class="sd">        ...         &quot;default.ily&quot;,</span>
+<span class="sd">        ...         &quot;abjad.ily&quot;,</span>
+<span class="sd">        ...         &quot;all-edo-markups-example.ily&quot;,</span>
+<span class="sd">        ...     ],</span>
+<span class="sd">        ...     global_staff_size=16,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; style = &#39;&quot;dodecaphonic&quot;&#39;</span>
+<span class="sd">        &gt;&gt;&gt; lilypond_file.layout_block.items.append(fr&quot;\accidentalStyle {style}&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(lilypond_file) # doctest: +SKIP</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        Twelfth tone accidentals:</span>
+
+<span class="sd">        &gt;&gt;&gt; from quicktions import Fraction</span>
+<span class="sd">        &gt;&gt;&gt; steps = [0, &quot;1/12&quot;, &quot;2/12&quot;, &quot;3/12&quot;, &quot;4/12&quot;, &quot;5/12&quot;, &quot;6/12&quot;, &quot;7/12&quot;, &quot;8/12&quot;, &quot;9/12&quot;, &quot;10/12&quot;, &quot;11/12&quot;, 1]</span>
+<span class="sd">        &gt;&gt;&gt; steps = [Fraction(step) * 2 for step in steps]</span>
+<span class="sd">        &gt;&gt;&gt; reverse_steps = [0 - step for step in steps]</span>
+<span class="sd">        &gt;&gt;&gt; reverse_steps.reverse()</span>
+<span class="sd">        &gt;&gt;&gt; total_steps = []</span>
+<span class="sd">        &gt;&gt;&gt; total_steps.extend(reverse_steps)</span>
+<span class="sd">        &gt;&gt;&gt; total_steps.extend(steps)</span>
+<span class="sd">        &gt;&gt;&gt; final_steps = sorted(list(set(total_steps)))</span>
+<span class="sd">        &gt;&gt;&gt; notes = [abjad.Note(&quot;c&#39;4&quot;) for step in final_steps]</span>
+<span class="sd">        &gt;&gt;&gt; for note, step in zip(notes, final_steps):</span>
+<span class="sd">        ...     microtones.apply_alteration(note.note_head, step)</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; staff = abjad.Staff(notes)</span>
+<span class="sd">        &gt;&gt;&gt; score = abjad.Score([staff])</span>
+<span class="sd">        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;</span>
+<span class="sd">        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment</span>
+<span class="sd">        &gt;&gt;&gt; lilypond_file = abjad.LilyPondFile(</span>
+<span class="sd">        ...     items=[score, abjad.Block(name=&quot;layout&quot;)],</span>
+<span class="sd">        ...     includes=[</span>
+<span class="sd">        ...         &quot;default.ily&quot;,</span>
+<span class="sd">        ...         &quot;abjad.ily&quot;,</span>
+<span class="sd">        ...         &quot;all-edo-markups-example.ily&quot;,</span>
+<span class="sd">        ...     ],</span>
+<span class="sd">        ...     global_staff_size=16,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; style = &#39;&quot;dodecaphonic&quot;&#39;</span>
+<span class="sd">        &gt;&gt;&gt; lilypond_file.layout_block.items.append(fr&quot;\accidentalStyle {style}&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(lilypond_file) # doctest: +SKIP</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        Spells with sharps when ``spell=&quot;sharp&quot;``:</span>
+
+<span class="sd">        &gt;&gt;&gt; step = &quot;3/2&quot;</span>
+<span class="sd">        &gt;&gt;&gt; note = abjad.Note(&quot;c&#39;4&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; microtones.apply_alteration(note.note_head, step, spell=&quot;sharp&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; staff = abjad.Staff([note])</span>
+<span class="sd">        &gt;&gt;&gt; score = abjad.Score([staff])</span>
+<span class="sd">        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;</span>
+<span class="sd">        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment</span>
+<span class="sd">        &gt;&gt;&gt; lilypond_file = abjad.LilyPondFile(</span>
+<span class="sd">        ...     items=[score, abjad.Block(name=&quot;layout&quot;)],</span>
+<span class="sd">        ...     includes=[</span>
+<span class="sd">        ...         &quot;default.ily&quot;,</span>
+<span class="sd">        ...         &quot;abjad.ily&quot;,</span>
+<span class="sd">        ...         &quot;all-edo-markups-example.ily&quot;,</span>
+<span class="sd">        ...     ],</span>
+<span class="sd">        ...     global_staff_size=16,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; style = &#39;&quot;dodecaphonic&quot;&#39;</span>
+<span class="sd">        &gt;&gt;&gt; lilypond_file.layout_block.items.append(fr&quot;\accidentalStyle {style}&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(lilypond_file) # doctest: +SKIP</span>
+
+<span class="sd">        ..  docs::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(abjad.lilypond(staff))</span>
+<span class="sd">            \new Staff</span>
+<span class="sd">            {</span>
+<span class="sd">                \tweak Accidental.stencil #ly:text-interface::print</span>
+<span class="sd">                \tweak Accidental.text \three-quarters-sharp-markup</span>
+<span class="sd">                cs&#39;4</span>
+<span class="sd">            }</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        Spells with flats when ``spell=&quot;flat&quot;``:</span>
+
+<span class="sd">        &gt;&gt;&gt; step = &quot;3/2&quot;</span>
+<span class="sd">        &gt;&gt;&gt; note = abjad.Note(&quot;c&#39;4&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; microtones.apply_alteration(note.note_head, step, spell=&quot;flat&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; staff = abjad.Staff([note])</span>
+<span class="sd">        &gt;&gt;&gt; score = abjad.Score([staff])</span>
+<span class="sd">        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;</span>
+<span class="sd">        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment</span>
+<span class="sd">        &gt;&gt;&gt; lilypond_file = abjad.LilyPondFile(</span>
+<span class="sd">        ...     items=[score, abjad.Block(name=&quot;layout&quot;)],</span>
+<span class="sd">        ...     includes=[</span>
+<span class="sd">        ...         &quot;default.ily&quot;,</span>
+<span class="sd">        ...         &quot;abjad.ily&quot;,</span>
+<span class="sd">        ...         &quot;all-edo-markups-example.ily&quot;,</span>
+<span class="sd">        ...     ],</span>
+<span class="sd">        ...     global_staff_size=16,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; style = &#39;&quot;dodecaphonic&quot;&#39;</span>
+<span class="sd">        &gt;&gt;&gt; lilypond_file.layout_block.items.append(fr&quot;\accidentalStyle {style}&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(lilypond_file) # doctest: +SKIP</span>
+
+<span class="sd">        ..  docs::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(abjad.lilypond(staff))</span>
+<span class="sd">            \new Staff</span>
+<span class="sd">            {</span>
+<span class="sd">                \tweak Accidental.stencil #ly:text-interface::print</span>
+<span class="sd">                \tweak Accidental.text \one-quarter-flat-markup</span>
+<span class="sd">                df&#39;4</span>
+<span class="sd">            }</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">pitch</span> <span class="o">=</span> <span class="n">note_head</span><span class="o">.</span><span class="n">written_pitch</span>
+    <span class="n">bundle</span> <span class="o">=</span> <span class="n">get_alteration</span><span class="p">(</span><span class="n">pitch</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">spell</span><span class="p">)</span>
+    <span class="n">note_head</span><span class="o">.</span><span class="n">written_pitch</span> <span class="o">=</span> <span class="n">bundle</span><span class="o">.</span><span class="n">pitch</span>
+    <span class="n">string</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;#ly:text-interface::print&quot;</span>
+    <span class="n">abjad</span><span class="o">.</span><span class="n">tweak</span><span class="p">(</span><span class="n">note_head</span><span class="p">,</span> <span class="n">literal</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">Accidental</span><span class="o">.</span><span class="n">stencil</span> <span class="o">=</span> <span class="n">string</span>
+    <span class="n">abjad</span><span class="o">.</span><span class="n">tweak</span><span class="p">(</span><span class="n">note_head</span><span class="p">,</span> <span class="n">literal</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">Accidental</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">bundle</span><span class="o">.</span><span class="n">accidental_string</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-2021, Gregory Rowland Evans
+      <span class="lastupdated">
+        Last updated on Jun 03, 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

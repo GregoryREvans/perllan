@@ -1,0 +1,1486 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>evans.pitch &mdash; Perllan API 0.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/abjad.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/uqbar.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../static/notes.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script defer="defer" src="../../static/copybutton.js"></script>
+        <script src="../../static/ga.js"></script>
+    
+    <script type="text/javascript" src="../../static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #556B2F" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Perllan API
+          
+
+          
+            
+            <img src="../../static/perllan-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../concepts.html">Core concepts</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/abjadext/microtones/index.html">microtones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/evans/index.html">evans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/tsmakers/index.html">tsmakers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../scores.html">Score gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recipes_pitch.html">Pitch Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recipes_sequence.html">Sequence Recipes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Perllan API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>evans.pitch</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for evans.pitch</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Pitch functions.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="kn">import</span> <span class="nn">abjad</span>
+<span class="kn">import</span> <span class="nn">quicktions</span>
+
+<span class="kn">from</span> <span class="nn">.sequence</span> <span class="kn">import</span> <span class="n">RatioSegment</span><span class="p">,</span> <span class="n">flatten</span>
+
+
+<div class="viewcode-block" id="JIPitch"><a class="viewcode-back" href="../../api/evans/pitch.html#evans.pitch.JIPitch">[docs]</a><span class="k">class</span> <span class="nc">JIPitch</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">Pitch</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Just Intonation Pitch</span>
+
+<span class="sd">    .. container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; pitch = evans.JIPitch(&quot;c&#39;&quot;, &quot;7/4&quot;, with_quarter_tones=True)</span>
+<span class="sd">        &gt;&gt;&gt; note = abjad.Note(pitch, (1, 4))</span>
+<span class="sd">        &gt;&gt;&gt; mark = abjad.Markup(fr&quot;\markup {str(pitch.deviation)}&quot;, direction=abjad.Up, literal=True)</span>
+<span class="sd">        &gt;&gt;&gt; abjad.attach(mark, note)</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(note) # doctest: +SKIP</span>
+
+<span class="sd">        .. docs::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(abjad.lilypond(note))</span>
+<span class="sd">            aqs&#39;4</span>
+<span class="sd">            ^ \markup 19</span>
+
+<span class="sd">    .. container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; pitch = evans.JIPitch(&quot;c&#39;&quot;, &quot;7/4&quot;, with_quarter_tones=False)</span>
+<span class="sd">        &gt;&gt;&gt; note = abjad.Note(pitch, (1, 4))</span>
+<span class="sd">        &gt;&gt;&gt; mark = abjad.Markup(fr&quot;\markup {str(pitch.deviation)}&quot;, direction=abjad.Up, literal=True)</span>
+<span class="sd">        &gt;&gt;&gt; abjad.attach(mark, note)</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(note) # doctest: +SKIP</span>
+
+<span class="sd">        .. docs::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(abjad.lilypond(note))</span>
+<span class="sd">            bf&#39;4</span>
+<span class="sd">            ^ \markup -31</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">fundamental</span><span class="p">,</span>
+        <span class="n">ratio</span><span class="p">,</span>
+        <span class="n">with_quarter_tones</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fundamental</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">NamedPitch</span><span class="p">(</span><span class="n">fundamental</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ratio</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">ratio</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">with_quarter_tones</span> <span class="o">=</span> <span class="n">with_quarter_tones</span>
+        <span class="n">pair</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_pitch_and_deviation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fundamental</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ratio</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span> <span class="o">=</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">deviation</span> <span class="o">=</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<div class="viewcode-block" id="JIPitch.__add__"><a class="viewcode-back" href="../../api/evans/pitch.html#evans.pitch.JIPitch.__add__">[docs]</a>    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">)):</span>
+            <span class="n">self_ratio</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ratio</span>
+            <span class="n">self_fraction</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">self_ratio</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">fundamental</span><span class="p">,</span>
+                <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">self_fraction</span> <span class="o">+</span> <span class="n">argument</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">with_quarter_tones</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)):</span>
+            <span class="n">self_pitch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span>
+            <span class="n">argument_pitch</span> <span class="o">=</span> <span class="n">argument</span><span class="o">.</span><span class="n">pitch</span>
+            <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">fundamental</span><span class="o">.</span><span class="n">number</span> <span class="o">+</span> <span class="n">argument</span><span class="o">.</span><span class="n">fundamental</span><span class="o">.</span><span class="n">number</span><span class="p">,</span>
+                <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">self_pitch</span><span class="o">.</span><span class="n">number</span> <span class="o">+</span> <span class="n">argument_pitch</span><span class="o">.</span><span class="n">number</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">with_quarter_tones</span><span class="p">,</span>
+            <span class="p">)</span></div>
+
+<div class="viewcode-block" id="JIPitch.__truediv__"><a class="viewcode-back" href="../../api/evans/pitch.html#evans.pitch.JIPitch.__truediv__">[docs]</a>    <span class="k">def</span> <span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">)):</span>
+            <span class="n">self_ratio</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ratio</span>
+            <span class="n">self_fraction</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">self_ratio</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">fundamental</span><span class="p">,</span>
+                <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">self_fraction</span> <span class="o">/</span> <span class="n">argument</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">with_quarter_tones</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)):</span>
+            <span class="n">self_pitch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span>
+            <span class="n">argument_pitch</span> <span class="o">=</span> <span class="n">argument</span><span class="o">.</span><span class="n">pitch</span>
+            <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">fundamental</span><span class="o">.</span><span class="n">number</span> <span class="o">/</span> <span class="n">argument</span><span class="o">.</span><span class="n">fundamental</span><span class="o">.</span><span class="n">number</span><span class="p">,</span>
+                <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">self_pitch</span><span class="o">.</span><span class="n">number</span> <span class="o">/</span> <span class="n">argument_pitch</span><span class="o">.</span><span class="n">number</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">with_quarter_tones</span><span class="p">,</span>
+            <span class="p">)</span></div>
+
+<div class="viewcode-block" id="JIPitch.__lt__"><a class="viewcode-back" href="../../api/evans/pitch.html#evans.pitch.JIPitch.__lt__">[docs]</a>    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">)):</span>
+            <span class="n">self_ratio</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ratio</span>
+            <span class="n">self_fraction</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">self_ratio</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">self_fraction</span> <span class="o">&lt;</span> <span class="n">argument</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)):</span>
+            <span class="n">self_pitch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span>
+            <span class="n">argument_pitch</span> <span class="o">=</span> <span class="n">argument</span><span class="o">.</span><span class="n">pitch</span>
+            <span class="k">return</span> <span class="n">self_pitch</span> <span class="o">&lt;</span> <span class="n">argument_pitch</span></div>
+
+<div class="viewcode-block" id="JIPitch.__lte__"><a class="viewcode-back" href="../../api/evans/pitch.html#evans.pitch.JIPitch.__lte__">[docs]</a>    <span class="k">def</span> <span class="nf">__lte__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">)):</span>
+            <span class="n">self_ratio</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ratio</span>
+            <span class="n">self_fraction</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">self_ratio</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">self_fraction</span> <span class="o">&lt;=</span> <span class="n">argument</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)):</span>
+            <span class="n">self_pitch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span>
+            <span class="n">argument_pitch</span> <span class="o">=</span> <span class="n">argument</span><span class="o">.</span><span class="n">pitch</span>
+            <span class="k">return</span> <span class="n">self_pitch</span> <span class="o">&lt;=</span> <span class="n">argument_pitch</span></div>
+
+<div class="viewcode-block" id="JIPitch.__mod__"><a class="viewcode-back" href="../../api/evans/pitch.html#evans.pitch.JIPitch.__mod__">[docs]</a>    <span class="k">def</span> <span class="fm">__mod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span><span class="o">.</span><span class="n">number</span> <span class="o">%</span> <span class="n">argument</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)):</span>
+            <span class="n">self_pitch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span>
+            <span class="n">argument_pitch</span> <span class="o">=</span> <span class="n">argument</span><span class="o">.</span><span class="n">pitch</span>
+            <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">fundamental</span><span class="o">.</span><span class="n">number</span> <span class="o">%</span> <span class="n">argument</span><span class="o">.</span><span class="n">fundamental</span><span class="o">.</span><span class="n">number</span><span class="p">,</span>
+                <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">self_pitch</span><span class="o">.</span><span class="n">number</span> <span class="o">%</span> <span class="n">argument_pitch</span><span class="o">.</span><span class="n">number</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">with_quarter_tones</span><span class="p">,</span>
+            <span class="p">)</span></div>
+
+<div class="viewcode-block" id="JIPitch.__mul__"><a class="viewcode-back" href="../../api/evans/pitch.html#evans.pitch.JIPitch.__mul__">[docs]</a>    <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">)):</span>
+            <span class="n">self_ratio</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ratio</span>
+            <span class="n">self_fraction</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">self_ratio</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">fundamental</span><span class="p">,</span>
+                <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">self_fraction</span> <span class="o">*</span> <span class="n">argument</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">with_quarter_tones</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)):</span>
+            <span class="n">self_pitch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span>
+            <span class="n">argument_pitch</span> <span class="o">=</span> <span class="n">argument</span><span class="o">.</span><span class="n">pitch</span>
+            <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">fundamental</span><span class="o">.</span><span class="n">number</span> <span class="o">*</span> <span class="n">argument</span><span class="o">.</span><span class="n">fundamental</span><span class="o">.</span><span class="n">number</span><span class="p">,</span>
+                <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">self_pitch</span><span class="o">.</span><span class="n">number</span> <span class="o">*</span> <span class="n">argument_pitch</span><span class="o">.</span><span class="n">number</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">with_quarter_tones</span><span class="p">,</span>
+            <span class="p">)</span></div>
+
+<div class="viewcode-block" id="JIPitch.__str__"><a class="viewcode-back" href="../../api/evans/pitch.html#evans.pitch.JIPitch.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">lilypond</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pitch</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="JIPitch.__sub__"><a class="viewcode-back" href="../../api/evans/pitch.html#evans.pitch.JIPitch.__sub__">[docs]</a>    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">)):</span>
+            <span class="n">self_ratio</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ratio</span>
+            <span class="n">self_fraction</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">self_ratio</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">fundamental</span><span class="p">,</span>
+                <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">self_fraction</span> <span class="o">-</span> <span class="n">argument</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">with_quarter_tones</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)):</span>
+            <span class="n">self_pitch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span>
+            <span class="n">argument_pitch</span> <span class="o">=</span> <span class="n">argument</span><span class="o">.</span><span class="n">pitch</span>
+            <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">fundamental</span><span class="o">.</span><span class="n">number</span> <span class="o">-</span> <span class="n">argument</span><span class="o">.</span><span class="n">fundamental</span><span class="o">.</span><span class="n">number</span><span class="p">,</span>
+                <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">self_pitch</span><span class="o">.</span><span class="n">number</span> <span class="o">-</span> <span class="n">argument_pitch</span><span class="o">.</span><span class="n">number</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">with_quarter_tones</span><span class="p">,</span>
+            <span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_get_lilypond_format</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">lilypond</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pitch</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_calculate_pitch_and_deviation</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">pitch</span><span class="p">,</span>
+        <span class="n">ratio</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">ratio</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">ratio</span><span class="p">)</span>
+        <span class="n">log_ratio</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">ratio</span><span class="p">))</span>
+        <span class="n">log_2</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">1200</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">ji_cents</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">log_ratio</span> <span class="o">*</span> <span class="n">log_2</span><span class="p">)</span>
+        <span class="n">semitones</span> <span class="o">=</span> <span class="n">ji_cents</span> <span class="o">/</span> <span class="mi">100</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">modf</span><span class="p">(</span><span class="n">semitones</span><span class="p">)</span>
+        <span class="n">pitch</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">NumberedPitch</span><span class="p">(</span><span class="n">pitch</span><span class="p">)</span> <span class="o">+</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">remainder</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="k">if</span> <span class="mi">50</span> <span class="o">&lt;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">remainder</span><span class="p">):</span>
+            <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">remainder</span><span class="p">:</span>
+                <span class="n">pitch</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">remainder</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span> <span class="o">+</span> <span class="n">remainder</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">pitch</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="n">remainder</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">+</span> <span class="n">remainder</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">with_quarter_tones</span><span class="p">:</span>
+            <span class="k">if</span> <span class="mi">25</span> <span class="o">&lt;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">remainder</span><span class="p">):</span>
+                <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">remainder</span><span class="p">:</span>
+                    <span class="n">pitch</span> <span class="o">+=</span> <span class="mf">0.5</span>
+                    <span class="n">remainder</span> <span class="o">=</span> <span class="o">-</span><span class="mi">50</span> <span class="o">+</span> <span class="n">remainder</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">pitch</span> <span class="o">-=</span> <span class="mf">0.5</span>
+                    <span class="n">remainder</span> <span class="o">=</span> <span class="mi">50</span> <span class="o">+</span> <span class="n">remainder</span>
+        <span class="k">return</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">remainder</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">lilypond</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pitch</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">pitch_class</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">NamedPitchClass</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pitch</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">octave</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Octave</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pitch</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="combination_tones"><a class="viewcode-back" href="../../api/evans/pitch.html#evans.pitch.combination_tones">[docs]</a><span class="k">def</span> <span class="nf">combination_tones</span><span class="p">(</span><span class="n">pitches</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">depth</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; print(</span>
+<span class="sd">        ...     evans.combination_tones(</span>
+<span class="sd">        ...         pitches=[</span>
+<span class="sd">        ...             8.25,</span>
+<span class="sd">        ...             18.75,</span>
+<span class="sd">        ...             23.5,</span>
+<span class="sd">        ...         ],</span>
+<span class="sd">        ...         depth=1,</span>
+<span class="sd">        ...     )</span>
+<span class="sd">        ... )</span>
+<span class="sd">        [-2.0, 6.0, 8.0, 14.5, 19.0, 23.5, 26.0, 29.5, 33.5]</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; print(</span>
+<span class="sd">        ...     evans.combination_tones(</span>
+<span class="sd">        ...         pitches=[</span>
+<span class="sd">        ...             7.75,</span>
+<span class="sd">        ...             19,</span>
+<span class="sd">        ...             25.25,</span>
+<span class="sd">        ...             28.5</span>
+<span class="sd">        ...         ],</span>
+<span class="sd">        ...         depth=1,</span>
+<span class="sd">        ...     )</span>
+<span class="sd">        ... )</span>
+<span class="sd">        [-1.0, 4.0, 6.0, 8.0, 13.5, 17.0, 19.0, 22.0, 25.0, 26.0, 28.5, 30.5, 33.0, 34.0, 36.5, 39.0]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pitches</span> <span class="o">=</span> <span class="p">[</span><span class="n">abjad</span><span class="o">.</span><span class="n">NumberedPitch</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="o">.</span><span class="n">hertz</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">pitches</span><span class="p">]</span>
+    <span class="n">new_pitches</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="nb">iter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">depth</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pitches</span><span class="p">):</span>
+            <span class="n">new_pitches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">num_</span> <span class="ow">in</span> <span class="n">pitches</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:]:</span>
+                <span class="n">new_pitches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span> <span class="o">+</span> <span class="n">num_</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="n">num_</span><span class="p">:</span>
+                    <span class="n">new_pitches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span> <span class="o">-</span> <span class="n">num_</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="n">num_</span><span class="p">:</span>
+                    <span class="n">new_pitches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num_</span> <span class="o">-</span> <span class="n">num</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">continue</span>
+        <span class="n">pitches</span> <span class="o">=</span> <span class="n">new_pitches</span>
+        <span class="n">new_pitches</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">pitches</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">NumberedPitch</span><span class="o">.</span><span class="n">from_hertz</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pitches</span><span class="p">]</span>
+    <span class="n">reduce</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">pitches</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">reduce</span><span class="p">:</span>
+            <span class="n">reduce</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">reduce</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="n">pitches</span> <span class="o">=</span> <span class="n">reduce</span>
+    <span class="k">return</span> <span class="n">pitches</span></div>
+
+
+<div class="viewcode-block" id="herz_combination_tone_ratios"><a class="viewcode-back" href="../../api/evans/pitch.html#evans.pitch.herz_combination_tone_ratios">[docs]</a><span class="k">def</span> <span class="nf">herz_combination_tone_ratios</span><span class="p">(</span>
+    <span class="n">fundamental</span><span class="o">=</span><span class="mf">261.625565</span><span class="p">,</span> <span class="n">pitches</span><span class="o">=</span><span class="p">[</span><span class="mf">327.03195625</span><span class="p">,</span> <span class="mf">392.43834749999996</span><span class="p">],</span> <span class="n">depth</span><span class="o">=</span><span class="mi">2</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; print(</span>
+<span class="sd">        ...     evans.herz_combination_tone_ratios(</span>
+<span class="sd">        ...     fundamental=261.625565,</span>
+<span class="sd">        ...     pitches=[</span>
+<span class="sd">        ...         327.03195625,</span>
+<span class="sd">        ...         392.43834749999996</span>
+<span class="sd">        ...         ],</span>
+<span class="sd">        ...     depth=1,</span>
+<span class="sd">        ...     )</span>
+<span class="sd">        ... )</span>
+<span class="sd">        [&#39;4503599627370493/18014398509481984&#39;, &#39;5/4&#39;, &#39;3/2&#39;, &#39;11/4&#39;]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">new_pitches</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="nb">iter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">depth</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pitches</span><span class="p">):</span>
+            <span class="n">new_pitches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">num_</span> <span class="ow">in</span> <span class="n">pitches</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:]:</span>
+                <span class="n">new_pitches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span> <span class="o">+</span> <span class="n">num_</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="n">num_</span><span class="p">:</span>
+                    <span class="n">new_pitches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span> <span class="o">-</span> <span class="n">num_</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="n">num_</span><span class="p">:</span>
+                    <span class="n">new_pitches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num_</span> <span class="o">-</span> <span class="n">num</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">continue</span>
+        <span class="n">pitches</span> <span class="o">=</span> <span class="n">new_pitches</span>
+        <span class="n">new_pitches</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">reduce</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">pitches</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">reduce</span><span class="p">:</span>
+            <span class="n">reduce</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">reduce</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="n">pitches</span> <span class="o">=</span> <span class="n">reduce</span>
+    <span class="n">returned_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">freq</span> <span class="ow">in</span> <span class="n">pitches</span><span class="p">:</span>
+        <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">freq</span> <span class="o">/</span> <span class="n">fundamental</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">returned_list</span></div>
+
+
+<div class="viewcode-block" id="return_cent_markup"><a class="viewcode-back" href="../../api/evans/pitch.html#evans.pitch.return_cent_markup">[docs]</a><span class="k">def</span> <span class="nf">return_cent_markup</span><span class="p">(</span>
+    <span class="n">note_head</span><span class="p">,</span>
+    <span class="n">ratio</span><span class="p">,</span>
+    <span class="n">quarter_tones</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">ratio</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">ratio</span><span class="p">)</span>
+    <span class="n">log_ratio</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">ratio</span><span class="p">))</span>
+    <span class="n">log_2</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">1200</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">ji_cents</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">log_ratio</span> <span class="o">*</span> <span class="n">log_2</span><span class="p">)</span>
+    <span class="n">semitones</span> <span class="o">=</span> <span class="n">ji_cents</span> <span class="o">/</span> <span class="mi">100</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">modf</span><span class="p">(</span><span class="n">semitones</span><span class="p">)</span>
+    <span class="n">pitch</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">NumberedPitch</span><span class="p">(</span><span class="n">note_head</span><span class="o">.</span><span class="n">written_pitch</span><span class="p">)</span> <span class="o">+</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">remainder</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="k">if</span> <span class="mi">50</span> <span class="o">&lt;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">remainder</span><span class="p">):</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">remainder</span><span class="p">:</span>
+            <span class="n">pitch</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">remainder</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span> <span class="o">+</span> <span class="n">remainder</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pitch</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">remainder</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">+</span> <span class="n">remainder</span>
+    <span class="k">if</span> <span class="n">quarter_tones</span><span class="p">:</span>
+        <span class="k">if</span> <span class="mi">25</span> <span class="o">&lt;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">remainder</span><span class="p">):</span>
+            <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">remainder</span><span class="p">:</span>
+                <span class="n">pitch</span> <span class="o">+=</span> <span class="mf">0.5</span>
+                <span class="n">remainder</span> <span class="o">=</span> <span class="o">-</span><span class="mi">50</span> <span class="o">+</span> <span class="n">remainder</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">pitch</span> <span class="o">-=</span> <span class="mf">0.5</span>
+                <span class="n">remainder</span> <span class="o">=</span> <span class="mi">50</span> <span class="o">+</span> <span class="n">remainder</span>
+    <span class="k">if</span> <span class="n">remainder</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">cent_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">remainder</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">cent_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;+</span><span class="si">{</span><span class="n">remainder</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">mark</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Markup</span><span class="p">(</span>
+        <span class="sa">fr</span><span class="s2">&quot;\markup \center-align </span><span class="si">{</span><span class="n">cent_string</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="n">abjad</span><span class="o">.</span><span class="n">Up</span><span class="p">,</span> <span class="n">literal</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">mark</span></div>
+
+
+<div class="viewcode-block" id="return_vertical_moment_ties"><a class="viewcode-back" href="../../api/evans/pitch.html#evans.pitch.return_vertical_moment_ties">[docs]</a><span class="k">def</span> <span class="nf">return_vertical_moment_ties</span><span class="p">(</span><span class="n">score</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; staff_1 = abjad.Staff(&quot;c&#39;4 c&#39;2 c&#39;4&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; staff_2 = abjad.Staff(&quot;cs&#39;4 cs&#39;4 cs&#39;2&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; staff_3 = abjad.Staff(&quot;d&#39;8 d&#39;8 d&#39;8 d&#39;8 d&#39;8 d&#39;8 d&#39;8 d&#39;8&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; score = abjad.Score(</span>
+<span class="sd">        ...     [</span>
+<span class="sd">        ...         staff_1,</span>
+<span class="sd">        ...         staff_2,</span>
+<span class="sd">        ...         staff_3,</span>
+<span class="sd">        ...     ]</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; for tie in evans.return_vertical_moment_ties(score):</span>
+<span class="sd">        ...     tie</span>
+<span class="sd">        ...</span>
+<span class="sd">        LogicalTie([Note(&quot;d&#39;8&quot;)])</span>
+<span class="sd">        LogicalTie([Note(&quot;c&#39;4&quot;)])</span>
+<span class="sd">        LogicalTie([Note(&quot;cs&#39;4&quot;)])</span>
+<span class="sd">        LogicalTie([Note(&quot;d&#39;8&quot;)])</span>
+<span class="sd">        LogicalTie([Note(&quot;d&#39;8&quot;)])</span>
+<span class="sd">        LogicalTie([Note(&quot;cs&#39;4&quot;)])</span>
+<span class="sd">        LogicalTie([Note(&quot;c&#39;2&quot;)])</span>
+<span class="sd">        LogicalTie([Note(&quot;d&#39;8&quot;)])</span>
+<span class="sd">        LogicalTie([Note(&quot;d&#39;8&quot;)])</span>
+<span class="sd">        LogicalTie([Note(&quot;cs&#39;2&quot;)])</span>
+<span class="sd">        LogicalTie([Note(&quot;d&#39;8&quot;)])</span>
+<span class="sd">        LogicalTie([Note(&quot;d&#39;8&quot;)])</span>
+<span class="sd">        LogicalTie([Note(&quot;c&#39;4&quot;)])</span>
+<span class="sd">        LogicalTie([Note(&quot;d&#39;8&quot;)])</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; staff_1 = abjad.Staff(&quot;c&#39;4 c&#39;2 c&#39;4&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; staff_2 = abjad.Staff(&quot;cs&#39;4 cs&#39;4 cs&#39;2&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; staff_3 = abjad.Staff(&quot;d&#39;8 d&#39;8 d&#39;8 d&#39;8 d&#39;8 d&#39;8 d&#39;8 d&#39;8&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; score = abjad.Score(</span>
+<span class="sd">        ...     [</span>
+<span class="sd">        ...         staff_1,</span>
+<span class="sd">        ...         staff_2,</span>
+<span class="sd">        ...         staff_3,</span>
+<span class="sd">        ...     ]</span>
+<span class="sd">        ... )</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; handler = evans.PitchHandler(</span>
+<span class="sd">        ...     pitch_list=[0, 1, 2, 3, 4],</span>
+<span class="sd">        ...     forget=False,</span>
+<span class="sd">        ...     to_ties=True,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; vm_ties = evans.return_vertical_moment_ties(score)</span>
+<span class="sd">        &gt;&gt;&gt; numbers = [_ for _ in range(len(vm_ties))]</span>
+<span class="sd">        &gt;&gt;&gt; for i, tie in zip(numbers, vm_ties):</span>
+<span class="sd">        ...     string = f&quot;{i}&quot;</span>
+<span class="sd">        ...     markup = abjad.Markup(fr&quot;\markup {string}&quot;, direction=abjad.Up, literal=True)</span>
+<span class="sd">        ...     abjad.attach(markup, tie[0])</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; handler(vm_ties)</span>
+<span class="sd">        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;</span>
+<span class="sd">        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment</span>
+<span class="sd">        &gt;&gt;&gt; file = abjad.LilyPondFile(</span>
+<span class="sd">        ...     items=[score],</span>
+<span class="sd">        ...     includes=[&quot;abjad.ily&quot;],</span>
+<span class="sd">        ...     global_staff_size=16,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP</span>
+
+<span class="sd">        .. docs::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(abjad.lilypond(score))</span>
+<span class="sd">            \new Score</span>
+<span class="sd">            \with</span>
+<span class="sd">            {</span>
+<span class="sd">                proportionalNotationDuration = #(ly:make-moment 1 25)</span>
+<span class="sd">            }</span>
+<span class="sd">            &lt;&lt;</span>
+<span class="sd">                \new Staff</span>
+<span class="sd">                {</span>
+<span class="sd">                    cs&#39;4</span>
+<span class="sd">                    ^ \markup 1</span>
+<span class="sd">                    cs&#39;2</span>
+<span class="sd">                    ^ \markup 6</span>
+<span class="sd">                    d&#39;4</span>
+<span class="sd">                    ^ \markup 12</span>
+<span class="sd">                }</span>
+<span class="sd">                \new Staff</span>
+<span class="sd">                {</span>
+<span class="sd">                    d&#39;4</span>
+<span class="sd">                    ^ \markup 2</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                    ^ \markup 5</span>
+<span class="sd">                    e&#39;2</span>
+<span class="sd">                    ^ \markup 9</span>
+<span class="sd">                }</span>
+<span class="sd">                \new Staff</span>
+<span class="sd">                {</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    ^ \markup 0</span>
+<span class="sd">                    ef&#39;8</span>
+<span class="sd">                    ^ \markup 3</span>
+<span class="sd">                    e&#39;8</span>
+<span class="sd">                    ^ \markup 4</span>
+<span class="sd">                    d&#39;8</span>
+<span class="sd">                    ^ \markup 7</span>
+<span class="sd">                    ef&#39;8</span>
+<span class="sd">                    ^ \markup 8</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    ^ \markup 10</span>
+<span class="sd">                    cs&#39;8</span>
+<span class="sd">                    ^ \markup 11</span>
+<span class="sd">                    ef&#39;8</span>
+<span class="sd">                    ^ \markup 13</span>
+<span class="sd">                }</span>
+<span class="sd">            &gt;&gt;</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; staff_1 = abjad.Staff(&quot;c&#39;4 ~ c&#39;2 c&#39;4&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; staff_2 = abjad.Staff(&quot;cs&#39;4 cs&#39;4 cs&#39;2&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; staff_3 = abjad.Staff(&quot;d&#39;8 d&#39;8 d&#39;8 d&#39;8 d&#39;8 d&#39;8 d&#39;8 d&#39;8&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; score = abjad.Score(</span>
+<span class="sd">        ...     [</span>
+<span class="sd">        ...         staff_1,</span>
+<span class="sd">        ...         staff_2,</span>
+<span class="sd">        ...         staff_3,</span>
+<span class="sd">        ...     ]</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; handler = evans.PitchHandler(pitch_list=[0, 1, 2, 3, 4], forget=False)</span>
+<span class="sd">        &gt;&gt;&gt; vm_ties = evans.return_vertical_moment_ties(score)</span>
+<span class="sd">        &gt;&gt;&gt; numbers = [_ for _ in range(len(vm_ties))]</span>
+<span class="sd">        &gt;&gt;&gt; for i, tie in zip(numbers, vm_ties):</span>
+<span class="sd">        ...     string = f&quot;{i}&quot;</span>
+<span class="sd">        ...     markup = abjad.Markup(fr&quot;\markup {string}&quot;, direction=abjad.Up, literal=True)</span>
+<span class="sd">        ...     abjad.attach(markup, tie[0])</span>
+<span class="sd">        ...     handler(tie)</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;</span>
+<span class="sd">        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment</span>
+<span class="sd">        &gt;&gt;&gt; file = abjad.LilyPondFile(</span>
+<span class="sd">        ...     items=[score],</span>
+<span class="sd">        ...     includes=[&quot;abjad.ily&quot;],</span>
+<span class="sd">        ...     global_staff_size=16,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP</span>
+
+<span class="sd">        .. docs::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(abjad.lilypond(score))</span>
+<span class="sd">            \new Score</span>
+<span class="sd">            \with</span>
+<span class="sd">            {</span>
+<span class="sd">                proportionalNotationDuration = #(ly:make-moment 1 25)</span>
+<span class="sd">            }</span>
+<span class="sd">            &lt;&lt;</span>
+<span class="sd">                \new Staff</span>
+<span class="sd">                {</span>
+<span class="sd">                    d&#39;4</span>
+<span class="sd">                    ^ \markup 2</span>
+<span class="sd">                    ~</span>
+<span class="sd">                    d&#39;2</span>
+<span class="sd">                    cs&#39;4</span>
+<span class="sd">                    ^ \markup 11</span>
+<span class="sd">                }</span>
+<span class="sd">                \new Staff</span>
+<span class="sd">                {</span>
+<span class="sd">                    cs&#39;4</span>
+<span class="sd">                    ^ \markup 1</span>
+<span class="sd">                    c&#39;4</span>
+<span class="sd">                    ^ \markup 5</span>
+<span class="sd">                    ef&#39;2</span>
+<span class="sd">                    ^ \markup 8</span>
+<span class="sd">                }</span>
+<span class="sd">                \new Staff</span>
+<span class="sd">                {</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    ^ \markup 0</span>
+<span class="sd">                    ef&#39;8</span>
+<span class="sd">                    ^ \markup 3</span>
+<span class="sd">                    e&#39;8</span>
+<span class="sd">                    ^ \markup 4</span>
+<span class="sd">                    cs&#39;8</span>
+<span class="sd">                    ^ \markup 6</span>
+<span class="sd">                    d&#39;8</span>
+<span class="sd">                    ^ \markup 7</span>
+<span class="sd">                    e&#39;8</span>
+<span class="sd">                    ^ \markup 9</span>
+<span class="sd">                    c&#39;8</span>
+<span class="sd">                    ^ \markup 10</span>
+<span class="sd">                    d&#39;8</span>
+<span class="sd">                    ^ \markup 12</span>
+<span class="sd">                }</span>
+<span class="sd">            &gt;&gt;</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">moments</span> <span class="o">=</span> <span class="p">[</span><span class="n">_</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">abjad</span><span class="o">.</span><span class="n">iterate_vertical_moments</span><span class="p">(</span><span class="n">score</span><span class="p">)]</span>
+    <span class="n">new_moments</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">moment</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">moments</span><span class="p">):</span>
+        <span class="n">new_moment</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">new_moment_notes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">note</span> <span class="ow">in</span> <span class="n">moment</span><span class="o">.</span><span class="n">start_notes</span><span class="p">:</span>
+            <span class="n">new_moment_notes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">note</span><span class="p">)</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_moment_notes</span><span class="p">):</span>
+            <span class="n">new_moment</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">_</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">abjad</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">new_moment_notes</span><span class="p">)</span><span class="o">.</span><span class="n">logical_ties</span><span class="p">()]</span>
+            <span class="p">)</span>
+            <span class="n">new_moments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_moment</span><span class="p">)</span>
+    <span class="n">flat_moments</span> <span class="o">=</span> <span class="n">flatten</span><span class="p">(</span><span class="n">new_moments</span><span class="p">)</span>
+    <span class="n">flat_moments</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">_</span><span class="p">:</span> <span class="n">abjad</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">timespan</span><span class="p">(</span><span class="n">_</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">flat_moments</span></div>
+
+
+<div class="viewcode-block" id="to_nearest_eighth_tone"><a class="viewcode-back" href="../../api/evans/pitch.html#evans.pitch.to_nearest_eighth_tone">[docs]</a><span class="k">def</span> <span class="nf">to_nearest_eighth_tone</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">frac</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Rounds number to nearest eighth</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; l = [0, 1.111, 4.5, 2.23, 6.4, 7.3, 7.15]</span>
+<span class="sd">        &gt;&gt;&gt; l = [evans.to_nearest_eighth_tone(_, frac=True) for _ in l]</span>
+<span class="sd">        &gt;&gt;&gt; l</span>
+<span class="sd">        [Fraction(0, 1), Fraction(1, 1), Fraction(9, 2), Fraction(9, 4), Fraction(13, 2), Fraction(29, 4), Fraction(29, 4)]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">number</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span>
+    <span class="n">div</span><span class="p">,</span> <span class="n">mod</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">mod</span> <span class="o">==</span> <span class="mf">0.75</span><span class="p">:</span>
+        <span class="n">div</span> <span class="o">+=</span> <span class="mf">0.75</span>
+    <span class="k">elif</span> <span class="n">mod</span> <span class="o">==</span> <span class="mf">0.5</span><span class="p">:</span>
+        <span class="n">div</span> <span class="o">+=</span> <span class="mf">0.5</span>
+    <span class="k">elif</span> <span class="n">mod</span> <span class="o">==</span> <span class="mf">0.25</span><span class="p">:</span>
+        <span class="n">div</span> <span class="o">+=</span> <span class="mf">0.25</span>
+    <span class="k">if</span> <span class="n">frac</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">integer_equivalent_number_to_integer</span><span class="p">(</span><span class="n">div</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">integer_equivalent_number_to_integer</span><span class="p">(</span><span class="n">div</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="to_nearest_quarter_tone"><a class="viewcode-back" href="../../api/evans/pitch.html#evans.pitch.to_nearest_quarter_tone">[docs]</a><span class="k">def</span> <span class="nf">to_nearest_quarter_tone</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">frac</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Rounds number to nearest quarter</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; l = [0, 1.111, 4.5, 2.23, 6.4, 7.3, 7.15]</span>
+<span class="sd">        &gt;&gt;&gt; l = [evans.to_nearest_quarter_tone(_, frac=True) for _ in l]</span>
+<span class="sd">        &gt;&gt;&gt; l</span>
+<span class="sd">        [Fraction(0, 1), Fraction(1, 1), Fraction(9, 2), Fraction(2, 1), Fraction(13, 2), Fraction(7, 1), Fraction(7, 1)]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">number</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span>
+    <span class="n">div</span><span class="p">,</span> <span class="n">mod</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">mod</span> <span class="o">==</span> <span class="mf">0.75</span><span class="p">:</span>
+        <span class="n">div</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">mod</span> <span class="o">==</span> <span class="mf">0.5</span><span class="p">:</span>
+        <span class="n">div</span> <span class="o">+=</span> <span class="mf">0.5</span>
+    <span class="k">if</span> <span class="n">frac</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">integer_equivalent_number_to_integer</span><span class="p">(</span><span class="n">div</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">integer_equivalent_number_to_integer</span><span class="p">(</span><span class="n">div</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="to_nearest_sixth_tone"><a class="viewcode-back" href="../../api/evans/pitch.html#evans.pitch.to_nearest_sixth_tone">[docs]</a><span class="k">def</span> <span class="nf">to_nearest_sixth_tone</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Rounds number to nearest sixth</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; l = [0, 1.111, 4.5, 2.23, 6.4, 7.3, 7.15]</span>
+<span class="sd">        &gt;&gt;&gt; l = [evans.to_nearest_sixth_tone(_) for _ in l]</span>
+<span class="sd">        &gt;&gt;&gt; l</span>
+<span class="sd">        [Fraction(0, 1), Fraction(1, 1), Fraction(9, 2), Fraction(7, 3), Fraction(19, 3), Fraction(22, 3), Fraction(7, 1)]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">semitones</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mi">6</span> <span class="o">*</span> <span class="n">number</span><span class="p">)),</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">semitones</span><span class="o">.</span><span class="n">denominator</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="n">semitones</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">number</span><span class="p">)),</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">semitones</span></div>
+
+
+<div class="viewcode-block" id="to_nearest_third_tone"><a class="viewcode-back" href="../../api/evans/pitch.html#evans.pitch.to_nearest_third_tone">[docs]</a><span class="k">def</span> <span class="nf">to_nearest_third_tone</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Rounds number to nearest third</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; l = [0, 1.111, 4.5, 2.23, 6.4, 7.3, 7.15]</span>
+<span class="sd">        &gt;&gt;&gt; l = [evans.to_nearest_third_tone(_) for _ in l]</span>
+<span class="sd">        &gt;&gt;&gt; l</span>
+<span class="sd">        [Fraction(0, 1), Fraction(1, 1), Fraction(14, 3), Fraction(2, 1), Fraction(20, 3), Fraction(22, 3), Fraction(7, 1)]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">semitones</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">number</span><span class="p">)),</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">semitones</span><span class="o">.</span><span class="n">denominator</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">semitones</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span>
+            <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">number</span><span class="p">)),</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">semitones</span></div>
+
+
+<div class="viewcode-block" id="to_nearest_twelfth_tone"><a class="viewcode-back" href="../../api/evans/pitch.html#evans.pitch.to_nearest_twelfth_tone">[docs]</a><span class="k">def</span> <span class="nf">to_nearest_twelfth_tone</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Rounds number to nearest twelfth</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; l = [0, 1.111, 4.5, 2.23, 6.4, 7.3, 7.15]</span>
+<span class="sd">        &gt;&gt;&gt; l = [evans.to_nearest_twelfth_tone(_) for _ in l]</span>
+<span class="sd">        &gt;&gt;&gt; l</span>
+<span class="sd">        [Fraction(0, 1), Fraction(7, 6), Fraction(9, 2), Fraction(9, 4), Fraction(19, 3), Fraction(22, 3), Fraction(43, 6)]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">semitones</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="n">number</span><span class="p">)),</span> <span class="mi">12</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">semitones</span><span class="o">.</span><span class="n">denominator</span> <span class="o">==</span> <span class="mi">12</span><span class="p">:</span>
+        <span class="n">semitones</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mi">6</span> <span class="o">*</span> <span class="n">number</span><span class="p">)),</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">semitones</span></div>
+
+
+<div class="viewcode-block" id="tonnetz"><a class="viewcode-back" href="../../api/evans/pitch.html#evans.pitch.tonnetz">[docs]</a><span class="k">def</span> <span class="nf">tonnetz</span><span class="p">(</span><span class="n">chord</span><span class="p">,</span> <span class="n">chord_quality</span><span class="p">,</span> <span class="n">transforms</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; source = [&quot;1/1&quot;, &quot;6/5&quot;, &quot;3/2&quot;]</span>
+<span class="sd">        &gt;&gt;&gt; triads = evans.tonnetz(source, &quot;minor&quot;, [&quot;p&quot;, &quot;l&quot;, &quot;r&quot;])</span>
+<span class="sd">        &gt;&gt;&gt; for triad in triads:</span>
+<span class="sd">        ...     print(triad)</span>
+<span class="sd">        ...</span>
+<span class="sd">        (1, 6/5, 3/2)</span>
+<span class="sd">        (1, 5/4, 3/2)</span>
+<span class="sd">        (5/4, 3/2, 15/8)</span>
+<span class="sd">        (3/2, 15/8, 9/8)</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; source = [&quot;1/1&quot;, &quot;5/4&quot;, &quot;3/2&quot;]</span>
+<span class="sd">        &gt;&gt;&gt; triads = evans.tonnetz(source, &quot;major&quot;, [&quot;p&quot;, &quot;l&quot;, &quot;r&quot;])</span>
+<span class="sd">        &gt;&gt;&gt; for triad in triads:</span>
+<span class="sd">        ...     print(triad)</span>
+<span class="sd">        ...</span>
+<span class="sd">        (1, 5/4, 3/2)</span>
+<span class="sd">        (1, 6/5, 3/2)</span>
+<span class="sd">        (4/5, 1, 6/5)</span>
+<span class="sd">        (2/3, 4/5, 1)</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; source = [&quot;1/1&quot;, &quot;12/7&quot;, &quot;3/2&quot;]</span>
+<span class="sd">        &gt;&gt;&gt; triads = evans.tonnetz(source, &quot;minor&quot;, [&quot;p&quot;, &quot;l7&quot;, &quot;r7&quot;])</span>
+<span class="sd">        &gt;&gt;&gt; for triad in triads:</span>
+<span class="sd">        ...     print(triad)</span>
+<span class="sd">        ...</span>
+<span class="sd">        (1, 12/7, 3/2)</span>
+<span class="sd">        (1, 7/8, 3/2)</span>
+<span class="sd">        (7/4, 3/2, 21/16)</span>
+<span class="sd">        (3/2, 21/16, 9/8)</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; source = [&quot;1/1&quot;, &quot;7/4&quot;, &quot;3/2&quot;]</span>
+<span class="sd">        &gt;&gt;&gt; triads = evans.tonnetz(source, &quot;major&quot;, [&quot;p&quot;, &quot;l7&quot;, &quot;r7&quot;])</span>
+<span class="sd">        &gt;&gt;&gt; for triad in triads:</span>
+<span class="sd">        ...     print(triad)</span>
+<span class="sd">        ...</span>
+<span class="sd">        (1, 7/4, 3/2)</span>
+<span class="sd">        (1, 6/7, 3/2)</span>
+<span class="sd">        (4/7, 1, 6/7)</span>
+<span class="sd">        (2/3, 4/7, 1/2)</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; source = [&quot;1/1&quot;, &quot;12/11&quot;, &quot;3/2&quot;]</span>
+<span class="sd">        &gt;&gt;&gt; triads = evans.tonnetz(source, &quot;minor&quot;, [&quot;p&quot;, &quot;l11&quot;, &quot;r11&quot;])</span>
+<span class="sd">        &gt;&gt;&gt; for triad in triads:</span>
+<span class="sd">        ...     print(triad)</span>
+<span class="sd">        ...</span>
+<span class="sd">        (1, 12/11, 3/2)</span>
+<span class="sd">        (1, 11/8, 3/2)</span>
+<span class="sd">        (11/8, 3/2, 33/32)</span>
+<span class="sd">        (3/2, 33/32, 9/8)</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; source = [&quot;1/1&quot;, &quot;11/8&quot;, &quot;3/2&quot;]</span>
+<span class="sd">        &gt;&gt;&gt; triads = evans.tonnetz(source, &quot;major&quot;, [&quot;p&quot;, &quot;l11&quot;, &quot;r11&quot;])</span>
+<span class="sd">        &gt;&gt;&gt; for triad in triads:</span>
+<span class="sd">        ...     print(triad)</span>
+<span class="sd">        ...</span>
+<span class="sd">        (1, 11/8, 3/2)</span>
+<span class="sd">        (1, 12/11, 3/2)</span>
+<span class="sd">        (8/11, 1, 12/11)</span>
+<span class="sd">        (2/3, 8/11, 1)</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; source = [&quot;1/1&quot;, &quot;24/13&quot;, &quot;3/2&quot;]</span>
+<span class="sd">        &gt;&gt;&gt; triads = evans.tonnetz(source, &quot;minor&quot;, [&quot;p&quot;, &quot;l13&quot;, &quot;r13&quot;])</span>
+<span class="sd">        &gt;&gt;&gt; for triad in triads:</span>
+<span class="sd">        ...     print(triad)</span>
+<span class="sd">        ...</span>
+<span class="sd">        (1, 24/13, 3/2)</span>
+<span class="sd">        (1, 13/16, 3/2)</span>
+<span class="sd">        (13/8, 3/2, 39/32)</span>
+<span class="sd">        (3/2, 39/32, 9/8)</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; source = [&quot;1/1&quot;, &quot;13/8&quot;, &quot;3/2&quot;]</span>
+<span class="sd">        &gt;&gt;&gt; triads = evans.tonnetz(source, &quot;major&quot;, [&quot;p&quot;, &quot;l13&quot;, &quot;r13&quot;])</span>
+<span class="sd">        &gt;&gt;&gt; for triad in triads:</span>
+<span class="sd">        ...     print(triad)</span>
+<span class="sd">        ...</span>
+<span class="sd">        (1, 13/8, 3/2)</span>
+<span class="sd">        (1, 12/13, 3/2)</span>
+<span class="sd">        (8/13, 1, 12/13)</span>
+<span class="sd">        (2/3, 8/13, 1/2)</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; source = [&quot;1/1&quot;, &quot;24/17&quot;, &quot;3/2&quot;]</span>
+<span class="sd">        &gt;&gt;&gt; triads = evans.tonnetz(source, &quot;minor&quot;, [&quot;p&quot;, &quot;l17&quot;, &quot;r17&quot;])</span>
+<span class="sd">        &gt;&gt;&gt; for triad in triads:</span>
+<span class="sd">        ...     print(triad)</span>
+<span class="sd">        ...</span>
+<span class="sd">        (1, 24/17, 3/2)</span>
+<span class="sd">        (1, 17/16, 3/2)</span>
+<span class="sd">        (17/16, 3/2, 51/32)</span>
+<span class="sd">        (3/2, 51/32, 9/8)</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; source = [&quot;1/1&quot;, &quot;17/16&quot;, &quot;3/2&quot;]</span>
+<span class="sd">        &gt;&gt;&gt; triads = evans.tonnetz(source, &quot;major&quot;, [&quot;p&quot;, &quot;l17&quot;, &quot;r17&quot;])</span>
+<span class="sd">        &gt;&gt;&gt; for triad in triads:</span>
+<span class="sd">        ...     print(triad)</span>
+<span class="sd">        ...</span>
+<span class="sd">        (1, 17/16, 3/2)</span>
+<span class="sd">        (1, 24/17, 3/2)</span>
+<span class="sd">        (16/17, 1, 24/17)</span>
+<span class="sd">        (2/3, 16/17, 1)</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; source = [&quot;1/1&quot;, &quot;24/19&quot;, &quot;3/2&quot;]</span>
+<span class="sd">        &gt;&gt;&gt; triads = evans.tonnetz(source, &quot;minor&quot;, [&quot;p&quot;, &quot;l19&quot;, &quot;r19&quot;])</span>
+<span class="sd">        &gt;&gt;&gt; for triad in triads:</span>
+<span class="sd">        ...     print(triad)</span>
+<span class="sd">        ...</span>
+<span class="sd">        (1, 24/19, 3/2)</span>
+<span class="sd">        (1, 19/16, 3/2)</span>
+<span class="sd">        (19/16, 3/2, 57/32)</span>
+<span class="sd">        (3/2, 57/32, 9/8)</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; source = [&quot;1/1&quot;, &quot;19/16&quot;, &quot;3/2&quot;]</span>
+<span class="sd">        &gt;&gt;&gt; triads = evans.tonnetz(source, &quot;major&quot;, [&quot;p&quot;, &quot;l19&quot;, &quot;r19&quot;])</span>
+<span class="sd">        &gt;&gt;&gt; for triad in triads:</span>
+<span class="sd">        ...     print(triad)</span>
+<span class="sd">        ...</span>
+<span class="sd">        (1, 19/16, 3/2)</span>
+<span class="sd">        (1, 24/19, 3/2)</span>
+<span class="sd">        (16/19, 1, 24/19)</span>
+<span class="sd">        (2/3, 16/19, 1)</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; source = [&quot;1/1&quot;, &quot;24/23&quot;, &quot;3/2&quot;]</span>
+<span class="sd">        &gt;&gt;&gt; triads = evans.tonnetz(source, &quot;minor&quot;, [&quot;p&quot;, &quot;l23&quot;, &quot;r23&quot;])</span>
+<span class="sd">        &gt;&gt;&gt; for triad in triads:</span>
+<span class="sd">        ...     print(triad)</span>
+<span class="sd">        ...</span>
+<span class="sd">        (1, 24/23, 3/2)</span>
+<span class="sd">        (1, 23/16, 3/2)</span>
+<span class="sd">        (23/16, 3/2, 69/64)</span>
+<span class="sd">        (3/2, 69/64, 9/8)</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; source = [&quot;1/1&quot;, &quot;23/16&quot;, &quot;3/2&quot;]</span>
+<span class="sd">        &gt;&gt;&gt; triads = evans.tonnetz(source, &quot;major&quot;, [&quot;p&quot;, &quot;l23&quot;, &quot;r23&quot;])</span>
+<span class="sd">        &gt;&gt;&gt; for triad in triads:</span>
+<span class="sd">        ...     print(triad)</span>
+<span class="sd">        ...</span>
+<span class="sd">        (1, 23/16, 3/2)</span>
+<span class="sd">        (1, 24/23, 3/2)</span>
+<span class="sd">        (16/23, 1, 24/23)</span>
+<span class="sd">        (2/3, 16/23, 1)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">chord</span> <span class="o">=</span> <span class="n">RatioSegment</span><span class="p">(</span><span class="n">chord</span><span class="p">)</span>
+    <span class="n">chord</span> <span class="o">=</span> <span class="n">chord</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+    <span class="n">returned_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">chord</span><span class="p">]</span>
+    <span class="n">updated_transforms</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">transform</span> <span class="ow">in</span> <span class="n">transforms</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">transform</span> <span class="o">==</span> <span class="s2">&quot;n&quot;</span><span class="p">:</span>
+            <span class="n">updated_transforms</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="s2">&quot;p&quot;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">transform</span> <span class="o">==</span> <span class="s2">&quot;s&quot;</span><span class="p">:</span>
+            <span class="n">updated_transforms</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="s2">&quot;p&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">transform</span> <span class="o">==</span> <span class="s2">&quot;h&quot;</span><span class="p">:</span>
+            <span class="n">updated_transforms</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="s2">&quot;p&quot;</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">transform</span> <span class="o">==</span> <span class="s2">&quot;N&quot;</span><span class="p">:</span>
+            <span class="n">updated_transforms</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="s2">&quot;p&quot;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">transform</span> <span class="o">==</span> <span class="s2">&quot;S&quot;</span><span class="p">:</span>
+            <span class="n">updated_transforms</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="s2">&quot;p&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">transform</span> <span class="o">==</span> <span class="s2">&quot;H&quot;</span><span class="p">:</span>
+            <span class="n">updated_transforms</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="s2">&quot;p&quot;</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">updated_transforms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">transform</span> <span class="ow">in</span> <span class="n">updated_transforms</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">transform</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">tonnetz</span><span class="p">(</span><span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">chord_quality</span><span class="p">,</span> <span class="n">transform</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">transform</span> <span class="o">==</span> <span class="s2">&quot;p&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;major&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;minor&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;minor&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;major&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unrecogized chord quality </span><span class="si">{</span><span class="n">chord_quality</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">transform</span> <span class="o">==</span> <span class="s2">&quot;l&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;major&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;minor&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;5/4&quot;</span><span class="p">)</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">il</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">il</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;minor&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;major&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;4/5&quot;</span><span class="p">)</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">il</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">il</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unrecogized chord quality </span><span class="si">{</span><span class="n">chord_quality</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">transform</span> <span class="o">==</span> <span class="s2">&quot;r&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;major&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;minor&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;5/6&quot;</span><span class="p">)</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ir</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;minor&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;major&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;6/5&quot;</span><span class="p">)</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ir</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unrecogized chord quality </span><span class="si">{</span><span class="n">chord_quality</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">transform</span> <span class="o">==</span> <span class="s2">&quot;l7&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;major&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;minor&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;7/4&quot;</span><span class="p">)</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">il</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">il</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;minor&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;major&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;4/7&quot;</span><span class="p">)</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">il</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">il</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unrecogized chord quality </span><span class="si">{</span><span class="n">chord_quality</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">transform</span> <span class="o">==</span> <span class="s2">&quot;r7&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;major&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;minor&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;7/12&quot;</span><span class="p">)</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ir</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;minor&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;major&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;12/7&quot;</span><span class="p">)</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ir</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unrecogized chord quality </span><span class="si">{</span><span class="n">chord_quality</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">transform</span> <span class="o">==</span> <span class="s2">&quot;l11&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;major&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;minor&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;11/8&quot;</span><span class="p">)</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">il</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">il</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;minor&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;major&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;8/11&quot;</span><span class="p">)</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">il</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">il</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unrecogized chord quality </span><span class="si">{</span><span class="n">chord_quality</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">transform</span> <span class="o">==</span> <span class="s2">&quot;r11&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;major&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;minor&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;11/12&quot;</span><span class="p">)</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ir</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;minor&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;major&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;12/11&quot;</span><span class="p">)</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ir</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unrecogized chord quality </span><span class="si">{</span><span class="n">chord_quality</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">transform</span> <span class="o">==</span> <span class="s2">&quot;l13&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;major&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;minor&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;13/8&quot;</span><span class="p">)</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">il</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">il</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;minor&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;major&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;8/13&quot;</span><span class="p">)</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">il</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">il</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unrecogized chord quality </span><span class="si">{</span><span class="n">chord_quality</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">transform</span> <span class="o">==</span> <span class="s2">&quot;r13&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;major&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;minor&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;13/24&quot;</span><span class="p">)</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ir</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;minor&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;major&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;24/13&quot;</span><span class="p">)</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ir</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unrecogized chord quality </span><span class="si">{</span><span class="n">chord_quality</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">transform</span> <span class="o">==</span> <span class="s2">&quot;l17&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;major&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;minor&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;17/16&quot;</span><span class="p">)</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">il</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">il</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;minor&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;major&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;16/17&quot;</span><span class="p">)</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">il</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">il</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unrecogized chord quality </span><span class="si">{</span><span class="n">chord_quality</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">transform</span> <span class="o">==</span> <span class="s2">&quot;r17&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;major&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;minor&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;17/24&quot;</span><span class="p">)</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ir</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;minor&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;major&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;24/17&quot;</span><span class="p">)</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ir</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unrecogized chord quality </span><span class="si">{</span><span class="n">chord_quality</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">transform</span> <span class="o">==</span> <span class="s2">&quot;l19&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;major&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;minor&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;19/16&quot;</span><span class="p">)</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">il</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">il</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;minor&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;major&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;16/19&quot;</span><span class="p">)</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">il</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">il</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unrecogized chord quality </span><span class="si">{</span><span class="n">chord_quality</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">transform</span> <span class="o">==</span> <span class="s2">&quot;r19&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;major&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;minor&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;19/24&quot;</span><span class="p">)</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ir</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;minor&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;major&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;24/19&quot;</span><span class="p">)</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ir</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unrecogized chord quality </span><span class="si">{</span><span class="n">chord_quality</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">transform</span> <span class="o">==</span> <span class="s2">&quot;l23&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;major&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;minor&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;23/16&quot;</span><span class="p">)</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">il</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">il</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;minor&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;major&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;16/23&quot;</span><span class="p">)</span>
+                <span class="n">il</span> <span class="o">=</span> <span class="n">il</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">il</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unrecogized chord quality </span><span class="si">{</span><span class="n">chord_quality</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">transform</span> <span class="o">==</span> <span class="s2">&quot;r23&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;major&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;minor&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;23/24&quot;</span><span class="p">)</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ir</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">chord_quality</span> <span class="o">==</span> <span class="s2">&quot;minor&quot;</span><span class="p">:</span>
+                <span class="n">chord_quality</span> <span class="o">=</span> <span class="s2">&quot;major&quot;</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">returned_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;3/2&quot;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">retrograde</span><span class="p">()</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="s2">&quot;24/23&quot;</span><span class="p">)</span>
+                <span class="n">ir</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">constrain_to_octave</span><span class="p">()</span>
+                <span class="n">returned_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ir</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unrecogized chord quality </span><span class="si">{</span><span class="n">chord_quality</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Transform &#39;</span><span class="si">{</span><span class="n">transform</span><span class="si">}</span><span class="s2">&#39; not recognized. Use p, l, l7, l11, l13, l17, l19, l23, r, r7, r11, r13, r17, r19, r23, s, h, or, n.&quot;</span>
+            <span class="p">)</span>
+    <span class="k">return</span> <span class="n">returned_list</span></div>
+
+
+<div class="viewcode-block" id="tune_to_ratio"><a class="viewcode-back" href="../../api/evans/pitch.html#evans.pitch.tune_to_ratio">[docs]</a><span class="k">def</span> <span class="nf">tune_to_ratio</span><span class="p">(</span>
+    <span class="n">note_head</span><span class="p">,</span>
+    <span class="n">ratio</span><span class="p">,</span>
+    <span class="n">quarter_tones</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Tunes pitch to ratio.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ratio</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">ratio</span><span class="p">)</span>
+    <span class="n">log_ratio</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">ratio</span><span class="p">))</span>
+    <span class="n">log_2</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="mi">1200</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">ji_cents</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">log_ratio</span> <span class="o">*</span> <span class="n">log_2</span><span class="p">)</span>
+    <span class="n">semitones</span> <span class="o">=</span> <span class="n">ji_cents</span> <span class="o">/</span> <span class="mi">100</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">modf</span><span class="p">(</span><span class="n">semitones</span><span class="p">)</span>
+    <span class="n">pitch</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">NumberedPitch</span><span class="p">(</span><span class="n">note_head</span><span class="o">.</span><span class="n">written_pitch</span><span class="p">)</span> <span class="o">+</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">remainder</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="k">if</span> <span class="mi">50</span> <span class="o">&lt;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">remainder</span><span class="p">):</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">remainder</span><span class="p">:</span>
+            <span class="n">pitch</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">remainder</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span> <span class="o">+</span> <span class="n">remainder</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pitch</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">remainder</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">+</span> <span class="n">remainder</span>
+    <span class="k">if</span> <span class="n">quarter_tones</span><span class="p">:</span>
+        <span class="k">if</span> <span class="mi">25</span> <span class="o">&lt;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">remainder</span><span class="p">):</span>
+            <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">remainder</span><span class="p">:</span>
+                <span class="n">pitch</span> <span class="o">+=</span> <span class="mf">0.5</span>
+                <span class="n">remainder</span> <span class="o">=</span> <span class="o">-</span><span class="mi">50</span> <span class="o">+</span> <span class="n">remainder</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">pitch</span> <span class="o">-=</span> <span class="mf">0.5</span>
+                <span class="n">remainder</span> <span class="o">=</span> <span class="mi">50</span> <span class="o">+</span> <span class="n">remainder</span>
+    <span class="n">note_head</span><span class="o">.</span><span class="n">written_pitch</span> <span class="o">=</span> <span class="n">pitch</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-2021, Gregory Rowland Evans
+      <span class="lastupdated">
+        Last updated on Jun 03, 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

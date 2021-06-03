@@ -1,0 +1,4293 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>evans.handlers &mdash; Perllan API 0.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/abjad.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/uqbar.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../static/notes.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script defer="defer" src="../../static/copybutton.js"></script>
+        <script src="../../static/ga.js"></script>
+    
+    <script type="text/javascript" src="../../static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #556B2F" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Perllan API
+          
+
+          
+            
+            <img src="../../static/perllan-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../concepts.html">Core concepts</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/abjadext/microtones/index.html">microtones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/evans/index.html">evans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/tsmakers/index.html">tsmakers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../scores.html">Score gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recipes_pitch.html">Pitch Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recipes_sequence.html">Sequence Recipes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Perllan API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>evans.handlers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for evans.handlers</h1><div class="highlight"><pre>
+<span></span>&quot;&quot;&quot;
+Handler classes.
+&quot;&quot;&quot;
+import statistics
+
+import abjad
+import quicktions
+from abjadext import microtones
+
+from . import sequence
+from .pitch import JIPitch, return_cent_markup, tune_to_ratio
+
+
+<div class="viewcode-block" id="Handler"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.Handler">[docs]</a>class Handler:
+    &quot;&quot;&quot;
+    Handler Base Class
+    &quot;&quot;&quot;
+
+<div class="viewcode-block" id="Handler.__repr__"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.Handler.__repr__">[docs]</a>    def __repr__(self):
+        return abjad.StorageFormatManager(self).get_repr_format()</div></div>
+
+
+<div class="viewcode-block" id="ArticulationHandler"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.ArticulationHandler">[docs]</a>class ArticulationHandler(Handler):
+    r&quot;&quot;&quot;
+    Articulation Handler
+
+    ..  container:: example
+
+        &gt;&gt;&gt; staff = abjad.Staff(&quot;c&#39;4 c&#39;4 c&#39;4 r4 c&#39;4 c&#39;4 c&#39;4 c&#39;4 c&#39;4&quot;)
+        &gt;&gt;&gt; art_lst = [
+        ...     &quot;staccato&quot;,
+        ...     &quot;tenuto&quot;,
+        ...     &quot;staccatissimo&quot;,
+        ...     &quot;open&quot;,
+        ...     &quot;halfopen&quot;,
+        ...     &quot;stopped&quot;,
+        ...     &quot;portato&quot;,
+        ...     &quot;tremolo&quot;
+        ... ]
+        &gt;&gt;&gt; handler = evans.ArticulationHandler(
+        ...     articulation_list=art_lst,
+        ...     articulation_boolean_vector=[1],
+        ...     vector_forget=False,
+        ...     forget=False,
+        ... )
+        &gt;&gt;&gt; handler(staff)
+        &gt;&gt;&gt; score = abjad.Score([staff])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        ...
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        ..  docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(staff))
+            \new Staff
+            {
+                c&#39;4
+                - \staccato
+                c&#39;4
+                - \tenuto
+                c&#39;4
+                - \staccatissimo
+                r4
+                c&#39;4
+                - \open
+                c&#39;4
+                - \halfopen
+                c&#39;4
+                - \stopped
+                c&#39;4
+                - \portato
+                c&#39;4
+                :32
+            }
+
+    &quot;&quot;&quot;
+
+    def __init__(
+        self,
+        articulation_list=None,
+        articulation_boolean_vector=(1,),
+        vector_forget=False,
+        forget=True,
+        count=-1,
+        vector_count=-1,
+        name=&quot;Articulation Handler&quot;,
+    ):
+        self.articulation_list = articulation_list
+        self.vector_forget = vector_forget
+        self.forget = forget
+        self._count = count
+        self._vector_count = vector_count
+        self.articulation_boolean_vector = sequence.CyclicList(
+            articulation_boolean_vector, self.vector_forget, self._vector_count
+        )
+        self._cyc_articulations = sequence.CyclicList(
+            lst=articulation_list, forget=self.forget, count=self._count
+        )
+        self.name = name
+
+<div class="viewcode-block" id="ArticulationHandler.__call__"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.ArticulationHandler.__call__">[docs]</a>    def __call__(self, selections):
+        self.add_articulations(selections)</div>
+
+<div class="viewcode-block" id="ArticulationHandler.add_articulations"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.ArticulationHandler.add_articulations">[docs]</a>    def add_articulations(self, selections):
+        ties = abjad.select(selections).logical_ties(pitched=True)
+        articulations = self._cyc_articulations(r=len(ties))
+        vector = self.articulation_boolean_vector(r=len(ties))
+        for tie, articulation, bool in zip(ties, articulations, vector):
+            if bool == 1:
+                if self.articulation_list is not None:
+                    if articulation == &quot;tremolo&quot;:
+                        for leaf in tie:
+                            if abjad.get.duration(leaf) &lt;= abjad.Duration(1, 32):
+                                continue
+                            else:
+                                abjad.attach(abjad.StemTremolo(32), leaf)
+                    elif articulation == &quot;default&quot;:
+                        continue
+                    else:
+                        abjad.attach(abjad.Articulation(articulation), tie[0])
+            else:
+                continue</div>
+
+<div class="viewcode-block" id="ArticulationHandler.name"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.ArticulationHandler.name">[docs]</a>    def name(self):
+        return self.name</div>
+
+<div class="viewcode-block" id="ArticulationHandler.state"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.ArticulationHandler.state">[docs]</a>    def state(self):
+        return abjad.OrderedDict(
+            [
+                (&quot;count&quot;, self._cyc_articulations.state()),
+                (&quot;vector_count&quot;, self.articulation_boolean_vector.state()),
+            ]
+        )</div></div>
+
+
+<div class="viewcode-block" id="BendHandler"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.BendHandler">[docs]</a>class BendHandler(Handler):
+    r&quot;&quot;&quot;
+    Bend Handler
+
+    ..  container:: example
+
+        &gt;&gt;&gt; staff = abjad.Staff(&quot;c&#39;4 c&#39;4 c&#39;4 c&#39;4&quot;)
+        &gt;&gt;&gt; handler = evans.BendHandler(
+        ...     bend_amounts=[1, 1.5],
+        ...     bend_forget=False,
+        ...     boolean_vector=[1, 1, 0, 1],
+        ...     vector_forget=False,
+        ... )
+        &gt;&gt;&gt; handler(staff)
+        &gt;&gt;&gt; score = abjad.Score([staff])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        ...
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        ..  docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(staff))
+            \new Staff
+            {
+                c&#39;4
+                - \bendAfter #&#39;1
+                c&#39;4
+                - \bendAfter #&#39;1.5
+                c&#39;4
+                c&#39;4
+                - \bendAfter #&#39;1.5
+            }
+
+    &quot;&quot;&quot;
+
+    def __init__(
+        self,
+        bend_amounts=(1,),
+        bend_forget=False,
+        boolean_vector=(1,),
+        vector_forget=False,
+        bend_count=-1,
+        vector_count=-1,
+        name=&quot;Bend Handler&quot;,
+    ):
+        self._bend_count = bend_count
+        self._vector_count = vector_count
+        self.bend_forget = bend_forget
+        self.vector_forget = vector_forget
+        self.bend_amounts = sequence.CyclicList(
+            bend_amounts, self.bend_forget, self._bend_count
+        )
+        self.boolean_vector = sequence.CyclicList(
+            boolean_vector, self.vector_forget, self._vector_count
+        )
+        self.name = name
+
+<div class="viewcode-block" id="BendHandler.__call__"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.BendHandler.__call__">[docs]</a>    def __call__(self, selections):
+        self.add_bend(selections)</div>
+
+<div class="viewcode-block" id="BendHandler.add_bend"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.BendHandler.add_bend">[docs]</a>    def add_bend(self, selections):
+        ties = abjad.select(selections).logical_ties(pitched=True)
+        vector = self.boolean_vector(r=len(ties))
+        amounts = self.bend_amounts(r=len(ties))
+        for tie, bool, amount in zip(ties, vector, amounts):
+            if bool == 1:
+                abjad.attach(abjad.BendAfter(amount), tie[-1])
+            else:
+                continue</div>
+
+<div class="viewcode-block" id="BendHandler.name"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.BendHandler.name">[docs]</a>    def name(self):
+        return self.name</div>
+
+<div class="viewcode-block" id="BendHandler.state"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.BendHandler.state">[docs]</a>    def state(self):
+        return abjad.OrderedDict(
+            [
+                (&quot;bend_count&quot;, self.bend_amounts.state()),
+                (&quot;vector_count&quot;, self.boolean_vector.state()),
+            ]
+        )</div></div>
+
+
+<div class="viewcode-block" id="BisbigliandoHandler"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.BisbigliandoHandler">[docs]</a>class BisbigliandoHandler(Handler):
+    r&quot;&quot;&quot;
+    Bisbigliando Handler
+
+    ..  container:: example
+
+        &gt;&gt;&gt; s = abjad.Staff(&quot;c&#39;&#39;4 c&#39;&#39;4 c&#39;&#39;4 c&#39;&#39;4&quot;)
+        &gt;&gt;&gt; m = [
+        ...     r&quot;\markup {&quot;,
+        ...     r&quot;\lower #1.5&quot;,
+        ...     r&quot;\override #&#39;(graphical . #t)&quot;,
+        ...     r&quot;\override #&#39;(size . 0.4)&quot;,
+        ...     r&quot;\override #&#39;(thickness . 0.25)&quot;,
+        ...     r&quot;\woodwind-diagram&quot;,
+        ...     r&quot;#&#39;flute&quot;,
+        ...     r&quot;#&#39;((cc . (one two three four five six)) (lh . (bes b gis)) (rh . (bes d dis ees cis c gz)))&quot;,
+        ...     r&quot;}&quot;,
+        ... ]
+        &gt;&gt;&gt; handler = evans.BisbigliandoHandler(
+        ...     fingering_list=[None, m],
+        ...     boolean_vector=[1],
+        ...     staff_padding=2,
+        ... forget=False,
+        ... )
+        &gt;&gt;&gt; handler(s[:-1])
+        &gt;&gt;&gt; score = abjad.Score([s])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        ...
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(s))
+            \new Staff
+            {
+                c&#39;&#39;4
+                - \tweak padding #2
+                - \tweak staff-padding #2
+                - \tweak bound-details.right.padding #2
+                - \tweak bound-details.left.text
+                \markup{ \raise #1 \teeny \musicglyph #&quot;scripts.halfopenvertical&quot; }
+                \startTrillSpan
+                c&#39;&#39;4
+                \stopTrillSpan
+                - \tweak padding #2
+                - \tweak staff-padding #2
+                - \tweak bound-details.right.padding #2
+                - \tweak bound-details.left.text
+                \markup {
+                \lower #1.5
+                \override #&#39;(graphical . #t)
+                \override #&#39;(size . 0.4)
+                \override #&#39;(thickness . 0.25)
+                \woodwind-diagram
+                #&#39;flute
+                #&#39;((cc . (one two three four five six)) (lh . (bes b gis)) (rh . (bes d dis ees cis c gz)))
+                }
+                \startTrillSpan
+                c&#39;&#39;4
+                \stopTrillSpan
+                - \tweak padding #2
+                - \tweak staff-padding #2
+                - \tweak bound-details.right.padding #2
+                - \tweak bound-details.left.text
+                \markup{ \raise #1 \teeny \musicglyph #&quot;scripts.halfopenvertical&quot; }
+                \startTrillSpan
+                c&#39;&#39;4
+                \stopTrillSpan
+            }
+
+    &quot;&quot;&quot;
+
+    def __init__(
+        self,
+        *,
+        bis_count=-1,
+        bool_count=-1,
+        boolean_vector=None,
+        forget=False,  # forget=None
+        fingering_list=None,
+        name=None,
+        padding=2,
+        right_padding=2,
+        staff_padding=2,
+    ):
+        self.bis_count = bis_count
+        self.bool_count = bool_count
+        if boolean_vector is None:
+            boolean_vector = [1]
+        self.boolean_vector = sequence.CyclicList(
+            boolean_vector,
+            forget=forget,
+            count=bool_count,
+        )
+        self.forget = forget
+        if fingering_list is None:
+            fingering_list = [None]
+        self.fingering_list = sequence.CyclicList(
+            fingering_list,
+            forget=forget,
+            count=bis_count,
+        )
+        self.name = name
+        self.padding = padding
+        self.right_padding = right_padding
+        self.staff_padding = staff_padding
+
+<div class="viewcode-block" id="BisbigliandoHandler.__call__"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.BisbigliandoHandler.__call__">[docs]</a>    def __call__(self, selections):
+        self.add_spanner(selections)</div>
+
+    def _make_start_literal(self):
+        markup = r&#39;\markup{ \raise #1 \teeny \musicglyph #&quot;scripts.halfopenvertical&quot; }&#39;
+        start_literal = abjad.LilyPondLiteral(
+            [
+                fr&quot;- \tweak padding #{self.padding}&quot;,
+                fr&quot;- \tweak staff-padding #{self.staff_padding}&quot;,
+                fr&quot;- \tweak bound-details.right.padding #{self.right_padding}&quot;,
+                fr&quot;- \tweak bound-details.left.text {markup}&quot;,
+                r&quot;\startTrillSpan&quot;,
+            ],
+            format_slot=&quot;after&quot;,
+        )
+        return start_literal
+
+    def _make_start_literal_pre(self):
+        start_literal_pre = abjad.LilyPondLiteral(
+            [
+                fr&quot;- \tweak padding #{self.padding}&quot;,
+                fr&quot;- \tweak staff-padding #{self.staff_padding}&quot;,
+                fr&quot;- \tweak bound-details.right.padding #{self.right_padding}&quot;,
+                r&quot;- \tweak bound-details.left.text&quot;,
+            ],
+            format_slot=&quot;after&quot;,
+        )
+        return start_literal_pre
+
+    def _treat_tie(self, value, tie):
+        if value != 1:
+            return
+        fingering = self.fingering_list(r=1)[0]
+        if fingering is None:
+            start_literal = self._make_start_literal()
+            stop_literal = abjad.LilyPondLiteral(r&quot;\stopTrillSpan&quot;, format_slot=&quot;after&quot;)
+            abjad.attach(start_literal, tie[0])
+            abjad.attach(stop_literal, abjad.get.leaf(tie[-1], 1))
+            return
+        start_literal_pre = self._make_start_literal_pre()
+        start_literal = abjad.LilyPondLiteral(fingering, format_slot=&quot;after&quot;)
+        start_literal_post = abjad.LilyPondLiteral(
+            r&quot;\startTrillSpan&quot;, format_slot=&quot;after&quot;
+        )
+        stop_literal = abjad.LilyPondLiteral(r&quot;\stopTrillSpan&quot;, format_slot=&quot;after&quot;)
+        abjad.attach(start_literal_pre, tie[0])
+        abjad.attach(start_literal, tie[0])
+        abjad.attach(start_literal_post, tie[0])
+        abjad.attach(stop_literal, abjad.get.leaf(tie[-1], 1))
+
+<div class="viewcode-block" id="BisbigliandoHandler.add_spanner"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.BisbigliandoHandler.add_spanner">[docs]</a>    def add_spanner(self, selections):
+        ties = abjad.select(selections).logical_ties(pitched=True)
+        values = self.boolean_vector(r=len(ties))
+        for value, tie in zip(values, ties):
+            self._treat_tie(value, tie)</div>
+
+<div class="viewcode-block" id="BisbigliandoHandler.state"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.BisbigliandoHandler.state">[docs]</a>    def state(self):
+        state_dict = abjad.OrderedDict()
+        state_dict[&quot;boolean_vector_count&quot;] = self.boolean_vector.count
+        state_dict[&quot;fingering_list_count&quot;] = self.fingering_list.count
+        return state_dict</div></div>
+
+
+<div class="viewcode-block" id="BowAngleHandler"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.BowAngleHandler">[docs]</a>class BowAngleHandler(Handler):
+    r&quot;&quot;&quot;
+    Bow Angle Handler: In Progress
+
+    ..  container:: example
+
+        &gt;&gt;&gt; s = abjad.Staff(&quot;c&#39;2 c&#39;2 c&#39;2 c&#39;2 r2 r2&quot;)
+        &gt;&gt;&gt; handler = evans.BowAngleHandler([0, 45, 0, -45])
+        &gt;&gt;&gt; handler(s)
+        &gt;&gt;&gt; score = abjad.Score([s])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[
+        ...         &quot;abjad.ily&quot;,
+        ...         &quot;/Users/evansdsg2/evans/lilypond/evans-markups.ily&quot;,
+        ...         &quot;/Users/evansdsg2/evans/lilypond/evans-spanners.ily&quot;,
+        ...     ],
+        ...     global_staff_size=16,
+        ... )
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(s))
+            \new Staff
+            {
+                c&#39;2
+                - \abjad-solid-line-with-arrow
+                - \evans-clockwise-BAD-spanner-left-text #0
+                - \tweak bound-details.right.padding 1.4
+                - \tweak staff-padding #2
+                \evansStartTextSpanBAD
+                c&#39;2
+                \evansStopTextSpanBAD
+                - \abjad-solid-line-with-arrow
+                - \evans-counterclockwise-BAD-spanner-left-text #45
+                - \tweak bound-details.right.padding 1.4
+                - \tweak staff-padding #2
+                \evansStartTextSpanBAD
+                c&#39;2
+                \evansStopTextSpanBAD
+                - \abjad-solid-line-with-arrow
+                - \evans-counterclockwise-BAD-spanner-left-text #0
+                - \tweak bound-details.right.padding 1.4
+                - \tweak staff-padding #2
+                \evansStartTextSpanBAD
+                c&#39;2
+                \evansStopTextSpanBAD
+                - \abjad-solid-line-with-arrow
+                - \evans-clockwise-BAD-spanner-left-text #-45
+                - \evans-BAD-spanner-right-text #0
+                - \tweak bound-details.right.padding 1.4
+                - \tweak staff-padding #2
+                \evansStartTextSpanBAD
+                r2
+                \evansStopTextSpanBAD
+                r2
+            }
+
+    &quot;&quot;&quot;
+
+    def __init__(
+        self,
+        angles=(0, 45),
+    ):
+        self.agles = angles
+        self._cyc_angles = sequence.CyclicList(angles, forget=False)
+
+<div class="viewcode-block" id="BowAngleHandler.__call__"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.BowAngleHandler.__call__">[docs]</a>    def __call__(self, selections):
+        self._add_spanners(selections)</div>
+
+    def _return_arc_direction(self, left_number, right_number):
+        if left_number &lt; right_number:
+            return &quot;clockwise&quot;
+        else:
+            return &quot;counterclockwise&quot;
+
+    def _add_spanners(self, selections):
+        for run in abjad.select(selections).runs():
+            numbers = self._cyc_angles(r=len(run) + 1)
+            first_leaf = abjad.select(run).leaf(0)
+            start_literal = abjad.LilyPondLiteral(
+                [
+                    r&quot;- \abjad-solid-line-with-arrow&quot;,
+                    rf&quot;- \evans-{self._return_arc_direction(numbers[0], numbers[1])}-BAD-spanner-left-text #{numbers[0]}&quot;,
+                    r&quot;- \tweak bound-details.right.padding 1.4&quot;,
+                    r&quot;- \tweak staff-padding #2&quot;,
+                    r&quot;\evansStartTextSpanBAD&quot;,
+                ],
+                format_slot=&quot;absolute_after&quot;,
+            )
+            abjad.attach(start_literal, first_leaf)
+            for i, tie in enumerate(abjad.select(run).logical_ties()[1:-1]):
+                literal = abjad.LilyPondLiteral(
+                    [
+                        r&quot;\evansStopTextSpanBAD&quot;,
+                        r&quot;- \abjad-solid-line-with-arrow&quot;,
+                        rf&quot;- \evans-{self._return_arc_direction(numbers[i + 1], numbers[i + 2])}-BAD-spanner-left-text #{numbers[i + 1]}&quot;,
+                        r&quot;- \tweak bound-details.right.padding 1.4&quot;,
+                        r&quot;- \tweak staff-padding #2&quot;,
+                        r&quot;\evansStartTextSpanBAD&quot;,
+                    ],
+                    format_slot=&quot;absolute_after&quot;,
+                )
+                abjad.attach(literal, tie[0])
+            terminating_literal = abjad.LilyPondLiteral(
+                [
+                    r&quot;\evansStopTextSpanBAD&quot;,
+                    r&quot;- \abjad-solid-line-with-arrow&quot;,
+                    rf&quot;- \evans-{self._return_arc_direction(numbers[-2], numbers[-1])}-BAD-spanner-left-text #{numbers[-2]}&quot;,
+                    rf&quot;- \evans-BAD-spanner-right-text #{numbers[-1]}&quot;,
+                    r&quot;- \tweak bound-details.right.padding 1.4&quot;,
+                    r&quot;- \tweak staff-padding #2&quot;,
+                    r&quot;\evansStartTextSpanBAD&quot;,
+                ],
+                format_slot=&quot;absolute_after&quot;,
+            )
+            abjad.attach(terminating_literal, abjad.select(run).leaf(-1))
+            last_leaf = abjad.get.leaf(abjad.select(run).leaf(-1), 1)
+            stop_literal = abjad.LilyPondLiteral(
+                r&quot;\evansStopTextSpanBAD&quot;, format_slot=&quot;absolute_after&quot;
+            )
+            abjad.attach(stop_literal, last_leaf)
+
+<div class="viewcode-block" id="BowAngleHandler.state"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.BowAngleHandler.state">[docs]</a>    def state(self):
+        return &quot;State not yet maintained.&quot;</div></div>
+
+
+# add shelf for ottava to ensure that no notes in the bracket are illegible
+<div class="viewcode-block" id="ClefHandler"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.ClefHandler">[docs]</a>class ClefHandler(Handler):
+    r&quot;&quot;&quot;
+    Clef Handler
+
+    .. container:: example
+
+        &gt;&gt;&gt; s = abjad.Staff(&quot;c,4 c&#39;4 c4 c&#39;&#39;4 c&#39;&#39;&#39;&#39;8 r8&quot;)
+        &gt;&gt;&gt; handler = evans.ClefHandler(
+        ...     clef=&quot;bass&quot;,
+        ...     add_extended_clefs=True,
+        ...     add_ottavas=True,
+        ... )
+        &gt;&gt;&gt; handler(s)
+        &gt;&gt;&gt; score = abjad.Score([s])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        ...
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs
+
+            &gt;&gt;&gt; print(abjad.lilypond(s))
+            \new Staff
+            {
+                \clef &quot;bass&quot;
+                c,4
+                c&#39;4
+                c4
+                \clef &quot;tenorvarC&quot;
+                c&#39;&#39;4
+                \ottava 1
+                \clef &quot;treble&quot;
+                c&#39;&#39;&#39;&#39;8
+                \ottava 0
+                r8
+            }
+
+    &quot;&quot;&quot;
+
+    _clef_groups_up = {
+        &quot;bass&quot;: (&quot;bass&quot;, &quot;tenorvarC&quot;, &quot;treble&quot;),  # &quot;treble^8&quot;, &quot;treble^15&quot;),
+        &quot;tenor&quot;: (&quot;tenorvarC&quot;, &quot;treble&quot;),  # &quot;treble^8&quot;, &quot;treble^15&quot;),
+        &quot;alto&quot;: (&quot;varC&quot;, &quot;treble&quot;),  # &quot;treble^8&quot;, &quot;treble^15&quot;),
+        &quot;treble&quot;: (&quot;treble&quot;,),  # &quot;treble^8&quot;, &quot;treble^15&quot;),
+    }
+
+    _clef_groups_down = {
+        &quot;bass&quot;: (&quot;bass&quot;, &quot;bass_8&quot;, &quot;bass_15&quot;),
+        &quot;tenor&quot;: (&quot;tenorvarC&quot;, &quot;bass&quot;, &quot;bass_8&quot;),
+        &quot;alto&quot;: (&quot;varC&quot;, &quot;bass&quot;, &quot;bass_8&quot;),
+        &quot;treble&quot;: (&quot;treble&quot;, &quot;treble_8&quot;, &quot;bass&quot;),
+    }
+
+    _default_clef_shelves = {
+        &quot;bass&quot;: (-28, 6),
+        &quot;tenor&quot;: (-10, 12),
+        &quot;tenorvarC&quot;: (-10, 12),
+        &quot;alto&quot;: (-12, 18),
+        &quot;varC&quot;: (-12, 18),
+        &quot;treble&quot;: (-5, 24),
+        &quot;treble^8&quot;: (7, 36),
+        &quot;treble^15&quot;: (19, 48),
+    }
+
+    def __init__(
+        self,
+        clef=None,
+        clef_shelf=None,
+        allowable_clefs=None,
+        add_extended_clefs=False,
+        ottava_shelf=None,
+        add_ottavas=False,
+        extend_in_direction=&quot;up&quot;,
+    ):
+        self.clef = clef
+        self.clef_shelf = clef_shelf
+        self.allowable_clefs = allowable_clefs
+        self.add_extended_clefs = add_extended_clefs
+        self.ottava_shelf = ottava_shelf
+        self.add_ottavas = add_ottavas
+        self.extend_in_direction = extend_in_direction
+
+        if self.clef_shelf is not None:
+            self._default_clef_shelves[self.clef] = self.clef_shelf
+
+<div class="viewcode-block" id="ClefHandler.__call__"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.ClefHandler.__call__">[docs]</a>    def __call__(self, voice):
+        self._add_clefs(voice)
+        self._add_ottavas(voice)</div>
+
+    def _extended_range_clefs(self, clef):
+        if self.extend_in_direction == &quot;down&quot;:
+            return self._clef_groups_down[clef]
+        else:
+            return self._clef_groups_up[clef]
+
+    def _extended_range_ottavas(self, clef):
+        return self._default_clef_shelves[clef]
+
+    def _add_clefs(self, voice):  # allow the beginning of a run to ignore active clef
+        clef = self.clef
+        if clef is not None:
+            base_clef = self.clef
+            first_clef_name = self._extended_range_clefs(clef)[0]
+            clef_list = [abjad.Clef(first_clef_name)]
+            abjad.attach(clef_list[0], abjad.select(voice).leaves()[0])
+            if self.add_extended_clefs is True:
+                allowable_clefs = None
+                if self.allowable_clefs is not None:
+                    allowable_clefs = self.allowable_clefs
+                else:
+                    allowable_clefs = self._extended_range_clefs(base_clef)
+                for tie in abjad.select(voice).logical_ties(pitched=True):
+                    pitches = []
+                    for pitch in abjad.get.pitches(tie[0]):
+                        pitches.append(pitch.number)
+                    pitch = statistics.mean(pitches)
+                    value = None
+                    for count, allowed_clef in enumerate(allowable_clefs):
+                        if clef_list[-1] == abjad.Clef(allowed_clef):
+                            value = count
+                        else:
+                            continue
+                    active_clef_in_list = clef_list[-1]
+                    range_ = self._extended_range_ottavas(active_clef_in_list.name)
+                    active_clef_in_list_shelf = range_
+                    if pitch &gt; active_clef_in_list_shelf[1]:
+                        test_value = value + 1
+                        if test_value &lt; len(allowable_clefs):
+                            temp_clef = allowable_clefs[test_value]
+                            clef = abjad.Clef(temp_clef)
+                            if clef == clef_list[-1]:
+                                continue
+                            if abjad.get.indicator(tie[0], abjad.Clef) is not None:
+                                indicator = abjad.get.indicator(tie[0], abjad.Clef)
+                                abjad.detach(indicator, tie[0])
+                                abjad.attach(clef, tie[0])
+                                clef_list.append(clef)
+                            else:
+                                abjad.attach(clef, tie[0])
+                                clef_list.append(clef)
+                            if pitch &gt; self._extended_range_ottavas(temp_clef)[1]:
+                                test_value = value + 2
+                                if test_value &lt; len(allowable_clefs):
+                                    temp_clef = allowable_clefs[test_value]
+                                    clef = abjad.Clef(temp_clef)
+                                    if clef == clef_list[-1]:
+                                        continue
+                                    indicator = abjad.get.indicator(tie[0], abjad.Clef)
+                                    if indicator is not None:
+                                        abjad.detach(indicator, tie[0])
+                                        abjad.attach(clef, tie[0])
+                                        clef_list.append(clef)
+                                    else:
+                                        abjad.attach(clef, tie[0])
+                                        clef_list.append(clef)
+                                else:
+                                    continue
+                            else:
+                                continue
+                        else:
+                            continue
+                    elif pitch &lt; active_clef_in_list_shelf[0]:
+                        test_value = value - 2
+                        if test_value &gt; -1:
+                            temp_clef = allowable_clefs[test_value]
+                            clef = abjad.Clef(temp_clef)
+                            if clef == clef_list[-1]:
+                                continue
+                            indicator = abjad.get.indicator(tie[0], abjad.Clef)
+                            if indicator is not None:
+                                abjad.detach(indicator, tie[0])
+                                abjad.attach(clef, tie[0])
+                                clef_list.append(clef)
+                            else:
+                                abjad.attach(clef, tie[0])
+                                clef_list.append(clef)
+                            if pitch &gt; self._extended_range_ottavas(temp_clef)[1]:
+                                test_value = value - 1
+                                if test_value &gt; -1:
+                                    temp_clef = allowable_clefs[test_value]
+                                    clef = abjad.Clef(temp_clef)
+                                    if clef == clef_list[-1]:
+                                        continue
+                                    indicator = abjad.get.indicator(tie[0], abjad.Clef)
+                                    if indicator is not None:
+                                        abjad.detach(indicator, tie[0])
+                                        abjad.attach(clef, tie[0])
+                                        clef_list.append(clef)
+                                    else:
+                                        abjad.attach(clef, tie[0])
+                                        clef_list.append(clef)
+                                else:
+                                    continue
+                            else:
+                                continue
+                        else:
+                            test_value = value - 1
+                            if test_value &gt; -1:
+                                temp_clef = allowable_clefs[test_value]
+                                clef = abjad.Clef(temp_clef)
+                                if clef == clef_list[-1]:
+                                    continue
+                                indicator = abjad.get.indicator(tie[0], abjad.Clef)
+                                if indicator is not None:
+                                    abjad.detach(indicator, tie[0])
+                                    abjad.attach(clef, tie[0])
+                                    clef_list.append(clef)
+                                else:
+                                    abjad.attach(clef, tie[0])
+                                    clef_list.append(clef)
+                            else:
+                                continue
+                    else:
+                        continue
+            else:
+                converted_clef = self._extended_range_clefs(clef)[0]
+                clef = abjad.Clef(converted_clef)
+                first_leaf = abjad.select(voice).leaves()[0]
+                indicator = abjad.get.indicator(first_leaf, abjad.Clef)
+                if indicator is not None:
+                    abjad.detach(indicator, first_leaf)
+                    abjad.attach(clef, first_leaf)
+                else:
+                    abjad.attach(clef, first_leaf)
+        else:
+            clef = abjad.Clef(&quot;treble&quot;)
+            first_leaf = abjad.select(voice).leaves()[0]
+            abjad.attach(clef, first_leaf)
+
+    def _add_ottavas(self, voice):
+        if self.add_ottavas is True:
+            if self.allowable_clefs is not None:
+                active_clef = self.allowable_clefs[-1]
+            else:
+                active_clef = self._extended_range_clefs(self.clef)[-1]
+            for tie in abjad.select(voice).logical_ties(pitched=True):
+                current_clef = active_clef
+                if self.ottava_shelf is not None:
+                    shelf = self.ottava_shelf
+                    if self.extend_in_direction == &quot;down&quot;:
+                        for pitch in abjad.get.pitches(tie[0]):
+                            if pitch &lt; shelf[0]:
+                                start = abjad.Ottava(n=-1)
+                                stop = abjad.Ottava(n=0)
+                                ottava_indicator = abjad.get.indicator(
+                                    tie[0], abjad.Ottava
+                                )
+                                if ottava_indicator is not None:
+                                    abjad.detach(ottava_indicator, tie[0])
+                                    abjad.attach(stop, abjad.get.leaf(tie[-1], 1))
+                                else:
+                                    abjad.attach(start, tie[0])
+                                    abjad.attach(stop, abjad.get.leaf(tie[-1], 1))
+                    else:
+                        for pitch in abjad.get.pitches(tie[0]):
+                            if pitch &gt; shelf[1]:
+                                start = abjad.Ottava(n=1)
+                                stop = abjad.Ottava(n=0)
+                                ottava_indicator = abjad.get.indicator(
+                                    tie[0], abjad.Ottava
+                                )
+                                if ottava_indicator is not None:
+                                    abjad.detach(ottava_indicator, tie[0])
+                                    abjad.attach(stop, abjad.get.leaf(tie[-1], 1))
+                                else:
+                                    abjad.attach(start, tie[0])
+                                    abjad.attach(stop, abjad.get.leaf(tie[-1], 1))
+                else:
+                    shelf = self._extended_range_ottavas(current_clef)
+                    if self.extend_in_direction == &quot;down&quot;:
+                        for pitch in abjad.get.pitches(tie[0]):
+                            if pitch &lt; shelf[0]:
+                                start = abjad.Ottava(n=-1)
+                                stop = abjad.Ottava(n=0)
+                                ottava_indicator = abjad.get.indicator(
+                                    tie[0], abjad.Ottava
+                                )
+                                if ottava_indicator is not None:
+                                    abjad.detach(ottava_indicator, tie[0])
+                                    abjad.attach(stop, abjad.get.leaf(tie[-1], 1))
+                                else:
+                                    abjad.attach(start, tie[0])
+                                    abjad.attach(stop, abjad.get.leaf(tie[-1], 1))
+                    else:
+                        for pitch in abjad.get.pitches(tie[0]):
+                            if pitch &gt; shelf[1]:
+                                start = abjad.Ottava(n=1)
+                                stop = abjad.Ottava(n=0)
+                                ottava_indicator = abjad.get.indicator(
+                                    tie[0], abjad.Ottava
+                                )
+                                if ottava_indicator is not None:
+                                    abjad.detach(ottava_indicator, tie[0])
+                                    abjad.attach(stop, abjad.get.leaf(tie[-1], 1))
+                                else:
+                                    abjad.attach(start, tie[0])
+                                    abjad.attach(stop, abjad.get.leaf(tie[-1], 1))
+        else:
+            pass</div>
+
+
+<div class="viewcode-block" id="CompositeHandler"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.CompositeHandler">[docs]</a>class CompositeHandler(Handler):
+    r&quot;&quot;&quot;
+    Composite Handler
+
+    .. container:: example
+
+        &gt;&gt;&gt; durs = [abjad.Duration((4, 4))]
+        &gt;&gt;&gt; rh = evans.RhythmHandler(evans.RTMMaker([&quot;(1 (1 1 1 1))&quot;]))
+        &gt;&gt;&gt; ph = evans.PitchHandler([0, 1, 2, 3])
+        &gt;&gt;&gt; ah = evans.ArticulationHandler([&quot;staccato&quot;, &quot;tenuto&quot;])
+        &gt;&gt;&gt; comp = evans.CompositeHandler(rhythm_handler=rh, attachment_handlers=[ph, ah])
+        &gt;&gt;&gt; n = comp(durations=durs)
+        &gt;&gt;&gt; st = abjad.Staff()
+        &gt;&gt;&gt; st.extend(n)
+        &gt;&gt;&gt; score = abjad.Score([st])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        ...
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs
+
+            &gt;&gt;&gt; print(abjad.lilypond(st))
+            \new Staff
+            {
+                c&#39;4
+                - \staccato
+                cs&#39;4
+                - \tenuto
+                d&#39;4
+                - \staccato
+                ef&#39;4
+                - \tenuto
+            }
+
+    &quot;&quot;&quot;
+
+    def __init__(
+        self,
+        rhythm_handler=None,
+        attachment_handlers=(None,),
+        name=&quot;Composite Handler&quot;,
+    ):
+        self.rhythm_handler = rhythm_handler
+        self.attachment_handlers = attachment_handlers
+        self.name = name
+
+<div class="viewcode-block" id="CompositeHandler.__call__"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.CompositeHandler.__call__">[docs]</a>    def __call__(
+        self,
+        durations=(None,),
+        selections=None,
+    ):
+        if self.rhythm_handler is not None:
+            selections = self._make_container(self.rhythm_handler, durations)
+        for handler in self.attachment_handlers:
+            handler(selections)
+        return selections[:]</div>
+
+    def _make_container(self, handler, durations):
+        selections = handler(durations)
+        container = abjad.Container([])
+        container.extend(selections)
+        return container
+
+<div class="viewcode-block" id="CompositeHandler.return_state"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.CompositeHandler.return_state">[docs]</a>    def return_state(self):
+        return self.rhythm_handler.return_state()</div>
+
+<div class="viewcode-block" id="CompositeHandler.state"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.CompositeHandler.state">[docs]</a>    def state(self):
+        state_dict = abjad.OrderedDict()
+        for _ in self.attachment_handlers:
+            state_dict[_.name] = _.state()
+        return state_dict</div></div>
+
+
+# incorporate spanner anchors
+<div class="viewcode-block" id="DynamicHandler"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.DynamicHandler">[docs]</a>class DynamicHandler(Handler):
+    r&quot;&quot;&quot;
+    Dynamic Handler
+
+    .. container:: example
+
+        &gt;&gt;&gt; staff = abjad.Staff(&quot;c&#39;4 d&#39;4 e&#39;4 f&#39;4 r4 g&#39;4 r2&quot;)
+        &gt;&gt;&gt; handler = evans.DynamicHandler(
+        ...     dynamic_list=[&#39;f&#39;, &#39;niente&#39;, &#39;p&#39;, &#39;mf&#39;],
+        ...     flare_boolean_vector=[0, 0, 0, 1],
+        ...     flare_forget=False,
+        ...     hold_first_boolean_vector=[1, 0, 0,],
+        ...     hold_first_forget=False,
+        ...     hold_last_boolean_vector=[0, 1],
+        ...     hold_last_forget=False,
+        ...     effort_boolean_vector=[1, 0],
+        ...     effort_forget=False,
+        ...     forget=False,
+        ... )
+        &gt;&gt;&gt; first_group = staff[0:3]
+        &gt;&gt;&gt; second_group = staff[2:]
+        &gt;&gt;&gt; handler(first_group)
+        &gt;&gt;&gt; handler(second_group)
+        &gt;&gt;&gt; score = abjad.Score([staff])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(staff))
+            \new Staff
+            {
+                c&#39;4
+                _ #(make-dynamic-script
+                    (markup
+                        #:whiteout
+                        #:line (
+                            #:general-align Y -2 #:normal-text #:larger &quot;“&quot;
+                            #:hspace -0.4
+                            #:dynamic &quot;f&quot;
+                            #:hspace -0.2
+                            #:general-align Y -2 #:normal-text #:larger &quot;”&quot;
+                            )
+                        )
+                    )
+                - \tweak stencil #constante-hairpin
+                \&lt;
+                d&#39;4
+                e&#39;4
+                - \tweak circled-tip ##t
+                \&lt;
+                f&#39;4
+                &lt;&gt;
+                _ #(make-dynamic-script
+                    (markup
+                        #:whiteout
+                        #:line (
+                            #:general-align Y -2 #:normal-text #:larger &quot;“&quot;
+                            #:hspace -0.1
+                            #:dynamic &quot;p&quot;
+                            #:hspace -0.25
+                            #:general-align Y -2 #:normal-text #:larger &quot;”&quot;
+                            )
+                        )
+                    )
+                r4
+                g&#39;4
+                \mf
+                - \tweak stencil #constante-hairpin
+                \&lt;
+                r2
+                \!
+            }
+
+    &quot;&quot;&quot;
+
+    def __init__(
+        self,
+        dynamic_list=None,
+        flare_boolean_vector=[0],
+        flare_forget=False,
+        hold_first_boolean_vector=[0],
+        hold_first_forget=False,
+        hold_last_boolean_vector=[0],
+        hold_last_forget=False,
+        effort_boolean_vector=[0],
+        effort_forget=False,
+        with_constante_hairpins=True,
+        forget=False,
+        terminating_dynamic_markup=False,
+        terminating_dynamic_markup_boolean_vector=[1],
+        count_1=-1,
+        count_2=-1,
+        count_3=-1,
+        count_4=-1,
+        count_5=-1,
+        name=&quot;Dynamic Handler&quot;,
+    ):
+        self.dynamic_list = dynamic_list
+        self.flare_boolean_vector = flare_boolean_vector
+        self.flare_forget = flare_forget
+        self.hold_first_boolean_vector = hold_first_boolean_vector
+        self.hold_first_forget = hold_first_forget
+        self.hold_last_boolean_vector = hold_last_boolean_vector
+        self.hold_last_forget = hold_last_forget
+        self.effort_boolean_vector = effort_boolean_vector
+        self.effort_forget = effort_forget
+        self.with_constante_hairpins = with_constante_hairpins
+        self.forget = forget
+        self.terminating_dynamic_markup = terminating_dynamic_markup
+        self.terminating_dynamic_markup_boolean_vector = (
+            terminating_dynamic_markup_boolean_vector
+        )
+        self._count_1 = count_1
+        self._count_2 = count_2
+        self._count_3 = count_3
+        self._count_4 = count_4
+        self._count_5 = count_5
+        self._cyc_dynamics = sequence.CyclicList(
+            dynamic_list,
+            self.forget,
+            self._count_1,
+        )
+        self._cyc_flare_boolean_vector = sequence.CyclicList(
+            flare_boolean_vector,
+            self.flare_forget,
+            self._count_2,
+        )
+        self._cyc_hold_first_boolean_vector = sequence.CyclicList(
+            hold_first_boolean_vector,
+            self.hold_first_forget,
+            self._count_3,
+        )
+        self._cyc_hold_last_boolean_vector = sequence.CyclicList(
+            hold_last_boolean_vector,
+            self.hold_last_forget,
+            self._count_4,
+        )
+        self._cyc_effort_boolean_vector = sequence.CyclicList(
+            effort_boolean_vector,
+            self.effort_forget,
+            self._count_5,
+        )
+        self._terminating_dynamic_boolean_vector = sequence.CyclicList(
+            terminating_dynamic_markup_boolean_vector,
+            False,
+            -1,
+        )
+        self.name = name
+
+<div class="viewcode-block" id="DynamicHandler.__call__"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.DynamicHandler.__call__">[docs]</a>    def __call__(self, selections):
+        self._apply_dynamics(selections)</div>
+
+    def _calculate_hairpin(self, start, stop, flared=0):
+        if isinstance(start, str):
+            start = abjad.Dynamic(start)
+        elif isinstance(start, int):
+            ord_to_name = abjad.Dynamic.dynamic_ordinal_to_dynamic_name(start)
+            start = abjad.Dynamic(ord_to_name)
+        else:
+            pass
+        if isinstance(stop, str):
+            stop = abjad.Dynamic(stop)
+        elif isinstance(stop, int):
+            ord_to_name = abjad.Dynamic.dynamic_ordinal_to_dynamic_name(stop)
+            stop = abjad.Dynamic(ord_to_name)
+        else:
+            pass
+        if flared == 1:
+            if start.ordinal &lt; stop.ordinal:
+                if start.name == &quot;niente&quot;:  # carry these through instead?
+                    start = abjad.Dynamic(&quot;niente&quot;, hide=True)
+                    hairpin = &quot;o&lt;|&quot;
+                else:
+                    hairpin = &quot;&lt;|&quot;
+            else:
+                if stop.name == &quot;niente&quot;:
+                    stop = abjad.Dynamic(&quot;niente&quot;, command=r&quot;\!&quot;)
+                    hairpin = &quot;|&gt;o&quot;
+                else:
+                    hairpin = &quot;|&gt;&quot;
+        else:
+            if start.ordinal &lt; stop.ordinal:
+                if start.name == &quot;niente&quot;:
+                    start = abjad.Dynamic(&quot;niente&quot;, hide=True)
+                    hairpin = &quot;o&lt;&quot;
+                else:
+                    hairpin = &quot;&lt;&quot;
+            else:
+                if stop.name == &quot;niente&quot;:
+                    stop = abjad.Dynamic(&quot;niente&quot;, command=r&quot;\!&quot;)
+                    hairpin = &quot;&gt;o&quot;
+                else:
+                    hairpin = &quot;&gt;&quot;
+        return hairpin  # , start, stop?
+
+    def _make_effort_dynamics(self, dyn):
+        conversion = {
+            &quot;ppppp&quot;: &#39;&quot;ppppp&quot;&#39;,
+            &quot;pppp&quot;: &#39;&quot;pppp&quot;&#39;,
+            &quot;ppp&quot;: &#39;&quot;ppp&quot;&#39;,
+            &quot;pp&quot;: &#39;&quot;pp&quot;&#39;,
+            &quot;p&quot;: &#39;&quot;p&quot;&#39;,
+            &quot;mp&quot;: &#39;&quot;mp&quot;&#39;,
+            &quot;mf&quot;: &#39;&quot;mf&quot;&#39;,
+            &quot;f&quot;: &#39;&quot;f&quot;&#39;,
+            &quot;ff&quot;: &#39;&quot;ff&quot;&#39;,
+            &quot;fff&quot;: &#39;&quot;fff&quot;&#39;,
+            &quot;ffff&quot;: &#39;&quot;ffff&quot;&#39;,
+            &quot;fffff&quot;: &#39;&quot;fffff&quot;&#39;,
+            &quot;fp&quot;: &#39;&quot;fp&quot;&#39;,
+            &quot;sf&quot;: &#39;&quot;sf&quot;&#39;,
+            &quot;sff&quot;: &#39;&quot;sff&quot;&#39;,
+            &quot;sp&quot;: &#39;&quot;sp&quot;&#39;,
+            &quot;spp&quot;: &#39;&quot;spp&quot;&#39;,
+            &quot;sfz&quot;: &#39;&quot;sfz&quot;&#39;,
+            &quot;sffz&quot;: &#39;&quot;sffz&quot;&#39;,
+            &quot;sfffz&quot;: &#39;&quot;sfffz&quot;&#39;,
+            &quot;sffp&quot;: &#39;&quot;sffp&quot;&#39;,
+            &quot;sffpp&quot;: &#39;&quot;sffpp&quot;&#39;,
+            &quot;sfp&quot;: &#39;&quot;sfp&quot;&#39;,
+            &quot;sfpp&quot;: &#39;&quot;sfpp&quot;&#39;,
+            &quot;rfz&quot;: &#39;&quot;rfz&quot;&#39;,
+            &quot;niente&quot;: &quot;niente&quot;,
+        }
+        return conversion[dyn]
+
+    def _apply_dynamics(self, selections):
+        for run in abjad.select(selections).runs():
+            hold_first = self._cyc_hold_first_boolean_vector(r=1)[0]
+            if hold_first == 0:
+                if len(run) &gt; 1:
+                    if abjad.get.has_indicator(run[0], abjad.Dynamic):
+                        current_dynamic = abjad.get.indicator(run[0], abjad.Dynamic)
+                        start = abjad.Dynamic(current_dynamic, hide=True)
+                        stop = self._cyc_dynamics(r=1)[0]
+                    else:
+                        items = self._cyc_dynamics(r=2)
+                        start = items[0]
+                        stop = items[1]
+                    flare_value = self._cyc_flare_boolean_vector(r=1)[0]
+                    calculated_hairpin = self._calculate_hairpin(
+                        start, stop, flared=flare_value
+                    )
+                    hairpin = abjad.StartHairpin(calculated_hairpin)
+                    hold_last = self._cyc_hold_last_boolean_vector(r=1)[0]
+                    effort_bools = self._cyc_effort_boolean_vector(r=2)
+                    if isinstance(start, str):
+                        if effort_bools[0] == 0:
+                            start = start
+                        else:
+                            start = self._make_effort_dynamics(start)
+                        start = abjad.Dynamic(start)
+                    elif isinstance(start, int):
+                        start = abjad.Dynamic.dynamic_ordinal_to_dynamic_name(start)
+                        if effort_bools[0] == 0:
+                            start = start
+                        else:
+                            start = self._make_effort_dynamics(start)
+                        start = abjad.Dynamic(start)
+                    else:
+                        pass
+                    if isinstance(stop, str):
+                        if effort_bools[1] == 0:
+                            stop = stop
+                        else:
+                            stop = self._make_effort_dynamics(stop)
+                        stop = abjad.Dynamic(stop)
+                    elif isinstance(stop, int):
+                        stop = abjad.Dynamic.dynamic_ordinal_to_dynamic_name(stop)
+                        if effort_bools[1] == 0:
+                            stop = stop
+                        else:
+                            stop = self._make_effort_dynamics(stop)
+                        stop = abjad.Dynamic(stop)
+                    else:
+                        pass
+                    if start.name == &quot;niente&quot;:
+                        start = abjad.Dynamic(&quot;niente&quot;, hide=True)
+                    if stop.name == &quot;niente&quot;:
+                        stop = abjad.Dynamic(&quot;niente&quot;, command=r&quot;\!&quot;)
+                    if hold_last == 1:
+                        if stop.name != &quot;niente&quot;:
+                            if self.with_constante_hairpins is True:
+                                abjad.attach(abjad.StartHairpin(&quot;--&quot;), run[-1])
+                                next_tie_leaf = abjad.get.leaf(run[-1], 1)
+                                abjad.attach(abjad.StopHairpin(), next_tie_leaf)
+                        else:  # attach to anchor?
+                            if isinstance(abjad.get.leaf(run[-1], 1), abjad.Rest):
+                                stop = abjad.Dynamic(stop, command=r&quot;\!&quot;, leak=True)
+                            else:
+                                pass
+                    else:
+                        if isinstance(abjad.get.leaf(run[-1], 1), abjad.Rest):
+                            stop = abjad.Dynamic(stop, leak=True)  # attach to anchor
+                        else:
+                            pass
+                    if abjad.get.has_indicator(run[0], abjad.Dynamic):
+                        abjad.attach(abjad.StopHairpin(), run[0])
+                        abjad.attach(hairpin, run[0])
+                        abjad.attach(stop, run[-1])
+                    else:
+                        abjad.hairpin([start, hairpin, stop], run)
+                        if self.terminating_dynamic_markup is True:  # NEW
+                            markup_val = self._terminating_dynamic_boolean_vector(r=1)[
+                                0
+                            ]
+                            if markup_val == 1:
+                                if start.ordinal &lt; stop.ordinal:
+                                    mark_text = abjad.Markup(
+                                        fr&quot;&quot;&quot;\markup {{ \override #&#39;(style . &quot;box&quot;) \override #&#39;(box-padding . 0.5) \italic \box \whiteout \small &quot;cresc. a {stop.name}&quot; }}&quot;&quot;&quot;,
+                                        direction=abjad.Down,
+                                        literal=True,
+                                    )
+                                else:
+                                    mark_text = abjad.Markup(
+                                        fr&quot;&quot;&quot;\markup {{ \override #&#39;(style . &quot;box&quot;) \override #&#39;(box-padding . 0.5) \italic \box \whiteout \small &quot;dim. a {stop.name}&quot; }}&quot;&quot;&quot;,
+                                        direction=abjad.Down,
+                                        literal=True,
+                                    )
+                                abjad.attach(mark_text, abjad.select(run).leaf(0))
+                else:
+                    hold_last = self._cyc_hold_last_boolean_vector(r=1)[0]
+                    if hold_last == 1:
+                        start = self._cyc_dynamics(r=1)[0]
+                        if start == &quot;niente&quot;:
+                            start = self._cyc_dynamics(r=1)[0]
+                        else:
+                            pass
+                        if self._cyc_effort_boolean_vector(r=1)[0] == 0:
+                            start = abjad.Dynamic(start)
+                        else:
+                            start_string = self._make_effort_dynamics(start)
+                            start = abjad.Dynamic(start_string)
+                        sustain = abjad.StartHairpin(&quot;--&quot;)
+                        next_leaf = abjad.get.leaf(run[-1], 1)
+                        abjad.attach(start, run[0])
+                        if self.with_constante_hairpins is True:
+                            abjad.attach(sustain, run[0])
+                            if isinstance(
+                                next_leaf, (abjad.Rest, abjad.MultimeasureRest)
+                            ):
+                                abjad.attach(abjad.StopHairpin(), next_leaf)
+                    else:
+                        items = self._cyc_dynamics(r=2)
+                        effort_bools = self._cyc_effort_boolean_vector(r=2)
+                        start = items[0]
+                        stop = items[1]
+                        if effort_bools[0] == 0:
+                            if start == &quot;niente&quot;:
+                                start = abjad.Dynamic(start, hide=True)
+                            else:
+                                start = abjad.Dynamic(start)
+                        else:
+                            start_string = self._make_effort_dynamics(start)
+                            if start_string == &quot;niente&quot;:
+                                start = abjad.Dynamic(start_string, hide=True)
+                            else:
+                                start = abjad.Dynamic(start_string)
+                        if effort_bools[1] == 0:
+                            if stop == &quot;niente&quot;:
+                                stop = abjad.Dynamic(
+                                    stop, command=r&quot;\!&quot;, leak=True
+                                )  # attach to anchor
+                            else:
+                                stop = abjad.Dynamic(
+                                    stop, leak=True
+                                )  # attach to anchor
+                        else:
+                            stop_string = self._make_effort_dynamics(stop)
+                            if stop_string == &quot;niente&quot;:
+                                stop = abjad.Dynamic(
+                                    stop_string,
+                                    command=r&quot;\!&quot;,
+                                    leak=True,  # attach to anchor
+                                )
+                            else:
+                                stop = abjad.Dynamic(
+                                    stop_string, leak=True
+                                )  # attach to anchor
+                        flare_value = self._cyc_flare_boolean_vector(r=1)[0]
+                        calculated_hairpin = self._calculate_hairpin(
+                            start,
+                            stop,
+                            flared=flare_value,
+                        )
+                        hairpin = abjad.StartHairpin(calculated_hairpin)
+                        abjad.hairpin([start, hairpin, stop], run)
+                        if self.terminating_dynamic_markup is True:  # NEW
+                            markup_val = self._terminating_dynamic_boolean_vector(r=1)[
+                                0
+                            ]
+                            if markup_val == 1:
+                                if start.ordinal &lt; stop.ordinal:
+                                    mark_text = abjad.Markup(
+                                        fr&quot;&quot;&quot;\markup {{ \override #&#39;(style . &quot;box&quot;) \override #&#39;(box-padding . 0.5) \italic \box \whiteout \small &quot;cresc. a {stop.name}&quot; }}&quot;&quot;&quot;,
+                                        direction=abjad.Down,
+                                        literal=True,
+                                    )
+                                else:
+                                    mark_text = abjad.Markup(
+                                        fr&quot;&quot;&quot;\markup {{ \override #&#39;(style . &quot;box&quot;) \override #&#39;(box-padding . 0.5) \italic \box \whiteout \small &quot;dim. a {stop.name}&quot; }}&quot;&quot;&quot;,
+                                        direction=abjad.Down,
+                                        literal=True,
+                                    )
+                                abjad.attach(mark_text, abjad.select(run).leaf(0))
+            else:
+                start = self._cyc_dynamics(r=1)[0]
+                if start == &quot;niente&quot;:
+                    start = self._cyc_dynamics(r=1)[0]
+                effort_bool = self._cyc_effort_boolean_vector(r=1)[0]
+                if effort_bool == 1:
+                    start_string = self._make_effort_dynamics(start)
+                    start = abjad.Dynamic(start_string)
+                else:
+                    start = abjad.Dynamic(start)
+                hairpin = abjad.StartHairpin(&quot;--&quot;)
+                stopper = abjad.StopHairpin()
+                next_leaf = abjad.get.leaf(run[-1], 1)
+                abjad.attach(start, run[0])
+                if self.with_constante_hairpins is True:
+                    abjad.attach(hairpin, run[0])
+                    if isinstance(next_leaf, (abjad.Rest, abjad.MultimeasureRest)):
+                        abjad.attach(stopper, next_leaf)
+                else:
+                    pass
+        self._remove_niente(selections)
+
+    # attach to anchor?
+    # maybe just continue instead of replacing?
+    def _remove_niente(self, selections):
+        for leaf in abjad.select(selections).leaves():
+            for dynamic in abjad.get.indicators(leaf, abjad.Dynamic):
+                if dynamic.name == &quot;niente&quot;:
+                    if dynamic.command == r&quot;\!&quot;:
+                        abjad.detach(dynamic, leaf)
+                        abjad.attach(
+                            abjad.Dynamic(dynamic, command=r&quot;\!&quot;, leak=True), leaf
+                        )
+                    elif dynamic.leak is True:
+                        abjad.detach(dynamic, leaf)
+                        abjad.attach(
+                            abjad.Dynamic(dynamic, command=r&quot;\!&quot;, leak=True), leaf
+                        )
+                    else:
+                        abjad.detach(dynamic, leaf)
+                        abjad.attach(abjad.Dynamic(dynamic, hide=True), leaf)
+                else:
+                    continue
+
+<div class="viewcode-block" id="DynamicHandler.name"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.DynamicHandler.name">[docs]</a>    def name(self):
+        return self.name</div>
+
+<div class="viewcode-block" id="DynamicHandler.state"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.DynamicHandler.state">[docs]</a>    def state(self):
+        return abjad.OrderedDict(
+            [
+                (&quot;count_1&quot;, self._cyc_dynamics.state()),
+                (&quot;count_2&quot;, self._cyc_flare_boolean_vector.state()),
+                (&quot;count_3&quot;, self._cyc_hold_first_boolean_vector.state()),
+                (&quot;count_4&quot;, self._cyc_hold_last_boolean_vector.state()),
+                (&quot;count_5&quot;, self._cyc_effort_boolean_vector.state()),
+            ]
+        )</div></div>
+
+
+<div class="viewcode-block" id="GettatoHandler"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.GettatoHandler">[docs]</a>class GettatoHandler(Handler):
+    r&quot;&quot;&quot;
+    Gettato Handler
+
+    .. container:: example
+
+        &gt;&gt;&gt; staff = abjad.Voice(&quot;c&#39;4 fs&#39;4 c&#39;&#39;4 gqs&#39;&#39;4&quot;, name=&quot;Voice 1&quot;)
+        &gt;&gt;&gt; handler = evans.GettatoHandler(
+        ...     number_of_attacks=[4, 5, 6],
+        ...     actions=[&quot;throw&quot;, &quot;drop&quot;],
+        ... )
+        &gt;&gt;&gt; handler(staff)
+        &gt;&gt;&gt; score = abjad.Score([staff])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(staff))
+            \context Voice = &quot;Voice 1&quot;
+            {
+                &lt;&lt;
+                    \context Voice = &quot;On_Beat_Grace_Container&quot;
+                    {
+                        \set fontSize = #-4
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override Accidental.transparent = ##t
+                        \tweak transparent ##t
+                        \once \override Beam.grow-direction = #left
+                        \slash
+                        \voiceOne
+                        &lt;
+                            \tweak font-size 0
+                            \tweak transparent ##t
+                            c&#39;
+                        &gt;32 * 4/3
+                        ^ \markup { \hspace #1 throw (4)}
+                        [
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override Accidental.transparent = ##t
+                        \tweak transparent ##t
+                        c&#39;32 * 4/3
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override Accidental.transparent = ##t
+                        \tweak transparent ##t
+                        c&#39;32 * 4/3
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override Accidental.transparent = ##t
+                        \tweak transparent ##t
+                        c&#39;32 * 4/3
+                        ]
+                    }
+                    \context Voice = &quot;Voice 1&quot;
+                    {
+                        \voiceTwo
+                        c&#39;4
+                    }
+                &gt;&gt;
+                &lt;&lt;
+                    \context Voice = &quot;On_Beat_Grace_Container&quot;
+                    {
+                        \set fontSize = #-4
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override Accidental.transparent = ##t
+                        \tweak transparent ##t
+                        \once \override Beam.grow-direction = #right
+                        \slash
+                        \voiceOne
+                        &lt;
+                            \tweak font-size 0
+                            \tweak transparent ##t
+                            fs&#39;
+                        &gt;32 * 4/3
+                        ^ \markup { \hspace #1 drop (5)}
+                        [
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override Accidental.transparent = ##t
+                        \tweak transparent ##t
+                        fs&#39;32 * 4/3
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override Accidental.transparent = ##t
+                        \tweak transparent ##t
+                        fs&#39;32 * 4/3
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override Accidental.transparent = ##t
+                        \tweak transparent ##t
+                        fs&#39;32 * 4/3
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override Accidental.transparent = ##t
+                        \tweak transparent ##t
+                        fs&#39;32 * 4/3
+                        ]
+                    }
+                    \context Voice = &quot;Voice 1&quot;
+                    {
+                        \voiceTwo
+                        fs&#39;4
+                    }
+                &gt;&gt;
+                &lt;&lt;
+                    \context Voice = &quot;On_Beat_Grace_Container&quot;
+                    {
+                        \set fontSize = #-4
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override Accidental.transparent = ##t
+                        \tweak transparent ##t
+                        \once \override Beam.grow-direction = #left
+                        \slash
+                        \voiceOne
+                        &lt;
+                            \tweak font-size 0
+                            \tweak transparent ##t
+                            c&#39;&#39;
+                        &gt;32 * 4/3
+                        ^ \markup { \hspace #1 throw (6)}
+                        [
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override Accidental.transparent = ##t
+                        \tweak transparent ##t
+                        c&#39;&#39;32 * 4/3
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override Accidental.transparent = ##t
+                        \tweak transparent ##t
+                        c&#39;&#39;32 * 4/3
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override Accidental.transparent = ##t
+                        \tweak transparent ##t
+                        c&#39;&#39;32 * 4/3
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override Accidental.transparent = ##t
+                        \tweak transparent ##t
+                        c&#39;&#39;32 * 4/3
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override Accidental.transparent = ##t
+                        \tweak transparent ##t
+                        c&#39;&#39;32 * 4/3
+                        ]
+                    }
+                    \context Voice = &quot;Voice 1&quot;
+                    {
+                        \voiceTwo
+                        c&#39;&#39;4
+                    }
+                &gt;&gt;
+                &lt;&lt;
+                    \context Voice = &quot;On_Beat_Grace_Container&quot;
+                    {
+                        \set fontSize = #-4
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override Accidental.transparent = ##t
+                        \tweak transparent ##t
+                        \once \override Beam.grow-direction = #right
+                        \slash
+                        \voiceOne
+                        &lt;
+                            \tweak font-size 0
+                            \tweak transparent ##t
+                            gqs&#39;&#39;
+                        &gt;32 * 4/3
+                        ^ \markup { \hspace #1 drop (4)}
+                        [
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override Accidental.transparent = ##t
+                        \tweak transparent ##t
+                        gqs&#39;&#39;32 * 4/3
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override Accidental.transparent = ##t
+                        \tweak transparent ##t
+                        gqs&#39;&#39;32 * 4/3
+                        \once \override NoteHead.no-ledgers = ##t
+                        \once \override Accidental.transparent = ##t
+                        \tweak transparent ##t
+                        gqs&#39;&#39;32 * 4/3
+                        ]
+                    }
+                    \context Voice = &quot;Voice 1&quot;
+                    {
+                        \voiceTwo
+                        gqs&#39;&#39;4
+                    }
+                &gt;&gt;
+            }
+
+    &quot;&quot;&quot;
+
+    def __init__(
+        self,
+        number_of_attacks=[4, 5, 6],
+        attack_number_forget=False,
+        actions=[&quot;throw&quot;, &quot;drop&quot;],
+        action_forget=False,
+        boolean_vector=[1],
+        vector_forget=False,
+        attack_count=-1,
+        action_count=-1,
+        vector_count=-1,
+        name=&quot;Gettato Handler&quot;,
+    ):
+        self._attack_count = attack_count
+        self._action_count = action_count
+        self._vector_count = vector_count
+        self.attack_number_forget = attack_number_forget
+        self.action_forget = action_forget
+        self.vector_forget = vector_forget
+        self.attacks = sequence.CyclicList(
+            number_of_attacks, self.attack_number_forget, self._attack_count
+        )
+        self.actions = sequence.CyclicList(
+            actions, self.action_forget, self._action_count
+        )
+        self.boolean_vector = sequence.CyclicList(
+            boolean_vector, self.vector_forget, self._vector_count
+        )
+        self.name = name
+
+<div class="viewcode-block" id="GettatoHandler.__call__"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.GettatoHandler.__call__">[docs]</a>    def __call__(self, selections):
+        self.add_gettato(selections)</div>
+
+<div class="viewcode-block" id="GettatoHandler.add_gettato"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.GettatoHandler.add_gettato">[docs]</a>    def add_gettato(self, selections):
+        ties = abjad.select(selections).logical_ties(pitched=True)
+        vector = self.boolean_vector(r=len(ties))
+        for value, tie in zip(vector, ties):
+            if value == 1:
+                repetitions = self.attacks(r=1)[0]
+                pitches = [_ for _ in abjad.get.pitches(tie[0])]
+                repeated_pitch = pitches[-1]
+                list_ = []
+                list_.append(abjad.Chord([repeated_pitch], (1, 32)))
+                for _ in range(repetitions - 1):
+                    list_.append(abjad.Note(repeated_pitch, (1, 32)))
+                sel = abjad.Selection(list_)
+                abjad.beam(sel)
+                t = abjad.LilyPondLiteral(
+                    [
+                        r&quot;\once \override NoteHead.no-ledgers = ##t&quot;,
+                        r&quot;\once \override Accidental.transparent = ##t&quot;,
+                        r&quot;\tweak transparent ##t&quot;,
+                    ],
+                    format_slot=&quot;before&quot;,
+                )
+                for leaf in abjad.select(sel).leaves():
+                    abjad.attach(t, leaf)
+                a = self.actions(r=1)[0]
+                if a == &quot;throw&quot;:
+                    literal = abjad.LilyPondLiteral(
+                        r&quot;\once \override Beam.grow-direction = #left&quot;,
+                        format_slot=&quot;before&quot;,
+                    )
+                    abjad.attach(literal, sel[0])
+                    mark = abjad.Markup(
+                        fr&quot;\markup {{ \hspace #1 throw ({repetitions})}}&quot;,
+                        direction=abjad.Up,
+                        literal=True,
+                    )
+                    abjad.attach(mark, sel[0])
+                elif a == &quot;drop&quot;:
+                    literal = abjad.LilyPondLiteral(
+                        r&quot;\once \override Beam.grow-direction = #right&quot;,
+                        format_slot=&quot;before&quot;,
+                    )
+                    abjad.attach(literal, sel[0])
+                    mark = abjad.Markup(
+                        fr&quot;\markup {{ \hspace #1 drop ({repetitions})}}&quot;,
+                        direction=abjad.Up,
+                        literal=True,
+                    )
+                    abjad.attach(mark, sel[0])
+                else:
+                    pass
+                abjad.on_beat_grace_container(
+                    sel,
+                    tie[:],
+                    leaf_duration=(1, 24),
+                    do_not_slur=True,
+                    do_not_beam=True,
+                    font_size=-4,
+                )</div>
+
+<div class="viewcode-block" id="GettatoHandler.name"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.GettatoHandler.name">[docs]</a>    def name(self):
+        return self.name</div>
+
+<div class="viewcode-block" id="GettatoHandler.state"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.GettatoHandler.state">[docs]</a>    def state(self):
+        return abjad.OrderedDict(
+            [
+                (&quot;attack_count&quot;, self.attacks.state()),
+                (&quot;action_count&quot;, self.actions.state()),
+                (&quot;vector_count&quot;, self.boolean_vector.state()),
+            ]
+        )</div></div>
+
+
+<div class="viewcode-block" id="GlissandoHandler"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.GlissandoHandler">[docs]</a>class GlissandoHandler(Handler):
+    r&quot;&quot;&quot;
+    Glissando Handler
+
+    ..  container:: example
+
+        &gt;&gt;&gt; staff = abjad.Staff(&quot;c&#39;4 c&#39;4 c&#39;4 c&#39;4&quot;)
+        &gt;&gt;&gt; handler = evans.GlissandoHandler(
+        ...     line_style=&quot;dotted-line&quot;,
+        ...     boolean_vector=[1],
+        ...     forget=False,
+        ...     apply_to=&quot;runs&quot;,
+        ... )
+        &gt;&gt;&gt; handler(staff)
+        &gt;&gt;&gt; score = abjad.Score([staff])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        ...
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(staff))
+            \new Staff
+            {
+                c&#39;4
+                - \tweak style #&#39;dotted-line
+                \glissando
+                c&#39;4
+                - \tweak style #&#39;dotted-line
+                \glissando
+                c&#39;4
+                - \tweak style #&#39;dotted-line
+                \glissando
+                c&#39;4
+            }
+
+    &quot;&quot;&quot;
+
+    def __init__(
+        self,
+        glissando_style=None,
+        line_style=None,
+        boolean_vector=[0],
+        forget=False,
+        apply_to=&quot;runs&quot;,
+        count=-1,
+        name=&quot;Glissando Handler&quot;,
+    ):
+        self.glissando_style = glissando_style
+        self.line_style = f&quot;#&#39;{line_style}&quot;
+        self._count = count
+        self.forget = forget
+        self.apply_to = apply_to
+        self.boolean_vector = sequence.CyclicList(
+            boolean_vector, self.forget, self._count
+        )
+        self.name = name
+
+<div class="viewcode-block" id="GlissandoHandler.__call__"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.GlissandoHandler.__call__">[docs]</a>    def __call__(self, selections):
+        self.add_glissando(selections)</div>
+
+<div class="viewcode-block" id="GlissandoHandler.add_glissando"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.GlissandoHandler.add_glissando">[docs]</a>    def add_glissando(self, selections):
+        if self.apply_to == &quot;runs&quot;:
+            runs = abjad.select(selections).runs()
+            if self.glissando_style == &quot;hide_middle_note_heads&quot;:
+                if self.line_style is not None:
+                    for run in runs:
+                        if self.boolean_vector(r=1)[0] == 1:
+                            if len(run) &gt; 1:
+                                t = abjad.tweak(self.line_style).style
+                                abjad.glissando(run[:], t, hide_middle_note_heads=True)
+                            else:
+                                continue
+                        else:
+                            continue
+                else:
+                    for run in runs:
+                        if self.boolean_vector(r=1)[0] == 1:
+                            if len(run) &gt; 1:
+                                abjad.glissando(
+                                    run[:],
+                                    hide_middle_note_heads=True,
+                                    allow_repeats=True,
+                                )
+                            else:
+                                continue
+                        else:
+                            continue
+            elif self.glissando_style == &quot;hide_middle_stems&quot;:
+                if self.line_style is not None:
+                    for run in runs:
+                        if self.boolean_vector(r=1)[0] == 1:
+                            if len(run) &gt; 1:
+                                t = abjad.tweak(self.line_style).style
+                                abjad.glissando(
+                                    run[:],
+                                    t,
+                                    hide_middle_note_heads=True,
+                                    hide_middle_stems=True,
+                                )
+                            else:
+                                continue
+                        else:
+                            continue
+                else:
+                    for run in runs:
+                        if self.boolean_vector(r=1)[0] == 1:
+                            if len(run) &gt; 1:
+                                abjad.glissando(
+                                    run[:],
+                                    hide_middle_note_heads=True,
+                                    hide_middle_stems=True,
+                                )
+                            else:
+                                continue
+                        else:
+                            continue
+            else:
+                if self.line_style is not None:
+                    for run in runs:
+                        if self.boolean_vector(r=1)[0] == 1:
+                            if len(run) &gt; 1:
+                                t = abjad.tweak(self.line_style).style
+                                abjad.glissando(
+                                    run[:],
+                                    t,
+                                    allow_repeats=True,
+                                    allow_ties=False,
+                                )
+                            else:
+                                continue
+                        else:
+                            continue
+                else:
+                    for run in runs:
+                        if self.boolean_vector(r=1)[0] == 1:
+                            if len(run) &gt; 1:
+                                abjad.glissando(
+                                    run[:],
+                                    allow_repeats=True,
+                                    allow_ties=False,
+                                )
+                            else:
+                                continue
+                        else:
+                            continue
+        else:
+            ties = abjad.select(selections).logical_ties(pitched=True)
+            values = self.boolean_vector(r=len(ties))
+            for value, tie in zip(values, ties):
+                if value == 1:
+                    abjad.attach(abjad.Glissando(), tie[-1])</div>
+
+<div class="viewcode-block" id="GlissandoHandler.name"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.GlissandoHandler.name">[docs]</a>    def name(self):
+        return self.name</div>
+
+<div class="viewcode-block" id="GlissandoHandler.state"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.GlissandoHandler.state">[docs]</a>    def state(self):
+        return abjad.OrderedDict([(&quot;count&quot;, self.boolean_vector.state())])</div></div>
+
+
+<div class="viewcode-block" id="GraceHandler"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.GraceHandler">[docs]</a>class GraceHandler(Handler):
+    r&quot;&quot;&quot;
+    Grace Handler
+
+    .. container:: example
+
+        &gt;&gt;&gt; staff = abjad.Staff(&quot;c&#39;4 c&#39;4 c&#39;4 c&#39;4&quot;)
+        &gt;&gt;&gt; handler = evans.GraceHandler(
+        ...     boolean_vector=[0, 1, 0, 1],
+        ...     gesture_lengths=[1, 2],
+        ...     forget=False,
+        ... )
+        &gt;&gt;&gt; handler(staff[:])
+        &gt;&gt;&gt; score = abjad.Score([staff])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(staff))
+            \new Staff
+            {
+                c&#39;4
+                \scaleDurations #&#39;(1 . 1) {
+                \slashedGrace {
+                    c&#39;16
+                    s8..
+                    s2
+                }
+                }
+                c&#39;4
+                c&#39;4
+                \scaleDurations #&#39;(1 . 1) {
+                \slashedGrace {
+                    \slash
+                    \override Stem.direction = #UP
+                    \override Staff.Stem.stemlet-length = 0
+                    c&#39;16
+                    [
+                    s8..
+                    c&#39;16
+                    \revert Stem.direction
+                    s8..
+                    \revert Staff.Stem.stemlet-length
+                    s2
+                    ]
+                }
+                }
+                c&#39;4
+            }
+
+    &quot;&quot;&quot;
+
+    def __init__(
+        self,
+        boolean_vector=None,
+        gesture_lengths=None,
+        forget=True,
+        remove_skips=False,
+        vector_count=-1,
+        gesture_count=-1,
+        name=&quot;Grace Handler&quot;,
+    ):
+        self.forget = forget
+        self.remove_skips = remove_skips
+        self._vector_count = vector_count
+        self._gesture_count = gesture_count
+        self.boolean_vector = boolean_vector
+        self.gesture_lengths = gesture_lengths
+        self._cyc_boolean_vector = sequence.CyclicList(
+            boolean_vector, self.forget, self._vector_count
+        )
+        self._cyc_gesture_lengths = sequence.CyclicList(
+            gesture_lengths, self.forget, self._gesture_count
+        )
+        self.name = name
+
+<div class="viewcode-block" id="GraceHandler.__call__"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.GraceHandler.__call__">[docs]</a>    def __call__(self, selections):
+        self._add_grace_notes(selections)</div>
+
+    def _add_grace_notes(self, selections):
+        ties = abjad.select(selections).logical_ties(pitched=True)
+        vectors = self._cyc_boolean_vector(r=len(ties))
+        if self.boolean_vector is not None:
+            for value, tie in zip(vectors, ties):
+                if value == 1:
+                    grace_list = &quot;&quot;
+                    if self.gesture_lengths is not None:
+                        grace_length = self._cyc_gesture_lengths(r=1)[0]
+                        for x in range(grace_length):
+                            s = &quot;c&#39;16&quot;
+                            grace_list = grace_list + s
+                            grace_list = grace_list + &quot; &quot;
+                            if self.remove_skips is False:
+                                grace_list = grace_list + &quot;s8..&quot;
+                                grace_list = grace_list + &quot; &quot;
+                        if self.remove_skips is False:
+                            grace_list = grace_list + &quot;s2&quot;
+                        grace = abjad.BeforeGraceContainer(
+                            grace_list, command=r&quot;\slashedGrace&quot;
+                        )
+                        if 1 &lt; len(abjad.select(grace).leaves(pitched=True)):
+                            abjad.beam(
+                                grace,
+                                beam_rests=True,
+                                beam_lone_notes=True,
+                                stemlet_length=0,
+                            )
+                            literal_slash = abjad.LilyPondLiteral(
+                                r&quot;\slash&quot;, format_slot=&quot;before&quot;
+                            )
+                            abjad.attach(
+                                literal_slash,
+                                abjad.select(grace).leaves(pitched=True)[0],
+                            )
+                            direction_override = abjad.LilyPondLiteral(
+                                r&quot;\override Stem.direction = #UP&quot;, format_slot=&quot;before&quot;
+                            )
+                            direction_revert = abjad.LilyPondLiteral(
+                                r&quot;\revert Stem.direction&quot;, format_slot=&quot;after&quot;
+                            )
+                            abjad.attach(
+                                direction_override,
+                                abjad.select(grace).leaves(pitched=True)[0],
+                            )
+                            abjad.attach(
+                                direction_revert,
+                                abjad.select(grace).leaves(pitched=True)[-1],
+                            )
+                        open_literal = abjad.LilyPondLiteral(
+                            r&quot;\scaleDurations #&#39;(1 . 1) {&quot;, format_slot=&quot;before&quot;
+                        )
+                        close_literal = abjad.LilyPondLiteral(&quot;}&quot;, format_slot=&quot;after&quot;)
+                        abjad.attach(open_literal, grace)
+                        abjad.attach(close_literal, grace)
+                        abjad.attach(grace, tie[0])
+                    else:
+                        grace = abjad.BeforeGraceContainer(
+                            &quot;c&#39;16&quot;, command=r&quot;\slashedGrace&quot;
+                        )
+                        open_literal = abjad.LilyPondLiteral(
+                            r&quot;\scaleDurations #&#39;(1 . 1) {&quot;, format_slot=&quot;before&quot;
+                        )
+                        close_literal = abjad.LilyPondLiteral(&quot;}&quot;, format_slot=&quot;after&quot;)
+                        abjad.attach(open_literal, grace)
+                        abjad.attach(close_literal, grace)
+                        abjad.attach(grace, tie[0])
+                else:
+                    continue
+        else:
+            pass
+
+<div class="viewcode-block" id="GraceHandler.name"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.GraceHandler.name">[docs]</a>    def name(self):
+        return self.name</div>
+
+<div class="viewcode-block" id="GraceHandler.state"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.GraceHandler.state">[docs]</a>    def state(self):
+        return abjad.OrderedDict(
+            [
+                (&quot;vector_count&quot;, self._cyc_boolean_vector.state()),
+                (&quot;gesture_count&quot;, self._cyc_gesture_lengths.state()),
+            ]
+        )</div></div>
+
+
+<div class="viewcode-block" id="IntermittentVoiceHandler"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.IntermittentVoiceHandler">[docs]</a>class IntermittentVoiceHandler(Handler):
+    r&quot;&quot;&quot;
+    IntermittentVoiceHandler
+
+    .. container:: example
+
+        &gt;&gt;&gt; ph_up = evans.PitchHandler([8, 8.5, 9, 9.5, 9, 8.5], forget=False)
+        &gt;&gt;&gt; ph_down = evans.PitchHandler([0, 1, 2, 3, 4, 5], forget=False)
+        &gt;&gt;&gt; s = abjad.Staff([abjad.Voice(&quot;c&#39;4 c&#39;8 c&#39;8 c&#39;8 c&#39;4.&quot;, name=&quot;Voice1&quot;)], name=&quot;Staff1&quot;)
+        &gt;&gt;&gt; ph_down(s)
+        &gt;&gt;&gt; h = evans.RhythmHandler(
+        ...     rmakers.stack(
+        ...         rmakers.talea(
+        ...             [1, 2, 3, 4],
+        ...             8,
+        ...             extra_counts=[1, 0, -1],
+        ...         ),
+        ...         rmakers.trivialize(abjad.select().tuplets()),
+        ...         rmakers.extract_trivial(abjad.select().tuplets()),
+        ...         rmakers.rewrite_rest_filled(abjad.select().tuplets()),
+        ...         rmakers.rewrite_sustained(abjad.select().tuplets()),
+        ...     ),
+        ...     forget=False,
+        ... )
+        ...
+        &gt;&gt;&gt; ivh = evans.IntermittentVoiceHandler(h, direction=abjad.Up)
+        &gt;&gt;&gt; sel1 = abjad.select(s[&quot;Voice1&quot;]).leaf(0)
+        &gt;&gt;&gt; sel2 = abjad.select(s[&quot;Voice1&quot;]).leaf(2)
+        &gt;&gt;&gt; sel3 = abjad.select(s[&quot;Voice1&quot;]).leaves().get([3, 4])
+        &gt;&gt;&gt; ivh(sel1)
+        &gt;&gt;&gt; ivh(sel2)
+        &gt;&gt;&gt; ivh(sel3)
+        &gt;&gt;&gt; ph_up = evans.PitchHandler([8, 8.5, 9, 9.5, 9, 8.5], forget=False)
+        &gt;&gt;&gt; for voice in abjad.select(s).components(abjad.Voice):
+        ...     if voice.name == &quot;intermittent_voice&quot;:
+        ...         ph_up(voice)
+        ...
+        &gt;&gt;&gt; score = abjad.Score([s])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        ...
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(s))
+            \context Staff = &quot;Staff1&quot;
+            {
+                \context Voice = &quot;Voice1&quot;
+                {
+                    &lt;&lt;
+                        \context Voice = &quot;Voice1&quot;
+                        {
+                            \voiceTwo
+                            c&#39;4
+                        }
+                        \context Voice = &quot;intermittent_voice&quot;
+                        {
+                            \times 2/3 {
+                                \voiceOne
+                                af&#39;8
+                                aqf&#39;4
+                            }
+                        }
+                    &gt;&gt;
+                    \oneVoice
+                    cs&#39;8
+                    &lt;&lt;
+                        \context Voice = &quot;Voice1&quot;
+                        {
+                            \voiceTwo
+                            d&#39;8
+                        }
+                        \context Voice = &quot;intermittent_voice&quot;
+                        {
+                            \voiceOne
+                            a&#39;8
+                        }
+                    &gt;&gt;
+                    \oneVoice
+                    &lt;&lt;
+                        \context Voice = &quot;Voice1&quot;
+                        {
+                            \voiceTwo
+                            ef&#39;8
+                            e&#39;4.
+                        }
+                        \context Voice = &quot;intermittent_voice&quot;
+                        {
+                            \tweak text #tuplet-number::calc-fraction-text
+                            \times 4/3 {
+                                \voiceOne
+                                aqs&#39;4
+                                a&#39;8
+                            }
+                        }
+                    &gt;&gt;
+                    \oneVoice
+                }
+            }
+
+    &quot;&quot;&quot;
+
+    def __init__(
+        self,
+        rhythm_handler,
+        direction=abjad.Up,
+    ):
+        self.rhythm_handler = rhythm_handler
+        self.direction = direction
+
+<div class="viewcode-block" id="IntermittentVoiceHandler.__call__"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.IntermittentVoiceHandler.__call__">[docs]</a>    def __call__(
+        self,
+        selections,
+    ):
+        selections = abjad.select(selections)
+        self._add_voice(selections)</div>
+
+    def _add_voice(self, selections):
+        if self.direction == abjad.Up:
+            literal1 = abjad.LilyPondLiteral(r&quot;\voiceTwo&quot;)
+            literal2 = abjad.LilyPondLiteral(r&quot;\voiceOne&quot;)
+        else:
+            literal1 = abjad.LilyPondLiteral(r&quot;\voiceOne&quot;)
+            literal2 = abjad.LilyPondLiteral(r&quot;\voiceTwo&quot;)
+        closing_literal = abjad.LilyPondLiteral(r&quot;\oneVoice&quot;, format_slot=&quot;after&quot;)
+        duration = [abjad.get.duration(selections[:])]
+        container = abjad.Container(simultaneous=True)
+        original_voice = abjad.Voice(name=self._find_parent(selections))
+        intermittent_voice = abjad.Voice(name=&quot;intermittent_voice&quot;)
+        intermittent_voice.append(self._make_components(duration)[:])
+        abjad.mutate.wrap(selections, original_voice)
+        abjad.mutate.wrap(original_voice, container)
+        container.append(intermittent_voice)
+        abjad.attach(literal1, abjad.select(original_voice).leaf(0))
+        abjad.attach(literal2, abjad.select(intermittent_voice).leaf(0))
+        abjad.attach(closing_literal, container)
+
+    def _find_parent(self, selections):
+        first_leaf = abjad.select(selections).leaf(0)
+        parentage = abjad.get.parentage(first_leaf)
+        parent_voice = abjad.select(parentage).components(abjad.Voice)
+        return parent_voice[0].name
+
+    def _make_components(self, duration):
+        return self.rhythm_handler(duration)</div>
+
+
+<div class="viewcode-block" id="NoteheadHandler"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.NoteheadHandler">[docs]</a>class NoteheadHandler(Handler):
+    r&quot;&quot;&quot;
+    Notehead Handler
+
+    .. container:: example
+
+        &gt;&gt;&gt; staff = abjad.Staff(&quot;c&#39;4 c&#39;4 c&#39;4 c&#39;4&quot;)
+        &gt;&gt;&gt; handler = evans.NoteheadHandler(
+        ...     notehead_list=[&quot;default&quot;, &quot;harmonic&quot;, &quot;triangle&quot;, &quot;slash&quot;],
+        ...     transition=True,
+        ...     head_boolean_vector=[1],
+        ...     head_vector_forget=False,
+        ...     transition_boolean_vector=[0, 1],
+        ...     transition_vector_forget=False,
+        ...     forget=True,
+        ... )
+        &gt;&gt;&gt; handler(staff)
+        &gt;&gt;&gt; score = abjad.Score([staff])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        ...
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(staff))
+            \new Staff
+            {
+                \tweak NoteHead.style #&#39;default
+                c&#39;4
+                \tweak NoteHead.style #&#39;harmonic
+                c&#39;4
+                - \tweak arrow-length #2
+                - \tweak arrow-width #0.5
+                - \tweak bound-details.right.arrow ##t
+                - \tweak thickness #2.5
+                \glissando
+                \tweak NoteHead.style #&#39;triangle
+                c&#39;4
+                \tweak NoteHead.style #&#39;slash
+                c&#39;4
+            }
+
+
+    &quot;&quot;&quot;
+
+    def __init__(
+        self,
+        notehead_list=None,
+        transition=False,
+        head_boolean_vector=[0],
+        head_vector_forget=False,
+        transition_boolean_vector=[0],
+        transition_vector_forget=False,
+        forget=True,
+        count=-1,
+        name=&quot;Notehead Handler&quot;,
+    ):
+        self.notehead_list = notehead_list
+        self.transition = transition
+        self.head_vector_forget = head_vector_forget
+        self._head_vector_count = -1
+        self.head_boolean_vector = sequence.CyclicList(
+            head_boolean_vector, self.head_vector_forget, self._head_vector_count
+        )
+        self.transition_vector_forget = transition_vector_forget
+        self._transition_vector_count = -1
+        self.transition_boolean_vector = sequence.CyclicList(
+            transition_boolean_vector,
+            self.transition_vector_forget,
+            self._transition_vector_count,
+        )
+        self.forget = forget
+        self._count = count
+        self._cyc_noteheads = sequence.CyclicList(
+            notehead_list, self.forget, self._count
+        )
+        self.name = name
+
+<div class="viewcode-block" id="NoteheadHandler.__call__"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.NoteheadHandler.__call__">[docs]</a>    def __call__(self, selections):
+        self.add_noteheads(selections)</div>
+
+<div class="viewcode-block" id="NoteheadHandler.add_noteheads"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.NoteheadHandler.add_noteheads">[docs]</a>    def add_noteheads(self, selections):
+        ties = abjad.select(selections).logical_ties(pitched=True)
+        heads = self._cyc_noteheads(r=len(ties))
+        head_vector = self.head_boolean_vector(r=len(ties))
+        trans_vector = self.transition_boolean_vector(r=len(ties))
+        if self.notehead_list is not None:
+            for tie, head, bool in zip(ties, heads, head_vector):
+                string = str(r&quot;&quot;&quot;\tweak NoteHead.style #&#39;&quot;&quot;&quot;)
+                full_string = string + head
+                style = abjad.LilyPondLiteral(full_string, format_slot=&quot;opening&quot;)
+                if bool == 1:
+                    for leaf in abjad.select(tie).leaves(pitched=True):
+                        abjad.attach(style, leaf)
+                else:
+                    continue
+        if self.transition is True:
+            transition_arrow = abjad.LilyPondLiteral(
+                r&quot;&quot;&quot;
+                - \tweak arrow-length #2
+                - \tweak arrow-width #0.5
+                - \tweak bound-details.right.arrow ##t
+                - \tweak thickness #2.5
+                \glissando
+                &quot;&quot;&quot;,
+                &quot;absolute_after&quot;,
+            )  # verify that heads are different?
+            for tie, bool1, bool2 in zip(ties, head_vector, trans_vector):
+                if bool1 == 1:
+                    if bool2 == 1:
+                        abjad.attach(transition_arrow, tie[-1])
+                    else:
+                        continue
+                else:
+                    continue
+            for run in abjad.select(selections).runs():
+                last_tie = abjad.select(run).logical_ties(pitched=True)[-1]
+                abjad.detach(transition_arrow, last_tie[-1])</div>
+
+<div class="viewcode-block" id="NoteheadHandler.name"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.NoteheadHandler.name">[docs]</a>    def name(self):
+        return self.name</div>
+
+<div class="viewcode-block" id="NoteheadHandler.state"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.NoteheadHandler.state">[docs]</a>    def state(self):
+        return abjad.OrderedDict(
+            [
+                (&quot;count&quot;, self._cyc_noteheads.state()),
+                (&quot;head_vector_count&quot;, self.head_boolean_vector.state()),
+                (&quot;transition_vector_count&quot;, self.transition_boolean_vector.state()),
+            ]
+        )</div></div>
+
+
+<div class="viewcode-block" id="OnBeatGraceHandler"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.OnBeatGraceHandler">[docs]</a>class OnBeatGraceHandler(Handler):
+    r&quot;&quot;&quot;
+    On Beat Grace Handler
+
+    .. container:: example
+
+        &gt;&gt;&gt; grace_handler = evans.OnBeatGraceHandler(
+        ...     number_of_attacks=[
+        ...         4,
+        ...         3,
+        ...         4,
+        ...         5,
+        ...         6,
+        ...         3,
+        ...         4,
+        ...         3,
+        ...         4,
+        ...         3,
+        ...         4,
+        ...         5,
+        ...         5,
+        ...         3,
+        ...         4,
+        ...         3,
+        ...     ],
+        ...     durations=[
+        ...         2,
+        ...         1,
+        ...         1,
+        ...         1,
+        ...         2,
+        ...         1,
+        ...         2,
+        ...         1,
+        ...         1,
+        ...     ],
+        ...     font_size=-4,
+        ...     leaf_duration=(1, 100),
+        ...     attack_number_forget=False,
+        ...     durations_forget=False,
+        ...     boolean_vector=[1],
+        ...     vector_forget=False,
+        ...     name=&quot;On Beat Grace Handler&quot;,
+        ...     )
+        ...
+        &gt;&gt;&gt; head_handler = evans.NoteheadHandler(
+        ...     [&quot;harmonic&quot;],
+        ...     head_boolean_vector=[1],
+        ...     forget=False,
+        ... )
+        ...
+        &gt;&gt;&gt; pitch_handler = evans.PitchHandler(
+        ...     [
+        ...         30,
+        ...         32,
+        ...         29.5,
+        ...         31,
+        ...         31.5,
+        ...         33,
+        ...         30,
+        ...         29,
+        ...         32.5,
+        ...     ],
+        ...     forget=False,
+        ... )
+        ...
+        &gt;&gt;&gt; s = abjad.Staff([abjad.Voice(&quot;e&#39;&#39;4 e&#39;&#39;2 e&#39;&#39;4&quot;, name=&quot;Voice1&quot;)], name=&quot;Staff1&quot;)
+        &gt;&gt;&gt; grace_handler(abjad.select(s).leaf(1))
+        &gt;&gt;&gt; pitch_handler(abjad.select(s).logical_ties(grace=True))
+        &gt;&gt;&gt; head_handler(abjad.select(s).logical_ties(grace=True))
+        &gt;&gt;&gt; score = abjad.Score([s])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        ...
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(s))
+            \context Staff = &quot;Staff1&quot;
+            {
+                \context Voice = &quot;Voice1&quot;
+                {
+                    e&#39;&#39;4
+                    &lt;&lt;
+                        \context Voice = &quot;On_Beat_Grace_Container&quot;
+                        {
+                            \set fontSize = #-4
+                            \slash
+                            \voiceOne
+                            \tweak NoteHead.style #&#39;harmonic
+                            fs&#39;&#39;&#39;8
+                            [
+                            (
+                            \tweak NoteHead.style #&#39;harmonic
+                            af&#39;&#39;&#39;16
+                            \tweak NoteHead.style #&#39;harmonic
+                            fqs&#39;&#39;&#39;16
+                            \tweak NoteHead.style #&#39;harmonic
+                            g&#39;&#39;&#39;16
+                            )
+                            ]
+                        }
+                        \context Voice = &quot;Voice1&quot;
+                        {
+                            \voiceTwo
+                            e&#39;&#39;2
+                        }
+                    &gt;&gt;
+                    \oneVoice
+                    e&#39;&#39;4
+                }
+            }
+
+    &quot;&quot;&quot;
+
+    def __init__(
+        self,
+        number_of_attacks=[4, 5, 6],
+        durations=[
+            2,
+            1,
+            1,
+            1,
+            2,
+            1,
+            2,
+            1,
+            1,
+        ],
+        attack_number_forget=False,
+        durations_forget=False,
+        font_size=(-4),
+        leaf_duration=(1, 28),
+        boolean_vector=[1],
+        vector_forget=False,
+        attack_count=-1,
+        durations_count=-1,
+        vector_count=-1,
+        name=&quot;On Beat Grace Handler&quot;,
+    ):
+        self.font_size = font_size
+        self.leaf_duration = leaf_duration
+        self._attack_count = attack_count
+        self._durations_count = durations_count
+        self._vector_count = vector_count
+        self.attack_number_forget = attack_number_forget
+        self.durations_forget = durations_forget
+        self.vector_forget = vector_forget
+        self.attacks = sequence.CyclicList(
+            number_of_attacks, self.attack_number_forget, self._attack_count
+        )
+        self.durations = sequence.CyclicList(
+            durations, self.durations_forget, self._durations_count
+        )
+        self.boolean_vector = sequence.CyclicList(
+            boolean_vector, self.vector_forget, self._vector_count
+        )
+        self.name = name
+
+<div class="viewcode-block" id="OnBeatGraceHandler.__call__"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.OnBeatGraceHandler.__call__">[docs]</a>    def __call__(self, selections):
+        self.add_grace(selections)</div>
+
+<div class="viewcode-block" id="OnBeatGraceHandler.add_grace"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.OnBeatGraceHandler.add_grace">[docs]</a>    def add_grace(self, selections):
+        ties = abjad.select(selections).logical_ties(pitched=True)
+        vector = self.boolean_vector(r=len(ties))
+        for value, tie in zip(vector, ties):
+            if value == 1:
+                repetitions = self.attacks(r=1)[0]
+                list_ = []
+                durs = self.durations(r=repetitions)
+                for _ in durs:
+                    list_.append(abjad.Note(&quot;c&#39;&quot;, (_, 16)))
+                sel = abjad.Selection(list_)
+                abjad.on_beat_grace_container(
+                    sel,
+                    tie[:],
+                    leaf_duration=self.leaf_duration,
+                    do_not_slur=False,
+                    do_not_beam=False,
+                    font_size=self.font_size,
+                )</div>
+
+<div class="viewcode-block" id="OnBeatGraceHandler.name"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.OnBeatGraceHandler.name">[docs]</a>    def name(self):
+        return self.name</div>
+
+<div class="viewcode-block" id="OnBeatGraceHandler.state"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.OnBeatGraceHandler.state">[docs]</a>    def state(self):
+        return abjad.OrderedDict(
+            [
+                (&quot;attack_count&quot;, self.attacks.state()),
+                (&quot;vector_count&quot;, self.boolean_vector.state()),
+            ]
+        )</div></div>
+
+
+<div class="viewcode-block" id="PitchHandler"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.PitchHandler">[docs]</a>class PitchHandler(Handler):
+    r&quot;&quot;&quot;
+    Pitch Handler
+
+    .. container:: example
+
+        &gt;&gt;&gt; import fractions
+
+        &gt;&gt;&gt; s = abjad.Staff(&quot;c&#39;4 c&#39;4 c&#39;4 c&#39;4&quot;)
+        &gt;&gt;&gt; handler = evans.PitchHandler(
+        ...     pitch_list=[1, 2, 3, 4],
+        ...     forget=False,
+        ... )
+        &gt;&gt;&gt; handler(abjad.select(s).logical_ties())
+        &gt;&gt;&gt; score = abjad.Score([s])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        ...
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(s))
+            \new Staff
+            {
+                cs&#39;4
+                d&#39;4
+                ef&#39;4
+                e&#39;4
+            }
+
+    .. container:: example
+
+        &gt;&gt;&gt; s = abjad.Staff(&quot;c&#39;4 c&#39;4 c&#39;4 c&#39;4&quot;)
+        &gt;&gt;&gt; handler = evans.PitchHandler(
+        ...     pitch_list=[1, [2, 3], 4],
+        ...     forget=False,
+        ... )
+        &gt;&gt;&gt; handler(abjad.select(s).logical_ties())
+        &gt;&gt;&gt; score = abjad.Score([s])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        ...
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(s))
+            \new Staff
+            {
+                cs&#39;4
+                &lt;d&#39; ef&#39;&gt;4
+                e&#39;4
+                cs&#39;4
+            }
+
+    .. container:: example
+
+        &gt;&gt;&gt; s = abjad.Staff(&quot;c&#39;4 c&#39;4 c&#39;4 c&#39;4&quot;)
+        &gt;&gt;&gt; handler = evans.PitchHandler(
+        ...     pitch_list=[0, 1, 2.5, 3, 4, 5.5],
+        ...     chord_boolean_vector=[0, 1, 1],
+        ...     chord_groups=[2, 4],
+        ...     forget=False,
+        ... )
+        &gt;&gt;&gt; handler(abjad.select(s).logical_ties())
+        &gt;&gt;&gt; score = abjad.Score([s])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        ...
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(s))
+            \new Staff
+            {
+                c&#39;4
+                &lt;cs&#39; dqs&#39;&gt;4
+                &lt;c&#39; ef&#39; e&#39; fqs&#39;&gt;4
+                cs&#39;4
+            }
+
+    .. container:: example
+
+        &gt;&gt;&gt; s = abjad.Staff(&quot;c&#39;4 c&#39;4 c&#39;4 c&#39;4&quot;)
+        &gt;&gt;&gt; handler = evans.PitchHandler(
+        ...     pitch_list=[0, 1, 1, 3, 4, 5.5],
+        ...     allow_chord_duplicates=True,
+        ...     chord_boolean_vector=[0, 1, 1],
+        ...     chord_groups=[2, 4],
+        ...     forget=False,
+        ... )
+        &gt;&gt;&gt; handler(abjad.select(s).logical_ties())
+        &gt;&gt;&gt; score = abjad.Score([s])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        ...
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(s))
+            \new Staff
+            {
+                c&#39;4
+                &lt;cs&#39; cs&#39;&gt;4
+                &lt;c&#39; ef&#39; e&#39; fqs&#39;&gt;4
+                cs&#39;4
+            }
+
+    .. container:: example
+
+        &gt;&gt;&gt; s = abjad.Staff(&quot;c&#39;4 c&#39;4 c&#39;4 c&#39;4&quot;)
+        &gt;&gt;&gt; handler = evans.PitchHandler(
+        ...     pitch_list=[1, fractions.Fraction(9, 4), 3, 4],
+        ...     forget=False,
+        ... )
+        &gt;&gt;&gt; handler(abjad.select(s).logical_ties())
+        &gt;&gt;&gt; score = abjad.Score([s])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score, abjad.Block(name=&quot;layout&quot;)],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        &gt;&gt;&gt; style = &#39;&quot;dodecaphonic&quot;&#39;
+        &gt;&gt;&gt; file.layout_block.items.append(fr&quot;\accidentalStyle {style}&quot;)
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(s))
+            \new Staff
+            {
+                cs&#39;4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \one-eighth-sharp-markup
+                d&#39;4
+                ef&#39;4
+                e&#39;4
+            }
+
+    .. container:: example
+
+        &gt;&gt;&gt; s = abjad.Staff(&quot;c&#39;4 c&#39;4 c&#39;4 c&#39;4&quot;)
+        &gt;&gt;&gt; handler = evans.PitchHandler(
+        ...     pitch_list=[1, [fractions.Fraction(4, 3), 4], 5, fractions.Fraction(37, 6)],
+        ...     allow_chord_duplicates=True,
+        ...     forget=False,
+        ... )
+        &gt;&gt;&gt; handler(abjad.select(s).logical_ties())
+        &gt;&gt;&gt; score = abjad.Score([s])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score, abjad.Block(name=&quot;layout&quot;)],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        &gt;&gt;&gt; style = &#39;&quot;dodecaphonic&quot;&#39;
+        &gt;&gt;&gt; file.layout_block.items.append(fr&quot;\accidentalStyle {style}&quot;)
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(s))
+            \new Staff
+            {
+                cs&#39;4
+                &lt;
+                    \tweak Accidental.stencil #ly:text-interface::print
+                    \tweak Accidental.text \one-third-flat-markup
+                    df&#39;
+                    e&#39;
+                &gt;4
+                f&#39;4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \five-twelfths-flat-markup
+                gf&#39;4
+            }
+
+    .. container:: example
+
+        &gt;&gt;&gt; s = abjad.Staff(&quot;c&#39;4 c&#39;4 c&#39;4 c&#39;4&quot;)
+        &gt;&gt;&gt; handler = evans.PitchHandler(
+        ...      pitch_list=[
+        ...         fractions.Fraction(3, 4),
+        ...         [
+        ...             fractions.Fraction(25, 2),
+        ...             fractions.Fraction(4, 3),
+        ...         ],
+        ...         2,
+        ...         fractions.Fraction(23, 4),
+        ...     ],
+        ...     forget=False,
+        ...     allow_chord_duplicates=True,
+        ... )
+        &gt;&gt;&gt; handler(s)
+        &gt;&gt;&gt; score = abjad.Score([s])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score, abjad.Block(name=&quot;layout&quot;)],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        &gt;&gt;&gt; style = &#39;&quot;dodecaphonic&quot;&#39;
+        &gt;&gt;&gt; file.layout_block.items.append(fr&quot;\accidentalStyle {style}&quot;)
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(s))
+            \new Staff
+            {
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \three-eighths-sharp-markup
+                c&#39;4
+                &lt;
+                    \tweak Accidental.stencil #ly:text-interface::print
+                    \tweak Accidental.text \one-third-flat-markup
+                    df&#39;
+                    cqs&#39;&#39;
+                &gt;4
+                d&#39;4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \three-eighths-sharp-markup
+                f&#39;4
+            }
+
+    .. container:: example
+
+        &gt;&gt;&gt; pitch_set = microtones.PitchSegment([0, Fraction(3, 2), 7, Fraction(19, 4)])
+        &gt;&gt;&gt; pitch_set = pitch_set + pitch_set.invert(2).multiply(Fraction(5, 4))
+        &gt;&gt;&gt; pitch_set = pitch_set + pitch_set.retrograde().rotate(3).transpose(Fraction(13, 2))
+        &gt;&gt;&gt; pitch_set = microtones.PitchSegment([evans.to_nearest_eighth_tone(_) for _ in pitch_set])
+        &gt;&gt;&gt; notes = [abjad.Note() for _ in pitch_set]
+        &gt;&gt;&gt; staff = abjad.Staff(notes)
+        &gt;&gt;&gt; handler = evans.PitchHandler(
+        ...     pitch_list=[_ for _ in pitch_set],
+        ...     forget=False,
+        ... )
+        &gt;&gt;&gt; handler(staff)
+        &gt;&gt;&gt; score = abjad.Score([staff])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score, abjad.Block(name=&quot;layout&quot;)],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        &gt;&gt;&gt; style = &#39;&quot;dodecaphonic&quot;&#39;
+        &gt;&gt;&gt; file.layout_block.items.append(fr&quot;\accidentalStyle {style}&quot;)
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(staff))
+            \new Staff
+            {
+                c&#39;4
+                dqf&#39;4
+                g&#39;4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \three-eighths-sharp-markup
+                e&#39;4
+                f&#39;4
+                ef&#39;4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \three-eighths-flat-markup
+                a4
+                b4
+                bqs&#39;4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \one-eighth-sharp-markup
+                b&#39;4
+                dqf&#39;&#39;4
+                af&#39;4
+                gqf&#39;4
+                fqs&#39;4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \three-eighths-sharp-markup
+                d&#39;4
+                aqs&#39;4
+            }
+
+    .. container:: example
+
+        &gt;&gt;&gt; pitch_segment = microtones.PitchSegment([0, Fraction(3, 2), 7, Fraction(19, 4)])
+        &gt;&gt;&gt; pitch_segment = pitch_segment + pitch_segment.invert(2).multiply(Fraction(5, 4))
+        &gt;&gt;&gt; pitch_segment = pitch_segment + pitch_segment.retrograde().rotate(3).transpose(Fraction(13, 2))
+        &gt;&gt;&gt; pitch_segment = microtones.PitchSegment([evans.to_nearest_eighth_tone(_) for _ in pitch_segment])
+        &gt;&gt;&gt; notes = [abjad.Note() for _ in pitch_segment]
+        &gt;&gt;&gt; staff = abjad.Staff(notes)
+        &gt;&gt;&gt; handler = evans.PitchHandler(
+        ...     pitch_list=[_ for _ in pitch_set],
+        ...     apply_all=True,
+        ...     forget=False,
+        ... )
+        &gt;&gt;&gt; handler(staff)
+        &gt;&gt;&gt; score = abjad.Score([staff])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score, abjad.Block(name=&quot;layout&quot;)],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        &gt;&gt;&gt; style = &#39;&quot;dodecaphonic&quot;&#39;
+        &gt;&gt;&gt; file.layout_block.items.append(fr&quot;\accidentalStyle {style}&quot;)
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(staff))
+            \new Staff
+            {
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \abjad-natural-markup
+                c&#39;4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \one-quarter-flat-markup
+                df&#39;4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \abjad-natural-markup
+                g&#39;4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \three-eighths-sharp-markup
+                e&#39;4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \abjad-natural-markup
+                f&#39;4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \abjad-flat-markup
+                ef&#39;4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \three-eighths-flat-markup
+                a4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \abjad-natural-markup
+                b4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \one-quarter-sharp-markup
+                b&#39;4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \one-eighth-sharp-markup
+                b&#39;4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \one-quarter-flat-markup
+                df&#39;&#39;4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \abjad-flat-markup
+                af&#39;4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \one-quarter-flat-markup
+                gf&#39;4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \one-quarter-sharp-markup
+                f&#39;4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \three-eighths-sharp-markup
+                d&#39;4
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \one-quarter-sharp-markup
+                a&#39;4
+            }
+
+    .. container:: example
+
+        &gt;&gt;&gt; ratio_segment = microtones.RatioSegment([1, Fraction(3, 2), Fraction(5, 4)])
+        &gt;&gt;&gt; ratio_segment = ratio_segment + ratio_segment.invert(2).multiply(Fraction(5, 4))
+        &gt;&gt;&gt; ratio_segment = ratio_segment + ratio_segment.retrograde().rotate(3).transpose(1)
+        &gt;&gt;&gt; notes = [abjad.Note() for _ in ratio_segment]
+        &gt;&gt;&gt; staff = abjad.Staff(notes)
+        &gt;&gt;&gt; handler = evans.PitchHandler(
+        ...     pitch_list=[_ for _ in ratio_segment],
+        ...     as_ratios=True,
+        ...     forget=False,
+        ... )
+        &gt;&gt;&gt; handler(staff)
+        &gt;&gt;&gt; score = abjad.Score([staff])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score, abjad.Block(name=&quot;layout&quot;)],
+        ...     includes=[&quot;ekmelos-ji-accidental-markups.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        &gt;&gt;&gt; style = &#39;&quot;dodecaphonic&quot;&#39;
+        &gt;&gt;&gt; file.layout_block.items.append(fr&quot;\accidentalStyle {style}&quot;)
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(staff))
+            \new Staff
+            {
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \abjad-natural  }
+                c&#39;4
+                ^ \markup \center-align { +0 }
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \abjad-natural  }
+                g&#39;4
+                ^ \markup \center-align { +2 }
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \natural-one-syntonic-comma-down  }
+                e&#39;4
+                ^ \markup \center-align { -14 }
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \natural-one-syntonic-comma-down  }
+                e&#39;&#39;&#39;4
+                ^ \markup \center-align { -14 }
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \natural-one-syntonic-comma-down  }
+                a&#39;&#39;4
+                ^ \markup \center-align { -16 }
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \abjad-natural  }
+                c&#39;&#39;&#39;4
+                ^ \markup \center-align { +0 }
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \abjad-natural  }
+                d&#39;&#39;4
+                ^ \markup \center-align { +4 }
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \natural-one-syntonic-comma-down  }
+                e&#39;&#39;4
+                ^ \markup \center-align { -14 }
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \abjad-natural  }
+                c&#39;&#39;4
+                ^ \markup \center-align { +0 }
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \natural-one-syntonic-comma-down  }
+                e&#39;&#39;&#39;4
+                ^ \markup \center-align { -14 }
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
+                d&#39;&#39;&#39;4
+                ^ \markup \center-align { C♯+39 }
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \abjad-natural  }
+                g&#39;&#39;&#39;4
+                ^ \markup \center-align { +2 }
+            }
+
+    &quot;&quot;&quot;
+
+    def __init__(  # for apply all add a sharp/flat/none keyword
+        self,
+        pitch_list=None,
+        allow_chord_duplicates=False,
+        apply_all=False,
+        apply_all_spelling=None,
+        as_ratios=False,
+        chord_boolean_vector=[0],
+        chord_groups=None,
+        forget=True,
+        to_ties=False,
+        pitch_count=-1,
+        state=None,
+        chord_boolean_count=-1,
+        chord_groups_count=-1,
+        name=&quot;Pitch Handler&quot;,
+    ):
+        self.pitch_list = pitch_list
+        self.allow_chord_duplicates = allow_chord_duplicates
+        self.apply_all = apply_all
+        self.apply_all_spelling = apply_all_spelling
+        self.as_ratios = as_ratios
+        self.chord_boolean_vector = chord_boolean_vector
+        self.chord_groups = chord_groups
+        self.forget = forget
+        self.to_ties = to_ties
+        self.name = name
+        self._state = state
+        self._pitch_count = pitch_count
+        self._chord_boolean_count = chord_boolean_count
+        self._chord_groups_count = chord_groups_count
+        if self._state is not None:
+            self._pitch_count = state[&quot;pitch_count&quot;]
+            self._chord_boolean_count = state[&quot;chord_boolean_count&quot;]
+            self._chord_groups_count = state[&quot;chord_groups_count&quot;]
+        self._cyc_pitches = sequence.CyclicList(
+            self.pitch_list,
+            self.forget,
+            self._pitch_count,
+        )
+        self._cyc_chord_boolean_vector = sequence.CyclicList(
+            self.chord_boolean_vector,
+            self.forget,
+            self._chord_boolean_count,
+        )
+        self._cyc_chord_groups = sequence.CyclicList(
+            self.chord_groups,
+            self.forget,
+            self._chord_groups_count,
+        )
+
+<div class="viewcode-block" id="PitchHandler.__call__"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.PitchHandler.__call__">[docs]</a>    def __call__(self, selections):
+        if self.to_ties is True:
+            for tie in selections:
+                self._apply_pitches(tie)
+        else:
+            self._apply_pitches(selections)</div>
+
+    def _collect_pitches_durations_leaves(self, logical_ties):
+        pitches, durations, leaves = [[], [], []]
+        ties_ = logical_ties
+        if self.chord_groups is not None:
+            pitches_ = []
+            bools = self._cyc_chord_boolean_vector(r=len(ties_))
+            for tie, bool in zip(ties_, bools):
+                if 0 &lt; bool:
+                    group_size = self._cyc_chord_groups(r=1)[0]
+                    pitches_.append(self._cyc_pitches(r=group_size))
+                else:
+                    pitches_.append(self._cyc_pitches(r=1)[0])
+        else:
+            pitches_ = self._cyc_pitches(r=len(ties_))
+        for tie, pitch in zip(ties_, pitches_):
+            for leaf in tie:
+                if isinstance(pitch, list):
+                    if self.allow_chord_duplicates is False:
+                        pitch = list(set(pitch))
+                pitches.append(pitch)
+                durations.append(leaf.written_duration)
+                leaves.append(leaf)
+        return pitches, durations, leaves
+
+    def _apply_pitches(self, selections):  # get apply all to handler chords
+        if self.as_ratios is True:
+            self.apply_all = True
+        leaf_maker = abjad.LeafMaker()
+        old_ties = [tie for tie in abjad.iterate(selections).logical_ties(pitched=True)]
+        if len(old_ties) &gt; 0:
+            collect = self._collect_pitches_durations_leaves(old_ties)
+            pitches, durations, old_leaves = collect
+            microtonal_indices_to_pitch = abjad.OrderedDict()
+            for i, _ in enumerate(pitches):
+                if isinstance(_, list):
+                    _.sort()
+                    nested_indices_to_pitch = abjad.OrderedDict()
+                    for i_, sub_ in enumerate(_):
+                        if self.apply_all is False:
+                            if isinstance(sub_, str):
+                                val = abjad.NumberedPitch(sub_).number
+                            else:
+                                val = sub_
+                            if 0 &lt; val % quicktions.Fraction(1, 2):
+                                nested_indices_to_pitch[str(i_)] = sub_
+                                pitches[i][i_] = 0
+                                microtonal_indices_to_pitch[
+                                    str(i)
+                                ] = nested_indices_to_pitch
+                        else:
+                            nested_indices_to_pitch[str(i_)] = sub_
+                            pitches[i][i_] = 0
+                            microtonal_indices_to_pitch[
+                                str(i)
+                            ] = nested_indices_to_pitch
+                else:
+                    if self.apply_all is False:
+                        if isinstance(_, str):
+                            val = abjad.NumberedPitch(_).number
+                        else:
+                            val = _
+                        if 0 &lt; val % quicktions.Fraction(1, 2):
+                            microtonal_indices_to_pitch[str(i)] = _
+                            pitches[i] = 0
+                    else:
+                        microtonal_indices_to_pitch[str(i)] = _
+                        pitches[i] = 0
+            for pitch_index, pitch_value in enumerate(
+                pitches
+            ):  # find way to add cent when 1/4 is false
+                if isinstance(pitch_value, JIPitch):
+                    pitches[pitch_index] = pitch_value.pitch
+            if self.apply_all is False:
+                new_leaves = [leaf for leaf in leaf_maker(pitches, durations)]
+            else:
+                new_leaves = old_leaves
+                for i, pair in enumerate(
+                    zip(new_leaves, microtonal_indices_to_pitch.values())
+                ):
+                    leaf, pitch = pair
+                    if isinstance(pitch, abjad.OrderedDict):
+                        replacement_chord = abjad.Chord()
+                        replacement_chord.written_duration = leaf.written_duration
+                        replacement_chord.note_heads = abjad.NoteHeadList(
+                            [abjad.NoteHead(leaf.written_pitch) for _ in pair[1]]
+                        )
+                        indicators = abjad.get.indicators(leaf)
+                        before_grace = abjad.get.before_grace_container(leaf)
+                        for indicator in indicators:
+                            abjad.attach(indicator, replacement_chord)
+                        if before_grace is not None:
+                            abjad.attach(before_grace, replacement_chord)
+                        abjad.mutate.replace(leaf, replacement_chord)
+                        new_leaves[i] = replacement_chord
+            for index in microtonal_indices_to_pitch:
+                for leaf in abjad.select(new_leaves[int(index)]).leaves():
+                    leaf_annotation_pitch = [_.hertz for _ in abjad.get.pitches(leaf)]
+                    leaf_annotation_ratio = []
+                    if isinstance(leaf, abjad.Chord):
+                        marks = []
+                        heads = leaf.note_heads
+                        for sub_index in microtonal_indices_to_pitch[index]:
+                            head = heads[int(sub_index)]
+                            if self.as_ratios is False:
+                                microtones.apply_alteration(
+                                    head,
+                                    microtonal_indices_to_pitch[index][sub_index],
+                                    spell=self.apply_all_spelling,
+                                )
+                            else:
+                                ratio = microtonal_indices_to_pitch[index][sub_index]
+                                factors = []
+                                for _ in microtones.ji._prime_factors(
+                                    quicktions.Fraction(ratio).numerator
+                                ):
+                                    factors.append(_)
+                                for _ in microtones.ji._prime_factors(
+                                    quicktions.Fraction(ratio).denominator
+                                ):
+                                    factors.append(_)
+                                over_23 = 0
+                                if 0 &lt; len(factors):
+                                    over_23 = max(factors)
+                                if 23 &lt; over_23:
+                                    marks.append(return_cent_markup(head, ratio))
+                                    tune_to_ratio(head, ratio)
+                                    leaf_annotation_ratio.append(ratio)
+                                else:
+                                    marks.append(
+                                        microtones.return_cent_deviation_markup(
+                                            ratio, head.written_pitch
+                                        )
+                                    )
+                                    microtones.tune_to_ratio(head, ratio)
+                                    leaf_annotation_ratio.append(ratio)
+                        if 0 &lt; len(marks):
+                            marks_strings = r&quot;&quot;
+                            for marks_string in marks[::-1]:
+                                marks_strings += fr&quot;{marks_string.contents[0][24:-1]}&quot;
+                            column = abjad.Markup(
+                                fr&quot;\center-column {{ {marks_strings} }}&quot;,
+                                literal=True,
+                            )
+                            m = abjad.Markup(
+                                fr&quot;\markup \center-align {column}&quot;,
+                                direction=abjad.Up,
+                                literal=True,
+                            )
+                            if leaf is abjad.get.logical_tie(leaf).head:
+                                abjad.attach(m, leaf)
+                    else:
+                        if self.as_ratios is False:
+                            temp = microtonal_indices_to_pitch[index]
+                            if isinstance(temp, abjad.OrderedDict):
+                                temp = microtonal_indices_to_pitch[index][&quot;1&quot;]
+                            microtones.apply_alteration(
+                                leaf.note_head,
+                                temp,
+                                spell=self.apply_all_spelling,
+                            )
+                        else:
+                            temp = microtonal_indices_to_pitch[index]
+                            if isinstance(temp, abjad.OrderedDict):
+                                temp = microtonal_indices_to_pitch[index][&quot;1&quot;]
+                            factors = []
+                            for _ in microtones.ji._prime_factors(
+                                quicktions.Fraction(temp).numerator
+                            ):
+                                factors.append(_)
+                            for _ in microtones.ji._prime_factors(
+                                quicktions.Fraction(temp).denominator
+                            ):
+                                factors.append(_)
+                            over_23 = 0
+                            if 0 &lt; len(factors):
+                                over_23 = max(factors)
+                            if 23 &lt; over_23:
+                                m = return_cent_markup(leaf.note_head, temp)
+                                tune_to_ratio(leaf.note_head, temp)
+                                leaf_annotation_ratio.append(temp)
+                            else:
+                                m = microtones.return_cent_deviation_markup(
+                                    temp,
+                                    leaf.note_head.written_pitch,
+                                )
+                                microtones.tune_to_ratio(
+                                    leaf.note_head,
+                                    temp,
+                                )
+                                leaf_annotation_ratio.append(temp)
+                            if leaf is abjad.get.logical_tie(leaf).head:
+                                abjad.attach(m, leaf)
+                    annotation_string = [
+                        f&quot;{x} * {y}&quot;
+                        for x, y in zip(leaf_annotation_pitch, leaf_annotation_ratio)
+                    ]
+                    abjad.annotate(leaf, &quot;ratio&quot;, annotation_string)
+            if self.apply_all is False:
+                for old_leaf, new_leaf in zip(old_leaves, new_leaves):
+                    indicators = abjad.get.indicators(old_leaf)
+                    before_grace = abjad.get.before_grace_container(old_leaf)
+                    for indicator in indicators:
+                        abjad.attach(indicator, new_leaf)
+                    if before_grace is not None:
+                        abjad.attach(before_grace, new_leaf)
+                    abjad.mutate.replace(old_leaf, new_leaf)
+
+<div class="viewcode-block" id="PitchHandler.make_persistent_copy"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.PitchHandler.make_persistent_copy">[docs]</a>    def make_persistent_copy(self, state_dict):
+        copied_handler = type(self)(
+            pitch_list=self.pitch_list,
+            allow_chord_duplicates=self.allow_chord_duplicates,
+            apply_all=self.apply_all,
+            apply_all_spelling=self.apply_all_spelling,
+            as_ratios=self.as_ratios,
+            chord_boolean_vector=self.chord_boolean_vector,
+            chord_groups=self.chord_groups,
+            forget=self.forget,
+            to_ties=self.to_ties,
+            state=state_dict,
+            name=self.name,
+        )
+        return copied_handler</div>
+
+<div class="viewcode-block" id="PitchHandler.name"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.PitchHandler.name">[docs]</a>    def name(self):
+        return self.name</div>
+
+<div class="viewcode-block" id="PitchHandler.state"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.PitchHandler.state">[docs]</a>    def state(self):
+        return abjad.OrderedDict(
+            [
+                (&quot;pitch_count&quot;, self._cyc_pitches.state()),
+                (&quot;chord_boolean_count&quot;, self._cyc_chord_boolean_vector.state()),
+                (&quot;chord_groups_count&quot;, self._cyc_chord_groups.state()),
+            ]
+        )</div></div>
+
+
+<div class="viewcode-block" id="RhythmHandler"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.RhythmHandler">[docs]</a>class RhythmHandler(Handler):
+    r&quot;&quot;&quot;
+    Rhythm Handler
+
+    .. container:: example
+
+        &gt;&gt;&gt; spans = abjad.TimespanList(
+        ...     [
+        ...         abjad.Timespan(0, 1),
+        ...         abjad.Timespan(1, 2),
+        ...     ]
+        ... )
+        &gt;&gt;&gt; maker = rmakers.stack(
+        ...     rmakers.NoteRhythmMaker()
+        ... )
+        &gt;&gt;&gt; handler = evans.RhythmHandler(rmaker=maker)
+        &gt;&gt;&gt; staff = abjad.Staff()
+        &gt;&gt;&gt; for span in spans:
+        ...     selections = maker([span.duration])
+        ...     staff.extend(selections)
+        ...
+        &gt;&gt;&gt; score = abjad.Score([staff])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        ...
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(staff))
+            \new Staff
+            {
+                c&#39;1
+                c&#39;1
+            }
+
+    &quot;&quot;&quot;
+
+    def __init__(self, rmaker, forget=True, state=None, name=&quot;Rhythm Handler&quot;):
+        self.rmaker = rmaker
+        self.forget = forget
+        self._input_state = state
+        self.state = self.rmaker.state
+        self.name = name
+
+<div class="viewcode-block" id="RhythmHandler.__call__"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.RhythmHandler.__call__">[docs]</a>    def __call__(self, durations):
+        return self._make_music(durations)</div>
+
+    def _make_basic_rhythm(self, durations):
+        if self.forget is False:
+            if self._input_state is not None:
+                self.state = self._input_state
+                selections = self.rmaker(durations, previous_state=self.state)
+                self.state = self.rmaker.state
+                self._input_state = None
+            else:
+                selections = self.rmaker(durations, previous_state=self.rmaker.state)
+                self.state = self.rmaker.state
+        else:
+            selections = self.rmaker(durations)
+        return selections
+
+    def _make_music(self, durations):
+        selections = self._make_basic_rhythm(durations)
+        return selections
+
+<div class="viewcode-block" id="RhythmHandler.make_persistent_copy"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.RhythmHandler.make_persistent_copy">[docs]</a>    def make_persistent_copy(self, state_dict):
+        new_handler = type(self)(
+            rmaker=self.rmaker,
+            forget=self.forget,
+            state=state_dict,
+            name=self.name,
+        )
+        return new_handler</div>
+
+<div class="viewcode-block" id="RhythmHandler.name"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.RhythmHandler.name">[docs]</a>    def name(self):
+        return self.name</div>
+
+<div class="viewcode-block" id="RhythmHandler.return_state"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.RhythmHandler.return_state">[docs]</a>    def return_state(self):
+        return abjad.OrderedDict([(&quot;state&quot;, self.rmaker.state)])</div></div>
+
+
+# add style option for \slurDotted and \slurDashed and \slurSolid
+<div class="viewcode-block" id="SlurHandler"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.SlurHandler">[docs]</a>class SlurHandler(Handler):
+    r&quot;&quot;&quot;
+    Slur Handler
+
+    .. container:: example
+
+        &gt;&gt;&gt; staff = abjad.Staff(&quot;c&#39;4 c&#39;4 c&#39;4 c&#39;4&quot;)
+        &gt;&gt;&gt; handler = evans.SlurHandler()
+        &gt;&gt;&gt; handler(staff)
+        &gt;&gt;&gt; score = abjad.Score([staff])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        ...
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(staff))
+            \new Staff
+            {
+                c&#39;4
+                (
+                c&#39;4
+                c&#39;4
+                c&#39;4
+                )
+            }
+
+    &quot;&quot;&quot;
+
+    def __init__(
+        self,
+        apply_slur_to=&quot;runs&quot;,
+        boolean_vector=[1],
+        forget=False,
+        count=-1,
+        name=&quot;Slur Handler&quot;,
+    ):
+        self.apply_slur_to = apply_slur_to
+        self._count = count
+        self.forget = forget
+        self.boolean_vector = sequence.CyclicList(
+            boolean_vector, self.forget, self._count
+        )
+        self.name = name
+
+<div class="viewcode-block" id="SlurHandler.__call__"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.SlurHandler.__call__">[docs]</a>    def __call__(self, selections):
+        self.add_slurs(selections)</div>
+
+<div class="viewcode-block" id="SlurHandler.add_slurs"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.SlurHandler.add_slurs">[docs]</a>    def add_slurs(self, selections):
+        if self.apply_slur_to == &quot;selections&quot;:
+            if len(abjad.select(selections).logical_ties(pitched=True)) &lt; 2:
+                pass
+            if self.boolean_vector(r=1)[0] == 1:
+                abjad.slur(selections[:])
+            else:
+                pass
+        elif self.apply_slur_to == &quot;runs&quot;:
+            for run in abjad.select(selections).runs():
+                if len(abjad.select(run).logical_ties()) &lt; 2:
+                    continue
+                if self.boolean_vector(r=1)[0] == 1:
+                    abjad.slur(run[:])
+                else:
+                    continue
+        else:
+            pass</div>
+
+<div class="viewcode-block" id="SlurHandler.name"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.SlurHandler.name">[docs]</a>    def name(self):
+        return self.name</div>
+
+<div class="viewcode-block" id="SlurHandler.state"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.SlurHandler.state">[docs]</a>    def state(self):
+        return abjad.OrderedDict([(&quot;count&quot;, self.boolean_vector.state())])</div></div>
+
+
+<div class="viewcode-block" id="TempoSpannerHandler"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.TempoSpannerHandler">[docs]</a>class TempoSpannerHandler(Handler):
+    r&quot;&quot;&quot;
+    Tempo Spanner Handler
+
+    ..  container:: example
+
+        &gt;&gt;&gt; s = abjad.Staff(&quot;s4 s4 s4 s4&quot;)
+        &gt;&gt;&gt; handler = evans.TempoSpannerHandler(
+        ...     tempo_list=[(3, 0, 1, &quot;87&quot;), (3, 0, 1, &quot;95&quot;)],
+        ...     boolean_vector=[1],
+        ...     padding=4,
+        ...     staff_padding=2,
+        ...     forget=False,
+        ... )
+        &gt;&gt;&gt; handler(s[:-1])
+        &gt;&gt;&gt; score = abjad.Score([s])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[
+        ...         &quot;abjad.ily&quot;,
+        ...         &quot;/Users/evansdsg2/evans/lilypond/evans-spanners.ily&quot;,
+        ...     ],
+        ...     global_staff_size=16,
+        ... )
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(s))
+            \new Staff
+            {
+                s4
+                - \abjad-dashed-line-with-arrow
+                - \baca-metronome-mark-spanner-left-text 3 0 1 &quot;87&quot;
+                - \tweak padding #4
+                - \tweak staff-padding #2
+                - \tweak font-size #2
+                \bacaStartTextSpanMM
+                s4
+                s4
+                \bacaStopTextSpanMM
+                - \abjad-invisible-line
+                - \baca-metronome-mark-spanner-left-text 3 0 1 &quot;95&quot;
+                - \tweak padding #4
+                - \tweak staff-padding #2
+                - \tweak font-size #2
+                \bacaStartTextSpanMM
+                s4
+                \bacaStopTextSpanMM
+            }
+
+    &quot;&quot;&quot;
+
+    def __init__(
+        self,
+        tempo_list=[(3, 0, 1, &quot;87&quot;), (3, 0, 1, &quot;95&quot;)],
+        boolean_vector=[1],
+        padding=4,
+        staff_padding=2,
+        font_size=2,
+        forget=False,
+        tempo_count=-1,
+        bool_count=-1,
+        name=&quot;Tempo Spanner Handler&quot;,
+    ):
+        self._tempo_count = tempo_count
+        self._bool_count = bool_count
+        self.padding = padding
+        self.forget = forget
+        self.staff_padding = staff_padding
+        self.font_size = font_size
+        self.tempo_list = sequence.CyclicList(
+            tempo_list, self.forget, self._tempo_count
+        )
+        self.boolean_vector = sequence.CyclicList(
+            boolean_vector, self.forget, self._bool_count
+        )
+        self.name = name
+
+<div class="viewcode-block" id="TempoSpannerHandler.__call__"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.TempoSpannerHandler.__call__">[docs]</a>    def __call__(self, selections):
+        self.add_spanner(selections)</div>
+
+<div class="viewcode-block" id="TempoSpannerHandler.add_spanner"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.TempoSpannerHandler.add_spanner">[docs]</a>    def add_spanner(self, selections):
+        ties = abjad.select(selections).logical_ties()
+        value = self.boolean_vector(r=1)[0]
+        if value == 1:
+            start_temp = self.tempo_list(r=1)[0]
+            stop_temp = self.tempo_list(r=1)[0]
+            start_literal = abjad.LilyPondLiteral(
+                [
+                    r&quot;- \abjad-dashed-line-with-arrow&quot;,
+                    r&quot;- \baca-metronome-mark-spanner-left-text &quot;
+                    + f&quot;{start_temp[0]} {start_temp[1]} {start_temp[2]}&quot;
+                    + f&#39; &quot;{start_temp[3]}&quot;&#39;,
+                    r&quot;- \tweak padding #&quot; + f&quot;{self.padding}&quot;,
+                    r&quot;- \tweak staff-padding #&quot; + f&quot;{self.staff_padding}&quot;,
+                    r&quot;- \tweak font-size #&quot; + f&quot;{self.font_size}&quot;,
+                    r&quot;\bacaStartTextSpanMM&quot;,
+                ],
+                format_slot=&quot;after&quot;,
+            )
+            stop_literal = abjad.LilyPondLiteral(
+                [
+                    r&quot;\bacaStopTextSpanMM&quot;,
+                    r&quot;- \abjad-invisible-line&quot;,
+                    r&quot;- \baca-metronome-mark-spanner-left-text &quot;
+                    + f&#39;{stop_temp[0]} {stop_temp[1]} {stop_temp[2]} &quot;{stop_temp[3]}&quot;&#39;,
+                    r&quot;- \tweak padding #&quot; + f&quot;{self.padding}&quot;,
+                    r&quot;- \tweak staff-padding #&quot; + f&quot;{self.staff_padding}&quot;,
+                    r&quot;- \tweak font-size #&quot; + f&quot;{self.font_size}&quot;,
+                    r&quot;\bacaStartTextSpanMM&quot;,
+                ],
+                format_slot=&quot;after&quot;,
+            )
+            stopper = abjad.LilyPondLiteral(r&quot;\bacaStopTextSpanMM&quot;, format_slot=&quot;after&quot;)
+            abjad.attach(start_literal, abjad.select(ties).leaves()[0])
+            abjad.attach(stop_literal, abjad.select(ties).leaves()[-1])
+            abjad.attach(stopper, abjad.get.leaf(abjad.select(ties).leaves()[-1], 1))</div>
+
+<div class="viewcode-block" id="TempoSpannerHandler.name"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.TempoSpannerHandler.name">[docs]</a>    def name(self):
+        return self.name</div>
+
+<div class="viewcode-block" id="TempoSpannerHandler.state"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.TempoSpannerHandler.state">[docs]</a>    def state(self):
+        return abjad.OrderedDict([(&quot;count&quot;, self.boolean_vector.state())])</div></div>
+
+
+<div class="viewcode-block" id="TextSpanHandler"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.TextSpanHandler">[docs]</a>class TextSpanHandler(Handler):
+    r&quot;&quot;&quot;
+    Text Span Handler
+
+    .. container:: example
+
+        &gt;&gt;&gt; staff = abjad.Staff(&quot;c&#39;4 c&#39;4 c&#39;4 r4&quot;)
+        &gt;&gt;&gt; handler = evans.TextSpanHandler(
+        ...     span_one_positions=[&quot;pont.&quot;, &quot;tast.&quot;],
+        ...     span_one_style=&quot;dashed-line&quot;,
+        ...     span_one_padding=1.5,
+        ...     attach_span_one_to=&quot;bounds&quot;,
+        ... )
+        &gt;&gt;&gt; handler(staff)
+        &gt;&gt;&gt; score = abjad.Score([staff])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(staff))
+            \new Staff
+            {
+                c&#39;4
+                - \abjad-dashed-line-with-arrow
+                - \tweak bound-details.left.text \markup \concat { \upright pont. \hspace #0.5 }
+                - \tweak bound-details.right.padding 1.4
+                - \tweak staff-padding #1.5
+                \startTextSpanOne
+                c&#39;4
+                c&#39;4
+                \stopTextSpanOne
+                - \abjad-dashed-line-with-hook
+                - \tweak bound-details.left.text \markup \concat { \upright pont. \hspace #0.5 }
+                - \tweak bound-details.right.padding 3
+                - \tweak staff-padding #1.5
+                \startTextSpanOne
+                r4
+                \stopTextSpanOne
+            }
+
+    &quot;&quot;&quot;
+
+    def __init__(
+        self,
+        span_one_positions=None,
+        span_one_style=None,
+        span_one_padding=None,
+        attach_span_one_to=None,
+        span_two_positions=None,
+        span_two_style=None,
+        span_two_padding=None,
+        attach_span_two_to=None,
+        span_three_positions=None,
+        span_three_style=None,
+        span_three_padding=None,
+        attach_span_three_to=None,
+        hooks=True,
+        forget=True,
+        count_1=-1,
+        count_2=-1,
+        count_3=-1,
+        name=&quot;TextSpan Handler&quot;,
+    ):
+        self.span_one_positions = span_one_positions
+        self.span_one_style = span_one_style
+        self.span_one_padding = span_one_padding
+        self.attach_span_one_to = attach_span_one_to
+        self.span_two_positions = span_two_positions
+        self.span_two_style = span_two_style
+        self.span_two_padding = span_two_padding
+        self.attach_span_two_to = attach_span_two_to
+        self.span_three_positions = span_three_positions
+        self.span_three_style = span_three_style
+        self.span_three_padding = span_three_padding
+        self.attach_span_three_to = attach_span_three_to
+        self.hooks = hooks
+        self.forget = forget
+        self._count_1 = count_1
+        self._count_2 = count_2
+        self._count_3 = count_3
+        self._cyc_span_one_positions = sequence.CyclicList(
+            span_one_positions, self.forget, self._count_1
+        )
+        self._cyc_span_two_positions = sequence.CyclicList(
+            span_two_positions, self.forget, self._count_2
+        )
+        self._cyc_span_three_positions = sequence.CyclicList(
+            span_three_positions, self.forget, self._count_3
+        )
+        self.name = name
+
+<div class="viewcode-block" id="TextSpanHandler.__call__"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.TextSpanHandler.__call__">[docs]</a>    def __call__(self, selections):
+        self._add_spanners(selections)</div>
+
+    def _add_spanners(self, selections):
+        if self.attach_span_one_to == &quot;bounds&quot;:
+            self._apply_position_and_span_to_bounds(
+                selections,
+                self._cyc_span_one_positions,
+                self.span_one_style,
+                r&quot;One&quot;,
+                self.span_one_padding,
+            )
+        elif self.attach_span_one_to == &quot;leaves&quot;:
+            self._apply_position_and_span_to_leaves(
+                selections,
+                self._cyc_span_one_positions,
+                self.span_one_style,
+                r&quot;One&quot;,
+                self.span_one_padding,
+            )
+        elif self.attach_span_one_to == &quot;left&quot;:
+            self._apply_position_and_span_to_left(
+                selections,
+                self._cyc_span_one_positions,
+                self.span_one_style,
+                r&quot;One&quot;,
+                self.span_one_padding,
+            )
+        else:
+            pass
+        if self.attach_span_two_to == &quot;bounds&quot;:
+            self._apply_position_and_span_to_bounds(
+                selections,
+                self._cyc_span_two_positions,
+                self.span_two_style,
+                r&quot;Two&quot;,
+                self.span_two_padding,
+            )
+        elif self.attach_span_two_to == &quot;leaves&quot;:
+            self._apply_position_and_span_to_leaves(
+                selections,
+                self._cyc_span_two_positions,
+                self.span_two_style,
+                r&quot;Two&quot;,
+                self.span_two_padding,
+            )
+        elif self.attach_span_two_to == &quot;left&quot;:
+            self._apply_position_and_span_to_left(
+                selections,
+                self._cyc_span_two_positions,
+                self.span_two_style,
+                r&quot;Two&quot;,
+                self.span_two_padding,
+            )
+        else:
+            pass
+        if self.attach_span_three_to == &quot;bounds&quot;:
+            self._apply_position_and_span_to_bounds(
+                selections,
+                self._cyc_span_three_positions,
+                self.span_three_style,
+                r&quot;Three&quot;,
+                self.span_three_padding,
+            )
+        elif self.attach_span_three_to == &quot;leaves&quot;:
+            self._apply_position_and_span_to_leaves(
+                selections,
+                self._cyc_span_three_positions,
+                self.span_three_style,
+                r&quot;Three&quot;,
+                self.span_three_padding,
+            )
+        elif self.attach_span_three_to == &quot;left&quot;:
+            self._apply_position_and_span_to_left(
+                selections,
+                self._cyc_span_three_positions,
+                self.span_three_style,
+                r&quot;Three&quot;,
+                self.span_three_padding,
+            )
+        else:
+            pass
+
+    def _apply_empty_spanner(self, selections, span_command):
+        first_leaf = abjad.select(selections).leaves()[0]
+        stop_indicator = abjad.StopTextSpan(command=r&quot;\stopTextSpan&quot; + span_command)
+        abjad.attach(stop_indicator, first_leaf)
+
+    def _apply_position_and_span_to_bounds(
+        self, selections, positions, style, span_command, span_padding
+    ):
+        for run in abjad.select(selections).runs():
+            if len(run) &lt; 2:
+                start_span = abjad.StartTextSpan(
+                    left_text=abjad.Markup(
+                        fr&quot;\upright {positions(r=1)[0]}&quot;, literal=True
+                    ),
+                    style=style + &quot;-with-hook&quot;,
+                    command=r&quot;\startTextSpan&quot; + span_command,
+                )
+                abjad.attach(
+                    abjad.StopTextSpan(command=r&quot;\stopTextSpan&quot; + span_command),
+                    abjad.get.leaf(run[-1], 1),
+                )
+                abjad.attach(start_span, run[0])
+                abjad.tweak(start_span).staff_padding = f&quot;#{span_padding}&quot;
+            else:
+                start_span = abjad.StartTextSpan(
+                    left_text=abjad.Markup(
+                        fr&quot;\upright {positions(r=1)[0]}&quot;, literal=True
+                    ),
+                    style=style + &quot;-with-arrow&quot;,
+                    command=r&quot;\startTextSpan&quot; + span_command,
+                    right_padding=1.4,
+                )
+                if self.hooks is True:
+                    stop_span = abjad.StartTextSpan(
+                        left_text=abjad.Markup(
+                            rf&quot;\upright {positions(r=1)[0]}&quot;, literal=True
+                        ),
+                        style=style + &quot;-with-hook&quot;,
+                        command=r&quot;\startTextSpan&quot; + span_command,
+                        right_padding=3,
+                    )
+                else:
+                    stop_span = abjad.StartTextSpan(
+                        left_text=abjad.Markup(
+                            fr&quot;\upright {positions(r=1)[0]}&quot;, literal=True
+                        ),
+                        style=&quot;invisible-line&quot;,
+                        command=r&quot;\startTextSpan&quot; + span_command,
+                        right_padding=3,
+                    )
+                abjad.attach(start_span, run[0])
+                abjad.attach(
+                    abjad.StopTextSpan(command=r&quot;\stopTextSpan&quot; + span_command), run[-1]
+                )
+                abjad.attach(stop_span, run[-1])
+                abjad.attach(
+                    abjad.StopTextSpan(command=r&quot;\stopTextSpan&quot; + span_command),
+                    abjad.get.leaf(run[-1], 1),
+                )
+                abjad.tweak(start_span).staff_padding = f&quot;#{span_padding}&quot;
+                abjad.tweak(stop_span).staff_padding = f&quot;#{span_padding}&quot;
+
+    def _apply_position_and_span_to_leaves(
+        self, selections, positions, style, span_command, span_padding
+    ):
+        for run in abjad.select(selections).runs():
+            ties = abjad.select(run).logical_ties(pitched=True)
+            following_leaf = abjad.get.leaf(ties[-1][-1], 1)
+            distance = len(ties) + 1
+            start_strings = [positions(r=1)[0] for _ in range(distance)]
+            for i, start_string in enumerate(start_strings[:-1]):
+                if all(start_string[_].isdigit() for _ in (0, -1)):
+                    if quicktions.Fraction(
+                        int(start_strings[i][0]), int(start_strings[i][-1])
+                    ) &gt; quicktions.Fraction(
+                        int(start_strings[i + 1][0]), int(start_strings[i + 1][-1])
+                    ):
+                        start_strings[
+                            i
+                        ] = fr&quot;&quot;&quot;\center-column {{ \center-align \vcenter \musicglyph \evans-upbow \vspace #0.2 \upright \fraction {start_string[0]} {start_string[-1]} }}&quot;&quot;&quot;
+                    elif quicktions.Fraction(
+                        int(start_strings[i][0]), int(start_strings[i][-1])
+                    ) &lt; quicktions.Fraction(
+                        int(start_strings[i + 1][0]), int(start_strings[i + 1][-1])
+                    ):
+                        start_strings[
+                            i
+                        ] = fr&quot;&quot;&quot;\center-column {{ \center-align \vcenter \musicglyph \evans-downbow \vspace #0.2 \upright \fraction {start_string[0]} {start_string[-1]} }}&quot;&quot;&quot;
+                    else:
+                        start_strings[
+                            i
+                        ] = fr&quot;&quot;&quot;\center-column {{ \center-align \vcenter \upright \fraction {start_string[0]} {start_string[-1]} }}&quot;&quot;&quot;
+                else:
+                    start_strings[
+                        i
+                    ] = fr&quot;&quot;&quot;\center-column {{ \upright \center-align \vcenter {start_string} }}&quot;&quot;&quot;
+            start_indicators = [
+                abjad.StartTextSpan(
+                    left_text=abjad.Markup(f&quot;{start_string}&quot;, literal=True),
+                    style=fr&quot;{style}-with-arrow&quot;,
+                    command=r&quot;\startTextSpan&quot; + span_command,
+                    right_padding=1.4,
+                )
+                for start_string in start_strings
+            ]
+            final_indicator = abjad.StartTextSpan()
+            if all(start_string[-1].isdigit() for _ in (0, -1)):
+                final_indicator = abjad.StartTextSpan(
+                    left_text=abjad.Markup(
+                        fr&quot;&quot;&quot;\center-column {{ \center-align \vcenter \upright \fraction {start_strings[-1][0]} {start_strings[-1][-1]} }}&quot;&quot;&quot;,
+                        literal=True,
+                    ),
+                    style=r&quot;invisible-line&quot;,
+                    command=r&quot;\startTextSpan&quot; + span_command,
+                    right_padding=3,
+                )
+            else:
+                final_indicator = abjad.StartTextSpan(
+                    left_text=abjad.Markup(
+                        fr&quot;&quot;&quot;\center-column {{ \center-align \upright \vcenter {start_strings[-1]} }}&quot;&quot;&quot;,
+                        literal=True,
+                    ),
+                    style=r&quot;invisible-line&quot;,
+                    command=r&quot;\startTextSpan&quot; + span_command,
+                    right_padding=3,
+                )
+            for indicator in start_indicators:
+                abjad.tweak(indicator).staff_padding = f&quot;#{span_padding}&quot;
+            abjad.tweak(final_indicator).staff_padding = f&quot;#{span_padding}&quot;
+            abjad.attach(start_indicators[0], ties[0][0])
+            for pair in zip(ties[1:], start_indicators[1:]):
+                tie, start_indicator = pair
+                abjad.attach(
+                    abjad.StopTextSpan(command=r&quot;\stopTextSpan&quot; + span_command), tie[0]
+                )
+                abjad.attach(start_indicator, tie[0])
+            abjad.attach(
+                abjad.StopTextSpan(command=r&quot;\stopTextSpan&quot; + span_command),
+                following_leaf,
+            )
+            abjad.attach(final_indicator, following_leaf)
+            abjad.attach(
+                abjad.StopTextSpan(command=r&quot;\stopTextSpan&quot; + span_command),
+                abjad.get.leaf(following_leaf, 1),
+            )
+
+    def _apply_position_and_span_to_left(
+        self, selections, positions, style, span_command, span_padding
+    ):
+        runs = abjad.select(selections).runs()
+        start_strings = [positions(r=1)[0] for _ in runs]
+        start_indicators = [
+            abjad.StartTextSpan(
+                left_text=abjad.Markup(fr&quot;\upright {start_string}&quot;, literal=True),
+                style=fr&quot;{style}-with-hook&quot;,
+                command=r&quot;\startTextSpan&quot; + span_command,
+                right_padding=3,
+            )
+            for start_string in start_strings
+        ]
+        for indicator in start_indicators:
+            abjad.tweak(indicator).staff_padding = f&quot;#{span_padding}&quot;
+        for i, pair in enumerate(zip(runs, start_indicators)):
+            run, start_indicator = pair
+            abjad.attach(start_indicator, run[0])
+            abjad.attach(
+                abjad.StopTextSpan(command=r&quot;\stopTextSpan&quot; + span_command),
+                abjad.get.leaf(run[-1], 1),
+            )
+
+<div class="viewcode-block" id="TextSpanHandler.name"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.TextSpanHandler.name">[docs]</a>    def name(self):
+        return self.name</div>
+
+<div class="viewcode-block" id="TextSpanHandler.state"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.TextSpanHandler.state">[docs]</a>    def state(self):
+        return abjad.OrderedDict(
+            [
+                (&quot;count_1&quot;, self._cyc_span_one_positions.state()),
+                (&quot;count_2&quot;, self._cyc_span_two_positions.state()),
+                (&quot;count_3&quot;, self._cyc_span_three_positions.state()),
+            ]
+        )</div></div>
+
+
+<div class="viewcode-block" id="TrillHandler"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.TrillHandler">[docs]</a>class TrillHandler(Handler):
+    r&quot;&quot;&quot;
+    Trill Handler
+
+    .. container:: example
+
+        &gt;&gt;&gt; staff = abjad.Staff(&quot;&lt;c&#39; d&#39;&gt;4 c&#39;4 c&#39;4 &lt;c&#39; d&#39;&gt;4 c&#39;4 c&#39;4 c&#39;4 c&#39;4 &quot;)
+        &gt;&gt;&gt; handler = evans.TrillHandler(boolean_vector=[0, 1], forget=False)
+        &gt;&gt;&gt; handler(staff)
+        &gt;&gt;&gt; score = abjad.Score([staff])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; file = abjad.LilyPondFile(
+        ...     items=[score],
+        ...     includes=[&quot;abjad.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        ...
+        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(staff))
+            \new Staff
+            {
+                &lt;c&#39; d&#39;&gt;4
+                c&#39;4
+                c&#39;4
+                \pitchedTrill
+                c&#39;4
+                \startTrillSpan d&#39;
+                c&#39;4
+                \stopTrillSpan
+                c&#39;4
+                c&#39;4
+                c&#39;4
+            }
+
+    &quot;&quot;&quot;
+
+    def __init__(
+        self,
+        boolean_vector=[0],
+        forget=False,
+        count=-1,
+        name=&quot;Trill Handler&quot;,
+        only_chords=False,
+    ):
+        self.forget = forget
+        self._count = count
+        self.boolean_vector = sequence.CyclicList(
+            boolean_vector, self.forget, self._count
+        )
+        self.name = name
+        self.only_chords = only_chords
+
+<div class="viewcode-block" id="TrillHandler.__call__"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.TrillHandler.__call__">[docs]</a>    def __call__(self, selections):
+        self._apply_trills(selections)</div>
+
+    def _apply_trills(self, selections):
+        ties = abjad.select(selections).logical_ties(pitched=True)
+        if self.only_chords:
+            chords = abjad.select(selections).components(abjad.Chord)
+            ties = abjad.select(chords).logical_ties(pitched=True)
+        vector = self.boolean_vector
+        for tie, bool in zip(ties, vector(r=len(ties))):
+            if bool == 1:
+                if all(
+                    isinstance(leaf, abjad.Chord)
+                    for leaf in abjad.iterate(tie).leaves()
+                ):
+                    old_chord = tie[0]
+                    base_pitch = old_chord.written_pitches[0]
+                    trill_pitch = old_chord.written_pitches[-1]
+                    new_leaf = abjad.Note(base_pitch, old_chord.written_duration)
+
+                    trill_start = abjad.LilyPondLiteral(
+                        r&quot;\pitchedTrill&quot;, format_slot=&quot;before&quot;
+                    )
+                    trill_literal = abjad.LilyPondLiteral(
+                        fr&quot;\startTrillSpan {trill_pitch}&quot;, format_slot=&quot;after&quot;
+                    )
+                    trill_stop = abjad.LilyPondLiteral(
+                        r&quot;\stopTrillSpan&quot;, format_slot=&quot;after&quot;
+                    )
+                    abjad.attach(trill_start, new_leaf)
+                    abjad.attach(trill_literal, new_leaf)
+                    last_leaf = tie[-1]
+                    next_leaf = abjad.get.leaf(last_leaf, 1)
+                    if next_leaf is not None:
+                        abjad.attach(trill_stop, next_leaf)
+                    else:
+                        continue
+                    indicators = abjad.get.indicators(old_chord)
+                    for indicator in indicators:
+                        abjad.attach(indicator, new_leaf)
+
+                    parent = abjad.get.parentage(old_chord).parent
+                    parent[parent.index(old_chord)] = new_leaf
+
+                    tail = abjad.select(tie).leaves()[1:]
+                    for leaf in tail:
+                        new_tail = abjad.Note(base_pitch, leaf.written_duration)
+                        indicators = abjad.get.indicators(leaf)
+                        for indicator in indicators:
+                            abjad.attach(indicator, new_tail)
+                        before_grace = abjad.get.before_grace_container(leaf)
+                        if before_grace is not None:
+                            abjad.attach(before_grace, new_tail)
+                        parent = abjad.get.parentage(leaf).parent
+                        parent[parent.index(leaf)] = new_tail
+
+<div class="viewcode-block" id="TrillHandler.name"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.TrillHandler.name">[docs]</a>    def name(self):
+        return self.name</div>
+
+<div class="viewcode-block" id="TrillHandler.state"><a class="viewcode-back" href="../../api/evans/handlers.html#evans.handlers.TrillHandler.state">[docs]</a>    def state(self):
+        return abjad.OrderedDict([(&quot;count&quot;, self.boolean_vector.state())])</div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-2021, Gregory Rowland Evans
+      <span class="lastupdated">
+        Last updated on Jun 03, 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

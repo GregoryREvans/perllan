@@ -1,0 +1,496 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tsmakers.TimespanMaker &mdash; Perllan API 0.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/abjad.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/uqbar.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../static/notes.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script defer="defer" src="../../static/copybutton.js"></script>
+        <script src="../../static/ga.js"></script>
+    
+    <script type="text/javascript" src="../../static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #556B2F" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Perllan API
+          
+
+          
+            
+            <img src="../../static/perllan-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../concepts.html">Core concepts</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/abjadext/microtones/index.html">microtones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/evans/index.html">evans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/tsmakers/index.html">tsmakers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../scores.html">Score gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recipes_pitch.html">Pitch Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recipes_sequence.html">Sequence Recipes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Perllan API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>tsmakers.TimespanMaker</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tsmakers.TimespanMaker</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">abc</span>
+<span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="kn">import</span> <span class="nn">abjad</span>
+
+<span class="kn">from</span> <span class="nn">.CompositeMusicSpecifier</span> <span class="kn">import</span> <span class="n">CompositeMusicSpecifier</span>
+<span class="kn">from</span> <span class="nn">.MusicSpecifierSequence</span> <span class="kn">import</span> <span class="n">MusicSpecifierSequence</span>
+<span class="kn">from</span> <span class="nn">.PerformedTimespan</span> <span class="kn">import</span> <span class="n">PerformedTimespan</span>
+<span class="kn">from</span> <span class="nn">.SilentTimespan</span> <span class="kn">import</span> <span class="n">SilentTimespan</span>
+<span class="kn">from</span> <span class="nn">.TimespanSpecifier</span> <span class="kn">import</span> <span class="n">TimespanSpecifier</span>
+
+
+<div class="viewcode-block" id="TimespanMaker"><a class="viewcode-back" href="../../api/tsmakers/TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker">[docs]</a><span class="k">class</span> <span class="nc">TimespanMaker</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Abstract base class for timespan makers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">### CLASS VARIABLES ###</span>
+
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s2">&quot;_output_masks&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;_padding&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;_seed&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;_timespan_specifier&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1">### INITIALIZER ###</span>
+
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">division_masks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">padding</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">timespan_specifier</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="n">division_masks</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">division_masks</span><span class="p">,</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Pattern</span><span class="p">):</span>
+                <span class="n">division_masks</span> <span class="o">=</span> <span class="p">(</span><span class="n">division_masks</span><span class="p">,)</span>
+            <span class="n">division_masks</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">PatternTuple</span><span class="p">(</span>
+                <span class="n">items</span><span class="o">=</span><span class="n">division_masks</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_output_masks</span> <span class="o">=</span> <span class="n">division_masks</span>
+        <span class="k">if</span> <span class="n">padding</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">padding</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="n">padding</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_padding</span> <span class="o">=</span> <span class="n">padding</span>
+        <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">seed</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_seed</span> <span class="o">=</span> <span class="n">seed</span>
+        <span class="k">if</span> <span class="n">timespan_specifier</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">timespan_specifier</span><span class="p">,</span> <span class="n">TimespanSpecifier</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timespan_specifier</span> <span class="o">=</span> <span class="n">timespan_specifier</span>
+
+    <span class="c1">### SPECIAL METHODS ###</span>
+
+<div class="viewcode-block" id="TimespanMaker.__call__"><a class="viewcode-back" href="../../api/tsmakers/TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">layer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">music_specifiers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">rotation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">silenced_context_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">target_timespan</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">timespan_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">timespan_list</span><span class="p">,</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">):</span>
+            <span class="n">timespan_list</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">(</span>
+                <span class="n">timespan_list</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">target_timespan</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">timespan_list</span><span class="p">:</span>
+                <span class="n">target_timespan</span> <span class="o">=</span> <span class="n">timespan_list</span><span class="o">.</span><span class="n">timespan</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">timespan_list</span><span class="p">,</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">music_specifiers</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">timespan_list</span>
+        <span class="n">music_specifiers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_coerce_music_specifiers</span><span class="p">(</span><span class="n">music_specifiers</span><span class="p">)</span>
+        <span class="n">new_timespans</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_timespans</span><span class="p">(</span>
+            <span class="n">layer</span><span class="o">=</span><span class="n">layer</span><span class="p">,</span>
+            <span class="n">music_specifiers</span><span class="o">=</span><span class="n">music_specifiers</span><span class="p">,</span>
+            <span class="n">target_timespan</span><span class="o">=</span><span class="n">target_timespan</span><span class="p">,</span>
+            <span class="n">timespan_list</span><span class="o">=</span><span class="n">timespan_list</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cleanup_silent_timespans</span><span class="p">(</span>
+            <span class="n">layer</span><span class="o">=</span><span class="n">layer</span><span class="p">,</span>
+            <span class="n">silenced_context_names</span><span class="o">=</span><span class="n">silenced_context_names</span><span class="p">,</span>
+            <span class="n">timespans</span><span class="o">=</span><span class="n">new_timespans</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">timespan_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">new_timespans</span><span class="p">)</span>
+        <span class="n">timespan_list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">timespan_list</span></div>
+
+<div class="viewcode-block" id="TimespanMaker.__illustrate__"><a class="viewcode-back" href="../../api/tsmakers/TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker.__illustrate__">[docs]</a>    <span class="k">def</span> <span class="nf">__illustrate__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target_timespan</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">target_timespan</span> <span class="o">=</span> <span class="n">target_timespan</span> <span class="ow">or</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">target_timespan</span><span class="p">,</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">target_timespan</span><span class="o">.</span><span class="n">duration</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="n">scale</span> <span class="ow">or</span> <span class="mf">1.5</span>
+        <span class="n">music_specifiers</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A music&quot;</span><span class="p">),</span>
+                <span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;B music&quot;</span><span class="p">),</span>
+                <span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;C music&quot;</span><span class="p">),</span>
+                <span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;D music&quot;</span><span class="p">),</span>
+                <span class="p">(</span><span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;E music&quot;</span><span class="p">),</span>
+                <span class="p">(</span><span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="s2">&quot;F music&quot;</span><span class="p">),</span>
+                <span class="p">(</span><span class="s2">&quot;G&quot;</span><span class="p">,</span> <span class="s2">&quot;G music&quot;</span><span class="p">),</span>
+                <span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;H music&quot;</span><span class="p">),</span>
+                <span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;I music&quot;</span><span class="p">),</span>
+                <span class="p">(</span><span class="s2">&quot;J&quot;</span><span class="p">,</span> <span class="s2">&quot;J music&quot;</span><span class="p">),</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">timespan_list</span> <span class="o">=</span> <span class="bp">self</span><span class="p">(</span>
+            <span class="n">layer</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">music_specifiers</span><span class="o">=</span><span class="n">music_specifiers</span><span class="p">,</span>
+            <span class="n">target_timespan</span><span class="o">=</span><span class="n">target_timespan</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">ti_lilypond_file</span> <span class="o">=</span> <span class="n">timespan_list</span><span class="o">.</span><span class="n">__illustrate__</span><span class="p">(</span>
+            <span class="n">key</span><span class="o">=</span><span class="s2">&quot;voice_name&quot;</span><span class="p">,</span>
+            <span class="n">range_</span><span class="o">=</span><span class="n">target_timespan</span><span class="p">,</span>
+            <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">ti_markup</span> <span class="o">=</span> <span class="n">ti_lilypond_file</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">offset_counter</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">OffsetCounter</span><span class="p">(</span><span class="n">timespan_list</span><span class="p">)</span>
+        <span class="n">oc_lilypond_file</span> <span class="o">=</span> <span class="n">offset_counter</span><span class="o">.</span><span class="n">__illustrate__</span><span class="p">(</span>
+            <span class="n">range_</span><span class="o">=</span><span class="n">target_timespan</span><span class="p">,</span>
+            <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">oc_markup</span> <span class="o">=</span> <span class="n">oc_lilypond_file</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">lilypond_file</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondFile</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+            <span class="n">default_paper_size</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tabloid&quot;</span><span class="p">,</span> <span class="s2">&quot;landscape&quot;</span><span class="p">],</span>
+            <span class="n">date_time_token</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">lilypond_file</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">abjad</span><span class="o">.</span><span class="n">String</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span>
+                    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            % Backport for pre 2.19.20 versions of LilyPond</span>
+<span class="sd">            #(define-markup-command (overlay layout props args)</span>
+<span class="sd">                (markup-list?)</span>
+<span class="sd">                (apply ly:stencil-add (interpret-markup-list layout props args)))</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+                <span class="p">),</span>
+                <span class="n">ti_markup</span><span class="p">,</span>
+                <span class="n">abjad</span><span class="o">.</span><span class="n">Markup</span><span class="o">.</span><span class="n">null</span><span class="p">()</span><span class="o">.</span><span class="n">pad_around</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+                <span class="n">oc_markup</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">lilypond_file</span><span class="o">.</span><span class="n">header_block</span><span class="o">.</span><span class="n">tagline</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="n">lilypond_file</span></div>
+
+<div class="viewcode-block" id="TimespanMaker.__format__"><a class="viewcode-back" href="../../api/tsmakers/TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker.__format__">[docs]</a>    <span class="k">def</span> <span class="fm">__format__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_specification</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TimespanMaker.__str__"><a class="viewcode-back" href="../../api/tsmakers/TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TimespanMaker.__repr__"><a class="viewcode-back" href="../../api/tsmakers/TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+    <span class="c1">### PRIVATE METHODS ###</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_coerce_music_specifiers</span><span class="p">(</span><span class="n">music_specifiers</span><span class="p">):</span>
+        <span class="c1"># from MusicSpecifier import MusicSpecifier</span>
+        <span class="c1"># from MusicSpecifierSequence import MusicSpecifierSequence</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">()</span>
+        <span class="n">prototype</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">MusicSpecifierSequence</span><span class="p">,</span>
+            <span class="n">CompositeMusicSpecifier</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">context_name</span><span class="p">,</span> <span class="n">music_specifier</span> <span class="ow">in</span> <span class="n">music_specifiers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">music_specifier</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">music_specifier</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">music_specifier</span><span class="p">,</span> <span class="n">prototype</span><span class="p">):</span>
+                <span class="n">music_specifier</span> <span class="o">=</span> <span class="n">MusicSpecifierSequence</span><span class="p">(</span>
+                    <span class="n">music_specifiers</span><span class="o">=</span><span class="n">music_specifier</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="n">result</span><span class="p">[</span><span class="n">context_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">music_specifier</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span> <span class="nf">_cleanup_silent_timespans</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">layer</span><span class="p">,</span>
+        <span class="n">silenced_context_names</span><span class="p">,</span>
+        <span class="n">timespans</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">silenced_context_names</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">timespans</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">silent_timespans_by_context</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">context_name</span> <span class="ow">in</span> <span class="n">silenced_context_names</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">context_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">silent_timespans_by_context</span><span class="p">:</span>
+                <span class="n">silent_timespans_by_context</span><span class="p">[</span><span class="n">context_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">()</span>
+
+        <span class="n">sounding_timespans_by_context</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">sounding_timespans</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">timespan</span> <span class="ow">in</span> <span class="n">timespans</span><span class="p">:</span>
+            <span class="n">voice_name</span> <span class="o">=</span> <span class="n">timespan</span><span class="o">.</span><span class="n">voice_name</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">timespan</span><span class="p">,</span> <span class="n">PerformedTimespan</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">voice_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sounding_timespans_by_context</span><span class="p">:</span>
+                    <span class="n">sounding_timespans_by_context</span><span class="p">[</span><span class="n">voice_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">()</span>
+                <span class="n">sounding_timespans_by_context</span><span class="p">[</span><span class="n">voice_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">timespan</span><span class="p">)</span>
+                <span class="n">sounding_timespans</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">timespan</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">voice_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">silent_timespans_by_context</span><span class="p">:</span>
+                    <span class="n">silent_timespans_by_context</span><span class="p">[</span><span class="n">voice_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">()</span>
+                <span class="n">silent_timespans_by_context</span><span class="p">[</span><span class="n">voice_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">timespan</span><span class="p">)</span>
+
+        <span class="n">sounding_timespans</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="n">sounding_timespans</span><span class="o">.</span><span class="n">compute_logical_or</span><span class="p">()</span>
+
+        <span class="c1"># Create silences.</span>
+        <span class="k">for</span> <span class="n">shard</span> <span class="ow">in</span> <span class="n">sounding_timespans</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="kc">True</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">context_name</span> <span class="ow">in</span> <span class="n">silenced_context_names</span><span class="p">:</span>
+                <span class="n">timespan</span> <span class="o">=</span> <span class="n">SilentTimespan</span><span class="p">(</span>
+                    <span class="n">layer</span><span class="o">=</span><span class="n">layer</span><span class="p">,</span>
+                    <span class="n">voice_name</span><span class="o">=</span><span class="n">context_name</span><span class="p">,</span>
+                    <span class="n">start_offset</span><span class="o">=</span><span class="n">shard</span><span class="o">.</span><span class="n">start_offset</span><span class="p">,</span>
+                    <span class="n">stop_offset</span><span class="o">=</span><span class="n">shard</span><span class="o">.</span><span class="n">stop_offset</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">silent_timespans_by_context</span><span class="p">[</span><span class="n">context_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">timespan</span><span class="p">)</span>
+
+        <span class="c1"># Remove any overlap between performed and silent timespans.</span>
+        <span class="c1"># Then add the silent timespans into the original timespan inventory.</span>
+        <span class="k">for</span> <span class="n">context_name</span><span class="p">,</span> <span class="n">silent_timespans</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span>
+            <span class="n">silent_timespans_by_context</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="p">):</span>
+            <span class="n">silent_timespans</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">context_name</span> <span class="ow">in</span> <span class="n">sounding_timespans_by_context</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">timespan</span> <span class="ow">in</span> <span class="n">sounding_timespans_by_context</span><span class="p">[</span><span class="n">context_name</span><span class="p">]:</span>
+                    <span class="n">silent_timespans</span> <span class="o">-</span> <span class="n">timespan</span>
+            <span class="n">timespans</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">silent_timespans</span><span class="p">)</span>
+
+    <span class="c1">### PUBLIC METHODS ###</span>
+
+<div class="viewcode-block" id="TimespanMaker.rotate"><a class="viewcode-back" href="../../api/tsmakers/TimespanMaker.html#tsmakers.TimespanMaker.TimespanMaker.rotate">[docs]</a>    <span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rotation</span><span class="p">):</span>
+        <span class="n">seed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="ow">or</span> <span class="mi">0</span>
+        <span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span> <span class="o">+</span> <span class="n">rotation</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span></div>
+
+    <span class="c1">### PUBLIC PROPERTIES ###</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_dependent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">division_masks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_masks</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">padding</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_padding</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">seed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seed</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">timespan_specifier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timespan_specifier</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-2021, Gregory Rowland Evans
+      <span class="lastupdated">
+        Last updated on Jun 03, 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

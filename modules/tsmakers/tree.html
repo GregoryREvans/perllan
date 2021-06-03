@@ -1,0 +1,688 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tsmakers.tree &mdash; Perllan API 0.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/abjad.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/uqbar.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../static/notes.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script defer="defer" src="../../static/copybutton.js"></script>
+        <script src="../../static/ga.js"></script>
+    
+    <script type="text/javascript" src="../../static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #556B2F" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Perllan API
+          
+
+          
+            
+            <img src="../../static/perllan-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../concepts.html">Core concepts</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/abjadext/microtones/index.html">microtones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/evans/index.html">evans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/tsmakers/index.html">tsmakers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../scores.html">Score gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recipes_pitch.html">Pitch Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recipes_sequence.html">Sequence Recipes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Perllan API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>tsmakers.tree</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tsmakers.tree</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">abjad</span>
+<span class="kn">import</span> <span class="nn">quicktions</span>
+
+
+<div class="viewcode-block" id="divrewrite"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.divrewrite">[docs]</a><span class="k">def</span> <span class="nf">divrewrite</span><span class="p">(</span><span class="n">tr</span><span class="p">,</span> <span class="n">rulelst</span><span class="p">):</span>
+    <span class="n">rl</span> <span class="o">=</span> <span class="p">[</span><span class="n">rulelst</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">nde</span> <span class="ow">in</span> <span class="n">tr</span><span class="o">.</span><span class="n">levelorder</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">rule</span> <span class="ow">in</span> <span class="n">rl</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">nde</span><span class="o">.</span><span class="n">value</span> <span class="o">%</span> <span class="n">rule</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">rule</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+                    <span class="n">nde</span><span class="o">.</span><span class="n">insert_child</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">TimespanTree</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="flatten"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.flatten">[docs]</a><span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">x</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+
+
+<div class="viewcode-block" id="levelbylevel"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.levelbylevel">[docs]</a><span class="k">def</span> <span class="nf">levelbylevel</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="n">root</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">q</span><span class="p">[:</span> <span class="n">q</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="kc">None</span><span class="p">)]:</span>
+            <span class="n">q</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">children</span><span class="p">)</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">q</span><span class="p">[:</span> <span class="n">q</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="kc">None</span><span class="p">)])</span>
+        <span class="k">del</span> <span class="n">q</span><span class="p">[:</span> <span class="n">q</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="kc">None</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+
+
+<div class="viewcode-block" id="levelorder"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.levelorder">[docs]</a><span class="k">def</span> <span class="nf">levelorder</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">children</span><span class="p">)</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+
+
+<div class="viewcode-block" id="tally"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.tally">[docs]</a><span class="k">def</span> <span class="nf">tally</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+        <span class="n">out</span> <span class="o">+=</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+
+
+<div class="viewcode-block" id="TimespanTreeNode"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTreeNode">[docs]</a><span class="k">class</span> <span class="nc">TimespanTreeNode</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">num</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span>
+
+<div class="viewcode-block" id="TimespanTreeNode.insert_child"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTreeNode.insert_child">[docs]</a>    <span class="k">def</span> <span class="nf">insert_child</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TimespanTreeNode</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="TimespanTreeNode.get_children"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTreeNode.get_children">[docs]</a>    <span class="k">def</span> <span class="nf">get_children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span></div>
+
+<div class="viewcode-block" id="TimespanTreeNode.get_childrensum"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTreeNode.get_childrensum">[docs]</a>    <span class="k">def</span> <span class="nf">get_childrensum</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">tally</span><span class="p">([</span><span class="n">i</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="TimespanTreeNode.get_number_of_children"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTreeNode.get_number_of_children">[docs]</a>    <span class="k">def</span> <span class="nf">get_number_of_children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TimespanTreeNode.get_parent"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTreeNode.get_parent">[docs]</a>    <span class="k">def</span> <span class="nf">get_parent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span></div>
+
+<div class="viewcode-block" id="TimespanTreeNode.find_root"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTreeNode.find_root">[docs]</a>    <span class="k">def</span> <span class="nf">find_root</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">find_root</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TimespanTreeNode.get_fract_value"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTreeNode.get_fract_value">[docs]</a>    <span class="k">def</span> <span class="nf">get_fract_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">get_childrensum</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="TimespanTreeNode.get_real_value"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTreeNode.get_real_value">[docs]</a>    <span class="k">def</span> <span class="nf">get_real_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_fract_value</span><span class="p">()</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">get_real_value</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TimespanTreeNode.localoffset"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTreeNode.localoffset">[docs]</a>    <span class="k">def</span> <span class="nf">localoffset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">tally</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="n">i</span><span class="o">.</span><span class="n">get_real_value</span><span class="p">()</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">children</span><span class="p">[:</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="bp">self</span><span class="p">)]</span>
+                <span class="p">]</span>
+            <span class="p">)</span>  <span class="c1"># + self.localoffset()</span></div>
+
+<div class="viewcode-block" id="TimespanTreeNode.offset"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTreeNode.offset">[docs]</a>    <span class="k">def</span> <span class="nf">offset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">localoffset</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">offset</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TimespanTreeNode.get_timespan"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTreeNode.get_timespan">[docs]</a>    <span class="k">def</span> <span class="nf">get_timespan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Timespan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_real_value</span><span class="p">())</span></div></div>
+
+
+<div class="viewcode-block" id="TimespanTree"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTree">[docs]</a><span class="k">class</span> <span class="nc">TimespanTree</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; a = tsmakers.TimespanTreeNode(10)</span>
+<span class="sd">        &gt;&gt;&gt; a.insert_child(1)</span>
+<span class="sd">        &gt;&gt;&gt; a.insert_child(1)</span>
+<span class="sd">        &gt;&gt;&gt; a.insert_child(1)</span>
+<span class="sd">        &gt;&gt;&gt; a.insert_child(1)</span>
+<span class="sd">        &gt;&gt;&gt; a.insert_child(1)</span>
+<span class="sd">        &gt;&gt;&gt; a.insert_child(1)</span>
+<span class="sd">        &gt;&gt;&gt; a.insert_child(1)</span>
+<span class="sd">        &gt;&gt;&gt; a.insert_child(1)</span>
+<span class="sd">        &gt;&gt;&gt; b, c, d, e, f, g, h, i = a.children</span>
+<span class="sd">        &gt;&gt;&gt; b.insert_child(2)</span>
+<span class="sd">        &gt;&gt;&gt; b.insert_child(1)</span>
+<span class="sd">        &gt;&gt;&gt; j, k = b.children</span>
+<span class="sd">        &gt;&gt;&gt; e.insert_child(3)</span>
+<span class="sd">        &gt;&gt;&gt; e.insert_child(1)</span>
+<span class="sd">        &gt;&gt;&gt; e.insert_child(2)</span>
+<span class="sd">        &gt;&gt;&gt; e.insert_child(2)</span>
+<span class="sd">        &gt;&gt;&gt; f.insert_child(1)</span>
+<span class="sd">        &gt;&gt;&gt; f.insert_child(1)</span>
+<span class="sd">        &gt;&gt;&gt; l, m = f.children</span>
+<span class="sd">        &gt;&gt;&gt; k.insert_child(1)</span>
+<span class="sd">        &gt;&gt;&gt; k.insert_child(1)</span>
+<span class="sd">        &gt;&gt;&gt; l.insert_child(1)</span>
+<span class="sd">        &gt;&gt;&gt; l.insert_child(1)</span>
+<span class="sd">        &gt;&gt;&gt; demotree = tsmakers.TimespanTree(a)</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(demotree.tspanlist()) # doctest: +SKIP</span>
+
+<span class="sd">        ..  docs::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(abjad.storage(demotree.tspanlist()))</span>
+<span class="sd">            abjad.TimespanList(</span>
+<span class="sd">                [</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((0, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((10, 1)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((0, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((5, 4)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((5, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((5, 2)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((5, 2)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((15, 4)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((15, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((5, 1)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((5, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((25, 4)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((25, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((15, 2)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((15, 2)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((35, 4)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((35, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((10, 1)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((0, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((5, 6)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((5, 6)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((5, 4)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((15, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((135, 32)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((135, 32)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((35, 8)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((35, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((75, 16)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((75, 16)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((5, 1)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((5, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((45, 8)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((45, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((25, 4)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((5, 6)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((25, 24)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((25, 24)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((5, 4)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((5, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((85, 16)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((85, 16)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((45, 8)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    ]</span>
+<span class="sd">                )</span>
+
+<span class="sd">    ..  container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; a = tsmakers.TimespanTreeNode(10)</span>
+<span class="sd">        &gt;&gt;&gt; a.insert_child(8)</span>
+<span class="sd">        &gt;&gt;&gt; a.insert_child(5)</span>
+<span class="sd">        &gt;&gt;&gt; b, c,  = a.children</span>
+<span class="sd">        &gt;&gt;&gt; b.insert_child(8)</span>
+<span class="sd">        &gt;&gt;&gt; b.insert_child(5)</span>
+<span class="sd">        &gt;&gt;&gt; c.insert_child(8)</span>
+<span class="sd">        &gt;&gt;&gt; c.insert_child(5)</span>
+<span class="sd">        &gt;&gt;&gt; d, e,  = b.children</span>
+<span class="sd">        &gt;&gt;&gt; f, g,  = c.children</span>
+<span class="sd">        &gt;&gt;&gt; d.insert_child(8)</span>
+<span class="sd">        &gt;&gt;&gt; d.insert_child(5)</span>
+<span class="sd">        &gt;&gt;&gt; e.insert_child(8)</span>
+<span class="sd">        &gt;&gt;&gt; e.insert_child(5)</span>
+<span class="sd">        &gt;&gt;&gt; f.insert_child(8)</span>
+<span class="sd">        &gt;&gt;&gt; f.insert_child(5)</span>
+<span class="sd">        &gt;&gt;&gt; g.insert_child(8)</span>
+<span class="sd">        &gt;&gt;&gt; g.insert_child(5)</span>
+<span class="sd">        &gt;&gt;&gt; h, i,  = d.children</span>
+<span class="sd">        &gt;&gt;&gt; j, k,  = e.children</span>
+<span class="sd">        &gt;&gt;&gt; l, m,  = f.children</span>
+<span class="sd">        &gt;&gt;&gt; n, o,  = g.children</span>
+<span class="sd">        &gt;&gt;&gt; h.insert_child(8)</span>
+<span class="sd">        &gt;&gt;&gt; h.insert_child(5)</span>
+<span class="sd">        &gt;&gt;&gt; i.insert_child(8)</span>
+<span class="sd">        &gt;&gt;&gt; i.insert_child(5)</span>
+<span class="sd">        &gt;&gt;&gt; j.insert_child(8)</span>
+<span class="sd">        &gt;&gt;&gt; j.insert_child(5)</span>
+<span class="sd">        &gt;&gt;&gt; k.insert_child(8)</span>
+<span class="sd">        &gt;&gt;&gt; k.insert_child(5)</span>
+<span class="sd">        &gt;&gt;&gt; l.insert_child(8)</span>
+<span class="sd">        &gt;&gt;&gt; l.insert_child(5)</span>
+<span class="sd">        &gt;&gt;&gt; m.insert_child(8)</span>
+<span class="sd">        &gt;&gt;&gt; m.insert_child(5)</span>
+<span class="sd">        &gt;&gt;&gt; n.insert_child(8)</span>
+<span class="sd">        &gt;&gt;&gt; n.insert_child(5)</span>
+<span class="sd">        &gt;&gt;&gt; o.insert_child(8)</span>
+<span class="sd">        &gt;&gt;&gt; o.insert_child(5)</span>
+<span class="sd">        &gt;&gt;&gt; demotree = tsmakers.TimespanTree(a)</span>
+<span class="sd">        &gt;&gt;&gt; demotree_list = demotree.tspanlist()</span>
+<span class="sd">        &gt;&gt;&gt; demotree_list = demotree_list.round_offsets(</span>
+<span class="sd">        ...     abjad.Duration((1, 8)),</span>
+<span class="sd">        ...     anchor=abjad.Left,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(demotree_list, scale=0.7) # doctest: +SKIP</span>
+
+<span class="sd">        ..  docs::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(abjad.storage(demotree_list))</span>
+<span class="sd">            abjad.TimespanList(</span>
+<span class="sd">                [</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((0, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((10, 1)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((0, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((49, 8)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((49, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((10, 1)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((0, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((15, 4)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((15, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((49, 8)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((49, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((17, 2)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((17, 2)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((10, 1)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((0, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((19, 8)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((19, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((15, 4)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((15, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((21, 4)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((21, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((49, 8)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((49, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((61, 8)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((61, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((17, 2)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((17, 2)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((75, 8)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((75, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((10, 1)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((0, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((11, 8)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((11, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((19, 8)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((19, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((13, 4)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((13, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((15, 4)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((15, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((37, 8)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((37, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((21, 4)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((21, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((23, 4)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((23, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((49, 8)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((49, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((7, 1)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((7, 1)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((61, 8)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((61, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((65, 8)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((65, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((17, 2)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((17, 2)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((73, 8)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((73, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((75, 8)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((75, 8)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((39, 4)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    abjad.Timespan(</span>
+<span class="sd">                        start_offset=abjad.Offset((39, 4)),</span>
+<span class="sd">                        stop_offset=abjad.Offset((10, 1)),</span>
+<span class="sd">                        ),</span>
+<span class="sd">                    ]</span>
+<span class="sd">                )</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">levelorder</span> <span class="o">=</span> <span class="n">levelorder</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">levelbylevel</span> <span class="o">=</span> <span class="n">levelbylevel</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+
+<div class="viewcode-block" id="TimespanTree.get_level_order"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTree.get_level_order">[docs]</a>    <span class="k">def</span> <span class="nf">get_level_order</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">levelorder</span></div>
+
+<div class="viewcode-block" id="TimespanTree.get_level"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTree.get_level">[docs]</a>    <span class="k">def</span> <span class="nf">get_level</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">levelbylevel</span><span class="p">[</span><span class="n">n</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="TimespanTree.get_level_order_value"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTree.get_level_order_value">[docs]</a>    <span class="k">def</span> <span class="nf">get_level_order_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[[</span><span class="n">i</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lev</span><span class="p">]</span> <span class="k">for</span> <span class="n">lev</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">levelbylevel</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="TimespanTree.get_level_value"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTree.get_level_value">[docs]</a>    <span class="k">def</span> <span class="nf">get_level_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">levelbylevel</span><span class="p">[</span><span class="n">n</span><span class="p">]]</span></div>
+
+<div class="viewcode-block" id="TimespanTree.replace_values"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTree.replace_values">[docs]</a>    <span class="k">def</span> <span class="nf">replace_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lst</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">levelorder</span><span class="p">,</span> <span class="n">lst</span><span class="p">):</span>
+            <span class="n">i</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">j</span></div>
+
+<div class="viewcode-block" id="TimespanTree.tspanlist_level"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTree.tspanlist_level">[docs]</a>    <span class="k">def</span> <span class="nf">tspanlist_level</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">([</span><span class="n">i</span><span class="o">.</span><span class="n">get_timespan</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_level</span><span class="p">(</span><span class="n">n</span><span class="p">)])</span></div>
+
+<div class="viewcode-block" id="TimespanTree.tspanlist"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTree.tspanlist">[docs]</a>    <span class="k">def</span> <span class="nf">tspanlist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">abjad</span><span class="o">.</span><span class="n">TimespanList</span><span class="p">([</span><span class="n">i</span><span class="o">.</span><span class="n">get_timespan</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">levelorder</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="TimespanTree.show"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTree.show">[docs]</a>    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tspanlist</span><span class="p">(),</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TimespanTree.show_level"><a class="viewcode-back" href="../../api/tsmakers/tree.html#tsmakers.tree.TimespanTree.show_level">[docs]</a>    <span class="k">def</span> <span class="nf">show_level</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">abjad</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tspanlist_level</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-2021, Gregory Rowland Evans
+      <span class="lastupdated">
+        Last updated on Jun 03, 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

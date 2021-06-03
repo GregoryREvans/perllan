@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../static/abjad.css" type="text/css" />
   <link rel="stylesheet" href="../../static/uqbar.css" type="text/css" />
@@ -31,10 +33,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
         <script src="../../static/jquery.js"></script>
         <script src="../../static/underscore.js"></script>
         <script src="../../static/doctools.js"></script>
-        <script src="../../static/language_data.js"></script>
         <script defer="defer" src="../../static/copybutton.js"></script>
         <script src="../../static/ga.js"></script>
     
@@ -266,8 +268,8 @@
 </tbody>
 </table>
 <dl class="py class">
-<dt id="evans.rtm.RhythmTreeQuantizer">
-<em class="property">class </em><code class="sig-prename descclassname">evans.rtm.</code><code class="sig-name descname">RhythmTreeQuantizer</code><a class="headerlink" href="#evans.rtm.RhythmTreeQuantizer" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.rtm.RhythmTreeQuantizer">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">evans.rtm.</span></span><span class="sig-name descname"><span class="pre">RhythmTreeQuantizer</span></span><a class="reference internal" href="../../modules/evans/rtm.html#RhythmTreeQuantizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.rtm.RhythmTreeQuantizer" title="Permalink to this definition">¶</a></dt>
 <dd><hr/><p class="class-header rubric">Attributes Summary</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -282,8 +284,8 @@
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
 <dl class="py method">
-<dt id="evans.rtm.RhythmTreeQuantizer.__call__">
-<em class="property">overridden </em><code class="sig-name descname">__call__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">string</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.rtm.RhythmTreeQuantizer.__call__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.rtm.RhythmTreeQuantizer.__call__">
+<em class="property"><span class="pre">overridden</span> </em><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../modules/evans/rtm.html#RhythmTreeQuantizer.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.rtm.RhythmTreeQuantizer.__call__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call self as a function.</p>
 </dd></dl>
 
@@ -314,18 +316,15 @@
 </tbody>
 </table>
 <dl class="py function">
-<dt id="evans.rtm.flatten_tree_level">
-<code class="sig-prename descclassname">evans.rtm.</code><code class="sig-name descname">flatten_tree_level</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rhythm_tree</span></em>, <em class="sig-param"><span class="n">recurse</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.rtm.flatten_tree_level" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.rtm.flatten_tree_level">
+<span class="sig-prename descclassname"><span class="pre">evans.rtm.</span></span><span class="sig-name descname"><span class="pre">flatten_tree_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rtm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recurse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../modules/evans/rtm.html#flatten_tree_level"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.rtm.flatten_tree_level" title="Permalink to this definition">¶</a></dt>
 <dd><div class="example docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parser</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">rhythmtrees</span><span class="o">.</span><span class="n">RhythmTreeParser</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;(1 (1 (1 ((2 (1 1 1)) 2 2 1))))&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rhythm_tree_list</span> <span class="o">=</span> <span class="n">parser</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rhythm_tree_container</span> <span class="o">=</span> <span class="n">rhythm_tree_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;(1 (1 (1 ((2 (1 1 1)) 2 2 1))))&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rhythm_tree_container_</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">flatten_tree_level</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">rhythm_tree_container</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">string</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">recurse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="n">string</span><span class="p">,</span> <span class="n">rhythm_tree_container_</span><span class="o">.</span><span class="n">rtm_format</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="n">string</span><span class="p">,</span> <span class="n">rhythm_tree_container_</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">durations</span> <span class="o">=</span> <span class="p">[</span><span class="n">abjad</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">RhythmHandler</span><span class="p">(</span><span class="n">evans</span><span class="o">.</span><span class="n">RTMMaker</span><span class="p">(</span><span class="n">strings</span><span class="p">),</span> <span class="n">forget</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">selections</span> <span class="o">=</span> <span class="n">h</span><span class="p">(</span><span class="n">durations</span><span class="p">)</span>
@@ -335,18 +334,15 @@
 </pre></div>
 </div>
 <div class="uqbar-book">
-    <a href="../../images/lilypond-ccfef84a2feb8b8fdf87ff4c56fcb6543c2ffc7110f4f7fed6815deab802d1c7.ly"><img src="../../images/lilypond-ccfef84a2feb8b8fdf87ff4c56fcb6543c2ffc7110f4f7fed6815deab802d1c7.cropped.png"/></a>
+    <a href="../../images/lilypond-afb5b55eaa40860c121cd99371378dad503ddad1cc6542754f74ba982a80c23b.ly"><img src="../../images/lilypond-afb5b55eaa40860c121cd99371378dad503ddad1cc6542754f74ba982a80c23b.cropped.png"/></a>
 </div></div>
 <div class="example docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parser</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">rhythmtrees</span><span class="o">.</span><span class="n">RhythmTreeParser</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;(1 (1 (1 ((2 (1 1 1)) 2 2 1))))&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rhythm_tree_list</span> <span class="o">=</span> <span class="n">parser</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rhythm_tree_container</span> <span class="o">=</span> <span class="n">rhythm_tree_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;(1 (1 (1 ((2 (1 1 1)) 2 2 1))))&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rhythm_tree_container_</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">flatten_tree_level</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">rhythm_tree_container</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">string</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">recurse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="n">string</span><span class="p">,</span> <span class="n">rhythm_tree_container_</span><span class="o">.</span><span class="n">rtm_format</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="n">string</span><span class="p">,</span> <span class="n">rhythm_tree_container_</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">durations</span> <span class="o">=</span> <span class="p">[</span><span class="n">abjad</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">RhythmHandler</span><span class="p">(</span><span class="n">evans</span><span class="o">.</span><span class="n">RTMMaker</span><span class="p">(</span><span class="n">strings</span><span class="p">),</span> <span class="n">forget</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">selections</span> <span class="o">=</span> <span class="n">h</span><span class="p">(</span><span class="n">durations</span><span class="p">)</span>
@@ -356,13 +352,13 @@
 </pre></div>
 </div>
 <div class="uqbar-book">
-    <a href="../../images/lilypond-e1d197d88f9c4b370191d0c717bdc4b14f33a9ebc379579970e275e696142a03.ly"><img src="../../images/lilypond-e1d197d88f9c4b370191d0c717bdc4b14f33a9ebc379579970e275e696142a03.cropped.png"/></a>
+    <a href="../../images/lilypond-7dd811bb22ddd4ca30a6d98ce4fa9d260dcd3e88645516fa1a981314a3680dee.ly"><img src="../../images/lilypond-7dd811bb22ddd4ca30a6d98ce4fa9d260dcd3e88645516fa1a981314a3680dee.cropped.png"/></a>
 </div></div>
 </dd></dl>
 
 <dl class="py function">
-<dt id="evans.rtm.funnel_inner_tree_to_x">
-<code class="sig-prename descclassname">evans.rtm.</code><code class="sig-name descname">funnel_inner_tree_to_x</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rtm_string</span></em>, <em class="sig-param"><span class="n">x</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.rtm.funnel_inner_tree_to_x" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.rtm.funnel_inner_tree_to_x">
+<span class="sig-prename descclassname"><span class="pre">evans.rtm.</span></span><span class="sig-name descname"><span class="pre">funnel_inner_tree_to_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rtm_string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../modules/evans/rtm.html#funnel_inner_tree_to_x"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.rtm.funnel_inner_tree_to_x" title="Permalink to this definition">¶</a></dt>
 <dd><div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rtm</span> <span class="o">=</span> <span class="s2">&quot;(1 (3 (2 (1 2 1 1)) 3))&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">evans</span><span class="o">.</span><span class="n">funnel_inner_tree_to_x</span><span class="p">(</span><span class="n">rtm_string</span><span class="o">=</span><span class="n">rtm</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
@@ -382,7 +378,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">selections</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">score</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Score</span><span class="p">([</span><span class="n">staff</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">moment</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">SchemeMoment</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moment</span> <span class="o">=</span> <span class="s2">&quot;#(ly:make-moment 1 25)&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">setting</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">proportional_notation_duration</span> <span class="o">=</span> <span class="n">moment</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">file</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondFile</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="n">score</span><span class="p">],</span>
@@ -393,7 +389,7 @@
 </pre></div>
 </div>
 <div class="uqbar-book">
-    <a href="../../images/lilypond-859401d46fd735831b28b6fa44a6c84c7a3aa0e89662c3cba2d605b90878bac3.ly"><img src="../../images/lilypond-859401d46fd735831b28b6fa44a6c84c7a3aa0e89662c3cba2d605b90878bac3.cropped.png"/></a>
+    <a href="../../images/lilypond-85afde7d86e5e46987908effbf573b2c917a3ca6d9a3621023a12e3caad16fb8.ly"><img src="../../images/lilypond-85afde7d86e5e46987908effbf573b2c917a3ca6d9a3621023a12e3caad16fb8.cropped.png"/></a>
 </div></div>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rtm_list</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">funnel_inner_tree_to_x</span><span class="p">(</span>
@@ -405,7 +401,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">selections</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">score</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Score</span><span class="p">([</span><span class="n">staff</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">moment</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">SchemeMoment</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moment</span> <span class="o">=</span> <span class="s2">&quot;#(ly:make-moment 1 25)&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">setting</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">proportional_notation_duration</span> <span class="o">=</span> <span class="n">moment</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">file</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondFile</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="n">score</span><span class="p">],</span>
@@ -416,18 +412,18 @@
 </pre></div>
 </div>
 <div class="uqbar-book">
-    <a href="../../images/lilypond-af48c235902c691900a4a1914251ed3c4f9f9e5bddb101427b77e01ae27ed851.ly"><img src="../../images/lilypond-af48c235902c691900a4a1914251ed3c4f9f9e5bddb101427b77e01ae27ed851.cropped.png"/></a>
+    <a href="../../images/lilypond-47df1d2c1102e4797b7d8e632d0ade7ed78187eef63e5ce7efcad27ce7d5d3c0.ly"><img src="../../images/lilypond-47df1d2c1102e4797b7d8e632d0ade7ed78187eef63e5ce7efcad27ce7d5d3c0.cropped.png"/></a>
 </div></div>
 </dd></dl>
 
 <dl class="py function">
-<dt id="evans.rtm.funnel_tree_to_x">
-<code class="sig-prename descclassname">evans.rtm.</code><code class="sig-name descname">funnel_tree_to_x</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rtm</span></em>, <em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.rtm.funnel_tree_to_x" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.rtm.funnel_tree_to_x">
+<span class="sig-prename descclassname"><span class="pre">evans.rtm.</span></span><span class="sig-name descname"><span class="pre">funnel_tree_to_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rtm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../modules/evans/rtm.html#funnel_tree_to_x"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.rtm.funnel_tree_to_x" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="evans.rtm.nested_list_to_rtm">
-<code class="sig-prename descclassname">evans.rtm.</code><code class="sig-name descname">nested_list_to_rtm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nested_list</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.rtm.nested_list_to_rtm" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.rtm.nested_list_to_rtm">
+<span class="sig-prename descclassname"><span class="pre">evans.rtm.</span></span><span class="sig-name descname"><span class="pre">nested_list_to_rtm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nested_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../modules/evans/rtm.html#nested_list_to_rtm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.rtm.nested_list_to_rtm" title="Permalink to this definition">¶</a></dt>
 <dd><div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nested_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="mi">1</span><span class="p">]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rtm_string</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">nested_list_to_rtm</span><span class="p">(</span><span class="n">nested_list</span><span class="p">)</span>
@@ -442,7 +438,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">selections</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">score</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Score</span><span class="p">([</span><span class="n">staff</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">moment</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">SchemeMoment</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moment</span> <span class="o">=</span> <span class="s2">&quot;#(ly:make-moment 1 25)&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">setting</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">proportional_notation_duration</span> <span class="o">=</span> <span class="n">moment</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">file</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondFile</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="n">score</span><span class="p">],</span>
@@ -453,13 +449,13 @@
 </pre></div>
 </div>
 <div class="uqbar-book">
-    <a href="../../images/lilypond-b80e278c553e0bad1e9544c1a207a50338ba00c84ebad499fa0c123d42299c5f.ly"><img src="../../images/lilypond-b80e278c553e0bad1e9544c1a207a50338ba00c84ebad499fa0c123d42299c5f.cropped.png"/></a>
+    <a href="../../images/lilypond-bdbb709ab9e205660f50c9b0c552cd22f47e09c05d1ab87789c4c4462d8a6a80.ly"><img src="../../images/lilypond-bdbb709ab9e205660f50c9b0c552cd22f47e09c05d1ab87789c4c4462d8a6a80.cropped.png"/></a>
 </div></div>
 </dd></dl>
 
 <dl class="py function">
-<dt id="evans.rtm.rotate_tree">
-<code class="sig-prename descclassname">evans.rtm.</code><code class="sig-name descname">rotate_tree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rtm_string</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.rtm.rotate_tree" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.rtm.rotate_tree">
+<span class="sig-prename descclassname"><span class="pre">evans.rtm.</span></span><span class="sig-name descname"><span class="pre">rotate_tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rtm_string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../modules/evans/rtm.html#rotate_tree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.rtm.rotate_tree" title="Permalink to this definition">¶</a></dt>
 <dd><div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rtm</span> <span class="o">=</span> <span class="s2">&quot;(1 (2 (1 (1 2)) 1))&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
@@ -481,7 +477,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">selections</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">score</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Score</span><span class="p">([</span><span class="n">staff</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">moment</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">SchemeMoment</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moment</span> <span class="o">=</span> <span class="s2">&quot;#(ly:make-moment 1 25)&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">setting</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">proportional_notation_duration</span> <span class="o">=</span> <span class="n">moment</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">file</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondFile</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="n">score</span><span class="p">],</span>
@@ -492,7 +488,7 @@
 </pre></div>
 </div>
 <div class="uqbar-book">
-    <a href="../../images/lilypond-62b3acc301e8967d32cd86c1d9549ebb3ba87fc840cede2de9e10f4ae3d41899.ly"><img src="../../images/lilypond-62b3acc301e8967d32cd86c1d9549ebb3ba87fc840cede2de9e10f4ae3d41899.cropped.png"/></a>
+    <a href="../../images/lilypond-3d876898f710fc00818d2f3b23cc19fd7df3eb9698865dc8bdda6b4fb563bea2.ly"><img src="../../images/lilypond-3d876898f710fc00818d2f3b23cc19fd7df3eb9698865dc8bdda6b4fb563bea2.cropped.png"/></a>
 </div></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">divisions</span> <span class="o">=</span> <span class="p">[</span>
 <span class="gp">... </span>    <span class="n">abjad</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
@@ -509,7 +505,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">selections</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">score</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Score</span><span class="p">([</span><span class="n">staff</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">moment</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">SchemeMoment</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moment</span> <span class="o">=</span> <span class="s2">&quot;#(ly:make-moment 1 25)&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">setting</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">proportional_notation_duration</span> <span class="o">=</span> <span class="n">moment</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">file</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondFile</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="n">score</span><span class="p">],</span>
@@ -520,7 +516,7 @@
 </pre></div>
 </div>
 <div class="uqbar-book">
-    <a href="../../images/lilypond-92d8cd6601279afbd2c8719f1fa5ffca9b5d01a78a9ed75fd511fb8c23e5ad1f.ly"><img src="../../images/lilypond-92d8cd6601279afbd2c8719f1fa5ffca9b5d01a78a9ed75fd511fb8c23e5ad1f.cropped.png"/></a>
+    <a href="../../images/lilypond-ea03bd328105967b84891cb24396eba086423c054fda6ef45fe60310784adafd.ly"><img src="../../images/lilypond-ea03bd328105967b84891cb24396eba086423c054fda6ef45fe60310784adafd.cropped.png"/></a>
 </div></dd></dl>
 
 <hr/><p class="section-header rubric">Rhythm-makers</p>
@@ -536,8 +532,8 @@
 </tbody>
 </table>
 <dl class="py class">
-<dt id="evans.rtm.RTMMaker">
-<em class="property">class </em><code class="sig-prename descclassname">evans.rtm.</code><code class="sig-name descname">RTMMaker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rtm</span></em>, <em class="sig-param"><span class="n">tie_across_divisions</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.rtm.RTMMaker" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.rtm.RTMMaker">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">evans.rtm.</span></span><span class="sig-name descname"><span class="pre">RTMMaker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rtm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tie_across_divisions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../modules/evans/rtm.html#RTMMaker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.rtm.RTMMaker" title="Permalink to this definition">¶</a></dt>
 <dd><div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rtm</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;(1 (1 1))&quot;</span><span class="p">,</span> <span class="s2">&quot;(1 (1 1 1))&quot;</span><span class="p">,</span> <span class="s2">&quot;(1 (1 1 1 1))&quot;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">maker</span> <span class="o">=</span> <span class="n">evans</span><span class="o">.</span><span class="n">RTMMaker</span><span class="p">(</span><span class="n">rtm</span><span class="o">=</span><span class="n">rtm</span><span class="p">)</span>
@@ -546,7 +542,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">selections</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">score</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Score</span><span class="p">([</span><span class="n">staff</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">moment</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">SchemeMoment</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moment</span> <span class="o">=</span> <span class="s2">&quot;#(ly:make-moment 1 25)&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">abjad</span><span class="o">.</span><span class="n">setting</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">.</span><span class="n">proportional_notation_duration</span> <span class="o">=</span> <span class="n">moment</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">file</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondFile</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="n">score</span><span class="p">],</span>
@@ -557,7 +553,7 @@
 </pre></div>
 </div>
 <div class="uqbar-book">
-    <a href="../../images/lilypond-874872bda05dba1a72d7f313b09ba34105dbfd4bb676d7576048534db95d999c.ly"><img src="../../images/lilypond-874872bda05dba1a72d7f313b09ba34105dbfd4bb676d7576048534db95d999c.cropped.png"/></a>
+    <a href="../../images/lilypond-eca10bbebec2aba994f5492ee57c73d9e9aec95486765047953ee46eb9f0b302.ly"><img src="../../images/lilypond-eca10bbebec2aba994f5492ee57c73d9e9aec95486765047953ee46eb9f0b302.cropped.png"/></a>
 </div></div>
 <hr/><p class="class-header rubric">Attributes Summary</p>
 <table class="longtable docutils align-default">
@@ -579,15 +575,15 @@
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
 <dl class="py method">
-<dt id="evans.rtm.RTMMaker.__call__">
-<em class="property">overridden </em><code class="sig-name descname">__call__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">divisions</span></em>, <em class="sig-param"><span class="n">previous_state</span><span class="o">=</span><span class="default_value">- 1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.rtm.RTMMaker.__call__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.rtm.RTMMaker.__call__">
+<em class="property"><span class="pre">overridden</span> </em><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">divisions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">previous_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../modules/evans/rtm.html#RTMMaker.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.rtm.RTMMaker.__call__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls rhythm-maker.</p>
 </dd></dl>
 
 <div class="inherited docutils container">
 <dl class="py method">
-<dt id="evans.rtm.RTMMaker.__eq__">
-<code class="sig-prename descclassname">(<code class="descclassname docutils literal notranslate"><span class="pre">RhythmMaker</span></code>).</code><code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.rtm.RTMMaker.__eq__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.rtm.RTMMaker.__eq__">
+<span class="sig-prename descclassname"><span class="pre">(</span><code class="descclassname docutils literal notranslate"><span class="pre">RhythmMaker</span></code><span class="pre">).</span></span><span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">argument</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.rtm.RTMMaker.__eq__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delegates to storage format manager.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -599,8 +595,8 @@
 </div>
 <div class="inherited docutils container">
 <dl class="py method">
-<dt id="evans.rtm.RTMMaker.__hash__">
-<code class="sig-prename descclassname">(<code class="descclassname docutils literal notranslate"><span class="pre">RhythmMaker</span></code>).</code><code class="sig-name descname">__hash__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.rtm.RTMMaker.__hash__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.rtm.RTMMaker.__hash__">
+<span class="sig-prename descclassname"><span class="pre">(</span><code class="descclassname docutils literal notranslate"><span class="pre">RhythmMaker</span></code><span class="pre">).</span></span><span class="sig-name descname"><span class="pre">__hash__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.rtm.RTMMaker.__hash__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delegates to storage format manager.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -611,22 +607,22 @@
 
 </div>
 <dl class="py method">
-<dt id="evans.rtm.RTMMaker.__repr__">
-<em class="property">overridden </em><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.rtm.RTMMaker.__repr__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.rtm.RTMMaker.__repr__">
+<em class="property"><span class="pre">overridden</span> </em><span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../modules/evans/rtm.html#RTMMaker.__repr__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.rtm.RTMMaker.__repr__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delegates to storage format manager.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="evans.rtm.RTMMaker.__str__">
-<em class="property">overridden </em><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.rtm.RTMMaker.__str__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.rtm.RTMMaker.__str__">
+<em class="property"><span class="pre">overridden</span> </em><span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../modules/evans/rtm.html#RTMMaker.__str__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.rtm.RTMMaker.__str__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return str(self).</p>
 </dd></dl>
 
 <hr/><p class="class-header rubric">Read-only properties</p>
 <div class="inherited docutils container">
 <dl class="py attribute">
-<dt id="evans.rtm.RTMMaker.previous_state">
-<code class="sig-prename descclassname">(<code class="descclassname docutils literal notranslate"><span class="pre">RhythmMaker</span></code>).</code><code class="sig-name descname">previous_state</code><a class="headerlink" href="#evans.rtm.RTMMaker.previous_state" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.rtm.RTMMaker.previous_state">
+<span class="sig-prename descclassname"><span class="pre">(</span><code class="descclassname docutils literal notranslate"><span class="pre">RhythmMaker</span></code><span class="pre">).</span></span><span class="sig-name descname"><span class="pre">previous_state</span></span><a class="headerlink" href="#evans.rtm.RTMMaker.previous_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets previous state dictionary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -638,8 +634,8 @@
 </div>
 <div class="inherited docutils container">
 <dl class="py attribute">
-<dt id="evans.rtm.RTMMaker.spelling">
-<code class="sig-prename descclassname">(<code class="descclassname docutils literal notranslate"><span class="pre">RhythmMaker</span></code>).</code><code class="sig-name descname">spelling</code><a class="headerlink" href="#evans.rtm.RTMMaker.spelling" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.rtm.RTMMaker.spelling">
+<span class="sig-prename descclassname"><span class="pre">(</span><code class="descclassname docutils literal notranslate"><span class="pre">RhythmMaker</span></code><span class="pre">).</span></span><span class="sig-name descname"><span class="pre">spelling</span></span><a class="headerlink" href="#evans.rtm.RTMMaker.spelling" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets duration specifier.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -651,8 +647,8 @@
 </div>
 <div class="inherited docutils container">
 <dl class="py attribute">
-<dt id="evans.rtm.RTMMaker.state">
-<code class="sig-prename descclassname">(<code class="descclassname docutils literal notranslate"><span class="pre">RhythmMaker</span></code>).</code><code class="sig-name descname">state</code><a class="headerlink" href="#evans.rtm.RTMMaker.state" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.rtm.RTMMaker.state">
+<span class="sig-prename descclassname"><span class="pre">(</span><code class="descclassname docutils literal notranslate"><span class="pre">RhythmMaker</span></code><span class="pre">).</span></span><span class="sig-name descname"><span class="pre">state</span></span><a class="headerlink" href="#evans.rtm.RTMMaker.state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets state dictionary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -664,8 +660,8 @@
 </div>
 <div class="inherited docutils container">
 <dl class="py attribute">
-<dt id="evans.rtm.RTMMaker.tag">
-<code class="sig-prename descclassname">(<code class="descclassname docutils literal notranslate"><span class="pre">RhythmMaker</span></code>).</code><code class="sig-name descname">tag</code><a class="headerlink" href="#evans.rtm.RTMMaker.tag" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.rtm.RTMMaker.tag">
+<span class="sig-prename descclassname"><span class="pre">(</span><code class="descclassname docutils literal notranslate"><span class="pre">RhythmMaker</span></code><span class="pre">).</span></span><span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#evans.rtm.RTMMaker.tag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets tag.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -700,9 +696,9 @@
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2018-2020, Gregory Rowland Evans
+        &copy; Copyright 2018-2021, Gregory Rowland Evans
       <span class="lastupdated">
-        Last updated on Jan 19, 2021.
+        Last updated on Jun 03, 2021.
       </span>
 
     </p>
@@ -734,18 +730,6 @@
 
   
   
-    
-    <!-- Theme Analytics -->
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-59435436-1', 'auto');
-    ga('send', 'pageview');
-    </script>
-
     
    
 

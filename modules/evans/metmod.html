@@ -1,0 +1,543 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>evans.metmod &mdash; Perllan API 0.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/abjad.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/uqbar.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../static/notes.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script defer="defer" src="../../static/copybutton.js"></script>
+        <script src="../../static/ga.js"></script>
+    
+    <script type="text/javascript" src="../../static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #556B2F" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Perllan API
+          
+
+          
+            
+            <img src="../../static/perllan-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../concepts.html">Core concepts</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/abjadext/microtones/index.html">microtones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/evans/index.html">evans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/tsmakers/index.html">tsmakers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../scores.html">Score gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recipes_pitch.html">Pitch Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recipes_sequence.html">Sequence Recipes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Perllan API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>evans.metmod</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for evans.metmod</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Metric modulation.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">abjad</span>
+<span class="kn">import</span> <span class="nn">quicktions</span>
+
+
+<div class="viewcode-block" id="mixed_number"><a class="viewcode-back" href="../../api/evans/metmod.html#evans.metmod.mixed_number">[docs]</a><span class="k">def</span> <span class="nf">mixed_number</span><span class="p">(</span><span class="n">fraction_pair</span><span class="o">=</span><span class="p">(</span><span class="mi">288</span><span class="p">,</span> <span class="mi">5</span><span class="p">)):</span>
+    <span class="n">fraction_pair</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">fraction_pair</span><span class="p">)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">fraction_pair</span><span class="o">.</span><span class="n">numerator</span> <span class="o">//</span> <span class="n">fraction_pair</span><span class="o">.</span><span class="n">denominator</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">fraction_pair</span><span class="o">.</span><span class="n">numerator</span> <span class="o">%</span> <span class="n">fraction_pair</span><span class="o">.</span><span class="n">denominator</span><span class="p">)</span>
+        <span class="o">/</span> <span class="n">fraction_pair</span><span class="o">.</span><span class="n">denominator</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">limit_denominator</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">numerator</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">denominator</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="compare_speed"><a class="viewcode-back" href="../../api/evans/metmod.html#evans.metmod.compare_speed">[docs]</a><span class="k">def</span> <span class="nf">compare_speed</span><span class="p">(</span><span class="n">l_note</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">r_note</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">left_dur</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">duration</span><span class="p">(</span><span class="n">l_note</span><span class="p">)</span>
+    <span class="n">right_dur</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">duration</span><span class="p">(</span><span class="n">r_note</span><span class="p">)</span>
+    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">left_dur</span> <span class="o">/</span> <span class="n">right_dur</span>
+    <span class="k">return</span> <span class="n">multiplier</span></div>
+
+
+<div class="viewcode-block" id="calculate_metric_modulation"><a class="viewcode-back" href="../../api/evans/metmod.html#evans.metmod.calculate_metric_modulation">[docs]</a><span class="k">def</span> <span class="nf">calculate_metric_modulation</span><span class="p">(</span><span class="n">l_tempo</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">l_note</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">r_note</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">left_dur</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">duration</span><span class="p">(</span><span class="n">l_note</span><span class="p">)</span>
+    <span class="n">right_dur</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">duration</span><span class="p">(</span><span class="n">r_note</span><span class="p">)</span>
+    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">right_dur</span> <span class="o">/</span> <span class="n">left_dur</span>
+    <span class="n">new_tempo</span> <span class="o">=</span> <span class="n">l_tempo</span> <span class="o">*</span> <span class="n">multiplier</span>
+    <span class="k">return</span> <span class="n">new_tempo</span></div>
+
+
+<div class="viewcode-block" id="metric_modulation"><a class="viewcode-back" href="../../api/evans/metmod.html#evans.metmod.metric_modulation">[docs]</a><span class="k">def</span> <span class="nf">metric_modulation</span><span class="p">(</span>
+    <span class="n">metronome_mark</span><span class="o">=</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="mi">60</span><span class="p">),</span>
+    <span class="n">left_note</span><span class="o">=</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;c&#39;8&quot;</span><span class="p">)),</span>
+    <span class="n">right_note</span><span class="o">=</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;c&#39;8.&quot;</span><span class="p">)),</span>
+    <span class="n">modulated_beat</span><span class="o">=</span><span class="p">(</span><span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;c&#39;4&quot;</span><span class="p">)),</span>
+<span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Makes metric modulation markup.</span>
+
+<span class="sd">    .. container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; m = evans.metric_modulation(</span>
+<span class="sd">        ...     metronome_mark=((1, 4), 96),</span>
+<span class="sd">        ...     left_note=(abjad.Tuplet(multiplier=(5, 3), components=[abjad.Note()])),</span>
+<span class="sd">        ...     right_note=(abjad.Note(&quot;c&#39;4&quot;)),</span>
+<span class="sd">        ...     modulated_beat=(abjad.Note(&quot;c&#39;4&quot;)),</span>
+<span class="sd">        ... )</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; staff = abjad.Staff(&quot;c&#39;1&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; abjad.attach(m, staff[0])</span>
+<span class="sd">        &gt;&gt;&gt; score = abjad.Score([staff])</span>
+<span class="sd">        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;</span>
+<span class="sd">        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment</span>
+<span class="sd">        &gt;&gt;&gt; file = abjad.LilyPondFile(</span>
+<span class="sd">        ...     items=[score],</span>
+<span class="sd">        ...     includes=[</span>
+<span class="sd">        ...         &quot;/Users/evansdsg2/abjad/docs/source/_stylesheets/abjad.ily&quot;</span>
+<span class="sd">        ...     ],</span>
+<span class="sd">        ...     global_staff_size=16,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP</span>
+
+<span class="sd">        .. docs::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(abjad.lilypond(staff))</span>
+<span class="sd">            \new Staff</span>
+<span class="sd">            {</span>
+<span class="sd">                c&#39;1</span>
+<span class="sd">                ^ \markup {</span>
+<span class="sd">                  \huge</span>
+<span class="sd">                  \concat {</span>
+<span class="sd">                      \abjad-metronome-mark-mixed-number-markup #2 #0 #1 #&quot;57&quot; #&quot;3&quot; #&quot;5&quot;</span>
+<span class="sd">                      \hspace #1</span>
+<span class="sd">                      \upright [</span>
+<span class="sd">                      \abjad-metric-modulation-tuplet-lhs #2 #0 #5 #3 #2 #0 #&#39;(0.6 . 0.6)</span>
+<span class="sd">                      \hspace #0.5</span>
+<span class="sd">                      \upright ]</span>
+<span class="sd">                  }</span>
+<span class="sd">                }</span>
+<span class="sd">            }</span>
+
+<span class="sd">    .. container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; m = evans.metric_modulation(</span>
+<span class="sd">        ...     metronome_mark=((1, 4), 96),</span>
+<span class="sd">        ...     left_note=(abjad.Note(&quot;c&#39;4.&quot;)),</span>
+<span class="sd">        ...     right_note=(abjad.Note(&quot;c&#39;4&quot;)),</span>
+<span class="sd">        ...     modulated_beat=(abjad.Note(&quot;c&#39;4&quot;)),</span>
+<span class="sd">        ... )</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; staff = abjad.Staff(&quot;c&#39;1&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; abjad.attach(m, staff[0])</span>
+<span class="sd">        &gt;&gt;&gt; score = abjad.Score([staff])</span>
+<span class="sd">        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;</span>
+<span class="sd">        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment</span>
+<span class="sd">        &gt;&gt;&gt; file = abjad.LilyPondFile(</span>
+<span class="sd">        ...     items=[score],</span>
+<span class="sd">        ...     includes=[</span>
+<span class="sd">        ...         &quot;/Users/evansdsg2/abjad/docs/source/_stylesheets/abjad.ily&quot;</span>
+<span class="sd">        ...     ],</span>
+<span class="sd">        ...     global_staff_size=16,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP</span>
+
+<span class="sd">        .. docs::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(abjad.lilypond(staff))</span>
+<span class="sd">            \new Staff</span>
+<span class="sd">            {</span>
+<span class="sd">                c&#39;1</span>
+<span class="sd">                ^ \markup {</span>
+<span class="sd">                  \huge</span>
+<span class="sd">                  \concat {</span>
+<span class="sd">                      \abjad-metronome-mark-markup #2 #0 #1 #&quot;64&quot;</span>
+<span class="sd">                      \hspace #1</span>
+<span class="sd">                      \upright [</span>
+<span class="sd">                      \abjad-metric-modulation #2 #1 #2 #0 #&#39;(0.6 . 0.6)</span>
+<span class="sd">                      \hspace #0.5</span>
+<span class="sd">                      \upright ]</span>
+<span class="sd">                  }</span>
+<span class="sd">                }</span>
+<span class="sd">            }</span>
+
+<span class="sd">    .. container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; m = evans.metric_modulation(</span>
+<span class="sd">        ...     metronome_mark=((1, 4), 71),</span>
+<span class="sd">        ...     left_note=(abjad.Tuplet(multiplier=(10, 9), components=[abjad.Note(&quot;c&#39;16&quot;)])),</span>
+<span class="sd">        ...     right_note=(abjad.Note(&quot;c&#39;16&quot;)),</span>
+<span class="sd">        ...     modulated_beat=(abjad.Note(&quot;c&#39;4&quot;)),</span>
+<span class="sd">        ... )</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; staff = abjad.Staff(&quot;c&#39;1&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; abjad.attach(m, staff[0])</span>
+<span class="sd">        &gt;&gt;&gt; score = abjad.Score([staff])</span>
+<span class="sd">        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;</span>
+<span class="sd">        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment</span>
+<span class="sd">        &gt;&gt;&gt; file = abjad.LilyPondFile(</span>
+<span class="sd">        ...     items=[score],</span>
+<span class="sd">        ...     includes=[</span>
+<span class="sd">        ...         &quot;/Users/evansdsg2/abjad/docs/source/_stylesheets/abjad.ily&quot;</span>
+<span class="sd">        ...     ],</span>
+<span class="sd">        ...     global_staff_size=16,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP</span>
+
+<span class="sd">        .. docs::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(abjad.lilypond(staff))</span>
+<span class="sd">            \new Staff</span>
+<span class="sd">            {</span>
+<span class="sd">                c&#39;1</span>
+<span class="sd">                ^ \markup {</span>
+<span class="sd">                  \huge</span>
+<span class="sd">                  \concat {</span>
+<span class="sd">                      \abjad-metronome-mark-mixed-number-markup #2 #0 #1 #&quot;63&quot; #&quot;9&quot; #&quot;10&quot;</span>
+<span class="sd">                      \hspace #1</span>
+<span class="sd">                      \upright [</span>
+<span class="sd">                      \abjad-metric-modulation-tuplet-lhs #4 #0 #10 #9 #4 #0 #&#39;(0.6 . 0.6)</span>
+<span class="sd">                      \hspace #0.5</span>
+<span class="sd">                      \upright ]</span>
+<span class="sd">                  }</span>
+<span class="sd">                }</span>
+<span class="sd">            }</span>
+
+<span class="sd">    .. container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; m = evans.metric_modulation(</span>
+<span class="sd">        ...     metronome_mark=((1, 4), 40),</span>
+<span class="sd">        ...     left_note=(abjad.Tuplet(multiplier=(2, 3), components=[abjad.Note(&quot;c&#39;2&quot;)])),</span>
+<span class="sd">        ...     right_note=(abjad.Note(&quot;c&#39;2&quot;)),</span>
+<span class="sd">        ...     modulated_beat=(abjad.Note(&quot;c&#39;4&quot;)),</span>
+<span class="sd">        ... )</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; staff = abjad.Staff(&quot;c&#39;1&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; abjad.attach(m, staff[0])</span>
+<span class="sd">        &gt;&gt;&gt; score = abjad.Score([staff])</span>
+<span class="sd">        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;</span>
+<span class="sd">        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment</span>
+<span class="sd">        &gt;&gt;&gt; file = abjad.LilyPondFile(</span>
+<span class="sd">        ...     items=[score],</span>
+<span class="sd">        ...     includes=[</span>
+<span class="sd">        ...         &quot;/Users/evansdsg2/abjad/docs/source/_stylesheets/abjad.ily&quot;</span>
+<span class="sd">        ...     ],</span>
+<span class="sd">        ...     global_staff_size=16,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; abjad.show(file) # doctest: +SKIP</span>
+
+<span class="sd">        .. docs::</span>
+
+<span class="sd">            &gt;&gt;&gt; print(abjad.lilypond(staff))</span>
+<span class="sd">            \new Staff</span>
+<span class="sd">            {</span>
+<span class="sd">                c&#39;1</span>
+<span class="sd">                ^ \markup {</span>
+<span class="sd">                  \huge</span>
+<span class="sd">                  \concat {</span>
+<span class="sd">                      \abjad-metronome-mark-markup #2 #0 #1 #&quot;60&quot;</span>
+<span class="sd">                      \hspace #1</span>
+<span class="sd">                      \upright [</span>
+<span class="sd">                      \abjad-metric-modulation-tuplet-lhs #1 #0 #2 #3 #1 #0 #&#39;(0.6 . 0.6)</span>
+<span class="sd">                      \hspace #0.5</span>
+<span class="sd">                      \upright ]</span>
+<span class="sd">                  }</span>
+<span class="sd">                }</span>
+<span class="sd">            }</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tempo_note</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Note</span><span class="p">()</span>
+    <span class="n">tempo_note</span><span class="o">.</span><span class="n">written_duration</span> <span class="o">=</span> <span class="n">metronome_mark</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">left_speed_multiplier</span> <span class="o">=</span> <span class="n">compare_speed</span><span class="p">(</span><span class="n">l_note</span><span class="o">=</span><span class="n">tempo_note</span><span class="p">,</span> <span class="n">r_note</span><span class="o">=</span><span class="n">left_note</span><span class="p">)</span>
+    <span class="n">left_speed</span> <span class="o">=</span> <span class="n">metronome_mark</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">left_speed_multiplier</span>
+    <span class="n">modulation_speed</span> <span class="o">=</span> <span class="n">calculate_metric_modulation</span><span class="p">(</span>
+        <span class="n">l_tempo</span><span class="o">=</span><span class="n">left_speed</span><span class="p">,</span> <span class="n">l_note</span><span class="o">=</span><span class="n">left_note</span><span class="p">,</span> <span class="n">r_note</span><span class="o">=</span><span class="n">right_note</span>
+    <span class="p">)</span>
+    <span class="n">returned_speed</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">modulation_speed</span> <span class="o">*</span> <span class="n">compare_speed</span><span class="p">(</span><span class="n">left_note</span><span class="p">,</span> <span class="n">modulated_beat</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">returned_speed</span> <span class="o">%</span> <span class="mi">1</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">met</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">MetronomeMark</span><span class="o">.</span><span class="n">make_tempo_equation_markup</span><span class="p">(</span>
+            <span class="n">abjad</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">duration</span><span class="p">(</span><span class="n">modulated_beat</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">returned_speed</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">mod</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">MetricModulation</span><span class="p">(</span>
+            <span class="n">left_rhythm</span><span class="o">=</span><span class="n">left_note</span><span class="p">,</span> <span class="n">right_rhythm</span><span class="o">=</span><span class="n">right_note</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">mark</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondLiteral</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="sa">r</span><span class="s2">&quot;^ \markup {&quot;</span><span class="p">,</span>
+                <span class="sa">r</span><span class="s2">&quot;  \huge&quot;</span><span class="p">,</span>
+                <span class="sa">r</span><span class="s2">&quot;  \concat {&quot;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;      </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">met</span><span class="p">)[</span><span class="mi">8</span><span class="p">:]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="sa">r</span><span class="s2">&quot;      \hspace #1&quot;</span><span class="p">,</span>
+                <span class="sa">r</span><span class="s2">&quot;      \upright [&quot;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;      </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">mod</span><span class="p">)[</span><span class="mi">8</span><span class="p">:]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="sa">r</span><span class="s2">&quot;      \hspace #0.5&quot;</span><span class="p">,</span>
+                <span class="sa">r</span><span class="s2">&quot;      \upright ]&quot;</span><span class="p">,</span>
+                <span class="sa">r</span><span class="s2">&quot;  }&quot;</span><span class="p">,</span>
+                <span class="sa">r</span><span class="s2">&quot;}&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="n">format_slot</span><span class="o">=</span><span class="s2">&quot;after&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">mark</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">met</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">MetronomeMark</span><span class="o">.</span><span class="n">make_tempo_equation_markup</span><span class="p">(</span>
+            <span class="n">abjad</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">duration</span><span class="p">(</span><span class="n">modulated_beat</span><span class="p">),</span>
+            <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">returned_speed</span><span class="p">)</span><span class="o">.</span><span class="n">limit_denominator</span><span class="p">(),</span>
+        <span class="p">)</span>
+        <span class="n">mod</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">MetricModulation</span><span class="p">(</span>
+            <span class="n">left_rhythm</span><span class="o">=</span><span class="n">left_note</span><span class="p">,</span> <span class="n">right_rhythm</span><span class="o">=</span><span class="n">right_note</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">mark</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">LilyPondLiteral</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="sa">r</span><span class="s2">&quot;^ \markup {&quot;</span><span class="p">,</span>
+                <span class="sa">r</span><span class="s2">&quot;  \huge&quot;</span><span class="p">,</span>
+                <span class="sa">r</span><span class="s2">&quot;  \concat {&quot;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;      </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">met</span><span class="p">)[</span><span class="mi">8</span><span class="p">:]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="sa">r</span><span class="s2">&quot;      \hspace #1&quot;</span><span class="p">,</span>
+                <span class="sa">r</span><span class="s2">&quot;      \upright [&quot;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;      </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">mod</span><span class="p">)[</span><span class="mi">8</span><span class="p">:]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="sa">r</span><span class="s2">&quot;      \hspace #0.5&quot;</span><span class="p">,</span>
+                <span class="sa">r</span><span class="s2">&quot;      \upright ]&quot;</span><span class="p">,</span>
+                <span class="sa">r</span><span class="s2">&quot;  }&quot;</span><span class="p">,</span>
+                <span class="sa">r</span><span class="s2">&quot;}&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="n">format_slot</span><span class="o">=</span><span class="s2">&quot;after&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">mark</span></div>
+
+
+<div class="viewcode-block" id="calculate_tempo_modulated_duration"><a class="viewcode-back" href="../../api/evans/metmod.html#evans.metmod.calculate_tempo_modulated_duration">[docs]</a><span class="k">def</span> <span class="nf">calculate_tempo_modulated_duration</span><span class="p">(</span>
+    <span class="n">original_tempo</span><span class="o">=</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="mi">60</span><span class="p">),</span>
+    <span class="n">new_tempo</span><span class="o">=</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="mi">120</span><span class="p">),</span>
+    <span class="n">duration</span><span class="o">=</span><span class="n">abjad</span><span class="o">.</span><span class="n">Duration</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    .. container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; evans.calculate_tempo_modulated_duration(</span>
+<span class="sd">        ...     original_tempo=((1, 4), 60),</span>
+<span class="sd">        ...     new_tempo=((1, 4), 120),</span>
+<span class="sd">        ...     duration=abjad.Duration((1, 1)),</span>
+<span class="sd">        ... )</span>
+<span class="sd">        ...</span>
+<span class="sd">        Duration(2, 1)</span>
+
+<span class="sd">    .. container:: example</span>
+
+<span class="sd">        &gt;&gt;&gt; evans.calculate_tempo_modulated_duration(</span>
+<span class="sd">        ...     original_tempo=((1, 4), 72),</span>
+<span class="sd">        ...     new_tempo=((1, 4), 83),</span>
+<span class="sd">        ...     duration=abjad.Duration((23, 8)),</span>
+<span class="sd">        ... )</span>
+<span class="sd">        ...</span>
+<span class="sd">        Duration(1909, 576)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">convert_to_quarter</span><span class="p">(</span><span class="n">tempo</span><span class="p">):</span>
+        <span class="n">notehead_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tempo</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">tempo</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">beat_change</span> <span class="o">=</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="s2">&quot;1/4&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="n">quicktions</span><span class="o">.</span><span class="n">Fraction</span><span class="p">(</span><span class="n">notehead_string</span><span class="p">)</span>
+        <span class="n">new_speed</span> <span class="o">=</span> <span class="n">tempo</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">beat_change</span>
+        <span class="k">return</span> <span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">new_speed</span><span class="p">)</span>
+
+    <span class="n">original_tempo</span> <span class="o">=</span> <span class="n">convert_to_quarter</span><span class="p">(</span><span class="n">original_tempo</span><span class="p">)</span>
+    <span class="n">new_tempo</span> <span class="o">=</span> <span class="n">convert_to_quarter</span><span class="p">(</span><span class="n">new_tempo</span><span class="p">)</span>
+    <span class="n">multiplier</span> <span class="o">=</span> <span class="n">original_tempo</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">new_tempo</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">timed_duration</span> <span class="o">=</span> <span class="n">duration</span> <span class="o">/</span> <span class="n">multiplier</span>
+    <span class="k">return</span> <span class="n">timed_duration</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-2021, Gregory Rowland Evans
+      <span class="lastupdated">
+        Last updated on Jun 03, 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

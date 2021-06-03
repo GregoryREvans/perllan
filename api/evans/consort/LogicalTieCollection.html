@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../../../static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../../static/abjad.css" type="text/css" />
   <link rel="stylesheet" href="../../../static/uqbar.css" type="text/css" />
@@ -31,10 +33,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../static/documentation_options.js"></script>
         <script src="../../../static/jquery.js"></script>
         <script src="../../../static/underscore.js"></script>
         <script src="../../../static/doctools.js"></script>
-        <script src="../../../static/language_data.js"></script>
         <script defer="defer" src="../../../static/copybutton.js"></script>
         <script src="../../../static/ga.js"></script>
     
@@ -258,8 +260,8 @@
 }</p></object></div>
 </div>
 <dl class="py class">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection">
-<em class="property">class </em><code class="sig-prename descclassname">evans.consort.LogicalTieCollection.</code><code class="sig-name descname">LogicalTieCollection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">logical_ties</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">evans.consort.LogicalTieCollection.</span></span><span class="sig-name descname"><span class="pre">LogicalTieCollection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logical_ties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../modules/evans/consort/LogicalTieCollection.html#LogicalTieCollection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection" title="Permalink to this definition">¶</a></dt>
 <dd><p>A mutable always-sorted collection of logical_ties.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">(</span><span class="s2">&quot;c&#39;4 c&#39;4 c&#39;4 c&#39;4&quot;</span><span class="p">)</span>
@@ -379,8 +381,8 @@
 </table>
 <hr/><p class="class-header rubric">Special methods</p>
 <dl class="py method">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.__contains__">
-<code class="sig-name descname">__contains__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">logical_tie</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__contains__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.__contains__">
+<span class="sig-name descname"><span class="pre">__contains__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logical_tie</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../modules/evans/consort/LogicalTieCollection.html#LogicalTieCollection.__contains__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__contains__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is true if this logical_tie collection contains <cite>logical_tie</cite>. Otherwise
 false.</p>
 <div class="example docutils container">
@@ -405,8 +407,8 @@ false.</p>
 
 <div class="inherited docutils container">
 <dl class="py method">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.__eq__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="AbjadObject.html#evans.consort.AbjadObject.AbjadObject" title="evans.consort.AbjadObject.AbjadObject"><code class="descclassname docutils literal notranslate"><span class="pre">AbjadObject</span></code></a>).</code><code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__eq__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.__eq__">
+<span class="sig-prename descclassname"><span class="pre">(</span><a class="reference internal" href="AbjadObject.html#evans.consort.AbjadObject.AbjadObject" title="evans.consort.AbjadObject.AbjadObject"><code class="descclassname docutils literal notranslate"><span class="pre">AbjadObject</span></code></a><span class="pre">).</span></span><span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">argument</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__eq__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is true when ID of <cite>argument</cite> equals ID of Abjad object.
 Otherwise false.
 Returns true or false.</p>
@@ -415,8 +417,8 @@ Returns true or false.</p>
 </div>
 <div class="inherited docutils container">
 <dl class="py method">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.__format__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="AbjadObject.html#evans.consort.AbjadObject.AbjadObject" title="evans.consort.AbjadObject.AbjadObject"><code class="descclassname docutils literal notranslate"><span class="pre">AbjadObject</span></code></a>).</code><code class="sig-name descname">__format__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">format_specification</span><span class="o">=</span><span class="default_value">''</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__format__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.__format__">
+<span class="sig-prename descclassname"><span class="pre">(</span><a class="reference internal" href="AbjadObject.html#evans.consort.AbjadObject.AbjadObject" title="evans.consort.AbjadObject.AbjadObject"><code class="descclassname docutils literal notranslate"><span class="pre">AbjadObject</span></code></a><span class="pre">).</span></span><span class="sig-name descname"><span class="pre">__format__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format_specification</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__format__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Formats Abjad object.
 Set <cite>format_specification</cite> to <cite>‘’</cite> or <cite>‘storage’</cite>.
 Interprets <cite>‘’</cite> equal to <cite>‘storage’</cite>.
@@ -425,8 +427,8 @@ Returns string.</p>
 
 </div>
 <dl class="py method">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.__getitem__">
-<code class="sig-name descname">__getitem__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">i</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__getitem__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.__getitem__">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../modules/evans/consort/LogicalTieCollection.html#LogicalTieCollection.__getitem__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__getitem__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets logical_tie at index <cite>i</cite>.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">(</span><span class="s2">&quot;c&#39;4 c&#39;4 c&#39;4 c&#39;4&quot;</span><span class="p">)</span>
@@ -453,8 +455,8 @@ Returns string.</p>
 
 <div class="inherited docutils container">
 <dl class="py method">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.__hash__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="AbjadObject.html#evans.consort.AbjadObject.AbjadObject" title="evans.consort.AbjadObject.AbjadObject"><code class="descclassname docutils literal notranslate"><span class="pre">AbjadObject</span></code></a>).</code><code class="sig-name descname">__hash__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__hash__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.__hash__">
+<span class="sig-prename descclassname"><span class="pre">(</span><a class="reference internal" href="AbjadObject.html#evans.consort.AbjadObject.AbjadObject" title="evans.consort.AbjadObject.AbjadObject"><code class="descclassname docutils literal notranslate"><span class="pre">AbjadObject</span></code></a><span class="pre">).</span></span><span class="sig-name descname"><span class="pre">__hash__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__hash__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Hashes Abjad object.
 Required to be explicitly redefined on Python 3 if __eq__ changes.
 Returns integer.</p>
@@ -462,8 +464,8 @@ Returns integer.</p>
 
 </div>
 <dl class="py method">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.__iter__">
-<code class="sig-name descname">__iter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__iter__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.__iter__">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../modules/evans/consort/LogicalTieCollection.html#LogicalTieCollection.__iter__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__iter__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Iterates logical_ties in this logical_tie collection.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">(</span><span class="s2">&quot;c&#39;4. c&#39;8 c&#39;4.. c&#39;16&quot;</span><span class="p">)</span>
@@ -486,8 +488,8 @@ Returns integer.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.__len__">
-<code class="sig-name descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__len__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.__len__">
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../modules/evans/consort/LogicalTieCollection.html#LogicalTieCollection.__len__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__len__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets length of this logical_tie collection.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">(</span><span class="s2">&quot;c&#39;4 c&#39;4 c&#39;4 c&#39;4&quot;</span><span class="p">)</span>
@@ -506,8 +508,8 @@ Returns integer.</p>
 
 <div class="inherited docutils container">
 <dl class="py method">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.__ne__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="AbjadObject.html#evans.consort.AbjadObject.AbjadObject" title="evans.consort.AbjadObject.AbjadObject"><code class="descclassname docutils literal notranslate"><span class="pre">AbjadObject</span></code></a>).</code><code class="sig-name descname">__ne__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__ne__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.__ne__">
+<span class="sig-prename descclassname"><span class="pre">(</span><a class="reference internal" href="AbjadObject.html#evans.consort.AbjadObject.AbjadObject" title="evans.consort.AbjadObject.AbjadObject"><code class="descclassname docutils literal notranslate"><span class="pre">AbjadObject</span></code></a><span class="pre">).</span></span><span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">argument</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__ne__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is true when Abjad object does not equal <cite>argument</cite>.
 Otherwise false.
 Returns true or false.</p>
@@ -516,16 +518,16 @@ Returns true or false.</p>
 </div>
 <div class="inherited docutils container">
 <dl class="py method">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.__repr__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="AbjadObject.html#evans.consort.AbjadObject.AbjadObject" title="evans.consort.AbjadObject.AbjadObject"><code class="descclassname docutils literal notranslate"><span class="pre">AbjadObject</span></code></a>).</code><code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__repr__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.__repr__">
+<span class="sig-prename descclassname"><span class="pre">(</span><a class="reference internal" href="AbjadObject.html#evans.consort.AbjadObject.AbjadObject" title="evans.consort.AbjadObject.AbjadObject"><code class="descclassname docutils literal notranslate"><span class="pre">AbjadObject</span></code></a><span class="pre">).</span></span><span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__repr__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets interpreter representation of Abjad object.
 Returns string.</p>
 </dd></dl>
 
 </div>
 <dl class="py method">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.__setitem__">
-<code class="sig-name descname">__setitem__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">i</span></em>, <em class="sig-param"><span class="n">new</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__setitem__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.__setitem__">
+<span class="sig-name descname"><span class="pre">__setitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../modules/evans/consort/LogicalTieCollection.html#LogicalTieCollection.__setitem__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__setitem__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets logical_ties at index <cite>i</cite> to <cite>new</cite>.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">(</span><span class="s2">&quot;c&#39;4 c&#39;4 c&#39;4 c&#39;4&quot;</span><span class="p">)</span>
@@ -544,16 +546,16 @@ Returns string.</p>
 
 <div class="inherited docutils container">
 <dl class="py method">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.__str__">
-<code class="sig-prename descclassname">(<a class="reference internal" href="AbjadObject.html#evans.consort.AbjadObject.AbjadObject" title="evans.consort.AbjadObject.AbjadObject"><code class="descclassname docutils literal notranslate"><span class="pre">AbjadObject</span></code></a>).</code><code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__str__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.__str__">
+<span class="sig-prename descclassname"><span class="pre">(</span><a class="reference internal" href="AbjadObject.html#evans.consort.AbjadObject.AbjadObject" title="evans.consort.AbjadObject.AbjadObject"><code class="descclassname docutils literal notranslate"><span class="pre">AbjadObject</span></code></a><span class="pre">).</span></span><span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.__str__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return str(self).</p>
 </dd></dl>
 
 </div>
 <hr/><p class="class-header rubric">Methods</p>
 <dl class="py method">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.find_logical_ties_intersecting_timespan">
-<code class="sig-name descname">find_logical_ties_intersecting_timespan</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">timespan</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.find_logical_ties_intersecting_timespan" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.find_logical_ties_intersecting_timespan">
+<span class="sig-name descname"><span class="pre">find_logical_ties_intersecting_timespan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timespan</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../modules/evans/consort/LogicalTieCollection.html#LogicalTieCollection.find_logical_ties_intersecting_timespan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.find_logical_ties_intersecting_timespan" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds logical_ties overlapping <cite>timespan</cite>.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">(</span><span class="s2">&quot;c&#39;4 c&#39;2 c&#39;4&quot;</span><span class="p">)</span>
@@ -579,8 +581,8 @@ Returns string.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.find_logical_ties_overlapping_offset">
-<code class="sig-name descname">find_logical_ties_overlapping_offset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">offset</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.find_logical_ties_overlapping_offset" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.find_logical_ties_overlapping_offset">
+<span class="sig-name descname"><span class="pre">find_logical_ties_overlapping_offset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../modules/evans/consort/LogicalTieCollection.html#LogicalTieCollection.find_logical_ties_overlapping_offset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.find_logical_ties_overlapping_offset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds logical_ties overlapping <cite>offset</cite>.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">(</span><span class="s2">&quot;c&#39;4 c&#39;2 c&#39;4&quot;</span><span class="p">)</span>
@@ -600,23 +602,23 @@ Returns string.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.find_logical_ties_starting_at">
-<code class="sig-name descname">find_logical_ties_starting_at</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">offset</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.find_logical_ties_starting_at" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.find_logical_ties_starting_at">
+<span class="sig-name descname"><span class="pre">find_logical_ties_starting_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../modules/evans/consort/LogicalTieCollection.html#LogicalTieCollection.find_logical_ties_starting_at"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.find_logical_ties_starting_at" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.find_logical_ties_starting_during_timespan">
-<code class="sig-name descname">find_logical_ties_starting_during_timespan</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">timespan</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.find_logical_ties_starting_during_timespan" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.find_logical_ties_starting_during_timespan">
+<span class="sig-name descname"><span class="pre">find_logical_ties_starting_during_timespan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timespan</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../modules/evans/consort/LogicalTieCollection.html#LogicalTieCollection.find_logical_ties_starting_during_timespan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.find_logical_ties_starting_during_timespan" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.find_logical_ties_stopping_at">
-<code class="sig-name descname">find_logical_ties_stopping_at</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">offset</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.find_logical_ties_stopping_at" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.find_logical_ties_stopping_at">
+<span class="sig-name descname"><span class="pre">find_logical_ties_stopping_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../modules/evans/consort/LogicalTieCollection.html#LogicalTieCollection.find_logical_ties_stopping_at"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.find_logical_ties_stopping_at" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.get_start_offset_after">
-<code class="sig-name descname">get_start_offset_after</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">offset</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.get_start_offset_after" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.get_start_offset_after">
+<span class="sig-name descname"><span class="pre">get_start_offset_after</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../modules/evans/consort/LogicalTieCollection.html#LogicalTieCollection.get_start_offset_after"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.get_start_offset_after" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets start offst in this logical_tie collection after <cite>offset</cite>.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">(</span><span class="s2">&quot;c&#39;4 c&#39;4 c&#39;4 c&#39;4&quot;</span><span class="p">)</span>
@@ -645,8 +647,8 @@ Returns string.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.get_start_offset_before">
-<code class="sig-name descname">get_start_offset_before</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">offset</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.get_start_offset_before" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.get_start_offset_before">
+<span class="sig-name descname"><span class="pre">get_start_offset_before</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../modules/evans/consort/LogicalTieCollection.html#LogicalTieCollection.get_start_offset_before"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.get_start_offset_before" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets start offst in this logical_tie collection before <cite>offset</cite>.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">(</span><span class="s2">&quot;c&#39;4 c&#39;4 c&#39;4 c&#39;4&quot;</span><span class="p">)</span>
@@ -675,13 +677,13 @@ Returns string.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.index">
-<code class="sig-name descname">index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">logical_tie</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.index" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.index">
+<span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logical_tie</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../modules/evans/consort/LogicalTieCollection.html#LogicalTieCollection.index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.index" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.insert">
-<code class="sig-name descname">insert</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">logical_ties</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.insert" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.insert">
+<span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logical_ties</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../modules/evans/consort/LogicalTieCollection.html#LogicalTieCollection.insert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.insert" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inserts <cite>logical_ties</cite> into this logical_tie collection.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">(</span><span class="s2">&quot;c&#39;2 c&#39;2&quot;</span><span class="p">)</span>
@@ -703,8 +705,8 @@ Returns string.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.remove">
-<code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">logical_ties</span></em><span class="sig-paren">)</span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.remove" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logical_ties</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../modules/evans/consort/LogicalTieCollection.html#LogicalTieCollection.remove"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.remove" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes logical_ties from this logical_tie collection.</p>
 <div class="example docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">staff</span> <span class="o">=</span> <span class="n">abjad</span><span class="o">.</span><span class="n">Staff</span><span class="p">(</span><span class="s2">&quot;c&#39;2. c&#39;4&quot;</span><span class="p">)</span>
@@ -725,48 +727,48 @@ Returns string.</p>
 
 <hr/><p class="class-header rubric">Read-only properties</p>
 <dl class="py attribute">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.all_offsets">
-<code class="sig-name descname">all_offsets</code><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.all_offsets" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.all_offsets">
+<span class="sig-name descname"><span class="pre">all_offsets</span></span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.all_offsets" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.all_start_offsets">
-<code class="sig-name descname">all_start_offsets</code><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.all_start_offsets" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.all_start_offsets">
+<span class="sig-name descname"><span class="pre">all_start_offsets</span></span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.all_start_offsets" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.all_stop_offsets">
-<code class="sig-name descname">all_stop_offsets</code><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.all_stop_offsets" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.all_stop_offsets">
+<span class="sig-name descname"><span class="pre">all_stop_offsets</span></span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.all_stop_offsets" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.earliest_start_offset">
-<code class="sig-name descname">earliest_start_offset</code><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.earliest_start_offset" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.earliest_start_offset">
+<span class="sig-name descname"><span class="pre">earliest_start_offset</span></span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.earliest_start_offset" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.earliest_stop_offset">
-<code class="sig-name descname">earliest_stop_offset</code><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.earliest_stop_offset" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.earliest_stop_offset">
+<span class="sig-name descname"><span class="pre">earliest_stop_offset</span></span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.earliest_stop_offset" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.latest_start_offset">
-<code class="sig-name descname">latest_start_offset</code><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.latest_start_offset" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.latest_start_offset">
+<span class="sig-name descname"><span class="pre">latest_start_offset</span></span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.latest_start_offset" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.latest_stop_offset">
-<code class="sig-name descname">latest_stop_offset</code><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.latest_stop_offset" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.latest_stop_offset">
+<span class="sig-name descname"><span class="pre">latest_stop_offset</span></span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.latest_stop_offset" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.start_offset">
-<code class="sig-name descname">start_offset</code><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.start_offset" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.start_offset">
+<span class="sig-name descname"><span class="pre">start_offset</span></span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.start_offset" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="evans.consort.LogicalTieCollection.LogicalTieCollection.stop_offset">
-<code class="sig-name descname">stop_offset</code><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.stop_offset" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="evans.consort.LogicalTieCollection.LogicalTieCollection.stop_offset">
+<span class="sig-name descname"><span class="pre">stop_offset</span></span><a class="headerlink" href="#evans.consort.LogicalTieCollection.LogicalTieCollection.stop_offset" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -794,9 +796,9 @@ Returns string.</p>
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2018-2020, Gregory Rowland Evans
+        &copy; Copyright 2018-2021, Gregory Rowland Evans
       <span class="lastupdated">
-        Last updated on Jan 19, 2021.
+        Last updated on Jun 03, 2021.
       </span>
 
     </p>
@@ -828,18 +830,6 @@ Returns string.</p>
 
   
   
-    
-    <!-- Theme Analytics -->
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-59435436-1', 'auto');
-    ga('send', 'pageview');
-    </script>
-
     
    
 

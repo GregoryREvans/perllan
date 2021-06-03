@@ -1,0 +1,1001 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>abjadext.microtones.ji &mdash; Perllan API 0.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/abjad.css" type="text/css" />
+  <link rel="stylesheet" href="../../../static/uqbar.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../static/notes.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../static/documentation_options.js"></script>
+        <script src="../../../static/jquery.js"></script>
+        <script src="../../../static/underscore.js"></script>
+        <script src="../../../static/doctools.js"></script>
+        <script defer="defer" src="../../../static/copybutton.js"></script>
+        <script src="../../../static/ga.js"></script>
+    
+    <script type="text/javascript" src="../../../static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #556B2F" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Perllan API
+          
+
+          
+            
+            <img src="../../../static/perllan-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../concepts.html">Core concepts</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/abjadext/microtones/index.html">microtones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/evans/index.html">evans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/tsmakers/index.html">tsmakers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../scores.html">Score gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../recipes_pitch.html">Pitch Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../recipes_sequence.html">Sequence Recipes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Perllan API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>abjadext.microtones.ji</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for abjadext.microtones.ji</h1><div class="highlight"><pre>
+<span></span>&quot;&quot;&quot;
+Package for Just Intonation.
+&quot;&quot;&quot;
+import math
+
+import abjad
+import quicktions
+
+
+<div class="viewcode-block" id="JIVector"><a class="viewcode-back" href="../../../api/abjadext/microtones/ji.html#abjadext.microtones.ji.JIVector">[docs]</a>class JIVector:
+    &quot;&quot;&quot;
+    JI vector.
+
+    &gt;&gt;&gt; from abjadext import microtones
+
+    ..  container:: example
+
+        &gt;&gt;&gt; vector = microtones.JIVector(syntonic_commas_down=2)
+        &gt;&gt;&gt; vector.syntonic_commas_down
+        2
+
+        &gt;&gt;&gt; vector = microtones.JIVector(syntonic_commas_down=2)
+        &gt;&gt;&gt; vector.syntonic_commas_up
+        0
+
+    &quot;&quot;&quot;
+
+    def __init__(
+        self,
+        diatonic_accidental=&quot;natural&quot;,
+        syntonic_commas_down=0,
+        syntonic_commas_up=0,
+        septimal_commas_down=0,
+        septimal_commas_up=0,
+        undecimal_quarter_tones_down=0,
+        undecimal_quarter_tones_up=0,
+        tridecimal_third_tones_down=0,
+        tridecimal_third_tones_up=0,
+        seventeen_limit_schismas_down=0,
+        seventeen_limit_schismas_up=0,
+        nineteen_limit_schismas_down=0,
+        nineteen_limit_schismas_up=0,
+        twenty_three_limit_commas_down=0,
+        twenty_three_limit_commas_up=0,
+    ):
+        self.diatonic_accidental = diatonic_accidental
+        self.syntonic_commas_down = syntonic_commas_down
+        self.syntonic_commas_up = syntonic_commas_up
+        self.septimal_commas_down = septimal_commas_down
+        self.septimal_commas_up = septimal_commas_up
+        self.undecimal_quarter_tones_down = undecimal_quarter_tones_down
+        self.undecimal_quarter_tones_up = undecimal_quarter_tones_up
+        self.tridecimal_third_tones_down = tridecimal_third_tones_down
+        self.tridecimal_third_tones_up = tridecimal_third_tones_up
+        self.seventeen_limit_schismas_down = seventeen_limit_schismas_down
+        self.seventeen_limit_schismas_up = seventeen_limit_schismas_up
+        self.nineteen_limit_schismas_down = nineteen_limit_schismas_down
+        self.nineteen_limit_schismas_up = nineteen_limit_schismas_up
+        self.twenty_three_limit_commas_down = twenty_three_limit_commas_down
+        self.twenty_three_limit_commas_up = twenty_three_limit_commas_up
+
+<div class="viewcode-block" id="JIVector.__repr__"><a class="viewcode-back" href="../../../api/abjadext/microtones/ji.html#abjadext.microtones.ji.JIVector.__repr__">[docs]</a>    def __repr__(self):
+        &quot;&quot;&quot;
+        Gets interpreter representation.
+
+        ..  container:: example
+
+            &gt;&gt;&gt; microtones.JIVector()
+            JIVector(diatonic_accidental=&#39;natural&#39;, syntonic_commas_down=0, syntonic_commas_up=0, septimal_commas_down=0, septimal_commas_up=0, undecimal_quarter_tones_down=0, undecimal_quarter_tones_up=0, tridecimal_third_tones_down=0, tridecimal_third_tones_up=0, seventeen_limit_schismas_down=0, seventeen_limit_schismas_up=0, nineteen_limit_schismas_down=0, nineteen_limit_schismas_up=0, twenty_three_limit_commas_down=0, twenty_three_limit_commas_up=0)
+
+        &quot;&quot;&quot;
+        return abjad.StorageFormatManager(self).get_repr_format()</div>
+
+<div class="viewcode-block" id="JIVector.has_just_accidentals"><a class="viewcode-back" href="../../../api/abjadext/microtones/ji.html#abjadext.microtones.ji.JIVector.has_just_accidentals">[docs]</a>    def has_just_accidentals(self):
+        &quot;&quot;&quot;
+        Is true when vector has just accidentals.
+
+        ..  container:: example
+
+            &gt;&gt;&gt; vector = microtones.JIVector()
+            &gt;&gt;&gt; vector.has_just_accidentals()
+            False
+
+            &gt;&gt;&gt; vector = microtones.JIVector(syntonic_commas_down=1)
+            &gt;&gt;&gt; vector.has_just_accidentals()
+            True
+
+        &quot;&quot;&quot;
+        return any(
+            [
+                self.syntonic_commas_down,
+                self.syntonic_commas_up,
+                self.septimal_commas_down,
+                self.septimal_commas_up,
+                self.undecimal_quarter_tones_down,
+                self.undecimal_quarter_tones_up,
+                self.tridecimal_third_tones_down,
+                self.tridecimal_third_tones_up,
+                self.seventeen_limit_schismas_down,
+                self.seventeen_limit_schismas_up,
+                self.nineteen_limit_schismas_down,
+                self.nineteen_limit_schismas_up,
+                self.twenty_three_limit_commas_down,
+                self.twenty_three_limit_commas_up,
+            ]
+        )</div>
+
+<div class="viewcode-block" id="JIVector.calculate_ji_markup"><a class="viewcode-back" href="../../../api/abjadext/microtones/ji.html#abjadext.microtones.ji.JIVector.calculate_ji_markup">[docs]</a>    def calculate_ji_markup(self):
+        r&quot;&quot;&quot;
+        Calculates JI markup.
+
+        ..  container:: example
+
+            &gt;&gt;&gt; vector = microtones.JIVector(syntonic_commas_down=1)
+            &gt;&gt;&gt; print(abjad.lilypond(vector.calculate_ji_markup()))
+            \markup { \natural-one-syntonic-comma-down  }
+
+        &quot;&quot;&quot;
+        int_to_word = {&quot;1&quot;: &quot;one&quot;, &quot;2&quot;: &quot;two&quot;, &quot;3&quot;: &quot;three&quot;}
+        accumulated_accidentals = []
+        if self.diatonic_accidental == &quot;double sharp&quot;:
+            self.diatonic_accidental = &quot;double-sharp&quot;
+        if self.diatonic_accidental == &quot;double flat&quot;:
+            self.diatonic_accidental = &quot;double-flat&quot;
+        if self.syntonic_commas_down == self.syntonic_commas_up:
+            self.syntonic_commas_down = 0
+            self.syntonic_commas_up = 0
+            string = fr&quot;\{self.diatonic_accidental}&quot;
+            accumulated_accidentals.append(string)
+        elif self.syntonic_commas_down &gt; self.syntonic_commas_up:
+            self.syntonic_commas_down -= self.syntonic_commas_up
+            self.syntonic_commas_up = 0
+            string = fr&quot;\{self.diatonic_accidental}&quot;
+            string += f&quot;-{int_to_word[str(self.syntonic_commas_down)]}&quot;
+            string += &quot;-syntonic-comma-down&quot;
+            accumulated_accidentals.append(string)
+        else:
+            self.syntonic_commas_up -= self.syntonic_commas_down
+            self.syntonic_commas_down = 0
+            string = fr&quot;\{self.diatonic_accidental}&quot;
+            string += f&quot;-{int_to_word[str(self.syntonic_commas_up)]}&quot;
+            string += &quot;-syntonic-comma-up&quot;
+
+            accumulated_accidentals.append(string)
+        if self.septimal_commas_down == self.septimal_commas_up:
+            self.septimal_commas_down = 0
+            self.septimal_commas_up = 0
+        elif self.septimal_commas_down &gt; self.septimal_commas_up:
+            self.septimal_commas_down -= self.septimal_commas_up
+            self.septimal_commas_up = 0
+            string = fr&quot;\{int_to_word[str(self.septimal_commas_down)]}&quot;
+            string += &quot;-septimal-comma-down&quot;
+            accumulated_accidentals.append(string)
+        else:
+            self.septimal_commas_up -= self.septimal_commas_down
+            self.septimal_commas_down = 0
+            string = fr&quot;\{int_to_word[str(self.septimal_commas_up)]}&quot;
+            string += &quot;-septimal-comma-up&quot;
+            accumulated_accidentals.append(string)
+        if self.undecimal_quarter_tones_down == self.undecimal_quarter_tones_up:
+            self.undecimal_quarter_tones_down = 0
+            self.undecimal_quarter_tones_up = 0
+        elif self.undecimal_quarter_tones_down &gt; self.undecimal_quarter_tones_up:
+            self.undecimal_quarter_tones_down -= self.undecimal_quarter_tones_up
+            self.undecimal_quarter_tones_up = 0
+            string = fr&quot;\{int_to_word[str(self.undecimal_quarter_tones_down)]}&quot;
+            string += &quot;-undecimal-quarter-tone-down&quot;
+            accumulated_accidentals.append(string)
+        else:
+            self.undecimal_quarter_tones_up -= self.undecimal_quarter_tones_down
+            self.undecimal_quarter_tones_down = 0
+            string = fr&quot;\{int_to_word[str(self.undecimal_quarter_tones_up)]}&quot;
+            string += &quot;-undecimal-quarter-tone-up&quot;
+            accumulated_accidentals.append(string)
+        if self.tridecimal_third_tones_down == self.tridecimal_third_tones_up:
+            self.tridecimal_third_tones_down = 0
+            self.tridecimal_third_tones_up = 0
+        elif self.tridecimal_third_tones_down &gt; self.tridecimal_third_tones_up:
+            self.tridecimal_third_tones_down -= self.tridecimal_third_tones_up
+            self.tridecimal_third_tones_up = 0
+            string = fr&quot;\{int_to_word[str(self.tridecimal_third_tones_down)]}&quot;
+            string += &quot;-tridecimal-third-tone-down&quot;
+            accumulated_accidentals.append(string)
+        else:
+            self.tridecimal_third_tones_up -= self.tridecimal_third_tones_down
+            self.tridecimal_third_tones_down = 0
+            string = fr&quot;\{int_to_word[str(self.tridecimal_third_tones_up)]}&quot;
+            string += &quot;-tridecimal-third-tone-up&quot;
+            accumulated_accidentals.append(string)
+        if self.seventeen_limit_schismas_down == self.seventeen_limit_schismas_up:
+            self.seventeen_limit_schismas_down = 0
+            self.seventeen_limit_schismas_up = 0
+        elif self.seventeen_limit_schismas_down &gt; self.seventeen_limit_schismas_up:
+            self.seventeen_limit_schismas_down -= self.seventeen_limit_schismas_up
+            self.seventeen_limit_schismas_up = 0
+            string = fr&quot;\{int_to_word[str(self.seventeen_limit_schismas_down)]}&quot;
+            string += &quot;-seventeen-limit-schisma-down&quot;
+            accumulated_accidentals.append(string)
+        else:
+            self.seventeen_limit_schismas_up -= self.seventeen_limit_schismas_down
+            self.seventeen_limit_schismas_down = 0
+            string = fr&quot;\{int_to_word[str(self.seventeen_limit_schismas_up)]}&quot;
+            string += &quot;-seventeen-limit-schisma-up&quot;
+            accumulated_accidentals.append(string)
+        if self.nineteen_limit_schismas_down == self.nineteen_limit_schismas_up:
+            self.nineteen_limit_schismas_down = 0
+            self.nineteen_limit_schismas_up = 0
+        elif self.nineteen_limit_schismas_down &gt; self.nineteen_limit_schismas_up:
+            self.nineteen_limit_schismas_down -= self.nineteen_limit_schismas_up
+            self.nineteen_limit_schismas_up = 0
+            string = fr&quot;\{int_to_word[str(self.nineteen_limit_schismas_down)]}&quot;
+            string += &quot;-nineteen-limit-schisma-down&quot;
+            accumulated_accidentals.append(string)
+        else:
+            self.nineteen_limit_schismas_up -= self.nineteen_limit_schismas_down
+            self.nineteen_limit_schismas_down = 0
+            string = fr&quot;\{int_to_word[str(self.nineteen_limit_schismas_up)]}&quot;
+            string += &quot;-nineteen-limit-schisma-up&quot;
+            accumulated_accidentals.append(string)
+        if self.twenty_three_limit_commas_down == self.twenty_three_limit_commas_up:
+            self.twenty_three_limit_commas_down = 0
+            self.twenty_three_limit_commas_up = 0
+        elif self.twenty_three_limit_commas_down &gt; self.twenty_three_limit_commas_up:
+            self.twenty_three_limit_commas_down -= self.twenty_three_limit_commas_up
+            self.twenty_three_limit_commas_up = 0
+            string = fr&quot;\{int_to_word[str(self.twenty_three_limit_commas_down)]}&quot;
+            string += &quot;-twenty-three-limit-comma-down&quot;
+            accumulated_accidentals.append(string)
+        else:
+            self.twenty_three_limit_commas_up -= self.twenty_three_limit_commas_down
+            self.twenty_three_limit_commas_down = 0
+            string = fr&quot;\{int_to_word[str(self.twenty_three_limit_commas_up)]}&quot;
+            string += &quot;-twenty-three-limit-comma-up&quot;
+            accumulated_accidentals.append(string)
+        if len(accumulated_accidentals):
+            accumulated_accidentals.reverse()
+            if accumulated_accidentals[-1] == r&quot;\natural&quot;:
+                if self.has_just_accidentals():
+                    accumulated_accidentals = [_ for _ in accumulated_accidentals[:-1]]
+            for i, s in enumerate(accumulated_accidentals):
+                if s == r&quot;\natural&quot;:
+                    accumulated_accidentals[i] = r&quot;\abjad-natural&quot;
+                if s == r&quot;\sharp&quot;:
+                    accumulated_accidentals[i] = r&quot;\abjad-sharp&quot;
+                if s == r&quot;\flat&quot;:
+                    accumulated_accidentals[i] = r&quot;\abjad-flat&quot;
+            literal_components = []
+            for accidental_string in accumulated_accidentals:
+                accidental_string = accidental_string + &quot; &quot;
+                literal_components.append(accidental_string)
+            if len(literal_components) == 1:
+                literal = abjad.Markup(
+                    fr&quot;\markup {{ {literal_components[0]} }}&quot;, literal=True
+                )
+            else:
+                kerned_components = []
+                for i, item in enumerate(literal_components):
+                    kerned_components.append(item)
+                    if i != len(literal_components) - 1:
+                        kerned_components.append(r&quot;\hspace #0.125 &quot;)
+                kerned_components_string = &quot;&quot;
+                for kerned_component in kerned_components:
+                    kerned_components_string += kerned_component
+                literal = abjad.Markup(
+                    fr&quot;\markup \concat {{ {kerned_components_string} }}&quot;, literal=True
+                )
+        else:
+            literal = abjad.Markup(
+                fr&quot; \markup {{ \abjad-{self.diatonic_accidental} }}&quot;, literal=True
+            )
+        self.accidental_literal = literal
+        return literal</div></div>
+
+
+<div class="viewcode-block" id="JIBundle"><a class="viewcode-back" href="../../../api/abjadext/microtones/ji.html#abjadext.microtones.ji.JIBundle">[docs]</a>class JIBundle:
+    &quot;&quot;&quot;
+    JI bundle.
+
+    ..  container:: example
+
+        &gt;&gt;&gt; bundle = microtones.JIBundle()
+        &gt;&gt;&gt; bundle.pitch
+        &quot;c&#39;&quot;
+
+        &gt;&gt;&gt; print(abjad.storage(bundle.vector))
+        microtones.JIVector(
+            diatonic_accidental=&#39;natural&#39;,
+            syntonic_commas_down=0,
+            syntonic_commas_up=0,
+            septimal_commas_down=0,
+            septimal_commas_up=0,
+            undecimal_quarter_tones_down=0,
+            undecimal_quarter_tones_up=0,
+            tridecimal_third_tones_down=0,
+            tridecimal_third_tones_up=0,
+            seventeen_limit_schismas_down=0,
+            seventeen_limit_schismas_up=0,
+            nineteen_limit_schismas_down=0,
+            nineteen_limit_schismas_up=0,
+            twenty_three_limit_commas_down=0,
+            twenty_three_limit_commas_up=0,
+            )
+
+    &quot;&quot;&quot;
+
+    def __init__(self, pitch=&quot;c&#39;&quot;, vector=JIVector()):
+        self.pitch = pitch
+        self.vector = vector
+
+<div class="viewcode-block" id="JIBundle.__repr__"><a class="viewcode-back" href="../../../api/abjadext/microtones/ji.html#abjadext.microtones.ji.JIBundle.__repr__">[docs]</a>    def __repr__(self):
+        &quot;&quot;&quot;
+        Gets interpreter representation.
+
+        ..  container:: example
+
+            &gt;&gt;&gt; microtones.JIBundle()
+            JIBundle(pitch=&quot;c&#39;&quot;, vector=JIVector(diatonic_accidental=&#39;natural&#39;, syntonic_commas_down=0, syntonic_commas_up=0, septimal_commas_down=0, septimal_commas_up=0, undecimal_quarter_tones_down=0, undecimal_quarter_tones_up=0, tridecimal_third_tones_down=0, tridecimal_third_tones_up=0, seventeen_limit_schismas_down=0, seventeen_limit_schismas_up=0, nineteen_limit_schismas_down=0, nineteen_limit_schismas_up=0, twenty_three_limit_commas_down=0, twenty_three_limit_commas_up=0))
+
+        &quot;&quot;&quot;
+        return abjad.StorageFormatManager(self).get_repr_format()</div></div>
+
+
+def _is_prime(n):
+    if n == 1:
+        return False
+    if n % 2 == 0:
+        return False
+    i = 3
+    while i * i &lt;= n:
+        if n % i == 0:
+            return False
+        i += 2
+    return True
+
+
+def _prime_factors(n):
+    prime_factor_list = []
+    while not n % 2:
+        prime_factor_list.append(2)
+        n //= 2
+    while not n % 3:
+        prime_factor_list.append(3)
+        n //= 3
+    i = 5
+    while n != 1:
+        if _is_prime(i):
+            while not n % i:
+                prime_factor_list.append(i)
+                n //= i
+        i += 2
+    return prime_factor_list
+
+
+_numerator_factor_to_intervals = {
+    2: (&quot;+P8&quot;,),
+    3: (&quot;+P8&quot;, &quot;+P5&quot;),
+    5: (&quot;+P8&quot;, &quot;+P8&quot;, &quot;+M3&quot;),
+    7: (&quot;+P8&quot;, &quot;+P8&quot;, &quot;+m7&quot;),
+    11: (&quot;+P8&quot;, &quot;+P8&quot;, &quot;+P8&quot;, &quot;+P4&quot;),
+    13: (&quot;+P8&quot;, &quot;+P8&quot;, &quot;+P8&quot;, &quot;+M6&quot;),
+    17: (&quot;+P8&quot;, &quot;+P8&quot;, &quot;+P8&quot;, &quot;+P8&quot;, &quot;+A1&quot;),
+    19: (&quot;+P8&quot;, &quot;+P8&quot;, &quot;+P8&quot;, &quot;+P8&quot;, &quot;+m3&quot;),
+    23: (&quot;+P8&quot;, &quot;+P8&quot;, &quot;+P8&quot;, &quot;+P8&quot;, &quot;+A4&quot;),
+}
+
+_numerator_factor_to_nudge = {
+    5: &quot;syntonic_commas_down&quot;,
+    7: &quot;septimal_commas_down&quot;,
+    11: &quot;undecimal_quarter_tones_up&quot;,
+    13: &quot;tridecimal_third_tones_down&quot;,
+    17: &quot;seventeen_limit_schismas_down&quot;,
+    19: &quot;nineteen_limit_schismas_up&quot;,
+    23: &quot;twenty_three_limit_commas_up&quot;,
+}
+
+
+<div class="viewcode-block" id="make_ji_bundle"><a class="viewcode-back" href="../../../api/abjadext/microtones/ji.html#abjadext.microtones.ji.make_ji_bundle">[docs]</a>def make_ji_bundle(pitch, ratio):
+    r&quot;&quot;&quot;
+    Makes JI bundle.
+
+    ..  container:: example
+
+        &gt;&gt;&gt; bundle = microtones.make_ji_bundle(abjad.NamedPitch(&quot;c&#39;&quot;), &quot;3/2&quot;)
+        &gt;&gt;&gt; bundle.pitch
+        NamedPitch(&quot;g&#39;&quot;)
+
+        &gt;&gt;&gt; print(abjad.storage(bundle.vector))
+        microtones.JIVector(
+            diatonic_accidental=&#39;natural&#39;,
+            syntonic_commas_down=0,
+            syntonic_commas_up=0,
+            septimal_commas_down=0,
+            septimal_commas_up=0,
+            undecimal_quarter_tones_down=0,
+            undecimal_quarter_tones_up=0,
+            tridecimal_third_tones_down=0,
+            tridecimal_third_tones_up=0,
+            seventeen_limit_schismas_down=0,
+            seventeen_limit_schismas_up=0,
+            nineteen_limit_schismas_down=0,
+            nineteen_limit_schismas_up=0,
+            twenty_three_limit_commas_down=0,
+            twenty_three_limit_commas_up=0,
+            )
+
+    &quot;&quot;&quot;
+    if isinstance(pitch, str):
+        pitch = abjad.NamedPitch(pitch)
+    elif isinstance(pitch, int):
+        pitch = abjad.NumberedPitch(pitch)
+    ratio = quicktions.Fraction(ratio)
+    numerator_factors = _prime_factors(ratio.numerator)
+    denominator_factors = _prime_factors(ratio.denominator)
+    accidental_vector = JIVector(diatonic_accidental=pitch.accidental.name)
+    for prime in numerator_factors:
+        assert prime &lt;= 23
+        for string in _numerator_factor_to_intervals[prime]:
+            pitch = abjad.NamedInterval(string).transpose(pitch)
+        if prime in _numerator_factor_to_nudge:
+            string = _numerator_factor_to_nudge[prime]
+            value = getattr(accidental_vector, string)
+            setattr(accidental_vector, string, value + 1)
+    for prime in denominator_factors:
+        assert prime &lt;= 23
+        for string in _numerator_factor_to_intervals[prime]:
+            string = string.replace(&quot;+&quot;, &quot;-&quot;)
+            pitch = abjad.NamedInterval(string).transpose(pitch)
+        if prime in _numerator_factor_to_nudge:
+            string = _numerator_factor_to_nudge[prime]
+            if string.endswith(&quot;_up&quot;):
+                string = string.replace(&quot;_up&quot;, &quot;_down&quot;)
+            else:
+                string = string.replace(&quot;_down&quot;, &quot;_up&quot;)
+            value = getattr(accidental_vector, string)
+            setattr(accidental_vector, string, value + 1)
+    accidental_vector.diatonic_accidental = pitch.accidental.name
+    return JIBundle(pitch, accidental_vector)</div>
+
+
+<div class="viewcode-block" id="return_cent_deviation_markup"><a class="viewcode-back" href="../../../api/abjadext/microtones/ji.html#abjadext.microtones.ji.return_cent_deviation_markup">[docs]</a>def return_cent_deviation_markup(
+    ratio=1, fundamental=&quot;a&#39;&quot;, chris=False
+):  # chris values are temp.
+    pitch = None
+    ratio = quicktions.Fraction(ratio)
+    tonic_cent_difference = abjad.NamedPitch(fundamental).number * 100
+    log_ratio = quicktions.Fraction(math.log10(ratio))
+    log_2 = quicktions.Fraction(1200 / math.log10(2))
+    ji_cents = quicktions.Fraction(log_ratio * log_2)
+    et_cents = (
+        make_ji_bundle(fundamental, ratio).pitch.number * 100
+    ) - tonic_cent_difference
+    cent_difference = ji_cents - et_cents
+    final_cents = round(float(cent_difference))
+    if chris is True:
+        final_cents = round(float(cent_difference), 2)
+    if chris is True:
+        p_string = f&quot;{fundamental}4&quot;
+        demo_note = abjad.Note(p_string)
+        demo_head = demo_note.note_head
+        tune_to_ratio(demo_head, quicktions.Fraction(ratio) * quicktions.Fraction(9, 8))
+        pitch = abjad.NumberedPitch(demo_head.written_pitch)
+    if 50 &lt; abs(final_cents):
+        if chris is False:
+            p_string = f&quot;{fundamental}4&quot;
+            demo_note = abjad.Note(p_string)
+            demo_head = demo_note.note_head
+            tune_to_ratio(demo_head, ratio)
+            pitch = abjad.NumberedPitch(demo_head.written_pitch)
+        semitones = final_cents / 100
+        parts = math.modf(semitones)
+        pitch += parts[1]
+        remainder = round(parts[0] * 100)
+        if 50 &lt; abs(remainder):
+            if 0 &lt; remainder:
+                pitch += 1
+                remainder = -100 + remainder
+            else:
+                pitch -= 1
+                remainder = 100 + remainder
+        final_cents = remainder
+    if final_cents &lt; 0:
+        cent_string = f&quot;{final_cents}&quot;
+        if chris is True:
+            if not cent_string[0].isalpha():
+                pitch_string = str(abjad.NamedPitchClass(pitch))
+                pos, acc = pitch_string[0], pitch_string[1:]
+                pos = pos.capitalize()
+                acc = acc.replace(&quot;s&quot;, &quot;♯&quot;)
+                acc = acc.replace(&quot;f&quot;, &quot;♭&quot;)
+                cent_string = pos + acc + cent_string
+                cent_string = cent_string.replace(&quot;A♭&quot;, &quot;G♯&quot;)
+        if chris is False:
+            if pitch is not None:
+                pitch_string = str(abjad.NamedPitchClass(pitch))
+                pos, acc = pitch_string[0], pitch_string[1:]
+                pos = pos.capitalize()
+                acc = acc.replace(&quot;s&quot;, &quot;♯&quot;)
+                acc = acc.replace(&quot;f&quot;, &quot;♭&quot;)
+                cent_string = pos + acc + cent_string
+    else:
+        cent_string = f&quot;+{final_cents}&quot;
+        if chris is True:
+            if not cent_string[0].isalpha():
+                pitch_string = str(abjad.NamedPitchClass(pitch))
+                pos, acc = pitch_string[0], pitch_string[1:]
+                pos = pos.capitalize()
+                acc = acc.replace(&quot;s&quot;, &quot;♯&quot;)
+                acc = acc.replace(&quot;f&quot;, &quot;♭&quot;)
+                cent_string = pos + acc + cent_string
+                cent_string = cent_string.replace(&quot;A♭&quot;, &quot;G♯&quot;)
+        if chris is False:
+            if pitch is not None:
+                pitch_string = str(abjad.NamedPitchClass(pitch))
+                pos, acc = pitch_string[0], pitch_string[1:]
+                pos = pos.capitalize()
+                acc = acc.replace(&quot;s&quot;, &quot;♯&quot;)
+                acc = acc.replace(&quot;f&quot;, &quot;♭&quot;)
+                cent_string = pos + acc + cent_string
+    mark = abjad.Markup(
+        fr&quot;\markup \center-align {{ {cent_string} }}&quot;,
+        direction=abjad.Up,
+        literal=True,
+    )
+    return mark</div>
+
+
+<div class="viewcode-block" id="tune_to_ratio"><a class="viewcode-back" href="../../../api/abjadext/microtones/ji.html#abjadext.microtones.ji.tune_to_ratio">[docs]</a>def tune_to_ratio(
+    note_head,
+    ratio,
+    *,
+    omit_just_accidental=False,
+    tempered=False,
+):
+    r&quot;&quot;&quot;
+    Transposes notehead in place and tweaks accidental stencil.
+
+    ..  container:: example
+
+        All implemented accidentals are available for both stylesheets:
+
+        &gt;&gt;&gt; note = abjad.Note(&quot;c&#39;4&quot;)
+        &gt;&gt;&gt; microtones.tune_to_ratio(note.note_head, &quot;7/4&quot;)
+        &gt;&gt;&gt; staff = abjad.Staff([note])
+        &gt;&gt;&gt; score = abjad.Score([staff])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; lilypond_file = abjad.LilyPondFile(
+        ...     items=[score, abjad.Block(name=&quot;layout&quot;)],
+        ...     includes=[&quot;default.ily&quot;, &quot;ekmelos-ji-accidental-markups.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        &gt;&gt;&gt; style = &#39;&quot;dodecaphonic&quot;&#39;
+        &gt;&gt;&gt; lilypond_file.layout_block.items.append(fr&quot;\accidentalStyle {style}&quot; )
+        &gt;&gt;&gt; abjad.show(lilypond_file) # doctest: +SKIP
+
+        &gt;&gt;&gt; note = abjad.Note(&quot;c&#39;4&quot;)
+        &gt;&gt;&gt; microtones.tune_to_ratio(note.note_head, &quot;7/4&quot;)
+        &gt;&gt;&gt; staff = abjad.Staff([note])
+        &gt;&gt;&gt; score = abjad.Score([staff])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; lilypond_file = abjad.LilyPondFile(
+        ...     items=[score, abjad.Block(name=&quot;layout&quot;)],
+        ...     includes=[&quot;default.ily&quot;, &quot;heji2-ji-accidental-markups.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        &gt;&gt;&gt; style = &#39;&quot;dodecaphonic&quot;&#39;
+        &gt;&gt;&gt; lilypond_file.layout_block.items.append(fr&quot;\accidentalStyle {style}&quot; )
+        &gt;&gt;&gt; abjad.show(lilypond_file) # doctest: +SKIP
+
+    ..  container:: example
+
+        Tweaks accidentals when ``omit_just_accidental=False``:
+
+        &gt;&gt;&gt; note = abjad.Note(&quot;c&#39;4&quot;)
+        &gt;&gt;&gt; microtones.tune_to_ratio(note.note_head, &quot;5/1&quot;, omit_just_accidental=False)
+        &gt;&gt;&gt; print(abjad.lilypond(note)) # doctest: +SKIP
+
+        Does not tweak accidentals when ``omit_just_accidental=True``:
+
+        &gt;&gt;&gt; note = abjad.Note(&quot;c&#39;4&quot;)
+        &gt;&gt;&gt; microtones.tune_to_ratio(note.note_head, &quot;5/1&quot;, omit_just_accidental=True)
+        &gt;&gt;&gt; print(abjad.lilypond(note)) # doctest: +SKIP
+
+        ..  docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(note))
+            e&#39;&#39;&#39;4
+
+    ..  container:: example
+
+        A harmonic series with the ekmelos font.
+
+        &gt;&gt;&gt; ratios = [f&quot;{_ + 1}/1&quot; for _ in range(23)]
+        &gt;&gt;&gt; notes = [abjad.Note(&quot;a,,,8&quot;) for _ in ratios]
+        &gt;&gt;&gt; for note, ratio in zip(notes, ratios):
+        ...     microtones.tune_to_ratio(note.note_head, ratio)
+        ...
+        &gt;&gt;&gt; staff = abjad.Staff()
+        &gt;&gt;&gt; staff.extend(notes)
+        &gt;&gt;&gt; abjad.attach(abjad.Clef(&quot;bass&quot;), staff[0])
+        &gt;&gt;&gt; abjad.attach(abjad.Clef(&quot;treble&quot;), staff[6])
+        &gt;&gt;&gt; score = abjad.Score([staff])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; lilypond_file = abjad.LilyPondFile(
+        ...     items=[score, abjad.Block(name=&quot;layout&quot;)],
+        ...     includes=[
+        ...         &quot;default.ily&quot;,
+        ...         &quot;harmonic-series-layout.ily&quot;,
+        ...         &quot;ekmelos-ji-accidental-markups.ily&quot;
+        ...     ],
+        ...     global_staff_size=16,
+        ... )
+        &gt;&gt;&gt; style = &#39;&quot;dodecaphonic&quot;&#39;
+        &gt;&gt;&gt; lilypond_file.layout_block.items.append(fr&quot;\accidentalStyle {style}&quot; )
+        &gt;&gt;&gt; abjad.show(lilypond_file) # doctest: +SKIP
+
+        ..  docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(staff))
+            \new Staff
+            {
+                \clef &quot;bass&quot;
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \abjad-natural  }
+                a,,,8
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \abjad-natural  }
+                a,,8
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \abjad-natural  }
+                e,8
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \abjad-natural  }
+                a,8
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \sharp-one-syntonic-comma-down  }
+                cs8
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \abjad-natural  }
+                e8
+                \clef &quot;treble&quot;
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \one-septimal-comma-down  }
+                g8
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \abjad-natural  }
+                a8
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \abjad-natural  }
+                b8
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \sharp-one-syntonic-comma-down  }
+                cs&#39;8
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
+                d&#39;8
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \abjad-natural  }
+                e&#39;8
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup \concat { \one-tridecimal-third-tone-down \hspace #0.125 \abjad-sharp  }
+                fs&#39;8
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \one-septimal-comma-down  }
+                g&#39;8
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \sharp-one-syntonic-comma-down  }
+                gs&#39;8
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \abjad-natural  }
+                a&#39;8
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup \concat { \one-seventeen-limit-schisma-down \hspace #0.125 \abjad-sharp  }
+                as&#39;8
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \abjad-natural  }
+                b&#39;8
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \one-nineteen-limit-schisma-up  }
+                c&#39;&#39;8
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \sharp-one-syntonic-comma-down  }
+                cs&#39;&#39;8
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \one-septimal-comma-down  }
+                d&#39;&#39;8
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
+                d&#39;&#39;8
+                \tweak Accidental.stencil #ly:text-interface::print
+                \tweak Accidental.text \markup \concat { \one-twenty-three-limit-comma-up \hspace #0.125 \abjad-sharp  }
+                ds&#39;&#39;8
+            }
+
+        A harmonic series with the HEJI2 font.
+
+        &gt;&gt;&gt; ratios = [f&quot;{_ + 1}/1&quot; for _ in range(23)]
+        &gt;&gt;&gt; notes = [abjad.Note(&quot;a,,,8&quot;) for _ in ratios]
+        &gt;&gt;&gt; for note, ratio in zip(notes, ratios):
+        ...     microtones.tune_to_ratio(note.note_head, ratio)
+        ...
+        &gt;&gt;&gt; staff = abjad.Staff()
+        &gt;&gt;&gt; staff.extend(notes)
+        &gt;&gt;&gt; abjad.attach(abjad.Clef(&quot;bass&quot;), staff[0])
+        &gt;&gt;&gt; abjad.attach(abjad.Clef(&quot;treble&quot;), staff[6])
+        &gt;&gt;&gt; abjad.attach(abjad.TimeSignature((24, 32)), staff[0])
+        &gt;&gt;&gt; score = abjad.Score([staff])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; lilypond_file = abjad.LilyPondFile(
+        ...     items=[score, abjad.Block(name=&quot;layout&quot;)],
+        ...     includes=[
+        ...         &quot;default.ily&quot;,
+        ...         &quot;harmonic-series-layout.ily&quot;,
+        ...         &quot;heji2-ji-accidental-markups.ily&quot;
+        ...     ],
+        ...     global_staff_size=16,
+        ... )
+        &gt;&gt;&gt; style = &#39;&quot;dodecaphonic&quot;&#39;
+        &gt;&gt;&gt; lilypond_file.layout_block.items.append(fr&quot;\accidentalStyle {style}&quot; )
+        &gt;&gt;&gt; abjad.show(lilypond_file) # doctest: +SKIP
+
+    ..  container:: example
+
+        Prints tempered accidentals when ``tempered=True``:
+
+        &gt;&gt;&gt; note = abjad.Note(&quot;c&#39;4&quot;)
+        &gt;&gt;&gt; microtones.tune_to_ratio(note.note_head, &quot;5/1&quot;, tempered=True)
+        &gt;&gt;&gt; staff = abjad.Staff([note])
+        &gt;&gt;&gt; score = abjad.Score([staff])
+        &gt;&gt;&gt; moment = &quot;#(ly:make-moment 1 25)&quot;
+        &gt;&gt;&gt; abjad.setting(score).proportional_notation_duration = moment
+        &gt;&gt;&gt; lilypond_file = abjad.LilyPondFile(
+        ...     items=[score, abjad.Block(name=&quot;layout&quot;)],
+        ...     includes=[&quot;default.ily&quot;, &quot;ekmelos-ji-accidental-markups.ily&quot;],
+        ...     global_staff_size=16,
+        ... )
+        &gt;&gt;&gt; style = &#39;&quot;dodecaphonic&quot;&#39;
+        &gt;&gt;&gt; lilypond_file.layout_block.items.append(fr&quot;\accidentalStyle {style}&quot; )
+        &gt;&gt;&gt; abjad.show(lilypond_file) # doctest: +SKIP
+
+        ..  docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(note))
+            \tweak Accidental.stencil #ly:text-interface::print
+            \tweak Accidental.text \tempered-natural
+            e&#39;&#39;&#39;4
+
+    &quot;&quot;&quot;
+    bundle = make_ji_bundle(note_head.written_pitch, ratio)
+    note_head.written_pitch = bundle.pitch
+    if omit_just_accidental:
+        return
+    if tempered is True:
+        tempered_accidental = note_head.written_pitch.accidental.name
+        tempered_accidental = tempered_accidental.replace(&quot; &quot;, &quot;-&quot;)
+        manager = abjad.tweak(note_head, literal=True)
+        manager.Accidental.stencil = r&quot;#ly:text-interface::print&quot;
+        manager.Accidental.text = fr&quot;\tempered-{tempered_accidental}&quot;
+    else:
+        markup = bundle.vector.calculate_ji_markup()
+        manager = abjad.tweak(note_head, literal=True)
+        manager.Accidental.stencil = r&quot;#ly:text-interface::print&quot;
+        alteration_literal = markup
+        manager.Accidental.text = alteration_literal</div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-2021, Gregory Rowland Evans
+      <span class="lastupdated">
+        Last updated on Jun 03, 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,452 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>evans.spanners &mdash; Perllan API 0.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/abjad.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/uqbar.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../static/notes.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/doctools.js"></script>
+        <script defer="defer" src="../../static/copybutton.js"></script>
+        <script src="../../static/ga.js"></script>
+    
+    <script type="text/javascript" src="../../static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #556B2F" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Perllan API
+          
+
+          
+            
+            <img src="../../static/perllan-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../concepts.html">Core concepts</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/abjadext/microtones/index.html">microtones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/evans/index.html">evans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/tsmakers/index.html">tsmakers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../scores.html">Score gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recipes_pitch.html">Pitch Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recipes_sequence.html">Sequence Recipes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Perllan API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>evans.spanners</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for evans.spanners</h1><div class="highlight"><pre>
+<span></span>import functools
+
+import abjad
+
+
+<div class="viewcode-block" id="BowAnglePoint"><a class="viewcode-back" href="../../api/evans/spanners.html#evans.spanners.BowAnglePoint">[docs]</a>@functools.total_ordering
+class BowAnglePoint:
+    &quot;&quot;&quot;
+
+    Bow Angle Point
+
+    .. container:: example
+
+        &gt;&gt;&gt; point = evans.BowAnglePoint(90)
+        &gt;&gt;&gt; point
+        BowAnglePoint(degrees=NonreducedFraction(90, 90))
+
+    &quot;&quot;&quot;
+
+    def __init__(
+        self,
+        degrees=None,
+    ):
+        if degrees is not None:
+            self._degrees = abjad.NonreducedFraction(degrees, 90)
+        else:
+            self._degrees = degrees
+
+<div class="viewcode-block" id="BowAnglePoint.__lt__"><a class="viewcode-back" href="../../api/evans/spanners.html#evans.spanners.BowAnglePoint.__lt__">[docs]</a>    def __lt__(self, argument) -&gt; bool:
+        self_degrees = self.degrees or 0
+        argument_degrees = argument.degrees or 0
+        return self_degrees &lt; argument_degrees</div>
+
+<div class="viewcode-block" id="BowAnglePoint.__repr__"><a class="viewcode-back" href="../../api/evans/spanners.html#evans.spanners.BowAnglePoint.__repr__">[docs]</a>    def __repr__(self):
+        return abjad.StorageFormatManager(self).get_repr_format()</div>
+
+<div class="viewcode-block" id="BowAnglePoint.__str__"><a class="viewcode-back" href="../../api/evans/spanners.html#evans.spanners.BowAnglePoint.__str__">[docs]</a>    def __str__(self):
+        return str(self.markup)</div>
+
+    @property
+    def degrees(self):
+        return self._degrees
+
+    @property
+    def markup(self):
+        if self._degrees is None:
+            degrees = 0
+        else:
+            degrees = self.degrees.numerator
+        symbol = (
+            r&quot;\concat { \translate #&#39;(0 . 0) &quot;
+            + f&quot;{degrees}&quot;
+            + r&quot; \translate #&#39;(0 . 1) \teeny o \hspace #0.5 }&quot;
+        )
+        string = rf&quot;\markup {{ \vcenter {symbol} }}&quot;
+        markup = abjad.Markup(string, literal=True)
+        return markup</div>
+
+
+<div class="viewcode-block" id="bow_angle_spanner"><a class="viewcode-back" href="../../api/evans/spanners.html#evans.spanners.bow_angle_spanner">[docs]</a>def bow_angle_spanner(
+    argument,
+    *,
+    omit_bow_changes=True,
+    tag=None,
+):
+    r&quot;&quot;&quot;
+
+    .. container:: example
+
+        &gt;&gt;&gt; point_1 = evans.BowAnglePoint(-45)
+        &gt;&gt;&gt; tech_1 = abjad.BowMotionTechnique(&quot;ordinario&quot;)
+        &gt;&gt;&gt; point_2 = evans.BowAnglePoint(45)
+        &gt;&gt;&gt; tech_2 = abjad.BowMotionTechnique(&quot;ordinario&quot;)
+        &gt;&gt;&gt; staff = abjad.Staff(&quot;c&#39;2 c&#39;2&quot;)
+        &gt;&gt;&gt; abjad.attach(point_1, staff[0])
+        &gt;&gt;&gt; abjad.attach(tech_1, staff[0])
+        &gt;&gt;&gt; abjad.attach(point_2, staff[1])
+        &gt;&gt;&gt; abjad.attach(tech_2, staff[1])
+        &gt;&gt;&gt; evans.bow_angle_spanner(staff)
+        &gt;&gt;&gt; abjad.show(staff) # doctest: +SKIP
+
+        .. docs::
+
+            &gt;&gt;&gt; print(abjad.lilypond(staff))
+            \new Staff
+            {
+                \tweak Y-offset #-4.0
+                \tweak stencil #ly:text-interface::print
+                \tweak text \markup { \vcenter \concat { \translate #&#39;(0 . 0) -45 \translate #&#39;(0 . 1) \teeny o \hspace #0.5 } }
+                c&#39;2
+                - \tweak style #&#39;line
+                \glissando
+                \tweak Y-offset #0.0
+                \tweak stencil #ly:text-interface::print
+                \tweak text \markup { \vcenter \concat { \translate #&#39;(0 . 0) 45 \translate #&#39;(0 . 1) \teeny o \hspace #0.5 } }
+                c&#39;2
+            }
+
+    &quot;&quot;&quot;
+
+    def _get_indicators(leaf):
+        bow_contact_point = None
+        prototype = BowAnglePoint
+        if leaf._has_indicator(prototype):
+            bow_contact_point = leaf._get_indicators(prototype)[0]
+        bow_motion_technique = None
+        prototype = abjad.BowMotionTechnique
+        if leaf._has_indicator(prototype):
+            bow_motion_technique = leaf._get_indicators(prototype)[0]
+        return (bow_contact_point, bow_motion_technique)
+
+    def _make_bow_contact_point_tweaks(leaf, bow_contact_point):
+        if bow_contact_point is None:
+            return
+        abjad.tweak(leaf.note_head).stencil = &quot;#ly:text-interface::print&quot;
+        abjad.tweak(leaf.note_head).text = bow_contact_point.markup
+        y_offset = float((4 * bow_contact_point.degrees) - 2)
+        abjad.tweak(leaf.note_head).Y_offset = f&quot;#{y_offset}&quot;
+
+    def _make_bow_change_contributions(leaf, leaves, bow_contact_point):
+        cautionary_change = False
+        direction_change = None
+        next_leaf = abjad.get.leaf(leaf, 1)
+        this_contact_point = bow_contact_point
+        if this_contact_point is None:
+            return
+        next_contact_point = abjad.get.indicator(next_leaf, BowAnglePoint)
+        if next_contact_point is None:
+            return
+        previous_leaf = abjad.get.leaf(leaf, -1)
+        previous_contact_point = None
+        if previous_leaf is not None:
+            previous_contact_points = previous_leaf._get_indicators(BowAnglePoint)
+            if previous_contact_points:
+                previous_contact_point = previous_contact_points[0]
+        if (
+            leaf is leaves[0]
+            or previous_contact_point is None
+            or previous_contact_point.degrees is None
+        ):
+            if this_contact_point &lt; next_contact_point:
+                direction_change = abjad.Down
+            elif next_contact_point &lt; this_contact_point:
+                direction_change = abjad.Up
+        else:
+            previous_leaf = abjad.get.leaf(leaf, -1)
+            previous_contact_point = abjad.get.indicator(previous_leaf, BowAnglePoint)
+            if (
+                previous_contact_point &lt; this_contact_point
+                and next_contact_point &lt; this_contact_point
+            ):
+                direction_change = abjad.Up
+            elif (
+                this_contact_point &lt; previous_contact_point
+                and this_contact_point &lt; next_contact_point
+            ):
+                direction_change = abjad.Down
+            elif this_contact_point == previous_contact_point:
+                if this_contact_point &lt; next_contact_point:
+                    cautionary_change = True
+                    direction_change = abjad.Down
+                elif next_contact_point &lt; this_contact_point:
+                    cautionary_change = True
+                    direction_change = abjad.Up
+        if direction_change is None:
+            return
+        if direction_change == abjad.Up:
+            string = r&quot;\evans-counterclockwise-arc \translate #&#39;(0.2 . 0.75) \scale #&#39;(0.7 . 0.7)&quot;
+        else:
+            string = (
+                r&quot;\evans-clockwise-arc \translate #&#39;(0.2 . 0.75) \scale #&#39;(0.7 . 0.7)&quot;
+            )
+        if cautionary_change:
+            string = rf&quot;\parenthesize {string}&quot;
+        string = &quot;^ &quot; + string
+        literal = abjad.LilyPondLiteral(string, &quot;after&quot;)
+        abjad.attach(literal, leaf)
+
+    def _next_leaf_is_bowed(leaf, leaves):
+        if leaf is leaves[-1]:
+            return False
+        silent_prototype = (abjad.MultimeasureRest, abjad.Rest, abjad.Skip)
+        next_leaf = abjad.get.leaf(leaf, 1)
+        if next_leaf is None or isinstance(next_leaf, silent_prototype):
+            return False
+        next_contact_point = abjad.get.indicator(next_leaf, BowAnglePoint)
+        if next_contact_point is None:
+            return False
+        elif next_contact_point.degrees is None:
+            return False
+        return True
+
+    def _format_leaf(leaf, leaves):
+        indicators = abjad.get.indicators(leaf)
+        bow_contact_point = indicators[0]
+        bow_motion_technique = indicators[1]
+        if bow_contact_point is None:
+            return
+        if bow_contact_point.degrees is None:
+            abjad.tweak(leaf.note_head).style = &quot;#&#39;cross&quot;
+            return
+        if len(leaves) == 1:
+            return
+        _make_bow_contact_point_tweaks(leaf, bow_contact_point)
+        if not _next_leaf_is_bowed(leaf, leaves):
+            return
+        glissando = abjad.Glissando()
+        if bow_motion_technique is not None:
+            style = f&quot;#&#39;{bow_motion_technique.glissando_style}&quot;
+            abjad.tweak(glissando).style = style
+        abjad.attach(glissando, leaf, tag=tag)
+        if not omit_bow_changes:
+            _make_bow_change_contributions(leaf, leaves, bow_contact_point)
+
+    leaves = abjad.Selection(argument).leaves()
+    assert isinstance(leaves, abjad.Selection), repr(leaves)
+    for leaf in leaves:
+        _format_leaf(leaf, leaves)</div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2018-2021, Gregory Rowland Evans
+      <span class="lastupdated">
+        Last updated on Jun 03, 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
